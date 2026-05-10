@@ -1,0 +1,72 @@
+{
+  "endpoint": "http://localhost:9300/v1/chat/completions",
+  "host": "electron-server",
+  "captured_at": "2026-05-10T13:35:00Z",
+  "rounds": 3,
+  "max_tokens": 64,
+  "results": {
+    "ailiance": {
+      "n_ok": 3,
+      "n_err": 6,
+      "median_latency_s": 1.546,
+      "median_tps": 23.93,
+      "median_tokens": 37,
+      "note": "default routing, 66% HTTP 500"
+    },
+    "ailiance-apertus": {
+      "n_ok": 0,
+      "n_err": 9,
+      "error_sample": "HTTP Error 500: Internal Server Error",
+      "note": "Studio :9301 backend DOWN (launchd missing)"
+    },
+    "ailiance-mistral": {
+      "n_ok": 0,
+      "n_err": 9,
+      "error_sample": "HTTP Error 500: Internal Server Error",
+      "note": "no worker registered"
+    },
+    "ailiance-gemma4": {
+      "n_ok": 0,
+      "n_err": 9,
+      "error_sample": "HTTP Error 500: Internal Server Error",
+      "note": "no worker registered"
+    },
+    "ailiance-eurollm": {
+      "n_ok": 9,
+      "n_err": 0,
+      "median_latency_s": 11.556,
+      "median_tps": 0.0,
+      "median_tokens": 0,
+      "note": "200 OK but completion_tokens=0 and content empty - silent failure"
+    },
+    "ailiance-gemma": {
+      "n_ok": 9,
+      "n_err": 0,
+      "median_latency_s": 2.365,
+      "median_tps": 19.02,
+      "median_tokens": 45,
+      "backend": "Tower :9304 (Gemma 3 4B IT, llama.cpp)",
+      "direct_p50_latency_s": 2.494,
+      "direct_p50_tps": 18.91,
+      "gateway_overhead_ms": 129
+    },
+    "ailiance-qwen": {
+      "n_ok": 9,
+      "n_err": 0,
+      "median_latency_s": 1.398,
+      "median_tps": 25.03,
+      "median_tokens": 37,
+      "backend": "kxkm-ai :18888 -> tunnel electron-server:8002 (Qwen3-Next 80B Q4_K_M MoE)",
+      "direct_bench_blocked_by": "HTTP 401 - tunnel requires bearer token"
+    }
+  },
+  "summary": {
+    "models_advertised_in_v1_models": 7,
+    "models_returning_real_completions": 3,
+    "broken_backends": ["ailiance-apertus", "ailiance-mistral", "ailiance-gemma4"],
+    "silent_failures": ["ailiance-eurollm"],
+    "production_ready": ["ailiance-qwen", "ailiance-gemma"],
+    "best_p50_latency": "ailiance-qwen (1.40s)",
+    "best_throughput_tps": "ailiance-qwen (25.0 tps)"
+  }
+}

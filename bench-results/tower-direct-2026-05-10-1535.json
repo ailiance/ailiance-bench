@@ -1,0 +1,17 @@
+{
+  "endpoint": "http://localhost:9304/v1/chat/completions",
+  "models": [
+    "gemma-3-4b-it"
+  ],
+  "rounds": 2,
+  "max_tokens": 50,
+  "results": {
+    "gemma-3-4b-it": {
+      "n_ok": 6,
+      "n_err": 0,
+      "median_latency_s": 2.494,
+      "median_tps": 18.91,
+      "median_tokens": 45
+    }
+  }
+}

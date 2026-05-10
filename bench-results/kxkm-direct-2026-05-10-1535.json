@@ -1,0 +1,15 @@
+{
+  "endpoint": "http://localhost:8002/v1/chat/completions",
+  "models": [
+    "qwen-32b-awq"
+  ],
+  "rounds": 2,
+  "max_tokens": 50,
+  "results": {
+    "qwen-32b-awq": {
+      "n_ok": 0,
+      "n_err": 6,
+      "error_sample": "HTTP Error 401: Unauthorized"
+    }
+  }
+}
