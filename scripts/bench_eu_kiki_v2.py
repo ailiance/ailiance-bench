@@ -471,15 +471,16 @@ def main():
                 mx.metal.clear_cache()
 
     # ── MEDIUM35 ──────────────────────────────────────────────────────────────
-    if not args.qwen_only and medium_complete:
+    if not args.qwen_only:
         log(f"\n{'='*70}")
-        log("MEDIUM-3.5-128B — BASE (no adapter)")
+        log("MEDIUM-3.5-128B — BASE (no adapter) — ALL domains")
         log(f"{'='*70}")
 
         model, tok = load(MEDIUM_MODEL)
-        for domain in medium_complete:
+        for domain in all_domains:
             samples = load_valid_data(domain, args.max_samples)
             if not samples:
+                print(f"  {domain:<20} SKIP (no valid data)")
                 continue
             r = bench_domain(model, tok, domain, samples,
                              "medium35-base", args.ppl_only)
@@ -504,6 +505,7 @@ def main():
             mx.metal.clear_cache()
 
     # ── CROSS-MODEL COMPARISON ────────────────────────────────────────────────
+    # Compare Qwen36 LoRA vs Medium35 LoRA on shared completed domains
     if shared and results["qwen36_lora"] and results["medium35_lora"]:
         for domain in shared:
             q = next((r for r in results["qwen36_lora"]
@@ -515,7 +517,21 @@ def main():
                     "domain": domain,
                     "qwen_ppl": q["val_ppl"],
                     "medium_ppl": m["val_ppl"],
-                    "winner": "Qwen36" if q["val_ppl"] < m["val_ppl"] else "Medium35",
+                    "winner": "Qwen36-LoRA" if q["val_ppl"] < m["val_ppl"] else "Medium35-LoRA",
+                })
+
+    # Also compare Qwen36 LoRA vs Medium35 BASE on all domains
+    if results["qwen36_lora"] and results["medium35_base"]:
+        results["cross_model_lora_vs_base"] = []
+        for q in results["qwen36_lora"]:
+            m = next((r for r in results["medium35_base"]
+                       if r["domain"] == q["domain"]), None)
+            if m:
+                results["cross_model_lora_vs_base"].append({
+                    "domain": q["domain"],
+                    "qwen_lora_ppl": q["val_ppl"],
+                    "medium_base_ppl": m["val_ppl"],
+                    "winner": "Qwen36-LoRA" if q["val_ppl"] < m["val_ppl"] else "Medium35-Base",
                 })
 
     # ── SUMMARY ───────────────────────────────────────────────────────────────
