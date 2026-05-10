@@ -182,9 +182,22 @@ def compute_keyword_rate(text: str, domain: str) -> float:
 
 
 def generate_safe(model, tokenizer, prompt: str, max_tokens: int = 256) -> str:
+    """Generate with proper chat template and thinking disabled."""
     try:
         mx.random.seed(42)
-        return generate(model, tokenizer, prompt=prompt,
+        messages = [{"role": "user", "content": prompt}]
+        # Apply chat template with thinking disabled (Qwen3.x trap)
+        try:
+            formatted = tokenizer.apply_chat_template(
+                messages, add_generation_prompt=True,
+                enable_thinking=False, tokenize=False,
+            )
+        except TypeError:
+            # Tokenizer doesn't support enable_thinking kwarg
+            formatted = tokenizer.apply_chat_template(
+                messages, add_generation_prompt=True, tokenize=False,
+            )
+        return generate(model, tokenizer, prompt=formatted,
                         max_tokens=max_tokens, verbose=False)
     except Exception as e:
         return f"[ERROR] {e}"
