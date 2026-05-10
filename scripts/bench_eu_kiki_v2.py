@@ -112,6 +112,8 @@ def load_valid_data(domain: str, max_samples: int = 25) -> list[dict]:
 
 
 def compute_ppl(model, tokenizer, texts: list[str], max_samples: int = 25) -> float:
+    """Perplexity on validation texts. No clamping — report raw values."""
+    mx.random.seed(42)
     losses = []
     for text in texts[:max_samples]:
         tokens = mx.array(tokenizer.encode(text))
@@ -129,19 +131,39 @@ def compute_ppl(model, tokenizer, texts: list[str], max_samples: int = 25) -> fl
     if not losses:
         return 999.0
     avg_loss = sum(losses) / len(losses)
-    return math.exp(min(avg_loss, 20))
+    # No clamp: report actual perplexity (cap at 1e6 to avoid inf display)
+    return min(math.exp(avg_loss), 1_000_000.0)
 
 
 def compute_keyword_rate(text: str, domain: str) -> float:
+    """Keyword presence rate — penalizes repetitive regurgitation.
+
+    A keyword only counts once. Additionally, if >60% of the response
+    is a single repeated token/phrase, score is halved (anti-regurgitation).
+    """
     keywords = DOMAIN_KEYWORDS.get(domain, [])
     if not keywords:
         return 0.0
-    hits = sum(1 for kw in keywords if kw.lower() in text.lower())
-    return hits / len(keywords)
+    text_lower = text.lower()
+    # Each keyword counted at most once
+    hits = sum(1 for kw in keywords if kw.lower() in text_lower)
+    rate = hits / len(keywords)
+
+    # Anti-regurgitation: penalize if response is mostly repeated content
+    words = text.split()
+    if len(words) > 10:
+        unique_ratio = len(set(words)) / len(words)
+        if unique_ratio < 0.3:  # >70% repeated words
+            rate *= 0.25
+        elif unique_ratio < 0.5:  # >50% repeated words
+            rate *= 0.5
+
+    return rate
 
 
 def generate_safe(model, tokenizer, prompt: str, max_tokens: int = 256) -> str:
     try:
+        mx.random.seed(42)
         return generate(model, tokenizer, prompt=prompt,
                         max_tokens=max_tokens, verbose=False)
     except Exception as e:
@@ -177,7 +199,20 @@ def bench_domain(
             kr = compute_keyword_rate(resp, domain)
             keyword_rates.append(kr)
             resp_lens.append(len(resp))
-            if len(resp) < 10 or len(set(resp.split())) < 3:
+
+            # Enhanced degenerate detection
+            is_degen = False
+            words = resp.split()
+            if len(resp) < 10:
+                is_degen = True  # too short
+            elif len(set(words)) < 3:
+                is_degen = True  # almost no vocabulary
+            elif len(words) > 20 and len(set(words)) / len(words) < 0.2:
+                is_degen = True  # repetition loop (>80% repeated)
+            elif kr == 0.0 and len(resp) > 50:
+                is_degen = True  # off-topic (long but zero domain keywords)
+
+            if is_degen:
                 degenerate += 1
 
         result.update({
