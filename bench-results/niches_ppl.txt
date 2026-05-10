@@ -1,0 +1,93 @@
+=== Niche perplexity bench started 21:25:40 ===
+
+--- base on spice ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- eu-kiki on spice ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- mascarade on spice ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- base on stm32 ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- eu-kiki on stm32 ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- mascarade on stm32 ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- base on kicad ---
+Evaluating perplexity with batch size 1...
+Perplexity: 4.664 ± 0.045
+Tokens per second: 453
+  Total tokens: 163840
+
+--- eu-kiki on kicad ---
+Evaluating perplexity with batch size 1...
+Perplexity: 2.942 ± 0.022
+Tokens per second: 453
+  Total tokens: 163840
+
+--- mascarade on kicad ---
+Evaluating perplexity with batch size 1...
+Perplexity: 2.987 ± 0.021
+Tokens per second: 453
+  Total tokens: 163840
+
+--- base on embedded_iot ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- eu-kiki on embedded_iot ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- mascarade on embedded_iot ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- base on emc_power ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- eu-kiki on emc_power ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+--- mascarade on emc_power ---
+  File "/Users/electron/mlx-stack/.venv/bin/mlx_lm.perplexity", line 10, in <module>
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 158, in main
+  File "/Users/electron/mlx-stack/.venv/lib/python3.12/site-packages/mlx_lm/perplexity.py", line 42, in load_data
+    tokens, _ = dataset.process(dataset[perm[i]])
+
+=== ALL DONE 21:44:41 ===

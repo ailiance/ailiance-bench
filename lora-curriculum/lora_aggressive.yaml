@@ -1,0 +1,15 @@
+# Aggressive LoRA configuration for Gemma 4 E4B SFT (Option A)
+# rank 32, alpha 64, 7 target modules
+fine_tune_type: lora
+lora_parameters:
+  rank: 32
+  scale: 2.0
+  dropout: 0.0
+  keys:
+    - "self_attn.q_proj"
+    - "self_attn.k_proj"
+    - "self_attn.v_proj"
+    - "self_attn.o_proj"
+    - "mlp.gate_proj"
+    - "mlp.up_proj"
+    - "mlp.down_proj"

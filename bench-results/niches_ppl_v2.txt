@@ -1,0 +1,87 @@
+=== Niche ppl v2 — 20 samples × 1024 seq ===
+
+--- base on spice ---
+  Loaded 20 samples
+Perplexity: 21.754 ± 0.789
+Tokens per second: 458
+  Total samples: 20
+  Total tokens: 20480
+
+--- eu-kiki on spice ---
+  Loaded 20 samples
+Perplexity: 9.531 ± 0.274
+Tokens per second: 458
+  Total samples: 20
+  Total tokens: 20480
+
+--- mascarade on spice ---
+  Loaded 20 samples
+Perplexity: 6.609 ± 0.183
+Tokens per second: 459
+  Total samples: 20
+  Total tokens: 20480
+
+--- base on stm32 ---
+  Loaded 20 samples
+Perplexity: 6.393 ± 0.207
+Tokens per second: 458
+  Total samples: 20
+  Total tokens: 20480
+
+--- eu-kiki on stm32 ---
+  Loaded 20 samples
+Perplexity: 3.565 ± 0.092
+Tokens per second: 457
+  Total samples: 20
+  Total tokens: 20480
+
+--- mascarade on stm32 ---
+  Loaded 20 samples
+Perplexity: 3.004 ± 0.075
+Tokens per second: 458
+  Total samples: 20
+  Total tokens: 20480
+
+--- base on embedded_iot ---
+  Loaded 20 samples
+Perplexity: 32.500 ± 1.285
+Tokens per second: 458
+  Total samples: 20
+  Total tokens: 20480
+
+--- eu-kiki on embedded_iot ---
+  Loaded 20 samples
+Perplexity: 10.803 ± 0.321
+Tokens per second: 458
+  Total samples: 20
+  Total tokens: 20480
+
+--- mascarade on embedded_iot ---
+  Loaded 20 samples
+Perplexity: 9.032 ± 0.260
+Tokens per second: 459
+  Total samples: 20
+  Total tokens: 20480
+
+--- base on emc_power ---
+  Loaded 20 samples
+Perplexity: 254.929 ± 11.188
+Tokens per second: 459
+  Total samples: 20
+  Total tokens: 20480
+
+--- eu-kiki on emc_power ---
+  Loaded 20 samples
+Perplexity: 42.263 ± 1.332
+Tokens per second: 459
+  Total samples: 20
+  Total tokens: 20480
+
+--- mascarade on emc_power ---
+  Loaded 20 samples
+Perplexity: 39.709 ± 1.248
+Tokens per second: 459
+  Total samples: 20
+  Total tokens: 20480
+
+=== ALL DONE 21:59:48 ===

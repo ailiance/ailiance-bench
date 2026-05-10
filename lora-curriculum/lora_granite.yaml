@@ -1,0 +1,23 @@
+# Granite 4.1 3B LoRA config — hybrid Mamba/transformer
+# Note: target modules à valider après inspection archi (mlx_lm.fuse --help)
+# Granite hybrid bloc layout typique : SSM (Mamba) + transformer alternés
+fine_tune_type: lora
+lora_parameters:
+  rank: 32
+  scale: 2.0
+  dropout: 0.0
+  keys:
+    # Transformer attention (à confirmer après load Granite)
+    - "self_attn.q_proj"
+    - "self_attn.k_proj"
+    - "self_attn.v_proj"
+    - "self_attn.o_proj"
+    # MLP
+    - "mlp.gate_proj"
+    - "mlp.up_proj"
+    - "mlp.down_proj"
+    # Mamba blocks (si applicables - à vérifier avec model.named_modules())
+    # - "mamba.in_proj"
+    # - "mamba.x_proj"
+    # - "mamba.dt_proj"
+    # - "mamba.out_proj"

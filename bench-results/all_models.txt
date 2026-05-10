@@ -1,0 +1,307 @@
+=== Multi-model bench ===
+
+--- base / gsm8k_cot ---
+"alias": "gsm8k_cot",
+    "exact_match,strict-match": 0.23,
+    "exact_match_stderr,strict-match": 0.04229525846816507,
+    "exact_match,flexible-extract": 0.31,
+    "exact_match_stderr,flexible-extract": 0.04648231987117316
+
+--- base / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.62,
+    "acc_norm,none": 0.63,
+
+--- base / mmlu ---
+"acc,none": 0.5682238919743003,
+    "alias": "mmlu"
+    "acc,none": 0.6033717834960071,
+    "alias": " - humanities"
+    "alias": "  - formal_logic",
+    "acc,none": 0.29365079365079366,
+
+--- eu-kiki / gsm8k_cot ---
+"alias": "gsm8k_cot",
+    "exact_match,strict-match": 0.52,
+    "exact_match_stderr,strict-match": 0.050211673156867795,
+    "exact_match,flexible-extract": 0.74,
+    "exact_match_stderr,flexible-extract": 0.04408440022768078
+
+--- eu-kiki / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.785,
+    "acc_norm,none": 0.805,
+
+--- mascarade / gsm8k_cot ---
+"alias": "gsm8k_cot",
+    "exact_match,strict-match": 0.29,
+    "exact_match_stderr,strict-match": 0.045604802157206845,
+    "exact_match,flexible-extract": 0.73,
+    "exact_match_stderr,flexible-extract": 0.044619604333847394
+
+--- mascarade / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.77,
+    "acc_norm,none": 0.78,
+
+--- gemma3-4b / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.66,
+    "acc_norm,none": 0.625,
+
+--- ministral-3b / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.64,
+    "acc_norm,none": 0.35,
+
+--- qwen-coder-3b / gsm8k_cot ---
+"alias": "gsm8k_cot",
+    "exact_match,strict-match": 0.37,
+    "exact_match_stderr,strict-match": 0.04852365870939099,
+    "exact_match,flexible-extract": 0.62,
+    "exact_match_stderr,flexible-extract": 0.04878317312145632
+
+--- qwen-coder-3b / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.64,
+    "acc_norm,none": 0.635,
+
+--- llama-3.2-3b / arc_easy ---
+"alias": "arc_easy",
+    "acc,none": 0.655,
+    "acc_norm,none": 0.635,
+
+--- base / ppl-spice ---
+Perplexity: 21.754 ± 0.789
+
+--- base / ppl-stm32 ---
+Perplexity: 6.393 ± 0.207
+
+--- base / ppl-kicad ---
+Perplexity: 19.549 ± 0.677
+
+--- base / ppl-embedded_iot ---
+Perplexity: 32.500 ± 1.285
+
+--- base / ppl-emc_power ---
+Perplexity: 254.929 ± 11.188
+
+--- eu-kiki / ppl-spice ---
+Perplexity: 9.531 ± 0.274
+
+--- eu-kiki / ppl-stm32 ---
+Perplexity: 3.565 ± 0.092
+
+--- eu-kiki / ppl-kicad ---
+Perplexity: 9.537 ± 0.267
+
+--- eu-kiki / ppl-embedded_iot ---
+Perplexity: 10.803 ± 0.321
+
+--- eu-kiki / ppl-emc_power ---
+Perplexity: 42.263 ± 1.332
+
+--- mascarade / ppl-spice ---
+Perplexity: 6.609 ± 0.183
+
+--- mascarade / ppl-stm32 ---
+Perplexity: 3.004 ± 0.075
+
+--- mascarade / ppl-kicad ---
+Perplexity: 7.947 ± 0.201
+
+--- mascarade / ppl-embedded_iot ---
+Perplexity: 9.032 ± 0.260
+
+--- mascarade / ppl-emc_power ---
+Perplexity: 39.709 ± 1.248
+
+--- ministral-3b / ppl-spice ---
+Perplexity: 6.183 ± 0.113
+
+--- ministral-3b / ppl-stm32 ---
+Perplexity: 2.544 ± 0.042
+
+--- ministral-3b / ppl-kicad ---
+Perplexity: 3.942 ± 0.058
+
+--- ministral-3b / ppl-embedded_iot ---
+Perplexity: 8.735 ± 0.177
+
+--- ministral-3b / ppl-emc_power ---
+Perplexity: 18.295 ± 0.391
+
+--- qwen-coder-3b / ppl-spice ---
+Perplexity: 4.748 ± 0.100
+
+--- qwen-coder-3b / ppl-stm32 ---
+Perplexity: 2.178 ± 0.041
+
+--- qwen-coder-3b / ppl-kicad ---
+Perplexity: 2.891 ± 0.040
+
+--- qwen-coder-3b / ppl-embedded_iot ---
+Perplexity: 5.668 ± 0.130
+
+--- qwen-coder-3b / ppl-emc_power ---
+Perplexity: 20.019 ± 0.524
+
+--- jackrong-9b-opus / ppl-spice ---
+Perplexity: 3.374 ± 0.051
+
+--- jackrong-9b-opus / ppl-stm32 ---
+Perplexity: 1.636 ± 0.016
+
+--- jackrong-9b-opus / ppl-kicad ---
+Perplexity: 2.330 ± 0.024
+
+--- jackrong-9b-opus / ppl-embedded_iot ---
+Perplexity: 4.282 ± 0.075
+
+--- jackrong-9b-opus / ppl-emc_power ---
+Perplexity: 12.499 ± 0.253
+
+--- base / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.0,
+    "exact_match_stderr,custom-extract": 0.0
+
+--- eu-kiki / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.58,
+    "exact_match_stderr,custom-extract": 0.07050835816716035
+
+--- mascarade / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.4,
+    "exact_match_stderr,custom-extract": 0.06998542122237653
+
+--- gemma3-4b / gsm8k_cot ---
+_NO RESULT (likely crashed/short output)_
+
+--- gemma3-4b / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.38,
+    "exact_match_stderr,custom-extract": 0.06934092056863767
+
+--- ministral-3b / gsm8k_cot ---
+_NO RESULT (likely crashed/short output)_
+
+--- ministral-3b / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.16,
+    "exact_match_stderr,custom-extract": 0.052372293656638154
+
+--- qwen-coder-3b / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.34,
+    "exact_match_stderr,custom-extract": 0.06767268161329719
+
+--- llama-3.2-3b / gsm8k_cot ---
+_NO RESULT (likely crashed/short output)_
+
+--- llama-3.2-3b / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.36,
+    "exact_match_stderr,custom-extract": 0.06857142857142856
+
+--- qwen3.5-9b / gsm8k_cot ---
+_TIMEOUT after 600s_
+
+--- qwen3.5-9b / arc_easy ---
+_TIMEOUT after 600s_
+
+--- qwen3.5-9b / mmlu_pro_computer_science ---
+_TIMEOUT after 600s_
+
+--- jackrong-9b-opus / gsm8k_cot ---
+    "alias": "gsm8k_cot",
+    "exact_match,strict-match": 0.64,
+    "exact_match_stderr,strict-match": 0.04824181513244218,
+    "exact_match,flexible-extract": 0.78,
+    "exact_match_stderr,flexible-extract": 0.04163331998932262
+
+--- jackrong-9b-opus / arc_easy ---
+    "alias": "arc_easy",
+    "acc,none": 0.54,
+    "acc_norm,none": 0.53,
+
+--- jackrong-9b-opus / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.0,
+    "exact_match_stderr,custom-extract": 0.0
+
+--- helium-1-2b / gsm8k_cot ---
+_NO RESULT (likely crashed/short output)_
+
+--- helium-1-2b / arc_easy ---
+_NO RESULT (likely crashed/short output)_
+
+--- helium-1-2b / mmlu_pro_computer_science ---
+_NO RESULT (likely crashed/short output)_
+
+=== ministral-3-8b ===
+
+--- ministral-3-8b / gsm8k_cot ---
+_NO RESULT (rc=-6)_
+
+--- ministral-3-8b / arc_easy ---
+    "alias": "arc_easy",
+    "acc,none": 0.64,
+    "acc_stderr,none": 0.048241815132442176,
+    "acc_norm,none": 0.6,
+    "acc_norm_stderr,none": 0.0492365963917331
+
+--- ministral-3-8b / mmlu_pro_computer_science ---
+_NO RESULT (rc=-6)_
+
+--- ministral-3-8b / ppl-spice ---
+Perplexity: 4.479 ± 0.081
+
+--- ministral-3-8b / ppl-stm32 ---
+Perplexity: 2.673 ± 0.048
+
+--- ministral-3-8b / ppl-kicad ---
+Perplexity: 1.825 ± 0.022
+
+--- ministral-3-8b / ppl-embedded_iot ---
+Perplexity: 5.930 ± 0.118
+
+--- ministral-3-8b / ppl-emc_power ---
+Perplexity: 18.975 ± 0.415
+
+=== granite-4.1-3b ===
+
+--- granite-4.1-3b / gsm8k_cot ---
+    "alias": "gsm8k_cot",
+    "exact_match,strict-match": 0.36,
+    "exact_match_stderr,strict-match": 0.04824181513244218,
+    "exact_match,flexible-extract": 0.73,
+    "exact_match_stderr,flexible-extract": 0.044619604333847394
+
+--- granite-4.1-3b / arc_easy ---
+    "alias": "arc_easy",
+    "acc,none": 0.56,
+    "acc_stderr,none": 0.049888765156985884,
+    "acc_norm,none": 0.57,
+    "acc_norm_stderr,none": 0.049756985195624305
+
+--- granite-4.1-3b / mmlu_pro_computer_science ---
+    "alias": "computer_science",
+    "exact_match,custom-extract": 0.51,
+    "exact_match_stderr,custom-extract": 0.05024183937956912
+
+--- granite-4.1-3b / ppl-spice ---
+Perplexity: 9.836 ± 0.322
+
+--- granite-4.1-3b / ppl-stm32 ---
+Perplexity: 41.427 ± 1.739
+
+--- granite-4.1-3b / ppl-kicad ---
+Perplexity: 2.847 ± 0.069
+
+--- granite-4.1-3b / ppl-embedded_iot ---
+Perplexity: 33.456 ± 1.296
+
+--- granite-4.1-3b / ppl-emc_power ---
+Perplexity: 35.748 ± 1.190

@@ -1,0 +1,14 @@
+# Stack MLX bench — versions verrouillées sur Mac M1 Pro 32 Go
+# (snapshot ~/mlx-stack/.venv au 2026-05-10)
+mlx==0.31.2
+mlx-lm==0.31.3
+mlx-metal==0.31.2
+lm-eval==0.4.11
+transformers==5.8.0
+tokenizers==0.22.2
+huggingface-hub==1.13.0
+datasets==4.8.5
+safetensors==0.7.0
+sentencepiece==0.2.1
+numpy==2.4.4
+pyyaml==6.0.3

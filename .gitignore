@@ -1,0 +1,19 @@
+# venv & python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# logs & pid
+*.log
+*.pid
+
+# Sous-dossiers de résultats individuels lm-eval (gros, non versionnés)
+bench-results/*/
+
+# Caches HF / datasets
+.cache/
+*.arrow
+
+# Système
+.DS_Store
