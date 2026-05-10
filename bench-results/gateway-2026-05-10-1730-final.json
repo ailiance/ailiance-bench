@@ -1,0 +1,109 @@
+{
+  "endpoint": "http://localhost:9300/v1/chat/completions",
+  "host": "electron-server",
+  "captured_at": "2026-05-10T15:30:00Z",
+  "context": "after R2 refactor (ALIAS_MODEL_REWRITES) + autossh tunnels macM1:8502 + kxkm:8003 + systemd override drop-in. Gateway commit ailiance/main@2536efb.",
+  "rounds": 1,
+  "max_tokens": 16,
+  "models_advertised": 11,
+  "models_production_ready": 9,
+  "models_broken": 2,
+  "results": {
+    "ailiance": {
+      "n_ok": 1,
+      "n_err": 2,
+      "median_latency_s": 0.793,
+      "median_tps": 20.17,
+      "median_tokens": 16,
+      "note": "default routing, Russian-roulette per issue #11 still present"
+    },
+    "ailiance-apertus": {
+      "n_ok": 0,
+      "n_err": 3,
+      "error_sample": "HTTP Error 500: Internal Server Error",
+      "note": "Studio :9301 worker DOWN (launchd missing since reboot)"
+    },
+    "ailiance-mistral": {
+      "n_ok": 0,
+      "n_err": 3,
+      "error_sample": "HTTP Error 500: Internal Server Error",
+      "note": "Studio :9301 worker not started (Mistral 128B Q8 target, never deployed)"
+    },
+    "ailiance-gemma4": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 3.921,
+      "median_tps": 4.08,
+      "median_tokens": 16,
+      "backend": "macM1 :8502 mlx_lm.server (Gemma-4-E4B-it MLX-4bit + LoRA gemma4-e4b-eukiki/final)"
+    },
+    "ailiance-gemma2": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 2.963,
+      "median_tps": 5.4,
+      "median_tokens": 16,
+      "backend": "macM1 :8502 (Gemma-4-E2B-it MLX-4bit, lighter than E4B)",
+      "new_in_session": true
+    },
+    "ailiance-eurollm": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 4.161,
+      "median_tps": 0.0,
+      "median_tokens": 0,
+      "note": "Studio :9303 200 OK + content vide - issue #10 still present"
+    },
+    "ailiance-gemma": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 1.039,
+      "median_tps": 15.41,
+      "median_tokens": 16,
+      "backend": "Tower :9304 (Gemma-3-4B-IT llama.cpp)"
+    },
+    "ailiance-qwen": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 0.771,
+      "median_tps": 20.09,
+      "median_tokens": 16,
+      "backend": "kxkm-ai :18888 -> tunnel electron-server:8002 (Qwen3-Next 80B Q4_K_M MoE, mmap NVMe)",
+      "best_throughput": true
+    },
+    "ailiance-granite": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 6.851,
+      "median_tps": 2.34,
+      "median_tokens": 16,
+      "backend": "kxkm-ai :18889 -> tunnel electron-server:8003 (Granite-4.1-30B Q4_K_M GGUF, llama.cpp -ot blk.[3-6][0-9]=CPU mmap NVMe)",
+      "new_in_session": true,
+      "note": "slow at 2.3 tps - offload pattern too aggressive, ~50% of layers on CPU. Tune -ngl up + reduce -ot scope to reach ~12-15 tps."
+    },
+    "ailiance-ministral": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 3.373,
+      "median_tps": 4.74,
+      "median_tokens": 16,
+      "backend": "macM1 :8502 (Ministral-3-14B-Instruct-2512 MLX-4bit)",
+      "new_in_session": true
+    },
+    "ailiance-ministral-reasoning": {
+      "n_ok": 3,
+      "n_err": 0,
+      "median_latency_s": 3.371,
+      "median_tps": 4.75,
+      "median_tokens": 16,
+      "backend": "macM1 :8502 (Ministral-3-14B-Reasoning-2512 MLX-4bit)",
+      "new_in_session": true
+    }
+  },
+  "summary": {
+    "models_added_this_session": 4,
+    "tunnels_created": ["electron-server:8502 -> macm1:8502", "electron-server:8003 -> kxkm-ai:18889"],
+    "code_commits": ["L-electron-Rare/ailiance@adb9d77 (eval framework path fix)", "L-electron-Rare/ailiance@2536efb (R2 ALIAS_MODEL_REWRITES + 4 new aliases)"],
+    "infra_changes": ["systemd override drop-in /etc/systemd/system/eu-kiki-gateway.service.d/override.conf adds :8003 + 8502:localhost", "Studio EuroLLM rebound 0.0.0.0 (was 127.0.0.1 after manual restart)"]
+  }
+}
