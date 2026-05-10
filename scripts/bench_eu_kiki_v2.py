@@ -17,6 +17,20 @@ Usage:
     python scripts/bench_eu_kiki_v2.py --medium-only      # Medium35 only
     python scripts/bench_eu_kiki_v2.py --ppl-only         # perplexity only (fast)
     python scripts/bench_eu_kiki_v2.py --domains cpp rust  # specific domains
+
+Portability:
+    The script reads paths from env vars (with sensible HOME-relative fallbacks)
+    so it works on any machine. Override via:
+
+      KIKI_TUNNER_DIR        — KIKI-Mac_tunner repo root  (default ~/KIKI-Mac_tunner)
+      EUKIKI_DATA_DIR        — hf-traced datasets dir     (default ~/eu-kiki/data/hf-traced)
+      EUKIKI_CURRICULUM_DIR  — LoRA curriculum dir        (default $KIKI_TUNNER_DIR/output/eu-kiki-v2-curriculum)
+      BENCH_RESULTS_DIR      — JSON/MD output dir         (default ~/electron-bench/bench-results)
+      QWEN_BF16_MODEL        — Qwen36 BF16 model path     (default $KIKI_TUNNER_DIR/models/Qwen3.6-35B-A3B-MLX-BF16)
+      MEDIUM_BF16_MODEL      — Medium35 BF16 model path   (default $KIKI_TUNNER_DIR/models/Mistral-Medium-3.5-128B-BF16)
+
+    Example (macM1 with electron home):
+      EUKIKI_DATA_DIR=~/eu-kiki-data/hf-traced python scripts/bench_eu_kiki_v2.py --ppl-only
 """
 
 from __future__ import annotations
@@ -24,6 +38,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import time
 import sys
 from pathlib import Path
@@ -33,15 +48,20 @@ import mlx.core as mx
 import mlx.nn as nn
 from mlx_lm import load, generate
 
-# ─── Paths ────────────────────────────────────────────────────────────────────
+# ─── Paths (env-overridable, see docstring) ───────────────────────────────────
 
-TUNNER = Path("/Users/clems/KIKI-Mac_tunner")
-DATA_DIR = Path("/Users/clems/eu-kiki/data/hf-traced")
-CURRICULUM_DIR = TUNNER / "output" / "eu-kiki-v2-curriculum"
-RESULTS_DIR = Path("/Users/clems/electron-bench/bench-results")
+HOME = Path.home()
+TUNNER = Path(os.environ.get("KIKI_TUNNER_DIR", HOME / "KIKI-Mac_tunner"))
+DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "eu-kiki" / "data" / "hf-traced"))
+CURRICULUM_DIR = Path(os.environ.get(
+    "EUKIKI_CURRICULUM_DIR", TUNNER / "output" / "eu-kiki-v2-curriculum"))
+RESULTS_DIR = Path(os.environ.get(
+    "BENCH_RESULTS_DIR", HOME / "electron-bench" / "bench-results"))
 
-QWEN_MODEL = str(TUNNER / "models" / "Qwen3.6-35B-A3B-MLX-BF16")
-MEDIUM_MODEL = str(TUNNER / "models" / "Mistral-Medium-3.5-128B-BF16")
+QWEN_MODEL = os.environ.get(
+    "QWEN_BF16_MODEL", str(TUNNER / "models" / "Qwen3.6-35B-A3B-MLX-BF16"))
+MEDIUM_MODEL = os.environ.get(
+    "MEDIUM_BF16_MODEL", str(TUNNER / "models" / "Mistral-Medium-3.5-128B-BF16"))
 
 # ─── Domain keywords (for generation quality scoring) ─────────────────────────
 
