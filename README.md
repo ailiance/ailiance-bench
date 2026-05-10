@@ -73,3 +73,41 @@ Régénérer table markdown : `python scripts/regen_bench_table.py`.
 ## Licence
 
 MIT (code). Résultats publiés tels quels ; modèles sous licence d'origine.
+
+## Gateway HTTP bench (2026-05-10)
+
+`scripts/bench_gateway.py` — stdlib-only OpenAI-compat client to bench any
+`/v1/chat/completions` endpoint. Configurable via `--endpoint`, `--models`,
+`--rounds`, `--max-tokens`, optional `--out` JSON dump. Used to characterize
+the eu-kiki/ailiance gateway (`electron-server:9300`) and direct workers
+(Tower `:9304`, kxkm-ai tunnel `:8002`).
+
+```bash
+# Bench all 11 ailiance routes via the gateway
+python3 scripts/bench_gateway.py --rounds 3 --max-tokens 64
+
+# Bench a worker directly
+python3 scripts/bench_gateway.py \
+  --endpoint http://tower:9304/v1/chat/completions \
+  --models eu-kiki-gemma --rounds 3
+```
+
+Results: `bench-results/gateway-*.json` (per-route p50 latency, tps, errors).
+
+## Cross-machine aggregation (2026-05-10)
+
+`docs/SYNTHESIS_2026-05-10.md` consolidates bench artefacts from macM1,
+Studio, electron-server (124-cell `31_domains_baseline.json` + 12-model
+`BENCH_TABLE.md` + 11-route gateway + Phase 1 quick eval).
+
+`bench-results/aggregated/synthesis_31_domains.{csv,json}` — 124 rows
+flattened (model, domain, ppl, stderr, status) for the 4-of-8 v2-baseline
+matrix on macM1 (gemma E2B/E4B + ministral 3B/3-8B).
+
+Also pushed to `grist.saillant.cc` (`dhyrySCayizD1PNqCNhCPN`) as 4 tables:
+`Bench_31_domains` (124), `Bench_public` (12), `Bench_niches_ppl` (8),
+`Bench_gateway` (11).
+
+See `docs/SYNTHESIS_2026-05-10.md` and
+`docs/2026-05-10-phase2-training-gaps.md` for the gap analysis and the
+follow-up training plan.
