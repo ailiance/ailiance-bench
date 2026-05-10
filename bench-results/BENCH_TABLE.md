@@ -14,8 +14,8 @@
 | **qwen3.5-9b** | Alibaba | Apache 2.0 | TO | TO | TO | TO | — | TO |
 | **jackrong-9b-opus** | Jackrong (distill Opus) | Apache 2.0 + Anthropic AUP? | 64.0 | 78.0 | 54.0 | 53.0 | — | 0.0 |
 | **helium-1-2b** | Kyutai | CC-BY 4.0 | — | — | — | — | — | — |
-| **ministral-3-8b** | Mistral | Apache 2.0 | — | — | — | — | — | — |
-| **granite-4.1-3b** | IBM | Apache 2.0 | — | — | — | — | — | — |
+| **ministral-3-8b** | Mistral | Apache 2.0 | — | — | 64.0 | 60.0 | — | — |
+| **granite-4.1-3b** | IBM | Apache 2.0 | 36.0 | 73.0 | 56.0 | 57.0 | — | 51.0 |
 
 ## Niches perplexity (lower=better)
 
@@ -31,5 +31,5 @@
 | **qwen3.5-9b** | — | — | — | — | — |
 | **jackrong-9b-opus** | 3.37 | 1.64 | 2.33 | 4.28 | 12.50 |
 | **helium-1-2b** | — | — | — | — | — |
-| **ministral-3-8b** | — | — | — | — | — |
-| **granite-4.1-3b** | — | — | — | — | — |
+| **ministral-3-8b** | 4.48 | 2.67 | 1.82 | 5.93 | 18.98 |
+| **granite-4.1-3b** | 9.84 | 41.43 | 2.85 | 33.46 | 35.75 |

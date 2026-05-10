@@ -2,6 +2,25 @@
 # ============================================================================
 # bench_oom_retry.py
 # ----------------------------------------------------------------------------
+# WORKAROUND mlx_lm 0.31.3 :
+#   Quand QuantizedKVCache est utilisé, le préfill peut être tellement rapide
+#   (ou court-circuité par lazy-eval) que `time.perf_counter()` mesure un delta
+#   nul dans `BatchGenerator.stats`. Résultat : `stats.prompt_tps =
+#   prompt_tokens / prompt_time` lève `ZeroDivisionError` dans
+#   mlx_lm/generate.py:1579 (et 1582 pour generation_tps), ce qui fait crasher
+#   `mlx_lm.evaluate` en ~8 secondes. Le wrapper Python ci-dessous patche en
+#   plus `BatchGenerator.stats` pour utiliser une division safe (eps=1e-9).
+#   Cf. WRAPPER_TEMPLATE plus bas.
+#
+#   GOTCHA : `import mlx_lm.generate as _gen` retourne la FONCTION `generate`
+#   (réexportée par mlx_lm/__init__.py), pas le sous-module. Il faut passer
+#   par `importlib.import_module("mlx_lm.generate")` pour obtenir le module
+#   contenant `BatchGenerator` et `BatchStats`.
+#
+# AVERTISSEMENT : ce wrapper n'est plus utilisé activement (pivot vers le
+#   wheel mlx fork qui corrige l'OOM upstream). Il est conservé comme
+#   fallback pour les modèles non couverts par le fork.
+#
 # POURQUOI :
 #   Le bench `~/scripts/bench_new_models.py` (et son prédécesseur sur la table
 #   `~/bench-results/all_models.txt`) a laissé plusieurs (modèle, tâche) en
@@ -161,9 +180,51 @@ _cache.make_prompt_cache = _patched_make_prompt_cache
 import mlx_lm.evaluate as _ev
 _ev.make_prompt_cache = _patched_make_prompt_cache
 
+# ----- Patch ZeroDivisionError dans BatchGenerator.stats -----------------
+# Bug mlx_lm 0.31.3 : quand QuantizedKVCache + lazy-eval, prompt_time peut
+# être 0 -> stats.prompt_tps = prompt_tokens / 0 crash (generate.py:1579).
+# On remplace BatchGenerator.stats par une version safe (max(time, eps)).
+#
+# ATTENTION : `import mlx_lm.generate as _gen` ne marche PAS ici parce que
+# `mlx_lm.__init__` réexporte `generate` comme FONCTION, ce qui shadow le
+# sous-module dans l'attribut `mlx_lm.generate`. On passe par importlib
+# pour obtenir le vrai sous-module.
+import contextlib as _ctxlib
+import importlib as _importlib
+import time as _time
+import mlx.core as _mx
+_gen = _importlib.import_module("mlx_lm.generate")
+_BatchStats = _gen.BatchStats
+
+@_ctxlib.contextmanager
+def _safe_stats(self, stats=None):
+    stats = stats or _BatchStats()
+    self._prompt_tokens_counter = 0
+    self._prompt_time_counter = 0
+    self._gen_tokens_counter = 0
+    tic = _time.perf_counter()
+    try:
+        yield stats
+    finally:
+        _eps = 1e-9
+        toc = _time.perf_counter()
+        total_time = toc - tic
+        gen_time = total_time - self._prompt_time_counter
+        stats.prompt_tokens += self._prompt_tokens_counter
+        stats.prompt_time += self._prompt_time_counter
+        stats.prompt_tps = stats.prompt_tokens / max(stats.prompt_time, _eps)
+        stats.generation_tokens += self._gen_tokens_counter
+        stats.generation_time += gen_time
+        stats.generation_tps = stats.generation_tokens / max(stats.generation_time, _eps)
+        stats.peak_memory = max(stats.peak_memory, _mx.get_peak_memory() / 1e9)
+
+_gen.BatchGenerator.stats = _safe_stats
+# -------------------------------------------------------------------------
+
 # Réécrit argv : sys.argv[0] sera remplacé par "mlx_lm.evaluate"
 sys.argv = ["mlx_lm.evaluate"] + sys.argv[1:]
 print(f"[wrapper] QuantizedKVCache active (bits={KV_BITS}, group_size={KV_GS})", flush=True)
+print("[wrapper] BatchGenerator.stats patched (safe div, ZeroDivisionError workaround)", flush=True)
 _ev.main()
 """
 
