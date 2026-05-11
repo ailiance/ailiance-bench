@@ -43,6 +43,13 @@
       "gemma-e4b-eukiki-final",
       "gemma-e4b-mascarade-final",
       "gemma-e4b-aggro-test"
+    ],
+    "merged_at": "2026-05-11T18:25",
+    "merged_models": [
+      "gemma-e4b-eukiki-final",
+      "gemma-e4b-mascarade-final",
+      "gemma-e4b-aggro-test",
+      "gemma-e4b-kicad9plus-final"
     ]
   },
   "bench": {
@@ -69,7 +76,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -91,7 +98,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.6,
@@ -113,7 +120,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.05,
@@ -135,7 +142,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.05,
@@ -157,7 +164,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.05,
@@ -191,7 +198,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -213,7 +220,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -235,7 +242,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -257,7 +264,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -279,7 +286,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -313,7 +320,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -335,7 +342,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -357,7 +364,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -379,7 +386,7 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,
@@ -401,7 +408,129 @@
             "warnings_count": null,
             "violations_by_type": {},
             "rc": 3,
-            "stderr": "Échec du chargement de la schématique\n"
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.2,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.06
+          }
+        }
+      ]
+    },
+    "gemma-e4b-kicad9plus-final": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 1.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.033,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 7346,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.05,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.05,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.015
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 7977,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.05,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.05,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.015
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 8029,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.05,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.05,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.015
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 9575,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.2,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.2,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.06
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 9906,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.2,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "\u00c9chec du chargement de la sch\u00e9matique\n"
           },
           "scores": {
             "parse_ok_score": 0.2,

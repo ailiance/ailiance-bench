@@ -20,6 +20,13 @@
         "base_hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit",
         "adapter_path": "/Users/electron/lora-adapters/aggro-test"
       }
+    ],
+    "merged_at": "2026-05-11T18:25",
+    "merged_models": [
+      "gemma-e4b-eukiki-final",
+      "gemma-e4b-mascarade-final",
+      "gemma-e4b-aggro-test",
+      "gemma-e4b-kicad9plus-final"
     ]
   },
   "bench": {
@@ -821,6 +828,273 @@
             "composite": 0.0
           },
           "gen_time_s": 59.34
+        }
+      ]
+    },
+    "gemma-e4b-kicad9plus-final": {
+      "n_samples": 6,
+      "json_ok_rate": 0.0,
+      "components_f1_avg": 0.0,
+      "components_recall_avg": 0.0,
+      "components_precision_avg": 0.0,
+      "nets_f1_avg": 0.0,
+      "nets_recall_avg": 0.0,
+      "nets_precision_avg": 0.0,
+      "net_pins_f1_avg": 0.0,
+      "net_pins_recall_avg": 0.0,
+      "composite_score": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 5838,
+          "generated": "<|channel>thought\nThe user wants me to parse a simplified S-expression format representing a KiCad schematic and output a specific JSON structure.\n\nThe target JSON structure is:\n```json\n{\n  \"components\": [\n    {\"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\"R1.1\", \"D1.1\"] // Simplified pin names based on ERC/Netlist standard\n    }\n  ]\n}\n```\nWait, the provided S-expression is very minimal and only defines components and global labels (power/IO). It does not show the wires/net connections explicitly, only the global power/signal labels (`(label \"VCC\" (at 80 50 0))`, `(label \"MID\" (at 80 70 0))`, `(label \"GND\" (at 80 90 0))`).\n\nSince the input format is a *schematic file*, I must assume that standard ERC/netlist generation rules apply, even if the full wire (net) definitions are missing in this snippet.\n\nLet's focus on what *is* present:\n\n**1. Components (Parts):**\n\n*   **1st `(symbol ...))` block (7 lines in, 7 lines out):**\n    *   `CLASS`: `Device:R`\n    *   `Reference`: \"R1\" (at 80 55 0)\n    *   `Value`: \"330\" (at 80 65 0)\n    *   `Footprint`: \"Resistor_SMD:R_0805_2016 Metric\" (Wait, the input says `Resistor_SMD:R_TR `... I will use the exact string: `\"Resistor_SMD:R_0805_2016 Metric\"`)\n    *   *Correction on Footprint*: Looking closely at the input: `(property \"Footprint\" \"Resistor_SMD:R_0805_2016 Metric\" (at 80 65 0))` -> Wait, the input says `(property \"Footprint\" \"Resistor_SMD:R_TR:R_ resistor\" ...)` No, it says: `\"Resistor_SMD:R_TR:R resistor MR_0.6\"`. This is a very long, specific SMC/JLC/Kicad internal format. I will use the exact string provided in the source for maximum fidelity.\n        *   `\"Resistor_SMD:R_TR:R resistor MR_0.6mm* (CPS)\"` (I need to be careful copying this long string).\n        *   Let's re-read the source file carefully: `(property \"Footprint\" \"Resistor_SMD:R_TR:R resistor MR_0.6mm*\" (at 80 65 0))`\n        *   I will use: `\"Resistor_SMD:R_TR:R resistor MR_0.6mm*\"`\n\n*   **2nd `(symbol (kicad_sch ...))` block (7 lines in, 7 lines out):**\n    *   `CLASS`: `Device:LED`\n    *   `Reference`: \"D1\" (at 80 75 0)\n    *   `Value`: \"LED_SMD:LED_0805_SMD LED\" (Wait, the `Value` field is `(property \"Value\" \"LED\" (at 80 70 0))`. The LED *name* is `LED(3V))` in the datasheet, but the `Value` field in the BOM/ERC usually holds the LED's specific value/color. The `LED` symbol has `(property \"Value\" \"LED\" (at 80 70 0))`. I will use \"LED\" as the value, unless ",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 2,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 58.73
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 4406,
+          "generated": "<|channel>thought\nThe user wants me to parse a simplified S-expression format representing a KiCad schematic and output a specific JSON structure.\n\nThe target JSON structure is:\n```json\n{\n  \"components\": [\n    {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1606LF14Option*\"},\n    // ...\n  ],\n  \"nets\": [\n    {\"name\": \"VIN\", \"pins\": [\"R1?1\", \"R1?2\", ...]},\n    // ...\n  ]\n}\n```\nWait, the provided S-expression is very minimal and seems to be missing the full schematic (wires/net connections). It only defines global labels (power/in/out) and the components themselves.\n\nLet's analyze the input structure carefully.\n\n**Input Structure Analysis:**\n\n1.  **`kicad_sch` (root)**\n2.  **`lib_symbols`**: Defines standard parts (like `Device:R`).\n3.  **`symbol` instances (2 found):** These are the actual components.\n\n    *   **Component 1 (R1):**\n        *   `lib_id: \"Device:R\"`\n        *   `property \"Reference\" \"R1\"` -> `ref: \"R1\"`\n        *   `property \"Value\" \"10k\"` -> `value: \"10k\"`\n        *   `property \"Footprint\" \"Resistor_SMD:R_0603_1606 Metric*\"` (Wait, the input says `\"Resistor_SMD:R_0505_1608Metric\"`) -> `footprint: \"Resistor_SMD:R_0505*\"` (I will use the exact string from the input).\n        *   *Correction on the input string*:\n            *   R1 footprint: `\"Resistor_SMD:R_0603_1606Metric\"` (Wait, looking closer at the provided snippet, the keys are `(kicad_sch (version 20250114))...` and the property values are:\n                *   R1: `(property \"Footprint\" \"Resistor_SMD:R_0603_1606Metric\" (at 100 0 0))`\n                *   R2: `(property \"Footprint\" \"Resistor_SMD:R_0603_1606Metric\" (at 100 0 0))`\n            *   I will use `(property \"Footprint\" \"Resistor_SMD:R_0603_1606Metric\" (at 100 60 0))`\n            *   Let's re-read the provided snippet *very* carefully.\n\n    *   **R1 (1st `(symbol ...))` block:**\n        *   `'Reference' \"R1\"`\n        *   `'Value' \"10k\"`\n        *   `'Footprint' \"Resistor_SMD:R_0603_1606Metric\"` (Wait, the input image I am looking at has `(property \"Footprint\" \"Resistor_SMD:R_GAFNR_0603SMD:R_GAFNR_0603Metric\" (at 100 60 0))`).\n        *   *Self-Correction/Assumption*: I must use the exact strings provided in the prompt, even if they look like placeholders or slightly different from standard library parts.\n\n    *   **R1 (Actual input snippet):**\n        ```s-expression\n        (symbol\n          (lib_id \"Device:R\")\n          (at 220 0 0) ; <--- I'm going to assume a standard library format where `(at ...)` is a global",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 2,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 58.59
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 3014,
+          "generated": "<|channel>thought\nThe user wants me to parse a simplified S-expression format representing a portion of a KiCad schematic file (`.kicad_sch`).\nI need to extract two main pieces of information:\n1.  `components`: A list of all unique symbols (instances) with their `ref` (Reference/ReferenceIn), `value` (Value), and `footprint`.\n2.  `nets`: A list of net names, where each net contains a list of `pins` (which are `REF.PIN` format).\n\nI must output a single, valid JSON object without markdown fences or extra commentary.\n\n**Analysis of the input file structure:**\n\n1.  **`kicad_sch` (root)**\n    *   `lib_symbols`: Defines *available* parts (prototypes).\n    *   `symbol`: Defines *instances* placed on the schematic. This is where I find the components.\n    *   `label`: Defines global power/IO/NET labels, which help in net naming but don't define component pins unless explicitly connected.\n\n**Step 1: Identify Components (Instances)**\n\nI need to look at all `(symbol ...)` blocks that represent a physical component instance.\n\n*   **Symbol 1 (U1 - NE555):**\n    *   `at 90 70 0` (implied by `uuid` and `property` structure, but `(property \"Reference\" \"U1\" (at 120 70 0))` is the key).\n    *   `Property \"Reference\"`: \"U1\"\n    *   `Property \"Value\"`: \"NE555\"\n    *   `Property \"Footprint\"`: \"Package_TO-26333339988777?1339613368613651111771536541261838952913632222222222222222222222222222222222222222222222222222227705x33333333333333333333333333333333333333333333333333333333333333333377918311386127219841362666666666666666666666666666666666666666666666666666666666666710364306016473086966114072346431684880` (A long UUID, but the `(property \"Footprint\" \"Package_TO-2333333333333333333333333333333333333333333333333333333333333333337791831190161666666666666666666666666666666666666666666666666666666666666666169100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 4,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 59.6
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 5343,
+          "generated": "<|channel>thought\nThe user wants me to parse a simplified S-expression format representing a KiCad schematic and output a specific JSON structure.\n\nThe target JSON structure is:\n{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1606Metric\"\n    },\n    ...\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\"U1.V+\"]\n    },\n    ...\n  ]\n}\n\nI need to extract information from the `(symbol ...)` blocks.\n\n**1. Identify Components (Resistors and Op-Amp):**\n\n*   **Symbol 1 (Op-Amp/TL072):**\n    *   `kicad_sch` structure suggests this is a single `(symbol ...)` block.\n    *   `at 120 80 0`\n    *   `property \"Reference\" \"U\" (at 129.53 73.665 0 subtree_id \"1\")` -> Wait, the provided snippet is highly simplified and doesn't show the full pin numbers or ERC/net names, only global properties. I must rely on the `(property \"Reference\" \"...\", (kicad_sch ...))` format if available, but here I only have `(property \"Reference\" \"U\" (at 120 100 0))`.\n    *   Let's assume standard ERC/Pin naming conventions are needed for `nets`, but for `components`, I need `(ref file_id)`.\n\n    *   **Component 1 (U1 - TL072):**\n        *   `'uuid \"40000000-0000-0000-0000-000000000101\"`\n        *   `\"Reference\" \"U\"`. *Correction: The `(property \"Reference\" \"TP43yf\" (at 120 70 0))` structure is missing, but based on typical KiCad output, I'll use the provided `(property \"Reference\" \"U\" (at 120 100 0))` as the primary reference if no specific `Uxxxx` number is given, but looking at the `JLC` and `ETM` format, the `(property \"Reference\" \"U\" (at 120 70 0))` is likely a truncated/simplified view. I will use \"U1\" as the standard library format suggests a single chip instance, and the `(property \"Reference\" \"U\" (at 120 100 0))` is likely the global/toplevel name. Let's stick to `U1` for clarity, as it's the standard way to number parts on a sheet.\n        *   `\"Value\" \"TL072\"`\n        *   `\"Footprint\" \"Package_TO:SOT-23-6\" (at 120 80 0)` -> Wait, the provided file has `(property \"Footprint\" \"Package_SOT?23\" (at 120 80 0))`. Let's use the full string if available, or infer from the `oswid` if needed. The input only has `(property \"Footprint\" \"Package_SOT?23*\" (at 120 80 0))`. I will use the full string provided in the source format, which is `Package_SOT?23*6-3.9x5.2mm_P1.5mm_EPAD`. *Self-correction: I must use the exact string from the input.*\n        *   *Reviewing the input file again:*\n            *   `kicad_sch` file structure is used.\n",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 3,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 59.32
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 5136,
+          "generated": "<|channel>thought\nThe user wants me to act as a KiCad schematic parser.\nI need to read the provided S-expression format (which represents a partial schematic file) and extract two main data structures: `components` and `nets`.\nThe output must be a single, valid JSON object without markdown fences or extra commentary.\n\n**Input Analysis:**\nThe input is a large S-expression starting with `(kicad_sch ...)` and containing several `(symbol ...)` blocks.\n\n**Targeted Extraction (Components):**\nI need to find all `(symbol ...)` blocks that represent a physical, placed item (not just a global symbol definition, but an *instance*).\nFor each instance, I need:\n1. `ref` (Reference/ReferenceInator/RefDes)\n2. `value` (The `Value` property)\n3. `footprint` (The `Footprint` property)\n\nI will iterate through the `(symbol ...)` blocks starting from the first one that has unique `uuid` and specific properties.\n\n1. **Symbol 1 (ESP32-S3-WROOM-1):**\n   - `(kicad_sch (version 20250114) ... (symbol (lib_id \"RF_Module:ESP32-S3-WROOM-1\") (at 150 100 0) (uuid \"...\") (property \"Reference\" \"U1\" (at 150 90 0)) (property \"Value\" \"ESP32-S3-WROOM-1\" (at 150 110 0)) (property \"Footprint\" \"RF_Module:ESP8266QFN-QFN-32-1EP_10x5\" (at 150 100 0)))`\n   *Wait, the `Footprint` in the input is `(property \"Footprint\" \"RF_Module:ESP32-S2-WROOM\" (at 150 100 0))`. I must use exactly what is provided.*\n   - `ref`: \"U1\"\n   - `value`: \"ESP32-S3-WROOM-1\"\n   - `footprint`: \"RF_Module:ESP32-S2-WROOM\"\n\n2. **Symbol 2 (AMS1117-3.3):**\n   - `(kicad_sch (version 20250114) ... (symbol (lib_id \"Supervisor/LDO PSRR Micropower Buck/Boost Converter Charger/Battery Management Charger/Fuel Management Charger/LiPo Charger\") (at 270 20092 0) (uuid \"22222222-2222-2222-2222-222222222222\") (property \"Reference\" \"U3\" (at 270 190.5 0)) (property \"Value\" \"3.3V\" (at 270 20092 0)) (property \"Footprint\" \"SOT-23-3\" (at 270 190.5 0)))`\n   *Wait, the provided input schema is truncated/incomplete in the prompt. I must only use the symbols provided in the prompt.*\n\n**Re-evaluating the provided `Schematic` input:**\nThe provided `Schematic` input *only* contains the `(kicad_snap_drop_in_form_version 20231012)` and `(kicad_sch ...)` structure, but the actual symbol definitions are mixed with `(symbol ...)` blocks that seem to be defining *libraries* or *parts*, not necessarily a complete, instantiated board file.\n\nLet's assume the `(kicad_sch ...)` block *is* the full file I need to parse, and I should look for the instances defined by `(pro",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 8,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 61.2
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 9862,
+          "generated": "<|channel>thought\nThe user wants me to act as a persona (KiCad schematic parser) and process a large S-expression format (which represents a full Eagle/E\n library file, including global symbols, wires, and global labels).\nThe goal is to extract two specific data structures: `components` and `nets`.\nThe output must be a single, valid JSON object without markdown fences or commentary.\n\n**Input Analysis:**\nThe input is a `.kicad_sch` format S-expression. It contains:\n1.  `symbol` definitions (libraries, parts, and global labels).\n2.  `wire` definitions (the global connectivity).\n3.  `label` definitions (power/IO/net names).\n4.  `connected components` (instances of `symbol` libraries).\n\n**Extraction Strategy:**\n\n1.  **Identify Components (and their properties):**\n    I need to find all instances of components (`(symbol ... (at x y 0) (unit 1) ... (property \"Reference\" \"R\") (property \"Value\" \"R\") (property \"Footprint\" \"___\") ... (Datasheet \"___\") ... (pin \"1\") (pin \"2\") ... (instance \"1\"))`).\n    *   `\"MCU/Host/16LOM flash SPI flash SPI EEPROM EEPROM EEPROM SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash SPI flash S",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 9,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 41,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 102.59
         }
       ]
     }

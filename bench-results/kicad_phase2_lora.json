@@ -24,6 +24,13 @@
         "base_hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit",
         "adapter_path": "/Users/electron/lora-adapters/aggro-test"
       }
+    ],
+    "merged_at": "2026-05-11T18:25",
+    "merged_models": [
+      "gemma-e4b-eukiki-final",
+      "gemma-e4b-mascarade-final",
+      "gemma-e4b-aggro-test",
+      "gemma-e4b-kicad9plus-final"
     ]
   },
   "bench": {
@@ -435,6 +442,143 @@
             "composite": 0.4
           },
           "gen_time_s": 129.45
+        }
+      ]
+    },
+    "gemma-e4b-kicad9plus-final": {
+      "n_samples": 5,
+      "parse_ok_rate": 0.4,
+      "starts_with_kicad_sch_rate": 0.0,
+      "has_lib_symbols_rate": 0.0,
+      "comp_count_match_avg": 0.0,
+      "label_count_match_avg": 0.0,
+      "cli_proxy_avg": 0.05,
+      "composite_score": 0.18,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resistor and Device:LED for the LED. Add labels VCC and GND for the power rails.",
+          "expected_chars": 990,
+          "generated_chars": 7346,
+          "generated": "<|channel>thought\nHere's a thinking process that leads to the suggested output:\n\n1.  **Understand the Goal:** The user wants a KiCad 10 schematic file format, specifically using S-expression (S-bus/Spice format, which is common for SPICE netlists and sometimes used as a simplified schematic *description* format, though KiCad's native `.sch` format is binary/proprietary). Since a *pure* S-expression format for a full, editable KiCad library file is extremely complex and usually involves a specific, often custom, library format, I must assume they mean a *textual description* of the schematic components and connections, mimicking a standard SPICE netlist format, as that is the most common way to represent schematics in pure S-expression/text format.\n\n2.  **Identify Components and Values:**\n    *   Power (V+, V-): VCC (5V), GND (0V).\n    *   Resistor (R1): $330 \\Omega$.\n    *   LED (D1): Red LED (standard LED behavior, e.g., $V_f \\approx 2.0V$, $V_{LED} = 1.8V$ drop).\n    *   Power Source: $V_{in} = 5V$.\n    *   (Implicit): The LED requires a current limit, which R1 provides.\n\n3.  **Determine the Connection (A single diode model for simplicity):**\n    *   $V_{in}$ (5V) $\\rightarrow$ Anode of R1/LED/Power.\n    *   $V_{out}$ (0V/GND) $\\rightarrow$ Cathode of R1/LED/Power.\n    *   Current flows from $V_{in}$ through R1, then through the LED, to GND.\n\n4.  **Select the Output Format (S-Expression/SPICE Netlist Style):** Since a full `*.kicad_sch` file is binary and not a simple S-expression, I will provide a standard SPICE netlist format, as this is the closest, most universal, and purely text-based way to describe the circuit using LISP-like S-expressions for structure.\n\n5.  **Draft the SPICE Netlist (The standard engineering approach):**\n\n    *   *Components:*\n        *   `V_{in}` (Power supply, DC/DC or simple voltage source).\n        *   `R1` (Resistor, $2.2 \\text{k} * 0.33\\Omega{(R)} * 10^\\text{th}* (330\\Omega)$).\n        *   `LED` (Diode model, e.g., `Diodes:LED`).\n    *   *Connections (Kicad/SPICE standard: `Node` = `Kicad_Name`):*\n        *   `R1`: (55) [1] (5) $\\text{k} 260.66 \\text{k} 10$ (330 ohms, standard SPICE S-expression for R).\n        *   `LED (D1)`: (55) $\\rightarrow$ Anode (2), Cathode (5).\n        *   `V_{in}`: (55) $\\rightarrow$ Anode (1), Ground (0).\n\n6.  **Refine and Simplify for the User's Request (Focusing on the *Schematic* view, not just simulation):** The user asked for the *schematic*, not the simulation file. I will use a highly structured, human-readable S-expression format that *describes* the schematic structure, which is the most faithful interpretation of \"S-expression format for a schematic.\"\n\n7.  **Final Structure Generation (Self-Correction/Review):** The resulting structure must be clean, hierarchical, and clearly define the `(wire (pin_at (x y)))` style, which is common in advanced EDA formats. I will use a simplified, high-level S-expression structure that defines `(symbol \"Part\" \"Value\")` and `(pin_numbers [ (1 ",
+          "scores": {
+            "parse_ok": false,
+            "starts_with_kicad_sch": false,
+            "has_version": false,
+            "has_lib_symbols": false,
+            "has_uuid": false,
+            "expected_n_components": 2,
+            "generated_n_components": 0,
+            "comp_count_match": 0.0,
+            "expected_n_labels": 3,
+            "generated_n_labels": 0,
+            "label_count_match": 0.0,
+            "cli_proxy_score": 0.0,
+            "structure_score": 0.0,
+            "composite": 0.0
+          },
+          "gen_time_s": 116.26
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GND. Use Device:R for the resistors.",
+          "expected_chars": 903,
+          "generated_chars": 7977,
+          "generated": "<|channel>thought\nHere's a thinking process that leads to the suggested response:\n\n1.  **Analyze the Request:**\n    *   **Goal:** Create a KiCad 10 schematic file/description.\n    *   **Circuit:** Simple voltage divider.\n    *   **Topology:** `R1` (top), `R2` (bottom), `VIN` (top), `VOUT` (midpoint), `GND` (bottom).\n    *   **Resistor Values/Types:** Two resistors, $R_1$ and $R_2$. They must be equal ($R_1 = R_2 = R$).\n    *   **Specific Values:** $R_1 = R_2 = 10 \\text{ k}\\Omega$.\n    *   **Tool/Library:** `Device:R` (standard resistor symbol).\n    *   **Toolchain/Format:** KiCad 10 standard (meaning ERC/FLIB symbols, libraries, and typical `.kicad_sch` structure).\n\n2.  **Determine the Output Format:**\n    *   Since I cannot *actually* generate a binary `.kicad_sch` file, I must provide a highly structured, human-readable, and machine-parseable description that a user can follow step-by-step to build the schematic in KiCad. This is the most helpful format.\n\n3.  **Design the Schematic (Mental/Drafting Phase):**\n    *   *Components:*\n        *   `R1(1)`: `Device:R`, Value `10 k`.\n        *   `R2(2)`: `Device:R`, Value `10 k`.\n    *   *Power/Ground:*\n        *   ```` (Global label/Power port) `VT1` (or `VCC`/`+`).\n        *   `GND` (Global label/Power port).\n    *   *Connections (Top-Down/Left-Right):*\n        *   `+14 (R1.1/R_Top)` connects to `VT1` (or `VIN`).\n        *   `+16 (R1.2/R_Top)` connects to `R2(1)`.\n        *   `+17 (R2.1/R_Bottom)` connects to `GND`.\n        *   `+10 (R1.1/R_Top)` connects to `R1(1)`.\n        *   `+12 (R1.2/R_Top)` connects to `R2(2)`.\n        *   *Wait, let's simplify the node names.*\n\n    *   **Refined Connection List (Standard SPICE/KiCad Naming):**\n        1.  `{VIN}` (Input) $\\rightarrow$ `R1(1)`\n        2.  `GND` (Reference) $\\rightarrow$ `R2(2)`\n        3.  `{VOUT}` (Output) $\\rightarrow$ `R1(2)` and `R2(1)` (Junction).\n\n4.  **Structure the Response (The Tutorial/Code Block):**\n\n    *   **Goal:** Clarity and accuracy.\n    *   **Sections:**\n        1.  **Title/Overview:** State what is being built.\n        2.  **Component Placement & Attributes:** Define the `(kicad_sch)`.\n        3.  **Electrical (Net) Setup:** Define the `(pin_names)`.\n        4.  **(Optional but helpful) `(wire/connectors)`:** Describe the physical routing.\n\n5.  **Review against Constraints:**\n    *   *2:1 voltage divider?* Yes, $R_1=R_2=10k$. $V_{out} = V_{in} * (R_2 / (R_1 + R_2)) = V_{in} * (10k / 20k) = 0.5 * V_{in}$. (Correct).\n    *   *Resistors:* `R` (492666666666350 mV, 10k). (Correct).\n    *   *Topology:* `VIN` $\\rightarrow$ `R1` $\\rightarrow$ `VOUT` $\\rightarrow$ `R2` $\\rightarrow$ `GND`. (Correct).\n    *   *KiCad 10 format:* The structure is appropriate for modern KiCad scripting/ERC.\n\n6.  **Final Polish:** (Self-Correction: Ensure the `(kicad_sch) gpio` format is clean and easy to follow, starting with a standard `(kicad_sch) (v20191114)` or similar version tag.) (The resulting output is the clean, step-by-step guide provided in t",
+          "scores": {
+            "parse_ok": false,
+            "starts_with_kicad_sch": false,
+            "has_version": true,
+            "has_lib_symbols": false,
+            "has_uuid": false,
+            "expected_n_components": 2,
+            "generated_n_components": 0,
+            "comp_count_match": 0.0,
+            "expected_n_labels": 3,
+            "generated_n_labels": 0,
+            "label_count_match": 0.0,
+            "cli_proxy_score": 0.25,
+            "structure_score": 0.0,
+            "composite": 0.1
+          },
+          "gen_time_s": 116.23
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND, and pin 6 also tied to pin 2 (TRIG). Pin 8 (VCC) and pin 4 (RST) tied to VCC, pin 1 to GND, output ",
+          "expected_chars": 1700,
+          "generated_chars": 8029,
+          "generated": "<|channel>thought\nHere's a thinking process that leads to the suggested response:\n\n1.  **Analyze the Request:**\n    *   **Goal:** Generate a KiCad 10 schematic file/description for a classic NE555 timer circuit.\n    *   **Topology:** Astable Multivibrator (Timer/Oscillator).\n    *   **Component Values/Layout (Crucial for ERC/Simulation):**\n        *   U1: NE555 (1x)\n        *   R1: $10\\text{k}\\Omega$ (10k)\n        *   R2: $47\\text{k}\\Omega$ (47k)\n        *   C1: $10\\text{nF}$ (10n)\n        *   *Power:* VCC (Pin 8, 4+), GND (Pin 1).\n        *   *Control/Threshold:* Pin 6 (A/D/C), Pin 7 (Adjust/Control).\n        *   *Connections:*\n            *   R1: VCC $\\to$ Pin 7 (TH/A).\n            *   R2: Pin 7 $\\to$ Pin 6 (TH/A/C).\n            *   C1: Pin 6 $\\to$ GND.\n            *   Pin 6 $\\to$ Pin 2 (Trig/Capacitor connection).\n            *   Pin 3: Output.\n            *   Pin 5: Reset (usually float/connected to TH/A in some versions, but standard is usually connected to TH/A or VCC via a small RC network if bounce is an issue, but here it's usually just connected to the main timing components). *Self-correction: The prompt didn't specify Pin 5, but standard operation usually leaves it connected to the main timing components or VCC.* Let's assume standard operation where Pin 5 is tied high (VCC) or simply floats if the timing capacitor (C1/R2/R3) charges it quickly. For simplicity and robustness, I'll connect Pin 5 to Pin 3 (Output) or VCC, but since the standard S-version SOT23-5533B-3 is used, Pin 5 is usually connected to Threshold (Pin 6) or VCC. Let's connect it to Pin 3 (Output) for a clean power-up, though often it's just left unconnected if the output impedance is low. *Wait, the standard SOT-233 package has Pinout 3=OUT, 6=T/F, 7=Adjust, 2=TRIG, 4=6/8, 1=GND, 5=CS/Reset.* Pin 5 (CS/Reset) *must* be tied high (VCC) to prevent accidental reset.\n            *   *Refining the connection list based on standard SOT-233 package:*\n                *   Pin 2 (TRIG) $\\leftarrow$ Pin 6 (A/D/C) via C1.\n                *   Pin 3 (OUT) $\\leftarrow$ Output.\n                *   Pin 4 (6/8 CT/ADJ/S/R) $\\leftarrow$ VCC.\n                *   Pin 5 (T/TP/CS/Reset) $\\leftarrow$ VCC (or Pin 6/7).\n                *   Pin 6 (T/F/A/C) $\\leftarrow$ R2, C1.\n                *   Pin 7 (Adjust/Contr) $\\leftarrow$ R1.\n                *   Pin 8 (VCC) $\\leftarrow$ VCC.\n                *   Pin 9 (CO/TD) $\\leftarrow$ Pin 3 (Output).\n            *   *Re-reading the user's specific connection list (which is slightly simplified/non-standard but must be followed):*\n                *   R1 (10k) between VCC and pin 7 (Adjust). (OK)\n                *   R2 (47k) between pin 7 (Adjust) and pin 6 (Threshold/Control). (OK)\n                *   C1 (10n) between pin 6 (Threshold/Control) and GND. (OK)\n                *   Pin 6 $\\to$ Pin 2 (Trigger). (This is where the capacitor *is* the connection, which is standard).\n                *   Pin 8 (VCC) $\\to$ VCC. (OK)\n                *   Pin 4 (6/8 ",
+          "scores": {
+            "parse_ok": false,
+            "starts_with_kicad_sch": false,
+            "has_version": false,
+            "has_lib_symbols": false,
+            "has_uuid": false,
+            "expected_n_components": 4,
+            "generated_n_components": 0,
+            "comp_count_match": 0.0,
+            "expected_n_labels": 5,
+            "generated_n_labels": 0,
+            "label_count_match": 0.0,
+            "cli_proxy_score": 0.0,
+            "structure_score": 0.0,
+            "composite": 0.0
+          },
+          "gen_time_s": 116.41
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resistor between VOUT and pin 2 (-input), R2 (100 ohm) ties pin 2 to GND. Power on pin 8 (V+) tied to VCC, ",
+          "expected_chars": 1381,
+          "generated_chars": 9575,
+          "generated": "<|channel>thought\nHere's a thinking process that leads to the suggested response:\n\n1.  **Analyze the Request:**\n    *   **Goal:** Create a KiCad 10 schematic (or rather, the *description* of one, as I cannot output a `.kicad_sch` file, but I must provide the necessary components and connections).\n    *   **Circuit:** Non-inverting Op-Amp configuration.\n    *   **U1 (IC):** TL072 (Package TSSOP/8-pin, SOT-23-8, etc. \u2013 standard format).\n    *   **Power/Supply:** Single Supply (V+ at Pin 7/8, V- at Pin 4/6, or Pin 4/Ground if using a V- to GND configuration, which is common for SOT-23-8 packages). *Correction/Refinement:* The TL072 is often used with a single supply, but the standard SOT-23-8 package usually has 5V/2.55V to GND. If the user specifies Pin 4 (SENSE/RECO) is GND, and Pin 5 (GND) is the actual ground, I must follow the standard datasheet configuration.\n    *   **Specific Connections (Crucial mapping):**\n        *   U1 TL072 (8-pin DIP/SO, standard order):\n            *   Pin 1: Output (OW)\n            *   Pin 2: Input (In-)\n            *   Pin 3: Input (In+, VIN)\n            *   Pin 4: GND/Ref (RECO/GND)\n            *   Pin 5: PWR (RECO/GND)\n            *   Pin 6: V- (SENSE/GND)\n            *   Pin 7: V+ (SENSE/VCC)\n            *   Pin 8: Output/V+ (OW+/V+)\n        *   *User's Pinout Mapping (Simplified/Abstracted):*\n            *   Pin 3 $\\rightarrow$ VIN (Non-inverting input +)\n            *   Pin 1 $\\rightarrow$ VOUT (Output)\n            *   Pin 2 $\\rightarrow$ In- (Inverting input -)\n            *   Pin 4 $\\rightarrow$ GND (Reference/GND)\n            *   Pin 5/6/7/8 $\\rightarrow$ Power/GND/V+ (Need to ensure proper V+, V-, and VAA/CV- connections).\n    *   **Resistors/R terminals:**\n        *   $R_1$ (1k $\\Omega$): Feedback resistor (between VOUT/Pin 1 and Pin 2).\n        *   $R_2$ (100 $\\Omega$): Input/Bumpped capacitor (between Pin 2 and GND).\n    *   **Powering Rails:**\n        *   $V_{+$ (Pin 7/8)} \\rightarrow V_{CC}$\n        *   $V_{A/Zin/Ref} (\\text{Pin } 4 \\text{ or } 6) \\rightarrow \\text{GND}$ (This confirms the standard single-rail operation).\n\n2.  **Design the Schematic Structure (KiCad/SPICE/ERC Focus):**\n\n    *   **Global/Power:**\n        *   Power V+ (i.e., $V_{CC}$) is global power.\n        *   Ground (GND) is the global return.\n    *   **U1 (TL072):** Place the 8-pin package.\n    *   **Connections (Non-inverting Buffer/Follower, with small input resistor):**\n        *   `[V+]` $\\rightarrow$ `TL072 Pin 7/8` (Power-up voltage).\n        *   `[GND]` $\\rightarrow$ `TL072 Pin 4/6` (Reference/Bias).\n        *   `[VIN]` $\\rightarrow$ `TL074/8 `Pin 3` (Non-inverting input).\n        *   `[VOUT]` $\\rightarrow$ `TL072 Pin 1` (Output).\n        *   `[R1, 1k]` $\\rightarrow$ Connects `Pin 1` (VOUT) to `Pin 2` (Inverting Input).\n        *   `[R2, 100R]` $\\rightarrow$ Connects `Pin 2` (Inverting Input) to `GND`.\n\n3.  **Refine the Output Format (How a user builds it in KiCad):**\n\n    *   Since I cannot provide the file, I must provide a",
+          "scores": {
+            "parse_ok": true,
+            "starts_with_kicad_sch": false,
+            "has_version": false,
+            "has_lib_symbols": false,
+            "has_uuid": false,
+            "expected_n_components": 3,
+            "generated_n_components": 0,
+            "comp_count_match": 0.0,
+            "expected_n_labels": 5,
+            "generated_n_labels": 0,
+            "label_count_match": 0.0,
+            "cli_proxy_score": 0.0,
+            "structure_score": 0.0,
+            "composite": 0.4
+          },
+          "gen_time_s": 100.23
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF output cap), J1 is a USB-C connector providing VBUS and D+/D-, R1 (10k) is an EN pull-up to 3V3, D1 is",
+          "expected_chars": 3355,
+          "generated_chars": 9906,
+          "generated": "<|channel>thought\nHere's a thinking process that leads to the suggested schematic structure:\n\n1.  **Understand the Goal:** The request is to design a *minimal* KiCad schematic for an ESP32-S3-WROOM-1 development board, focusing on power and basic programming/status.\n2.  **Identify Key Components & Power Rails:**\n    *   **Microcontroller:** ESP32-S3-WROOM-1 (U1). This is the core.\n    *   **Input Power:** USB-C connector (J1). Provides $\\text{V}_{\\text{BUS}}$ (5V).\n    *   **Voltage Regulation:** AMS1117-3.3 LDO (U2).\n        *   *Input:* $\\text{V}_{\\text{IN}}$ (from $\\text{V}_{\\text{BUS}}$).\n        *   *Output:* $\\text{V}_{\\text{OUT}}$ (3.3V, regulated).\n    *   **Capacitors:**\n        *   $\\text{C}1$: Input cap (22 $\\mu$F, typically needed for LDO stability/in-rush current).\n        *   $\\text{C}2$: Output cap (22 $\\mu$F, needed for stable $\\text{V}_{\\text{CO}}$).\n    *   **Programming/Reset:**\n        *   $\\text{EN}$ (GPIO0/Reset pin on the module, often tied to $\\text{GPIO}_{\\text{IO\\_MUX}}$). Needs a pull-up resistor ($\\text{R}1$, 10k) to $\\text{V}_{\\text{DD}}$.\n        *   $\\text{USB\\_DP/DM}$ (D+/D- on the $\\text{C}_1$ USB-C connector). These go to the $\\text{USB}11517$ chip (or directly to the $\\text{D+/GND}$ pins if using a simple $\\text{OTG/Native USB-C} \\to \\text{UART/SPI}$ bridge, but since the prompt implies a minimal dev board, we'll assume the $\\text{D+/GND}$ are needed for the $\\text{C}_1$ chip, which is usually *on* the WROOM module, but since the prompt lists the $\\text{C}_1$ connector, I'll treat it as the $\\text{C}_1$ to $\\text{GND}$ interface). *Self-Correction: The WROOM module usually handles the $\\text{USB}11517$ and the $\\text{D+/D-}$ connection. If the $\\text{C}_1$ connector is *on* the main $\\text{FRDG}$ body, it needs to connect to the $\\text{V}_{\\text{BUS}}$ and $\\text{D+/D-}$. I will label the $\\text{D+/D-}$ near the $\\text{C}_1$ connector.*\n    *   **Indicators/Debugging:**\n        *   $\\text{LED}$: Status LED (1 LED, $\\text{D}1$).\n        *   $\\text{Current Limiting}$: $\\text{R}le 2$ (1k) in series with the LED (on $\\text{GPIO}2$).\n\n3.  **Design the Power Flow (U power $\\to$ U1 $\\to$ $\\text{C}_2$ $\\to$ $\\text{ESP32-S3}$):**\n    *   $\\text{J}1 (\\text{V}_{\\text{BUS}})$ $\\to$ $\\text{R}_{\\text{CHG}}$ (if battery charging is included, but since it's minimal, I'll skip the $\\text{LDO}_{\\text{IN}} \\to \\text{LDO}_{\\text{OUT}}$ path for now, assuming the $\\text{V}_{\\text{IN}}$ of the $\\text{LDO}$ is $5\\text{V}$ from $\\text{V}_{\\text{BUS}}$).\n    *   $\\text{J}1 (\\text{V}_{\\text{BUS}})$ $\\to$ $\\text{LDO}_{\\text{AMS}1117-3.3}}$ (Input).\n    *   $\\text{LDO}_{\\text{AMS}1117-3.3}}$ (Output) $\\to$ $\\text{C}_{\\text{OUT}}$ (22 $\\mu$F) $\\to$ $\\text{V}_{\\text{SYSDAIN/VDD}}$ (3.3V).\n    *   $\\text{V}_{\\text{SYSDAIN/VDD}}$ $\\to$ $\\text{U}1$ (ESP32-S3 $\\text{V}_{\\text{DD}}$).\n    *   $\\text{Power Good/Status}$: $\\text{V}_{\\text{BUS}}$ $\\to$ $\\text{J}1$ $\\to$ $\\text{LDO}_{\\text{AMS}1117-3.3}}$ $\\to$ $\\text{C}_{\\text{OUT}}$ $\\to$ $\\text{LE",
+          "scores": {
+            "parse_ok": true,
+            "starts_with_kicad_sch": false,
+            "has_version": false,
+            "has_lib_symbols": false,
+            "has_uuid": false,
+            "expected_n_components": 8,
+            "generated_n_components": 0,
+            "comp_count_match": 0.0,
+            "expected_n_labels": 7,
+            "generated_n_labels": 0,
+            "label_count_match": 0.0,
+            "cli_proxy_score": 0.0,
+            "structure_score": 0.0,
+            "composite": 0.4
+          },
+          "gen_time_s": 116.56
         }
       ]
     }

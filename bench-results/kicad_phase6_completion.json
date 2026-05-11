@@ -1,0 +1,165 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-11 17:45:26",
+    "kicad_cli": "/opt/homebrew/bin/kicad-cli",
+    "kicad_version": "10.0.2",
+    "max_tokens": 4096,
+    "n_samples_total": 6,
+    "n_samples_eval": 5,
+    "skipped_ids": [
+      "spi_bus_4devices"
+    ],
+    "score_weights": {
+      "parse_ok": 0.3,
+      "erc_no_errors": 0.4,
+      "erc_low_warnings": 0.3
+    },
+    "kicad_version_in_prefix": "20250114",
+    "models": [
+      {
+        "nickname": "gemma-e4b-kicad9plus-final",
+        "hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit",
+        "adapter_path": "/Users/electron/lora-adapters/gemma4-e4b-kicad9plus/final"
+      }
+    ]
+  },
+  "bench": {
+    "gemma-e4b-kicad9plus-final": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 1.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.141,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt_user": "You are completing a KiCad 10 schematic file. The header is written. Continue by adding lib_symbols entries, symbol instances, wires, labels, and the closing parens. Output only completion code (no markdown, no explanation).\n\nExisting prefix:\n(kicad_sch\n\t(version 20250114)\n\t(generator \"kicad-bench\")",
+          "prefix_chars": 223,
+          "completion_chars": 6791,
+          "full_sch_chars": 7014,
+          "completion_preview": "<|channel>thought\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to complete a KiCad schematic file format (likely an OpenSCAD/Spice-like netlist format, given the `(kicad_sch ...)` structure).\n2.  **Identify the Current State:**\n    *   The file prefix is provided, ending abruptly after `(lib_symbols ...`.\n    *   The goal is to add `(symbol \"Device:R_1\" (pin (pin_number \"1\" (pin_name \"+\") (pin_number \"1\" (pin_at \"+\"))))...` style entries, connect components (if any), add wires, labels, and finally close the `(kicad_sch ... (end_of_file) (kicad_sch (version \"1.0\")) (kicad_sch (end) ...)))))`.\n3.  **Determine Missing Information (The Schematic Content):** The user has *not* provided the actual schematic or the components/pins. They have only provided the *start* of the file structure.\n4.  **Simulate a Minimal/Standard Completion (The \"Blinky LED\" context):** Since the title is \"Led Blinker,\" a typical minimal circuit would be:\n    *   LED (1 component, 3 pins: A, K, A/K/C)).\n    *   Current limiting resistor (1 component, 2 pins).\n    *   Power (VCC/V+, GND/V-)).\n    *   (Optional: microcontroller/timer, but for a simple blinker, maybe just a switch or a simple RC filter/oscillator, but let's stick to the absolute minimum for the *schematic file structure*).\n\n5.  **Constraint Check:** The prompt says: \"Continuation from the provided prefix.\" It does *not* provide the schematic content. If I guess the schematic, I might be wrong.\n\n6.  **Re-evaluating the Goa",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 116.49
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt_user": "You are completing a KiCad 10 schematic file. The header is written. Continue by adding lib_symbols entries, symbol instances, wires, labels, and the closing parens. Output only completion code (no markdown, no explanation).\n\nExisting prefix:\n(kicad_sch\n\t(version 20250114)\n\t(generator \"kicad-bench\")",
+          "prefix_chars": 227,
+          "completion_chars": 9576,
+          "full_sch_chars": 9803,
+          "completion_preview": "<|channel>thought\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to complete a KiCad schematic file format (likely an OpenSCAD/Spice-like S-expression format, given the `(kicad_sch ...)` structure).\n2.  **Identify the Current State:**\n    *   The file prefix is provided, ending abruptly at `(kicad_sch ... (uuid \"...\") (paper \"A4\") (title_block (title \"Voltage Divider\") (date \"2026-05-11\")) (lib_symbols ...`.\n    *   The goal is to model a \"Voltage Divider.\"\n    *   The required components are: `(kicad_sch ... (electrical 'pin_numbers') (wire (pts (xy 100.5 20.0) (xy 50.0 20.0))) ... )`.\n    *   The standard components of a voltage divider are two resistors (R1, R2) and a power/in/out symbol (V+, V-, or Vout/Vin).\n3.  **Determine the Missing Content (The Voltage Divider implementation):**\n\n    *   **Power/Ground/Input/Output:** A simple voltage divider needs V_in (or V_in/A), R1, R2, and V_out (or V(RC)).\n    *   **Components (Resistors):** I need two resistor symbols (R,?) and two instances (R(1), R(2)).\n    *   **Structure (ki_symbols):** I need `(kicad_sch ... (symbol \"Resistor_R_Basic\" (unit Dot R)) ( * (R) (R_1) (R_2) ( * (R resistor_\n        (kicad_sch\n    *   *Self-Correction/Refinement:* Since the file structure is very specific and expects a continuation of `(kicad_sch ... (library ` or `(symbol ` definitions, I must provide valid S-expression starting from `(kicad_sch ... (lib_symbols ...`.\n\n4.  **Simulate the KiCad/SPICE/Coolscape format for a bas",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 116.34
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt_user": "You are completing a KiCad 10 schematic file. The header is written. Continue by adding lib_symbols entries, symbol instances, wires, labels, and the closing parens. Output only completion code (no markdown, no explanation).\n\nExisting prefix:\n(kicad_sch\n\t(version 20250114)\n\t(generator \"kicad-bench\")",
+          "prefix_chars": 225,
+          "completion_chars": 5649,
+          "full_sch_chars": 5874,
+          "completion_preview": "<|channel>thought\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to complete a KiCad schematic file format (likely an embedded S-expression format, given the `(kicad_sch ...)` structure).\n2.  **Analyze the Existing Prefix:**\n    ```lisp\n    (kicad_sch\n        (version 20250110-10-15) ; (Self-correction: The user provided 20250114, I must use that)\n        (generator \"kicad-bench\")\n        (generator_version \"1.0\")\n        (uuid \"7f8d2f07-febd-5372-981d-842ee3189532\")\n        (paper \"A4\")\n        (title \"Ne555 Astable Timer circuit\")\n        (product \"NE555-TP-TRND\")\n        (company \"Samson Technology\")\n        (com g \"marciano.spsda360016@sztronix.com\")\n        (rev \"1.0.0\")\n        (uuid \"7f849322-5859-4093-9218-429992325922\") ; (Wait, the user provided a specific starting point, I must adhere to it.)\n        (product \"Amplifier Instrumentation Amplifier\")\n        (FPGA_LID\n            (Text \"3V3\" 'polyline\n                (9.2446  3.175  0.457 -9.2446)\n                (9.2446  4.929  0.457 9.2446)\n                (9.2446  4.929  .457 4.929)\n            )\n            (Pin \"VCC\" pins '((10.16 4.929) (9.2235 4.929)))\n            (Pin \"VOUT\" pins '((10.16 4.929) (9.2235 4.929)))\n            (Pin \"AMP\" pins '((10.16 3.175) (9.2235 3.175)))\n            (Pin \"AMP\" pins '((10.16 2.032) (9.2235 2.032)))\n            (Pin \"AMP\" number 1 gate pins '((7.62 2.54 0)).(7.62 0.51 0.508 0)\n                (Note: The user provided a *very* long, complex, and specific S-exp",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 116.33
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt_user": "You are completing a KiCad 10 schematic file. The header is written. Continue by adding lib_symbols entries, symbol instances, wires, labels, and the closing parens. Output only completion code (no markdown, no explanation).\n\nExisting prefix:\n(kicad_sch\n\t(version 20250114)\n\t(generator \"kicad-bench\")",
+          "prefix_chars": 224,
+          "completion_chars": 9764,
+          "full_sch_chars": 833,
+          "completion_preview": "<|channel>thought\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to complete a KiCad schematic file format (likely an OpenSCAD/Spice-like netlist format, given the `(kicad_sch ...)` structure).\n2.  **Identify the Current State:**\n    *   The file prefix is provided, ending abruptly after `(lib_symbols ...`.\n    *   The goal is to add `(symbol \"Device:?\" (kicad_sch ...))` blocks, connect them with `(pin_names \"A\" TD+\"C)\")` and `(pin_numbers ...)` if necessary, draw wires (`(connect_pin_numbers ...)`), add global labels/power/ground, and finally close all the open parentheses.\n3.  **Determine Missing Information (The schematic content):** The user has provided *no* schematic or circuit diagram. They have only provided the *start* of the file structure.\n4.  **Formulate a Strategy (The necessary assumption):** Since I cannot magically know what `Device:U1` (the OpAmp, likely) is, I must assume a standard, minimal, and complete example to demonstrate the *correct continuation format*. I will model a basic inverting OpAmp configuration, as the title block suggests `Opamp Noninv` (though the typical symbol name might be `Inverting`).\n\n    *   *Assumed Components:*\n        *   RA (754717356-B/T, symbol `LM741`)\n        *   RC (754717356-B/T, symbol `R resistor`, `RC capacitor`)\n        *   BIAS/VCC/GND (Power/Ground symbols)\n    *   *Assumed Connections (Inverting Configuration):*\n        *   +14 (Non-inverting input) -> V+\n        *   ? (Inverting input) -> R1 (2k",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 116.38
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt_user": "You are completing a KiCad 10 schematic file. The header is written. Continue by adding lib_symbols entries, symbol instances, wires, labels, and the closing parens. Output only completion code (no markdown, no explanation).\n\nExisting prefix:\n(kicad_sch\n\t(version 20250114)\n\t(generator \"kicad-bench\")",
+          "prefix_chars": 222,
+          "completion_chars": 9732,
+          "full_sch_chars": 9954,
+          "completion_preview": "<|channel>thought\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to complete a KiCad schematic file format (likely an embedded S-expression format, given the `(kicad_sch ...)` structure).\n2.  **Identify the Current State:**\n    *   The file prefix is provided, ending abruptly at `(lib_symbols ...`\n    *   The goal is to add `(symbol \"Device:U\" \"EP-1012\" ?1 14) ...` style entries, connect components (Device:U, C_1, R_1, SW_1, LED_1, etc.), add wires, global labels (e.g., `ESP32V_{GPIO2}`), and finally close all the open parentheses.\n3.  **Determine the Missing Content (The schematic body):** Since no specific schematic *design* is provided (i.e., what components are on the board, what they connect to, and what the power/IO names are), I must *invent* a standard, minimal, yet complete-looking IoT/IoT-like schematic to demonstrate the correct KiCad S-expression structure.\n\n    *   *Assumed Components:*\n        *   `Device:MCU_1` (U1_ESP32-C3)\n        *   `Device:LED` (D1)\n        *   `Device:R` (R1, R2, etc.)\n        *   `Device:C` (C1, C2, etc.)\n        *   `Device:SW` (S1, SD1, etc.)\n        *   Power/GND/IO.\n\n4.  **Structure the `(kicad_sch net_names (global_label \"power\" GND) (pin_numbers ...))` format:**\n\n    *   **`lib_symbols`**: Lists all special parts.\n    *   **`symbol \"Device:MCU_1\" \"ESP32-C3\" ?1 16 pins (DP_GPIO0) (DP_GPIO1) ... (GND) (VCC_3V3) (TX) (RX) (SCLK) (SDA) (CSO) (SEDI)) `** (This is the main chip).\n    *   **`symbol \"Device:LED\" \"LED\" ?1",
+          "erc": {
+            "parse_ok": 0.55,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.55,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.165
+          },
+          "gen_time_s": 116.4
+        }
+      ]
+    }
+  }
+}

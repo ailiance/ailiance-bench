@@ -53,6 +53,7 @@ LORA_NICKS = [
     ("gemma-e4b-eukiki-final", "+eu-kiki"),
     ("gemma-e4b-mascarade-final", "+mascarade"),
     ("gemma-e4b-aggro-test", "+aggro"),
+    ("gemma-e4b-kicad9plus-final", "+kicad9plus"),
 ]
 
 # Phase config : (label, base_path, lora_path, datasets_extractor, score_field)

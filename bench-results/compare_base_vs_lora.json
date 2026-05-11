@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2026-05-11 05:16:37",
+    "timestamp": "2026-05-11 18:23:01",
     "base_ref_nick": "gemma-e4b-eu-kiki-base",
     "lora_nicks": [
       {
@@ -14,6 +14,10 @@
       {
         "nick": "gemma-e4b-aggro-test",
         "alias": "+aggro"
+      },
+      {
+        "nick": "gemma-e4b-kicad9plus-final",
+        "alias": "+kicad9plus"
       }
     ],
     "phases": [
@@ -37,7 +41,8 @@
           "lora": {
             "+eu-kiki": 0.64,
             "+mascarade": 0.09,
-            "+aggro": 0.09
+            "+aggro": 0.09,
+            "+kicad9plus": 0.09
           }
         },
         "kicad-pcb": {
@@ -45,7 +50,8 @@
           "lora": {
             "+eu-kiki": 0.43,
             "+mascarade": 0.01,
-            "+aggro": 0.01
+            "+aggro": 0.01,
+            "+kicad9plus": 0.015
           }
         },
         "spice-sim": {
@@ -53,7 +59,8 @@
           "lora": {
             "+eu-kiki": 0.6758,
             "+mascarade": 0.1762,
-            "+aggro": 0.1894
+            "+aggro": 0.1894,
+            "+kicad9plus": 0.2676
           }
         }
       },
@@ -71,7 +78,8 @@
           "lora": {
             "+eu-kiki": 0.22,
             "+mascarade": 0.4,
-            "+aggro": 0.32
+            "+aggro": 0.32,
+            "+kicad9plus": 0.18
           }
         }
       },
@@ -89,7 +97,8 @@
           "lora": {
             "+eu-kiki": 0.6902,
             "+mascarade": 0.7847,
-            "+aggro": 0.35
+            "+aggro": 0.35,
+            "+kicad9plus": 0.0
           }
         }
       },
@@ -107,7 +116,8 @@
           "lora": {
             "+eu-kiki": 0.057,
             "+mascarade": 0.06,
-            "+aggro": 0.06
+            "+aggro": 0.06,
+            "+kicad9plus": 0.033
           }
         }
       },
@@ -125,7 +135,8 @@
           "lora": {
             "+eu-kiki": 0.057,
             "+mascarade": 0.06,
-            "+aggro": 0.06
+            "+aggro": 0.06,
+            "+kicad9plus": 0.033
           }
         }
       },

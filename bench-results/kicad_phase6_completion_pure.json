@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-11 10:50:07",
+    "kicad_cli": "/opt/homebrew/bin/kicad-cli",
+    "kicad_version": "10.0.2",
+    "max_tokens": 4096,
+    "n_samples_total": 6,
+    "n_samples_eval": 5,
+    "skipped_ids": [
+      "spi_bus_4devices"
+    ],
+    "score_weights": {
+      "parse_ok": 0.3,
+      "erc_no_errors": 0.4,
+      "erc_low_warnings": 0.3
+    },
+    "kicad_version_in_prefix": "20250114",
+    "mode": "pure_completion_no_chat_template",
+    "models": [
+      {
+        "nickname": "ministral-3-14b-instruct",
+        "hf_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit"
+      }
+    ]
+  },
+  "bench": {
+    "ministral-3-14b-instruct": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 1.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.144,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prefix_chars": 223,
+          "completion_chars": 8513,
+          "full_sch_chars": 8736,
+          "completion_preview": "\t\t(lib_symbol \"Device:LED\")\n\t\t(lib_symbol \"Device:Resistor\")\n\t\t(lib_symbol \"Device:Capacitor\")\n\t\t(lib_symbol \"Device:Diode\")\n\t\t(lib_symbol \"Device:Transistor_NPN\")\n\t\t(lib_symbol \"Device:Transistor_PNP\")\n\t\t(lib_symbol \"Device:IC_7400\")\n\t\t(lib_symbol \"Device:IC_7404\")\n\t\t(lib_symbol \"Device:IC_7408\")\n\t\t(lib_symbol \"Device:IC_7414\")\n\t\t(lib_symbol \"Device:IC_7432\")\n\t\t(lib_symbol \"Device:IC_7486\")\n\t\t(lib_symbol \"Device:IC_74123\")\n\t\t(lib_symbol \"Device:IC_74125\")\n\t\t(lib_symbol \"Device:IC_74147\")\n\t\t(lib_symbol \"Device:IC_74148\")\n\t\t(lib_symbol \"Device:IC_74151\")\n\t\t(lib_symbol \"Device:IC_74153\")\n\t\t(lib_symbol \"Device:IC_74157\")\n\t\t(lib_symbol \"Device:IC_74158\")\n\t\t(lib_symbol \"Device:IC_74160\")\n\t\t(lib_symbol \"Device:IC_74161\")\n\t\t(lib_symbol \"Device:IC_74162\")\n\t\t(lib_symbol \"Device:IC_74163\")\n\t\t(lib_symbol \"Device:IC_74164\")\n\t\t(lib_symbol \"Device:IC_74165\")\n\t\t(lib_symbol \"Device:IC_74166\")\n\t\t(lib_symbol \"Device:IC_74168\")\n\t\t(lib_symbol \"Device:IC_74169\")\n\t\t(lib_symbol \"Device:IC_74173\")\n\t\t(lib_symbol \"Device:IC_74174\")\n\t\t(lib_symbol \"Device:IC_74175\")\n\t\t(lib_symbol \"Device:IC_74180\")\n\t\t(lib_symbol \"Device:IC_74181\")\n\t\t(lib_symbol \"Device:IC_74182\")\n\t\t(lib_symbol \"Device:IC_74183\")\n\t\t(lib_symbol \"Device:IC_74184\")\n\t\t(lib_symbol \"Device:IC_74185\")\n\t\t(lib_symbol \"Device:IC_74186\")\n\t\t(lib_symbol \"Device:IC_74187\")\n\t\t(lib_symbol \"Device:IC_74188\")\n\t\t(lib_symbol \"Device:IC_74189\")\n\t\t(lib_symbol \"Device:IC_74190\")\n\t\t(lib_symbol \"Device:IC_74191\")\n\t\t(lib_symbol \"Device:IC_74192\")\n\t\t(lib_symbol \"D",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 111.37
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prefix_chars": 227,
+          "completion_chars": 3141,
+          "full_sch_chars": 3368,
+          "completion_preview": "\t\t(symbol \"Device:R\"\n\t\t\t(lib_id \"Device\")\n\t\t\t(lib_item \"R\")\n\t\t\t(description \"Resistor\")\n\t\t\t(pin_names\n\t\t\t\t(pin \"1\" (name \"1\" (type \"inout\")))\n\t\t\t\t(pin \"2\" (name \"2\" (type \"inout\")))\n\t\t\t)\n\t\t)\n\t\t(symbol \"Device:V\"\n\t\t\t(lib_id \"Device\")\n\t\t\t(lib_item \"V\")\n\t\t\t(description \"Voltage Source\")\n\t\t\t(pin_names\n\t\t\t\t(pin \"1\" (name \"1\" (type \"inout\")))\n\t\t\t\t(pin \"2\" (name \"2\" (type \"inout\")))\n\t\t\t)\n\t\t)\n\t)\n\t(units\n\t\t(unit \"U1\"\n\t\t\t(symbol \"Device:V\"\n\t\t\t\t(lib_id \"Device\")\n\t\t\t\t(lib_item \"V\")\n\t\t\t\t(description \"Voltage Source\")\n\t\t\t\t(pin_names\n\t\t\t\t\t(pin \"1\" (name \"1\" (type \"inout\")))\n\t\t\t\t\t(pin \"2\" (name \"2\" (type \"inout\")))\n\t\t\t\t)\n\t\t\t)\n\t\t\t(fields\n\t\t\t\t(field \"Reference\" (value \"V1\"))\n\t\t\t\t(field \"Value\" (value \"10V\"))\n\t\t\t)\n\t\t)\n\t\t(unit \"U2\"\n\t\t\t(symbol \"Device:R\"\n\t\t\t\t(lib_id \"Device\")\n\t\t\t\t(lib_item \"R\")\n\t\t\t\t(description \"Resistor\")\n\t\t\t\t(pin_names\n\t\t\t\t\t(pin \"1\" (name \"1\" (type \"inout\")))\n\t\t\t\t\t(pin \"2\" (name \"2\" (type \"inout\")))\n\t\t\t\t)\n\t\t\t)\n\t\t\t(fields\n\t\t\t\t(field \"Reference\" (value \"R1\"))\n\t\t\t\t(field \"Value\" (value \"10k\"))\n\t\t\t)\n\t\t)\n\t\t(unit \"U3\"\n\t\t\t(symbol \"Device:R\"\n\t\t\t\t(lib_id \"Device\")\n\t\t\t\t(lib_item \"R\")\n\t\t\t\t(description \"Resistor\")\n\t\t\t\t(pin_names\n\t\t\t\t\t(pin \"1\" (name \"1\" (type \"inout\")))\n\t\t\t\t\t(pin \"2\" (name \"2\" (type \"inout\")))\n\t\t\t\t)\n\t\t\t)\n\t\t\t(fields\n\t\t\t\t(field \"Reference\" (value \"R2\"))\n\t\t\t\t(field \"Value\" (value \"10k\"))\n\t\t\t)\n\t\t)\n\t)\n\t(connectivity\n\t\t(net \"1\"\n\t\t\t(netname \"1\")\n\t\t\t(net_items\n\t\t\t\t(net_item \"U1\" (pin \"1\" (type \"pin\")))\n\t\t\t\t(net_item \"U2\" (pin \"1\" (type \"pin\")))\n\t\t\t)\n\t\t)\n\t\t(net \"2\"\n\t\t\t(netname \"2\")\n",
+          "erc": {
+            "parse_ok": 0.6,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.6,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.18
+          },
+          "gen_time_s": 33.37
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prefix_chars": 225,
+          "completion_chars": 25580,
+          "full_sch_chars": 25805,
+          "completion_preview": "\t\t(lib_symbol \"Device:NE555\")\n\t\t(lib_symbol \"Device:Capacitor\")\n\t\t(lib_symbol \"Device:Resistor\")\n\t\t(lib_symbol \"Device:Diode\")\n\t\t(lib_symbol \"Device:LED\")\n\t\t(lib_symbol \"Device:Battery\")\n\t\t(lib_symbol \"Device:Switch\")\n\t)\n\t(units\n\t\t(unit 1\n\t\t\t(symbol \"Device:NE555\"\n\t\t\t\t(anchor 0 0)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(attributes\n\t\t\t\t\t(attribute \"Reference\" \"U1\")\n\t\t\t\t\t(attribute \"Value\" \"NE555\")\n\t\t\t\t\t(attribute \"Footprint\" \"TO-92\")\n\t\t\t\t)\n\t\t\t)\n\t\t\t(symbol \"Device:Capacitor\"\n\t\t\t\t(anchor 0 0)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(attributes\n\t\t\t\t\t(attribute \"Reference\" \"C1\")\n\t\t\t\t\t(attribute \"Value\" \"100nF\")\n\t\t\t\t\t(attribute \"Footprint\" \"C_0805\")\n\t\t\t\t)\n\t\t\t)\n\t\t\t(symbol \"Device:Resistor\"\n\t\t\t\t(anchor 0 0)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(attributes\n\t\t\t\t\t(attribute \"Reference\" \"R1\")\n\t\t\t\t\t(attribute \"Value\" \"10k\")\n\t\t\t\t\t(attribute \"Footprint\" \"R_0805\")\n\t\t\t\t)\n\t\t\t)\n\t\t\t(symbol \"Device:Resistor\"\n\t\t\t\t(anchor 0 0)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(attributes\n\t\t\t\t\t(attribute \"Reference\" \"R2\")\n\t\t\t\t\t(attribute \"Value\" \"10k\")\n\t\t\t\t\t(attribute \"Footprint\" \"R_0805\")\n\t\t\t\t)\n\t\t\t)\n\t\t\t(symbol \"Device:Diode\"\n\t\t\t\t(anchor 0 0)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(attributes\n\t\t\t\t\t(attribute \"Reference\" \"D1\")\n\t\t\t\t\t(attribute \"Value\" \"1N4148\")\n\t\t\t\t\t(attribute \"Footprint\" \"D_SOD-123\")\n\t\t\t\t)\n\t\t\t)\n\t\t\t(symbol \"Device:LED\"\n\t\t\t\t(anchor 0 0)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(attributes\n\t\t\t\t\t(attribute \"Reference\" \"LED1\")\n\t\t\t\t\t(attribute \"Value\" \"LED\")\n\t\t\t\t\t(attribute \"Footprint\" \"LE",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 109.26
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prefix_chars": 224,
+          "completion_chars": 7613,
+          "full_sch_chars": 7837,
+          "completion_preview": "\t\t(lib_symbol \"Device:Opamp\")\n\t\t(lib_symbol \"Device:Resistor\")\n\t\t(lib_symbol \"Device:Capacitor\")\n\t\t(lib_symbol \"Device:Battery\")\n\t\t(lib_symbol \"Device:Ground\")\n\t)\n\t(units\n\t\t(unit 1\n\t\t\t(symbol \"Device:Opamp\"\n\t\t\t\t(at 100 100)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(spice_model \"opamp\")\n\t\t\t)\n\t\t\t(symbol \"Device:Resistor\"\n\t\t\t\t(at 200 100)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(spice_model \"R\")\n\t\t\t)\n\t\t\t(symbol \"Device:Capacitor\"\n\t\t\t\t(at 300 100)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(spice_model \"C\")\n\t\t\t)\n\t\t\t(symbol \"Device:Battery\"\n\t\t\t\t(at 400 100)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(spice_model \"V\")\n\t\t\t)\n\t\t\t(symbol \"Device:Ground\"\n\t\t\t\t(at 500 100)\n\t\t\t\t(orientation 0)\n\t\t\t\t(rotation 0)\n\t\t\t\t(spice_model \"ground\")\n\t\t\t)\n\t\t)\n\t)\n\t(net 0\n\t\t(net_name \"VCC\")\n\t\t(net_number 1)\n\t\t(net_segment 1\n\t\t\t(net_point 1\n\t\t\t\t(point 100 100)\n\t\t\t\t(pin 1)\n\t\t\t)\n\t\t\t(net_point 2\n\t\t\t\t(point 200 100)\n\t\t\t\t(pin 1)\n\t\t\t)\n\t\t)\n\t\t(net_segment 2\n\t\t\t(net_point 3\n\t\t\t\t(point 300 100)\n\t\t\t\t(pin 1)\n\t\t\t)\n\t\t\t(net_point 4\n\t\t\t\t(point 400 100)\n\t\t\t\t(pin 1)\n\t\t\t)\n\t\t)\n\t\t(net_segment 3\n\t\t\t(net_point 5\n\t\t\t\t(point 500 100)\n\t\t\t\t(pin 1)\n\t\t\t)\n\t\t)\n\t)\n\t(net 1\n\t\t(net_name \"GND\")\n\t\t(net_number 2)\n\t\t(net_segment 1\n\t\t\t(net_point 1\n\t\t\t\t(point 100 100)\n\t\t\t\t(pin 2)\n\t\t\t)\n\t\t\t(net_point 2\n\t\t\t\t(point 200 100)\n\t\t\t\t(pin 2)\n\t\t\t)\n\t\t)\n\t\t(net_segment 2\n\t\t\t(net_point 3\n\t\t\t\t(point 300 100)\n\t\t\t\t(pin 2)\n\t\t\t)\n\t\t\t(net_point 4\n\t\t\t\t(point 400 100)\n\t\t\t\t(pin 2)\n\t\t\t)\n\t\t)\n\t\t(net_segment 3\n\t\t\t(net_point 5\n\t\t\t\t(point 500 100)\n\t\t\t\t(pin 2)\n\t\t\t)\n\t\t)\n\t)\n\t(net 2\n",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 109.24
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prefix_chars": 222,
+          "completion_chars": 6875,
+          "full_sch_chars": 7097,
+          "completion_preview": "\t\t(lib_symbol \"Device:DIP\")\n\t\t(lib_symbol \"Device:SOT-23\")\n\t\t(lib_symbol \"Device:SOT-89\")\n\t\t(lib_symbol \"Device:TO-92\")\n\t\t(lib_symbol \"Device:TO-220\")\n\t\t(lib_symbol \"Device:TO-252\")\n\t\t(lib_symbol \"Device:TO-263\")\n\t\t(lib_symbol \"Device:TO-277\")\n\t\t(lib_symbol \"Device:TO-39\")\n\t\t(lib_symbol \"Device:TO-8\")\n\t\t(lib_symbol \"Device:TSSOP\")\n\t\t(lib_symbol \"Device:TSSOP-16\")\n\t\t(lib_symbol \"Device:TSSOP-20\")\n\t\t(lib_symbol \"Device:TSSOP-24\")\n\t\t(lib_symbol \"Device:TSSOP-28\")\n\t\t(lib_symbol \"Device:TSSOP-3\")\n\t\t(lib_symbol \"Device:TSSOP-4\")\n\t\t(lib_symbol \"Device:TSSOP-5\")\n\t\t(lib_symbol \"Device:TSSOP-6\")\n\t\t(lib_symbol \"Device:TSSOP-8\")\n\t\t(lib_symbol \"Device:WS\")\n\t\t(lib_symbol \"Device:WS-1\")\n\t\t(lib_symbol \"Device:WS-2\")\n\t\t(lib_symbol \"Device:WS-3\")\n\t\t(lib_symbol \"Device:WS-4\")\n\t\t(lib_symbol \"Device:WS-5\")\n\t\t(lib_symbol \"Device:WS-6\")\n\t\t(lib_symbol \"Device:WS-8\")\n\t\t(lib_symbol \"Device:WS-9\")\n\t\t(lib_symbol \"Device:WS-9-1\")\n\t\t(lib_symbol \"Device:WS-9-2\")\n\t\t(lib_symbol \"Device:WS-9-3\")\n\t\t(lib_symbol \"Device:WS-9-4\")\n\t\t(lib_symbol \"Device:WS-9-5\")\n\t\t(lib_symbol \"Device:WS-9-6\")\n\t\t(lib_symbol \"Device:WS-9-7\")\n\t\t(lib_symbol \"Device:WS-9-8\")\n\t\t(lib_symbol \"Device:WS-9-9\")\n\t\t(lib_symbol \"Device:WS-9-9-1\")\n\t\t(lib_symbol \"Device:WS-9-9-2\")\n\t\t(lib_symbol \"Device:WS-9-9-3\")\n\t\t(lib_symbol \"Device:WS-9-9-4\")\n\t\t(lib_symbol \"Device:WS-9-9-5\")\n\t\t(lib_symbol \"Device:WS-9-9-6\")\n\t\t(lib_symbol \"Device:WS-9-9-7\")\n\t\t(lib_symbol \"Device:WS-9-9-8\")\n\t\t(lib_symbol \"Device:WS-9-9-9\")\n\t\t(lib_symbol \"Device:WS-9-9-9-1\")\n\t\t(li",
+          "erc": {
+            "parse_ok": 0.45,
+            "parse_via": "py_partial",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.45,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.135
+          },
+          "gen_time_s": 109.24
+        }
+      ]
+    }
+  }
+}
