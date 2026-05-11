@@ -1,4 +1,4 @@
-# ailiance-bench
+# electron-bench
 
 Benchmarking MLX pour modèles open-source et fine-tunes Ailiance sur Mac Apple Silicon.
 Évaluation via perplexité sur 5 niches embarquées (spice, stm32, kicad, embedded_iot, emc_power).
@@ -13,6 +13,15 @@ Benchmarking MLX pour modèles open-source et fine-tunes Ailiance sur Mac Apple 
 - **Benchmark results**: https://github.com/electron-rare/electron-bench
 
 Ailiance is the EU-sovereign LLM serving stack of [L'Electron Rare](https://www.electron-rare.fr), a French SME. Multi-model, audit-grade, EU AI Act Art. 13/15/52/53 transparency.
+
+## About
+
+Part of the **Ailiance** EU AI Act compliance pipeline (https://www.ailiance.fr), maintained by [L'Electron Rare](https://www.electron-rare.fr). Production code lives at https://github.com/ailiance/ailiance.
+
+- **Live demo**: https://www.ailiance.fr
+- **HuggingFace IP source-of-truth**: https://huggingface.co/electron-rare
+- **HuggingFace product distribution**: https://huggingface.co/Ailiance-fr
+- **Status dashboard**: https://home.saillant.cc
 
 ## Modèles benchmarkés
 
