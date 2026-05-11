@@ -96,6 +96,11 @@ MODELS_LORA: list[tuple[str, str, str]] = [
         GEMMA_E4B_BASE,
         str(HOME / "lora-adapters" / "aggro-test"),
     ),
+    (
+        "gemma-e4b-kicad9plus-final",
+        GEMMA_E4B_BASE,
+        str(HOME / "lora-adapters" / "gemma4-e4b-kicad9plus" / "final"),
+    ),
 ]
 
 

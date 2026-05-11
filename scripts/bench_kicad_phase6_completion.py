@@ -86,6 +86,8 @@ MODELS: list[tuple[str, str, str | None]] = [
         str(HOME / "lora-adapters" / "gemma4-e4b-mascarade" / "final")),
     ("gemma-e4b-aggro-test",     GEMMA_E4B_BASE,
         str(HOME / "lora-adapters" / "aggro-test")),
+    ("gemma-e4b-kicad9plus-final", GEMMA_E4B_BASE,
+        str(HOME / "lora-adapters" / "gemma4-e4b-kicad9plus" / "final")),
 ]
 
 # Reference KICAD_VERSION matches local kicad-cli (10.0.2 -> KiCad 10
