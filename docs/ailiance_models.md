@@ -146,6 +146,24 @@ Reference base: `lmstudio-community/gemma-4-E4B-it-MLX-4bit`. Full table at
 Benchmarks for the Apertus / Devstral / EuroLLM families are not part of this
 release and will appear in `bench-results/` as they become available.
 
+## Benchmark status per family (as of 2026-05-11)
+
+Each model card on HuggingFace now declares its own **Benchmark / Training
+metrics** section. The pipeline status per family:
+
+| Family   | # adapters | Functional bench (`electron-bench`) | Training metrics (val loss, ppl) | Notes                                                                                                          |
+|----------|-----------:|-------------------------------------|----------------------------------|----------------------------------------------------------------------------------------------------------------|
+| Gemma    | 4          | ✅ P1 → P6 (compare_base_vs_lora)   | ✅ embedded in card               | Reference base, full matrix above.                                                                             |
+| Devstral | 38         | ⏳ roadmap                          | ✅ for adapters with persisted logs (cpp, chat-fr, docker-devops, *-curriculum variants) | Per-card metrics extracted from `batch_eu_kiki_v2.log` / `medium35-*-curriculum.log`. Bf16 variants share metrics with their fp counterparts. |
+| Apertus  | 10         | ⏳ roadmap                          | ⏳ roadmap (training logs not persisted) | Cards carry a `Benchmark roadmap` section pointing at issue tracker.                                           |
+| EuroLLM  | 3          | ⏳ roadmap                          | ⏳ roadmap (training logs not persisted) | Cards carry a `Benchmark roadmap` section.                                                                     |
+| Qwen3-4B | 8          | ✅ already present (ailiance-bench v0.2 Phase 6) | n/a (managed separately)         | Existing `## Bench results` / `## Bench context` sections preserved (idempotency).                              |
+| Router   | 2          | n/a (classifier, not LoRA)          | n/a                              | Excluded from bench script.                                                                                    |
+
+Maintained by [`scripts/add_bench_section_to_cards.py`](../scripts/add_bench_section_to_cards.py)
+— idempotent, drives off [`scripts/data/training_metrics.json`](../scripts/data/training_metrics.json).
+Re-run with `--force-replace` when new metrics become available.
+
 ## Usage example (any of the 49 adapters)
 
 ```python

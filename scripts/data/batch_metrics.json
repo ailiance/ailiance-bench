@@ -1,0 +1,202 @@
+{
+  "qwen36-chat-fr": {
+    "final_train_loss": 1.092,
+    "final_val_loss": 1.527,
+    "initial_val_loss": 2.164,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-embedded": {
+    "final_train_loss": 1.425,
+    "final_val_loss": 1.496,
+    "initial_val_loss": 3.158,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-emc-dsp-power": {
+    "final_train_loss": 1.783,
+    "final_val_loss": 1.859,
+    "initial_val_loss": 2.59,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-iot": {
+    "final_train_loss": 1.41,
+    "final_val_loss": 1.278,
+    "initial_val_loss": 2.764,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-kicad-dsl": {
+    "final_train_loss": 0.783,
+    "final_val_loss": 0.784,
+    "initial_val_loss": 0.784,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 20,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-kicad-pcb": {
+    "final_train_loss": 0.337,
+    "final_val_loss": 0.53,
+    "initial_val_loss": 0.53,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 10,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-llm-ops": {
+    "final_train_loss": 0.646,
+    "final_val_loss": 0.645,
+    "initial_val_loss": 3.087,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-llm-orch": {
+    "final_train_loss": 0.66,
+    "final_val_loss": 0.713,
+    "initial_val_loss": 3.256,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-math-gsm8k": {
+    "final_train_loss": 0.827,
+    "final_val_loss": 0.63,
+    "initial_val_loss": 2.289,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-math-reasoning": {
+    "final_train_loss": 0.451,
+    "final_val_loss": 0.44,
+    "initial_val_loss": 1.25,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 450,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-multilingual-eu": {
+    "final_train_loss": 1.181,
+    "final_val_loss": 1.291,
+    "initial_val_loss": 2.305,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-platformio": {
+    "final_train_loss": 0.114,
+    "final_val_loss": 0.092,
+    "initial_val_loss": 1.86,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-rust-embedded": {
+    "final_train_loss": 0.863,
+    "final_val_loss": 0.773,
+    "initial_val_loss": 0.773,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 30,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-security-fenrir": {
+    "final_train_loss": 1.287,
+    "final_val_loss": 1.585,
+    "initial_val_loss": 1.585,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 190,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-shell": {
+    "final_train_loss": 1.04,
+    "final_val_loss": 1.405,
+    "initial_val_loss": 3.889,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-spice-sim": {
+    "final_train_loss": 0.318,
+    "final_val_loss": 1.6,
+    "initial_val_loss": 1.6,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 110,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen36-traduction-tech": {
+    "final_train_loss": 1.459,
+    "final_val_loss": 1.356,
+    "initial_val_loss": 5.269,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "medium35-chat-fr": {
+    "final_train_loss": 1.225,
+    "final_val_loss": 1.466,
+    "initial_val_loss": 4.164,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "medium35-cpp": {
+    "final_train_loss": 0.603,
+    "final_val_loss": 0.401,
+    "initial_val_loss": 2.18,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "medium35-docker-devops": {
+    "final_train_loss": 0.732,
+    "final_val_loss": 0.687,
+    "initial_val_loss": 1.82,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 490,
+    "log_source": "batch_eu_kiki_v2.log"
+  }
+}

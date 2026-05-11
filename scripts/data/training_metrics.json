@@ -1,0 +1,490 @@
+{
+  "qwen3-4b-mascarade-chat-fr": {
+    "final_train_loss": 1.092,
+    "final_val_loss": 1.527,
+    "initial_val_loss": 2.164,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-embedded": {
+    "final_train_loss": 1.425,
+    "final_val_loss": 1.496,
+    "initial_val_loss": 3.158,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-emc-dsp-power": {
+    "final_train_loss": 1.783,
+    "final_val_loss": 1.859,
+    "initial_val_loss": 2.59,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-iot": {
+    "final_train_loss": 1.41,
+    "final_val_loss": 1.278,
+    "initial_val_loss": 2.764,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-kicad-dsl": {
+    "final_train_loss": 0.783,
+    "final_val_loss": 0.784,
+    "initial_val_loss": 0.784,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 20,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-kicad-pcb": {
+    "final_train_loss": 0.337,
+    "final_val_loss": 0.53,
+    "initial_val_loss": 0.53,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 10,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-llm-ops": {
+    "final_train_loss": 0.646,
+    "final_val_loss": 0.645,
+    "initial_val_loss": 3.087,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-llm-orch": {
+    "final_train_loss": 0.66,
+    "final_val_loss": 0.713,
+    "initial_val_loss": 3.256,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-math-gsm8k": {
+    "final_train_loss": 0.827,
+    "final_val_loss": 0.63,
+    "initial_val_loss": 2.289,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-math-reasoning": {
+    "final_train_loss": 0.451,
+    "final_val_loss": 0.44,
+    "initial_val_loss": 1.25,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 450,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-multilingual-eu": {
+    "final_train_loss": 1.181,
+    "final_val_loss": 1.291,
+    "initial_val_loss": 2.305,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-platformio": {
+    "final_train_loss": 0.114,
+    "final_val_loss": 0.092,
+    "initial_val_loss": 1.86,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-rust-embedded": {
+    "final_train_loss": 0.863,
+    "final_val_loss": 0.773,
+    "initial_val_loss": 0.773,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 30,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-security-fenrir": {
+    "final_train_loss": 1.287,
+    "final_val_loss": 1.585,
+    "initial_val_loss": 1.585,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 190,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-shell": {
+    "final_train_loss": 1.04,
+    "final_val_loss": 1.405,
+    "initial_val_loss": 3.889,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-spice-sim": {
+    "final_train_loss": 0.318,
+    "final_val_loss": 1.6,
+    "initial_val_loss": 1.6,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 110,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "qwen3-4b-mascarade-traduction-tech": {
+    "final_train_loss": 1.459,
+    "final_val_loss": 1.356,
+    "initial_val_loss": 5.269,
+    "trainable_pct": "2.960%",
+    "trainable_params": "1025.795M",
+    "total_params": "34660.609M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "devstral-chat-fr": {
+    "final_train_loss": 1.225,
+    "final_val_loss": 1.466,
+    "initial_val_loss": 4.164,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "devstral-cpp": {
+    "final_train_loss": 0.603,
+    "final_val_loss": 0.401,
+    "initial_val_loss": 2.18,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "devstral-docker-devops": {
+    "final_train_loss": 0.732,
+    "final_val_loss": 0.687,
+    "initial_val_loss": 1.82,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 490,
+    "log_source": "batch_eu_kiki_v2.log"
+  },
+  "devstral-security-fenrir-resume": {
+    "final_train_loss": 1.093,
+    "final_val_loss": 0.714,
+    "initial_val_loss": 1.187,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "val_iters": [
+      [
+        1,
+        1.187
+      ],
+      [
+        200,
+        1.01
+      ],
+      [
+        400,
+        1.051
+      ],
+      [
+        500,
+        0.714
+      ]
+    ],
+    "log_source": "medium35-security-fenrir-resume.log"
+  },
+  "devstral-chat-fr-curriculum": {
+    "final_train_loss": 1.288,
+    "final_val_loss": 0.995,
+    "initial_val_loss": 4.164,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "val_iters": [
+      [
+        1,
+        4.164
+      ],
+      [
+        200,
+        1.378
+      ],
+      [
+        400,
+        1.298
+      ],
+      [
+        500,
+        1.412
+      ],
+      [
+        1,
+        3.469
+      ],
+      [
+        200,
+        1.436
+      ],
+      [
+        400,
+        1.096
+      ],
+      [
+        600,
+        0.966
+      ],
+      [
+        800,
+        0.973
+      ],
+      [
+        1,
+        3.469
+      ],
+      [
+        200,
+        1.458
+      ],
+      [
+        400,
+        1.121
+      ],
+      [
+        500,
+        0.995
+      ]
+    ],
+    "log_source": "medium35-chat-fr-curriculum.log"
+  },
+  "devstral-cpp-curriculum": {
+    "final_train_loss": 0.384,
+    "final_val_loss": 0.471,
+    "initial_val_loss": 2.288,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "val_iters": [
+      [
+        1,
+        2.288
+      ],
+      [
+        200,
+        0.857
+      ],
+      [
+        400,
+        0.53
+      ],
+      [
+        500,
+        0.392
+      ],
+      [
+        1,
+        1.781
+      ],
+      [
+        200,
+        0.597
+      ],
+      [
+        400,
+        0.505
+      ],
+      [
+        600,
+        0.489
+      ],
+      [
+        800,
+        0.36
+      ],
+      [
+        1,
+        1.974
+      ],
+      [
+        200,
+        0.544
+      ],
+      [
+        400,
+        0.455
+      ],
+      [
+        500,
+        0.471
+      ]
+    ],
+    "log_source": "medium35-cpp-curriculum.log"
+  },
+  "devstral-docker-devops-curriculum": {
+    "final_train_loss": 0.634,
+    "final_val_loss": 0.619,
+    "initial_val_loss": 1.82,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 500,
+    "val_iters": [
+      [
+        1,
+        1.82
+      ],
+      [
+        200,
+        1.004
+      ],
+      [
+        400,
+        0.739
+      ],
+      [
+        500,
+        0.705
+      ],
+      [
+        1,
+        1.744
+      ],
+      [
+        200,
+        0.67
+      ],
+      [
+        400,
+        0.581
+      ],
+      [
+        600,
+        0.606
+      ],
+      [
+        800,
+        0.547
+      ],
+      [
+        1,
+        1.744
+      ],
+      [
+        200,
+        0.667
+      ],
+      [
+        400,
+        0.579
+      ],
+      [
+        500,
+        0.619
+      ]
+    ],
+    "log_source": "medium35-docker-devops-curriculum.log"
+  },
+  "devstral-embedded-curriculum": {
+    "final_train_loss": 1.283,
+    "final_val_loss": 4.424,
+    "initial_val_loss": 4.745,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": 190,
+    "val_iters": [
+      [
+        1,
+        4.745
+      ],
+      [
+        200,
+        1.605
+      ],
+      [
+        400,
+        1.973
+      ],
+      [
+        500,
+        1.204
+      ],
+      [
+        1,
+        4.424
+      ],
+      [
+        200,
+        1.046
+      ],
+      [
+        400,
+        1.112
+      ],
+      [
+        600,
+        1.102
+      ],
+      [
+        800,
+        1.149
+      ],
+      [
+        1,
+        4.424
+      ]
+    ],
+    "log_source": "medium35-embedded-curriculum.log"
+  },
+  "devstral-emc-dsp-power-curriculum": {
+    "final_train_loss": null,
+    "final_val_loss": 3.7,
+    "initial_val_loss": 3.7,
+    "trainable_pct": "0.224%",
+    "trainable_params": "279.708M",
+    "total_params": "125025.989M",
+    "iters_done": null,
+    "val_iters": [
+      [
+        1,
+        3.7
+      ]
+    ],
+    "log_source": "medium35-emc-dsp-power-curriculum.log"
+  }
+}
