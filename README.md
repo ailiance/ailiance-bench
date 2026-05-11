@@ -3,6 +3,17 @@
 Benchmarking MLX pour modèles open-source et fine-tunes Ailiance sur Mac Apple Silicon.
 Évaluation via perplexité sur 5 niches embarquées (spice, stm32, kicad, embedded_iot, emc_power).
 
+## Where to find related artifacts
+
+- **Live demo & cockpit**: https://www.ailiance.fr
+- **Status dashboard**: https://home.saillant.cc
+- **HuggingFace IP source-of-truth**: https://huggingface.co/electron-rare
+- **HuggingFace product distribution**: https://huggingface.co/Ailiance-fr
+- **Audit-grade bench validators**: https://github.com/electron-rare/iact-bench
+- **Benchmark results**: https://github.com/electron-rare/electron-bench
+
+Ailiance is the EU-sovereign LLM serving stack of [L'Electron Rare](https://www.electron-rare.fr), a French SME. Multi-model, audit-grade, EU AI Act Art. 13/15/52/53 transparency.
+
 ## Modèles benchmarkés
 
 | Modèle | Provider | Notes |
@@ -89,8 +100,8 @@ Régénérer table markdown : `python scripts/regen_bench_table.py`.
 
 ## Liens
 
-- Fork MLX : https://github.com/L-electron-Rare/mlx (branche `metal-3x-buffer-limit`)
-- Build wheels CI : https://github.com/L-electron-Rare/mlx/actions/workflows/build-wheels.yml
+- Fork MLX : https://github.com/electron-rare/mlx (branche `metal-3x-buffer-limit`)
+- Build wheels CI : https://github.com/electron-rare/mlx/actions/workflows/build-wheels.yml
 - Datasets HF : https://huggingface.co/Ailiance-fr
 
 ## Licence
