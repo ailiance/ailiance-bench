@@ -5,7 +5,7 @@
     "lora_nicks": [
       {
         "nick": "gemma-e4b-eukiki-final",
-        "alias": "+eu-kiki"
+        "alias": "+ailiance"
       },
       {
         "nick": "gemma-e4b-mascarade-final",
@@ -39,7 +39,7 @@
         "kicad-dsl": {
           "base": 0.09,
           "lora": {
-            "+eu-kiki": 0.64,
+            "+ailiance": 0.64,
             "+mascarade": 0.09,
             "+aggro": 0.09,
             "+kicad9plus": 0.09
@@ -48,7 +48,7 @@
         "kicad-pcb": {
           "base": 0.01,
           "lora": {
-            "+eu-kiki": 0.43,
+            "+ailiance": 0.43,
             "+mascarade": 0.01,
             "+aggro": 0.01,
             "+kicad9plus": 0.015
@@ -57,7 +57,7 @@
         "spice-sim": {
           "base": 0.4247,
           "lora": {
-            "+eu-kiki": 0.6758,
+            "+ailiance": 0.6758,
             "+mascarade": 0.1762,
             "+aggro": 0.1894,
             "+kicad9plus": 0.2676
@@ -76,7 +76,7 @@
         "kicad-sch-gen": {
           "base": 0.42,
           "lora": {
-            "+eu-kiki": 0.22,
+            "+ailiance": 0.22,
             "+mascarade": 0.4,
             "+aggro": 0.32,
             "+kicad9plus": 0.18
@@ -95,7 +95,7 @@
         "kicad-sch-extract": {
           "base": 0.3083,
           "lora": {
-            "+eu-kiki": 0.6902,
+            "+ailiance": 0.6902,
             "+mascarade": 0.7847,
             "+aggro": 0.35,
             "+kicad9plus": 0.0
@@ -114,7 +114,7 @@
         "kicad-erc-abs": {
           "base": 0.06,
           "lora": {
-            "+eu-kiki": 0.057,
+            "+ailiance": 0.057,
             "+mascarade": 0.06,
             "+aggro": 0.06,
             "+kicad9plus": 0.033
@@ -133,7 +133,7 @@
         "kicad-erc-delta": {
           "base": 0.06,
           "lora": {
-            "+eu-kiki": 0.057,
+            "+ailiance": 0.057,
             "+mascarade": 0.06,
             "+aggro": 0.06,
             "+kicad9plus": 0.033

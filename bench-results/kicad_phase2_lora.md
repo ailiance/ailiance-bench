@@ -2,7 +2,7 @@
 
 _Generated: 2026-05-11 04:37:30_
 
-- Dataset    : `/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl` (6 samples, 5 evaluated)
+- Dataset    : `/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl` (6 samples, 5 evaluated)
 - Combos     : 3
 - Max tokens : 4096
 - Validation : pure-Python parser (kicad-cli not used in P2)

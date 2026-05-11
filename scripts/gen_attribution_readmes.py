@@ -104,7 +104,7 @@ DISCLOSURE_DATASETS = {"mascarade-power", "mascarade-dsp",
                        "mascarade-emc", "mascarade-kicad"}
 
 AUDIT_LINK = (
-    "https://github.com/electron-rare/electron-bench/blob/main/"
+    "https://github.com/ailiance/ailiance-bench/blob/main/"
     "docs/audit_kicad9plus.md"
 )
 
@@ -502,7 +502,7 @@ This aggregated dataset is released under **CC-BY-SA-4.0**. Per-sample original 
 
 Données collectées et générées dans le cadre du projet **electron-rare** (fine-tuning LoRA sur Gemma-3n-E4B pour applications électronique embarquée).
 
-Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence du projet : [electron-bench](https://github.com/electron-rare/electron-bench).
+Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence du projet : [ailiance-bench](https://github.com/ailiance/ailiance-bench).
 
 Audit log: see [`docs/audit_kicad9plus.md`]({audit_link}) for the legal-attribution audit performed on 2026-05-11.
 

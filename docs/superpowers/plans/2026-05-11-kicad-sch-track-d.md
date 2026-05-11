@@ -13,7 +13,7 @@
 ## File Structure
 
 ```
-~/eu-kiki/scripts/kicad_sch/
+~/ailiance/scripts/kicad_sch/
 ├── __init__.py                          # package marker
 ├── hybrid_pipeline.py                   # orchestrator + run_cell()
 └── compilers/
@@ -25,10 +25,10 @@
     ├── tscircuit_runner.py
     └── circuit_synth_runner.py
 
-~/eu-kiki/scripts/
+~/ailiance/scripts/
 └── run_track_d.sh                       # smoke | full CLI wrapper
 
-~/eu-kiki/tests/kicad_sch/
+~/ailiance/tests/kicad_sch/
 ├── __init__.py
 ├── test_hybrid_pipeline.py
 └── compilers/
@@ -51,8 +51,8 @@
 
 **Dependencies (must already be in place before starting Task 1):**
 
-- `~/eu-kiki/scripts/audit_log.py` exposing `AuditLogger(path: Path)` with `.log(event_type: str, **fields)` writing one JSON object per line (Foundation deliverable).
-- `~/eu-kiki/scripts/eval_framework.py` `load_model_and_tokenizer(model_path, adapter_path=None) -> (model, tokenizer)` and `generate_sample(model, tokenizer, prompt, max_tokens, temperature, seed) -> str` (already present, verified 2026-05-11).
+- `~/ailiance/scripts/audit_log.py` exposing `AuditLogger(path: Path)` with `.log(event_type: str, **fields)` writing one JSON object per line (Foundation deliverable).
+- `~/ailiance/scripts/eval_framework.py` `load_model_and_tokenizer(model_path, adapter_path=None) -> (model, tokenizer)` and `generate_sample(model, tokenizer, prompt, max_tokens, temperature, seed) -> str` (already present, verified 2026-05-11).
 - `MODELS` dict keys: `apertus, devstral, eurollm, qwen36, medium35` (verified 2026-05-11 in `eval_framework.py:59`).
 
 ---
@@ -75,8 +75,8 @@ Before any task runs, install the toolchain. This is a one-time setup step, not 
 ssh studio bash <<'EOF'
 set -euo pipefail
 
-# 1. skidl + circuit_synth (PyPI, into eu-kiki uv env)
-cd ~/eu-kiki
+# 1. skidl + circuit_synth (PyPI, into ailiance uv env)
+cd ~/ailiance
 uv pip install 'skidl>=2.0' 'circuit_synth>=0.5'
 
 # 2. atopile (PyPI; CLI = `ato`)
@@ -94,7 +94,7 @@ EOF
 Verify with:
 
 ```bash
-ssh studio 'cd ~/eu-kiki && uv run python -c "import skidl, circuit_synth, atopile; print(skidl.__version__, circuit_synth.__version__, atopile.__version__)"; which ato tsci'
+ssh studio 'cd ~/ailiance && uv run python -c "import skidl, circuit_synth, atopile; print(skidl.__version__, circuit_synth.__version__, atopile.__version__)"; which ato tsci'
 ```
 
 **Expected:** four versions printed, two CLI paths printed. If any line fails the corresponding runner will *correctly* mark every attempt as `compile_ok=False` with a clear stderr — this is by design (cf. spec §"Track D — Failure modes tracked") and does not block other runners. Document the missing tool in the audit log header.
@@ -104,17 +104,17 @@ ssh studio 'cd ~/eu-kiki && uv run python -c "import skidl, circuit_synth, atopi
 ## Task 1: `CompileResult` dataclass
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/__init__.py` (empty)
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/__init__.py` (empty)
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/result.py`
-- Create: `~/eu-kiki/tests/kicad_sch/__init__.py` (empty)
-- Create: `~/eu-kiki/tests/kicad_sch/compilers/__init__.py` (empty)
-- Test: `~/eu-kiki/tests/kicad_sch/compilers/test_result.py`
+- Create: `~/ailiance/scripts/kicad_sch/__init__.py` (empty)
+- Create: `~/ailiance/scripts/kicad_sch/compilers/__init__.py` (empty)
+- Create: `~/ailiance/scripts/kicad_sch/compilers/result.py`
+- Create: `~/ailiance/tests/kicad_sch/__init__.py` (empty)
+- Create: `~/ailiance/tests/kicad_sch/compilers/__init__.py` (empty)
+- Test: `~/ailiance/tests/kicad_sch/compilers/test_result.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/compilers/test_result.py
+# ~/ailiance/tests/kicad_sch/compilers/test_result.py
 from pathlib import Path
 from scripts.kicad_sch.compilers.result import CompileResult
 
@@ -153,7 +153,7 @@ def test_compile_result_as_dict_serialises_path_to_str(tmp_path):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_result.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_result.py -v
 ```
 
 Expected: `ModuleNotFoundError: No module named 'scripts.kicad_sch.compilers.result'`.
@@ -161,7 +161,7 @@ Expected: `ModuleNotFoundError: No module named 'scripts.kicad_sch.compilers.res
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/compilers/result.py
+# ~/ailiance/scripts/kicad_sch/compilers/result.py
 """Shared result type for every Track-D compiler runner."""
 from __future__ import annotations
 
@@ -200,7 +200,7 @@ class CompileResult:
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_result.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_result.py -v
 ```
 
 Expected: 3 passed.
@@ -208,7 +208,7 @@ Expected: 3 passed.
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/__init__.py scripts/kicad_sch/compilers/__init__.py scripts/kicad_sch/compilers/result.py tests/kicad_sch/__init__.py tests/kicad_sch/compilers/__init__.py tests/kicad_sch/compilers/test_result.py
+cd ~/ailiance && git add scripts/kicad_sch/__init__.py scripts/kicad_sch/compilers/__init__.py scripts/kicad_sch/compilers/result.py tests/kicad_sch/__init__.py tests/kicad_sch/compilers/__init__.py tests/kicad_sch/compilers/test_result.py
 git commit -m "feat(trackd): add CompileResult dataclass
 
 Shared outcome record for the four hybrid DSL compilers.
@@ -222,13 +222,13 @@ the first two; Eval N3 fills the third downstream."
 ## Task 2: System prompts module
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/system_prompts.py`
-- Test: `~/eu-kiki/tests/kicad_sch/compilers/test_system_prompts.py`
+- Create: `~/ailiance/scripts/kicad_sch/compilers/system_prompts.py`
+- Test: `~/ailiance/tests/kicad_sch/compilers/test_system_prompts.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/compilers/test_system_prompts.py
+# ~/ailiance/tests/kicad_sch/compilers/test_system_prompts.py
 import pytest
 from scripts.kicad_sch.compilers.system_prompts import (
     SKIDL_PROMPT, ATOPILE_PROMPT, TSCIRCUIT_PROMPT, CIRCUIT_SYNTH_PROMPT,
@@ -276,7 +276,7 @@ def test_circuit_synth_prompt_mentions_module():
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_system_prompts.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_system_prompts.py -v
 ```
 
 Expected: ModuleNotFoundError.
@@ -284,7 +284,7 @@ Expected: ModuleNotFoundError.
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/compilers/system_prompts.py
+# ~/ailiance/scripts/kicad_sch/compilers/system_prompts.py
 """System prompts for each Track-D compiler.
 
 Each ~100-word template tells the LLM:
@@ -389,7 +389,7 @@ SYSTEM_PROMPTS: dict[str, str] = {
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_system_prompts.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_system_prompts.py -v
 ```
 
 Expected: 11 passed.
@@ -397,7 +397,7 @@ Expected: 11 passed.
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/compilers/system_prompts.py tests/kicad_sch/compilers/test_system_prompts.py
+cd ~/ailiance && git add scripts/kicad_sch/compilers/system_prompts.py tests/kicad_sch/compilers/test_system_prompts.py
 git commit -m "feat(trackd): add 4 compiler system prompts
 
 One ~100-word template per compiler (skidl, atopile,
@@ -411,13 +411,13 @@ minimal divider example."
 ## Task 3: SKiDL runner
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/skidl_runner.py`
-- Test: `~/eu-kiki/tests/kicad_sch/compilers/test_skidl_runner.py`
+- Create: `~/ailiance/scripts/kicad_sch/compilers/skidl_runner.py`
+- Test: `~/ailiance/tests/kicad_sch/compilers/test_skidl_runner.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/compilers/test_skidl_runner.py
+# ~/ailiance/tests/kicad_sch/compilers/test_skidl_runner.py
 import pytest
 from pathlib import Path
 from scripts.kicad_sch.compilers import skidl_runner
@@ -470,7 +470,7 @@ def test_skidl_runner_marks_compile_fail_when_no_output(tmp_path):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_skidl_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_skidl_runner.py -v
 ```
 
 Expected: ModuleNotFoundError on `skidl_runner`.
@@ -478,7 +478,7 @@ Expected: ModuleNotFoundError on `skidl_runner`.
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/compilers/skidl_runner.py
+# ~/ailiance/scripts/kicad_sch/compilers/skidl_runner.py
 """SKiDL → kicad_sch runner.
 
 Strategy: write DSL to <out_dir>/circuit.py, run it via subprocess so the
@@ -541,7 +541,7 @@ def run(dsl: str, out_dir: Path, timeout_s: int = 60) -> CompileResult:
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_skidl_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_skidl_runner.py -v
 ```
 
 Expected: 3 passed (or 3 skipped if skidl missing — that's an acceptable smoke since `Pre-Task 0` should have installed it).
@@ -549,7 +549,7 @@ Expected: 3 passed (or 3 skipped if skidl missing — that's an acceptable smoke
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/compilers/skidl_runner.py tests/kicad_sch/compilers/test_skidl_runner.py
+cd ~/ailiance && git add scripts/kicad_sch/compilers/skidl_runner.py tests/kicad_sch/compilers/test_skidl_runner.py
 git commit -m "feat(trackd): add skidl compiler runner
 
 Writes DSL to circuit.py, ast.parse gate, subprocess
@@ -563,13 +563,13 @@ taxonomy."
 ## Task 4: atopile runner
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/atopile_runner.py`
-- Test: `~/eu-kiki/tests/kicad_sch/compilers/test_atopile_runner.py`
+- Create: `~/ailiance/scripts/kicad_sch/compilers/atopile_runner.py`
+- Test: `~/ailiance/tests/kicad_sch/compilers/test_atopile_runner.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/compilers/test_atopile_runner.py
+# ~/ailiance/tests/kicad_sch/compilers/test_atopile_runner.py
 import shutil
 import pytest
 from scripts.kicad_sch.compilers import atopile_runner
@@ -612,7 +612,7 @@ def test_atopile_runner_marks_garbage_dsl_as_parse_fail(tmp_path):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_atopile_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_atopile_runner.py -v
 ```
 
 Expected: ModuleNotFoundError.
@@ -620,7 +620,7 @@ Expected: ModuleNotFoundError.
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/compilers/atopile_runner.py
+# ~/ailiance/scripts/kicad_sch/compilers/atopile_runner.py
 """atopile (.ato) → kicad_sch runner."""
 from __future__ import annotations
 
@@ -685,7 +685,7 @@ def run(dsl: str, out_dir: Path, timeout_s: int = 120) -> CompileResult:
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_atopile_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_atopile_runner.py -v
 ```
 
 Expected: 2 passed (or skipped if `ato` not installed).
@@ -693,7 +693,7 @@ Expected: 2 passed (or skipped if `ato` not installed).
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/compilers/atopile_runner.py tests/kicad_sch/compilers/test_atopile_runner.py
+cd ~/ailiance && git add scripts/kicad_sch/compilers/atopile_runner.py tests/kicad_sch/compilers/test_atopile_runner.py
 git commit -m "feat(trackd): add atopile compiler runner
 
 Writes DSL to main.ato, invokes ato build, detects parse
@@ -707,13 +707,13 @@ the emitted .kicad_sch."
 ## Task 5: tscircuit runner
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/tscircuit_runner.py`
-- Test: `~/eu-kiki/tests/kicad_sch/compilers/test_tscircuit_runner.py`
+- Create: `~/ailiance/scripts/kicad_sch/compilers/tscircuit_runner.py`
+- Test: `~/ailiance/tests/kicad_sch/compilers/test_tscircuit_runner.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/compilers/test_tscircuit_runner.py
+# ~/ailiance/tests/kicad_sch/compilers/test_tscircuit_runner.py
 import shutil
 import pytest
 from scripts.kicad_sch.compilers import tscircuit_runner
@@ -751,7 +751,7 @@ def test_tscircuit_runner_marks_garbage_as_parse_fail(tmp_path):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_tscircuit_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_tscircuit_runner.py -v
 ```
 
 Expected: ModuleNotFoundError.
@@ -759,7 +759,7 @@ Expected: ModuleNotFoundError.
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/compilers/tscircuit_runner.py
+# ~/ailiance/scripts/kicad_sch/compilers/tscircuit_runner.py
 """tscircuit (.tsx) → kicad_sch runner."""
 from __future__ import annotations
 
@@ -825,7 +825,7 @@ def run(dsl: str, out_dir: Path, timeout_s: int = 180) -> CompileResult:
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_tscircuit_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_tscircuit_runner.py -v
 ```
 
 Expected: 2 passed (or skipped if `npx` missing).
@@ -833,7 +833,7 @@ Expected: 2 passed (or skipped if `npx` missing).
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/compilers/tscircuit_runner.py tests/kicad_sch/compilers/test_tscircuit_runner.py
+cd ~/ailiance && git add scripts/kicad_sch/compilers/tscircuit_runner.py tests/kicad_sch/compilers/test_tscircuit_runner.py
 git commit -m "feat(trackd): add tscircuit compiler runner
 
 Writes DSL to circuit.tsx, invokes npx tsci build with
@@ -846,13 +846,13 @@ token errors as parse failures."
 ## Task 6: circuit-synth runner
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/compilers/circuit_synth_runner.py`
-- Test: `~/eu-kiki/tests/kicad_sch/compilers/test_circuit_synth_runner.py`
+- Create: `~/ailiance/scripts/kicad_sch/compilers/circuit_synth_runner.py`
+- Test: `~/ailiance/tests/kicad_sch/compilers/test_circuit_synth_runner.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/compilers/test_circuit_synth_runner.py
+# ~/ailiance/tests/kicad_sch/compilers/test_circuit_synth_runner.py
 import pytest
 from scripts.kicad_sch.compilers import circuit_synth_runner
 
@@ -892,7 +892,7 @@ def test_circuit_synth_runner_marks_bad_dsl_as_parse_fail(tmp_path):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_circuit_synth_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_circuit_synth_runner.py -v
 ```
 
 Expected: ModuleNotFoundError.
@@ -900,7 +900,7 @@ Expected: ModuleNotFoundError.
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/compilers/circuit_synth_runner.py
+# ~/ailiance/scripts/kicad_sch/compilers/circuit_synth_runner.py
 """circuit_synth → kicad_sch runner."""
 from __future__ import annotations
 
@@ -966,7 +966,7 @@ def run(dsl: str, out_dir: Path, timeout_s: int = 90) -> CompileResult:
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/compilers/test_circuit_synth_runner.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/compilers/test_circuit_synth_runner.py -v
 ```
 
 Expected: 2 passed (or skipped).
@@ -974,7 +974,7 @@ Expected: 2 passed (or skipped).
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/compilers/circuit_synth_runner.py tests/kicad_sch/compilers/test_circuit_synth_runner.py
+cd ~/ailiance && git add scripts/kicad_sch/compilers/circuit_synth_runner.py tests/kicad_sch/compilers/test_circuit_synth_runner.py
 git commit -m "feat(trackd): add circuit-synth compiler runner
 
 Generates a tiny _driver.py that imports the user circuit
@@ -987,13 +987,13 @@ Keeps the user DSL syntactically isolated."
 ## Task 7: `run_cell` — single (model, compiler, prompt, seed) execution
 
 **Files:**
-- Create: `~/eu-kiki/scripts/kicad_sch/hybrid_pipeline.py`
-- Test: `~/eu-kiki/tests/kicad_sch/test_hybrid_pipeline.py`
+- Create: `~/ailiance/scripts/kicad_sch/hybrid_pipeline.py`
+- Test: `~/ailiance/tests/kicad_sch/test_hybrid_pipeline.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/test_hybrid_pipeline.py
+# ~/ailiance/tests/kicad_sch/test_hybrid_pipeline.py
 import json
 import pytest
 from pathlib import Path
@@ -1108,7 +1108,7 @@ def test_run_cell_aggregates_rates_across_seeds(tmp_path, monkeypatch):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
 ```
 
 Expected: ModuleNotFoundError on `hybrid_pipeline`.
@@ -1116,7 +1116,7 @@ Expected: ModuleNotFoundError on `hybrid_pipeline`.
 - [ ] **Step 3: Write minimal implementation**
 
 ```python
-# ~/eu-kiki/scripts/kicad_sch/hybrid_pipeline.py
+# ~/ailiance/scripts/kicad_sch/hybrid_pipeline.py
 """Track-D orchestrator: 5 base models × 4 compilers = 20 hybrid pipelines.
 
 Exposes `run_cell()` for one (model, compiler, prompt) cell, and `run_all()`
@@ -1251,7 +1251,7 @@ def run_cell(
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
 ```
 
 Expected: 2 passed.
@@ -1259,7 +1259,7 @@ Expected: 2 passed.
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/hybrid_pipeline.py tests/kicad_sch/test_hybrid_pipeline.py
+cd ~/ailiance && git add scripts/kicad_sch/hybrid_pipeline.py tests/kicad_sch/test_hybrid_pipeline.py
 git commit -m "feat(trackd): add run_cell orchestrator
 
 Per (model, compiler, prompt) cell loop: build system
@@ -1273,8 +1273,8 @@ parse_ok/compile_ok rates."
 ## Task 8: `run_all` — full 5 × 4 grid loop
 
 **Files:**
-- Modify: `~/eu-kiki/scripts/kicad_sch/hybrid_pipeline.py` (append `run_all`)
-- Test: `~/eu-kiki/tests/kicad_sch/test_hybrid_pipeline.py` (append two tests)
+- Modify: `~/ailiance/scripts/kicad_sch/hybrid_pipeline.py` (append `run_all`)
+- Test: `~/ailiance/tests/kicad_sch/test_hybrid_pipeline.py` (append two tests)
 
 - [ ] **Step 1: Write the failing test**
 
@@ -1348,7 +1348,7 @@ def test_run_all_writes_summary_json(tmp_path, monkeypatch):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v -k run_all
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v -k run_all
 ```
 
 Expected: `AttributeError: module ... has no attribute 'run_all'`.
@@ -1434,7 +1434,7 @@ def run_all(
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
 ```
 
 Expected: 4 passed total.
@@ -1442,7 +1442,7 @@ Expected: 4 passed total.
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/hybrid_pipeline.py tests/kicad_sch/test_hybrid_pipeline.py
+cd ~/ailiance && git add scripts/kicad_sch/hybrid_pipeline.py tests/kicad_sch/test_hybrid_pipeline.py
 git commit -m "feat(trackd): add run-all grid orchestrator
 
 Loads each base model exactly once, reuses across all
@@ -1456,8 +1456,8 @@ parse_ok/compile_ok aggregates."
 ## Task 9: `__main__` CLI entry point
 
 **Files:**
-- Modify: `~/eu-kiki/scripts/kicad_sch/hybrid_pipeline.py` (append `main()` + guard)
-- Test: `~/eu-kiki/tests/kicad_sch/test_hybrid_pipeline.py` (append CLI test)
+- Modify: `~/ailiance/scripts/kicad_sch/hybrid_pipeline.py` (append `main()` + guard)
+- Test: `~/ailiance/tests/kicad_sch/test_hybrid_pipeline.py` (append CLI test)
 
 - [ ] **Step 1: Write the failing test**
 
@@ -1494,7 +1494,7 @@ def test_cli_smoke_mode_runs_one_cell(tmp_path, monkeypatch):
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py::test_cli_smoke_mode_runs_one_cell -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py::test_cli_smoke_mode_runs_one_cell -v
 ```
 
 Expected: `AttributeError: module ... has no attribute 'main'`.
@@ -1586,7 +1586,7 @@ if __name__ == "__main__":
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_hybrid_pipeline.py -v
 ```
 
 Expected: 5 passed.
@@ -1594,7 +1594,7 @@ Expected: 5 passed.
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/kicad_sch/hybrid_pipeline.py tests/kicad_sch/test_hybrid_pipeline.py
+cd ~/ailiance && git add scripts/kicad_sch/hybrid_pipeline.py tests/kicad_sch/test_hybrid_pipeline.py
 git commit -m "feat(trackd): add CLI with smoke and full modes
 
 smoke = qwen36 x skidl x 1 prompt x 1 seed (1 cell).
@@ -1608,13 +1608,13 @@ to preserve cross-run comparability."
 ## Task 10: Shell wrapper `run_track_d.sh`
 
 **Files:**
-- Create: `~/eu-kiki/scripts/run_track_d.sh`
-- Test: `~/eu-kiki/tests/kicad_sch/test_run_track_d_sh.py`
+- Create: `~/ailiance/scripts/run_track_d.sh`
+- Test: `~/ailiance/tests/kicad_sch/test_run_track_d_sh.py`
 
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# ~/eu-kiki/tests/kicad_sch/test_run_track_d_sh.py
+# ~/ailiance/tests/kicad_sch/test_run_track_d_sh.py
 import os
 import subprocess
 from pathlib import Path
@@ -1648,14 +1648,14 @@ def test_script_rejects_unknown_mode():
 - [ ] **Step 2: Run test to verify it fails**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_run_track_d_sh.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_run_track_d_sh.py -v
 ```
 
 Expected: 3 failed (script missing).
 
 - [ ] **Step 3: Write minimal implementation**
 
-Create `~/eu-kiki/scripts/run_track_d.sh`:
+Create `~/ailiance/scripts/run_track_d.sh`:
 
 ```bash
 #!/usr/bin/env bash
@@ -1671,7 +1671,7 @@ Usage: run_track_d.sh <mode>
   smoke   1 cell: qwen36 base x skidl compiler x 1 prompt x 1 seed.
   full    Full grid: 5 base models x 4 compilers x 20 prompts x 5 seeds.
 
-Output goes to ~/eu-kiki/output/track-d/<timestamp>/.
+Output goes to ~/ailiance/output/track-d/<timestamp>/.
 USAGE
 }
 
@@ -1687,7 +1687,7 @@ case "$MODE" in
 esac
 
 TS=$(date +%Y-%m-%dT%H-%M-%S)
-ROOT="${HOME}/eu-kiki"
+ROOT="${HOME}/ailiance"
 OUT="${ROOT}/output/track-d/${TS}"
 mkdir -p "${OUT}/artefacts"
 
@@ -1704,13 +1704,13 @@ echo "Track-D ${MODE} run complete: ${OUT}"
 Then make it executable:
 
 ```bash
-chmod +x ~/eu-kiki/scripts/run_track_d.sh
+chmod +x ~/ailiance/scripts/run_track_d.sh
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
 
 ```bash
-cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_run_track_d_sh.py -v
+cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_run_track_d_sh.py -v
 ```
 
 Expected: 3 passed.
@@ -1718,7 +1718,7 @@ Expected: 3 passed.
 - [ ] **Step 5: Commit**
 
 ```bash
-cd ~/eu-kiki && git add scripts/run_track_d.sh tests/kicad_sch/test_run_track_d_sh.py
+cd ~/ailiance && git add scripts/run_track_d.sh tests/kicad_sch/test_run_track_d_sh.py
 git update-index --chmod=+x scripts/run_track_d.sh
 git commit -m "feat(trackd): add run-track-d shell wrapper
 
@@ -1738,15 +1738,15 @@ This task has no test file — it is an integration smoke against the *real* MLX
 - [ ] **Step 1: Run smoke**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && bash scripts/run_track_d.sh smoke'
+ssh studio 'cd ~/ailiance && bash scripts/run_track_d.sh smoke'
 ```
 
-Expected output last line: `Track-D smoke run complete: /Users/clems/eu-kiki/output/track-d/2026-05-11T...`.
+Expected output last line: `Track-D smoke run complete: /Users/clems/ailiance/output/track-d/2026-05-11T...`.
 
 - [ ] **Step 2: Inspect audit log**
 
 ```bash
-ssh studio 'jq -c . ~/eu-kiki/output/track-d/$(ls -t ~/eu-kiki/output/track-d/ | head -1)/audit.ndjson'
+ssh studio 'jq -c . ~/ailiance/output/track-d/$(ls -t ~/ailiance/output/track-d/ | head -1)/audit.ndjson'
 ```
 
 Expected: at least 3 NDJSON lines — one `run_start`, one or more `model_loaded` + `generation`, one `run_end`. Every `generation` line has fields `base_model_key`, `compiler`, `seed`, `sample_idx`, `dsl_parse_ok`, `compile_ok`.
@@ -1754,19 +1754,19 @@ Expected: at least 3 NDJSON lines — one `run_start`, one or more `model_loaded
 - [ ] **Step 3: Inspect summary JSON**
 
 ```bash
-ssh studio 'jq . ~/eu-kiki/output/track-d/$(ls -t ~/eu-kiki/output/track-d/ | head -1)/summary.json'
+ssh studio 'jq . ~/ailiance/output/track-d/$(ls -t ~/ailiance/output/track-d/ | head -1)/summary.json'
 ```
 
 Expected: `cells` array with one entry containing `base_model_key: "qwen36"`, `compiler: "skidl"`, `n_attempts: 1`, and numeric rate fields.
 
 - [ ] **Step 4: Record findings**
 
-Append a short note to `~/electron-bench/docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md` under a new `## Track D smoke results` section: timestamp, model load time, parse/compile rates observed, any tool that short-circuited because of Pre-Task 0 install gaps.
+Append a short note to `~/ailiance-bench/docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md` under a new `## Track D smoke results` section: timestamp, model load time, parse/compile rates observed, any tool that short-circuited because of Pre-Task 0 install gaps.
 
-- [ ] **Step 5: Commit doc note (in `electron-bench` repo)**
+- [ ] **Step 5: Commit doc note (in `ailiance-bench` repo)**
 
 ```bash
-cd ~/electron-bench && git add docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md
+cd ~/ailiance-bench && git add docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md
 git commit -m "docs(trackd): record live smoke results
 
 First end-to-end smoke of the hybrid pipeline against

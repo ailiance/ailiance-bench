@@ -53,7 +53,7 @@ GET https://api.stackexchange.com/2.3/search/advanced
     &filter=!9_bDDxJY5
 ```
 
-Réponses cachées dans `~/eu-kiki-data/se_attribution_cache.json` (244 KB, idempotent par hash de requête).
+Réponses cachées dans `~/ailiance-data/se_attribution_cache.json` (244 KB, idempotent par hash de requête).
 
 ### Étape 3 — Confirmation via body
 
@@ -135,8 +135,8 @@ HF=/Users/electron/mlx-stack/.venv/bin/hf
 $HF download electron-rare/mascarade-kicad-dataset --repo-type dataset
 
 python3 ~/scripts/se_attribution/finalize_enriched.py
-# Sortie : ~/eu-kiki-data/kicad_chat_enriched_poc.jsonl
-#          ~/eu-kiki-data/kicad_poc_stats.json (clé "finalize_enrichment")
+# Sortie : ~/ailiance-data/kicad_chat_enriched_poc.jsonl
+#          ~/ailiance-data/kicad_poc_stats.json (clé "finalize_enrichment")
 ```
 
 ## Artefacts
@@ -144,8 +144,8 @@ python3 ~/scripts/se_attribution/finalize_enriched.py
 - Script POC : `~/scripts/se_attribution/poc_kicad.py`
 - Script finalize (marqueurs not_found) : `~/scripts/se_attribution/finalize_enriched.py`
 - Script audit power/dsp/emc (en attente API key) : `~/scripts/se_attribution/audit_remaining.py`
-- Cache API : `~/eu-kiki-data/se_attribution_cache.json` (244 KB, idempotent)
-- Stats : `~/eu-kiki-data/kicad_poc_stats.json`
+- Cache API : `~/ailiance-data/se_attribution_cache.json` (244 KB, idempotent)
+- Stats : `~/ailiance-data/kicad_poc_stats.json`
 - JSONL enrichi uploadé : `kicad_chat.jsonl` @ `electron-rare/mascarade-kicad-dataset`
 
 ## Audit log HF

@@ -305,7 +305,7 @@ def main() -> int:
             "timestamp": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "data_path": str(Path(os.environ.get(
                 "KICAD_SCH_EXT_PATH",
-                HOME / "eu-kiki-data" / "kicad-sch-extract" / "valid.jsonl",
+                HOME / "ailiance-data" / "kicad-sch-extract" / "valid.jsonl",
             ))),
             "n_samples": n_samples,
             "max_tokens": args.max_tokens,

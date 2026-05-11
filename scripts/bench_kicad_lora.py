@@ -22,7 +22,7 @@ Usage :
   python3 ~/scripts/bench_kicad_lora.py --dry-run
 
 Env :
-  EUKIKI_DATA_DIR   : default ~/eu-kiki-data/hf-traced
+  EUKIKI_DATA_DIR   : default ~/ailiance-data/hf-traced
   BENCH_RESULTS_DIR : default ~/bench-results
   KICAD_MAX_TOKENS  : override max tokens (per-dataset autrement)
 """
@@ -72,7 +72,7 @@ OUT_MD = BENCH_DIR / "kicad_functional_phase1_lora.md"
 #   - adapter local trouve dans ~/lora-adapters/<name>/(final|phase4_full)/
 #
 # Inventory au 2026-05-11 : 3 adapters locaux ciblent
-# lmstudio-community/gemma-4-E4B-it-MLX-4bit (alias 'gemma-e4b-eu-kiki-base'
+# lmstudio-community/gemma-4-E4B-it-MLX-4bit (alias 'gemma-e4b-ailiance-base'
 # dans le bench base).
 # --------------------------------------------------------------------------- #
 

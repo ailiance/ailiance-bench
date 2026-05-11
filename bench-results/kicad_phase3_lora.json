@@ -1,7 +1,7 @@
 {
   "metadata": {
     "timestamp": "2026-05-11 04:49:30",
-    "data_path": "/Users/electron/eu-kiki-data/kicad-sch-extract/valid.jsonl",
+    "data_path": "/Users/electron/ailiance-data/kicad-sch-extract/valid.jsonl",
     "n_samples": 6,
     "max_tokens": 2048,
     "models": [

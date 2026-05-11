@@ -104,6 +104,6 @@
     "models_added_this_session": 4,
     "tunnels_created": ["electron-server:8502 -> macm1:8502", "electron-server:8003 -> kxkm-ai:18889"],
     "code_commits": ["L-electron-Rare/ailiance@adb9d77 (eval framework path fix)", "L-electron-Rare/ailiance@2536efb (R2 ALIAS_MODEL_REWRITES + 4 new aliases)"],
-    "infra_changes": ["systemd override drop-in /etc/systemd/system/eu-kiki-gateway.service.d/override.conf adds :8003 + 8502:localhost", "Studio EuroLLM rebound 0.0.0.0 (was 127.0.0.1 after manual restart)"]
+    "infra_changes": ["systemd override drop-in /etc/systemd/system/ailiance-gateway.service.d/override.conf adds :8003 + 8502:localhost", "Studio EuroLLM rebound 0.0.0.0 (was 127.0.0.1 after manual restart)"]
   }
 }

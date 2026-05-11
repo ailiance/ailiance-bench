@@ -1,7 +1,7 @@
 {
   "metadata": {
     "timestamp": "2026-05-10 23:42:32",
-    "data_dir": "/Users/electron/eu-kiki-data/hf-traced",
+    "data_dir": "/Users/electron/ailiance-data/hf-traced",
     "n_samples": 20,
     "max_tokens_override": null,
     "gen_params": {
@@ -17,7 +17,7 @@
     },
     "models": [
       {
-        "nickname": "gemma-e4b-eu-kiki-base",
+        "nickname": "gemma-e4b-ailiance-base",
         "hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit"
       },
       {
@@ -52,7 +52,7 @@
     ]
   },
   "bench": {
-    "gemma-e4b-eu-kiki-base": {
+    "gemma-e4b-ailiance-base": {
       "kicad-dsl": {
         "n_samples": 20,
         "parse_ok_rate": 0.0,

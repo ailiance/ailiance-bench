@@ -1,6 +1,6 @@
 [
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "chat-fr",
     "ppl": 115.536,
     "stderr_ppl": 4.472,
@@ -10,7 +10,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "cpp",
     "ppl": 23.707,
     "stderr_ppl": 0.785,
@@ -20,7 +20,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "docker-devops",
     "ppl": 12.843,
     "stderr_ppl": 0.381,
@@ -30,7 +30,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "embedded",
     "ppl": 198.964,
     "stderr_ppl": 8.318,
@@ -40,7 +40,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "emc-dsp-power",
     "ppl": 170.164,
     "stderr_ppl": 6.647,
@@ -50,7 +50,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "freecad",
     "ppl": 21.927,
     "stderr_ppl": 0.733,
@@ -60,7 +60,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "html-css",
     "ppl": 16.135,
     "stderr_ppl": 0.544,
@@ -70,7 +70,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "iot",
     "ppl": 175.163,
     "stderr_ppl": 7.299,
@@ -80,7 +80,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "kicad-dsl",
     "ppl": 11.012,
     "stderr_ppl": 0.326,
@@ -90,7 +90,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "kicad-pcb",
     "ppl": 5.444,
     "stderr_ppl": 0.146,
@@ -100,7 +100,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "llm-ops",
     "ppl": 41.154,
     "stderr_ppl": 1.653,
@@ -110,7 +110,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "llm-orch",
     "ppl": 29.509,
     "stderr_ppl": 1.1,
@@ -120,7 +120,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "lua-upy",
     "ppl": 24.219,
     "stderr_ppl": 0.8,
@@ -130,7 +130,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "math-gsm8k",
     "ppl": 22.11,
     "stderr_ppl": 0.755,
@@ -140,7 +140,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "math-reasoning",
     "ppl": 9.54,
     "stderr_ppl": 0.278,
@@ -150,7 +150,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "ml-training",
     "ppl": 20.931,
     "stderr_ppl": 0.685,
@@ -160,7 +160,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "multilingual-eu",
     "ppl": 196.981,
     "stderr_ppl": 8.079,
@@ -170,7 +170,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "music-audio",
     "ppl": 18.228,
     "stderr_ppl": 0.633,
@@ -180,7 +180,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "platformio",
     "ppl": 15.847,
     "stderr_ppl": 0.558,
@@ -190,7 +190,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "python",
     "ppl": 12.42,
     "stderr_ppl": 0.371,
@@ -200,7 +200,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "rust",
     "ppl": 12.164,
     "stderr_ppl": 0.359,
@@ -210,7 +210,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "rust-embedded",
     "ppl": 20.953,
     "stderr_ppl": 0.68,
@@ -220,7 +220,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "security-fenrir",
     "ppl": 98.283,
     "stderr_ppl": 3.455,
@@ -230,7 +230,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "shell",
     "ppl": 373.047,
     "stderr_ppl": 17.049,
@@ -240,7 +240,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "spice-sim",
     "ppl": 33.623,
     "stderr_ppl": 1.158,
@@ -250,7 +250,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "sql",
     "ppl": 19.773,
     "stderr_ppl": 0.717,
@@ -260,7 +260,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "traduction-tech",
     "ppl": 334.512,
     "stderr_ppl": 15.07,
@@ -270,7 +270,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "typescript",
     "ppl": 11.784,
     "stderr_ppl": 0.344,
@@ -280,7 +280,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "web-backend",
     "ppl": 16.024,
     "stderr_ppl": 0.544,
@@ -290,7 +290,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "web-frontend",
     "ppl": 14.368,
     "stderr_ppl": 0.484,
@@ -300,7 +300,7 @@
     "source": "31_domains_baseline.json"
   },
   {
-    "model": "gemma-e4b-eu-kiki-base",
+    "model": "gemma-e4b-ailiance-base",
     "domain": "yaml-json",
     "ppl": 17.634,
     "stderr_ppl": 0.6,

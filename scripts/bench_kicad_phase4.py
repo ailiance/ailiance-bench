@@ -424,7 +424,7 @@ def main() -> int:
             log(f"  WARN: kicad-cli not found at {KICAD_CLI}")
         else:
             log(f"  OK : kicad-cli at {KICAD_CLI} (v{detect_kicad_version()})")
-        ref = HOME / "eu-kiki-data" / "kicad-sch-refs" / "spi_bus_4devices.kicad_sch"
+        ref = HOME / "ailiance-data" / "kicad-sch-refs" / "spi_bus_4devices.kicad_sch"
         if ref.exists():
             log(f"  testing ERC on reference {ref.name} ...")
             txt = ref.read_text()

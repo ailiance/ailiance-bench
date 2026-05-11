@@ -26,7 +26,7 @@ Usage :
   python3 ~/scripts/bench_kicad_functional.py --dry-run
 
 Env :
-  EUKIKI_DATA_DIR     : default ~/eu-kiki-data/hf-traced
+  EUKIKI_DATA_DIR     : default ~/ailiance-data/hf-traced
   BENCH_RESULTS_DIR   : default ~/bench-results
   MLX_VENV_BIN        : default ~/mlx-stack/.venv/bin
   KICAD_MAX_TOKENS    : override max tokens (default per-dataset)
@@ -52,7 +52,7 @@ from typing import Any
 # --------------------------------------------------------------------------- #
 
 HOME = Path.home()
-DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "eu-kiki-data" / "hf-traced"))
+DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "ailiance-data" / "hf-traced"))
 BENCH_DIR = Path(os.environ.get("BENCH_RESULTS_DIR", HOME / "bench-results"))
 PYBIN = Path(os.environ.get("MLX_VENV_BIN", HOME / "mlx-stack" / ".venv" / "bin"))
 
@@ -68,7 +68,7 @@ HEAVY_NICKS = {"granite-4.1-30b"}
 
 # Memes nicknames que bench_31_domains_base.py (reutilise tel quel).
 MODELS: list[tuple[str, str]] = [
-    ("gemma-e4b-eu-kiki-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit"),
+    ("gemma-e4b-ailiance-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit"),
     ("gemma-e2b",                "lmstudio-community/gemma-4-E2B-it-MLX-4bit"),
     ("ministral-3b",             "mlx-community/Ministral-3-3B-Instruct-2512-4bit"),
     ("ministral-3-8b",           "mlx-community/Ministral-3-8B-Instruct-2512-4bit"),

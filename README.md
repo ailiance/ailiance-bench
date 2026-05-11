@@ -1,15 +1,15 @@
-# electron-bench
+# ailiance-bench
 
-Benchmarking MLX pour modèles open-source et fine-tunes electron-rare sur Mac Apple Silicon.
+Benchmarking MLX pour modèles open-source et fine-tunes Ailiance sur Mac Apple Silicon.
 Évaluation via perplexité sur 5 niches embarquées (spice, stm32, kicad, embedded_iot, emc_power).
 
 ## Modèles benchmarkés
 
 | Modèle | Provider | Notes |
 |--------|----------|-------|
-| `eu-kiki` | electron-rare | Fine-tune custom ; 52% gsm-S / 78.5% arc / 58% mmluPro |
-| `mascarade` | electron-rare | Fine-tune custom |
-| `base` | electron-rare | Gemma 3 4B vanilla (référence pré-fine-tune) |
+| `ailiance` | Ailiance | Fine-tune custom ; 52% gsm-S / 78.5% arc / 58% mmluPro |
+| `mascarade` | Ailiance | Fine-tune custom |
+| `base` | Ailiance | Gemma 3 4B vanilla (référence pré-fine-tune) |
 | `gemma3-4b` | Google | Gemma 3 4B |
 | `ministral-3b` | Mistral | Ministral 3B |
 | `ministral-3-8b` | Mistral | Ministral 3-8B |
@@ -36,8 +36,8 @@ Scores complets : voir [`bench-results/BENCH_TABLE.md`](bench-results/BENCH_TABL
 ## Reproduction sur autre Mac
 
 ```bash
-git clone https://github.com/electron-rare/electron-bench.git
-cd electron-bench
+git clone https://github.com/ailiance/ailiance-bench.git
+cd ailiance-bench
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -U uv
 uv pip install -r requirements.txt
@@ -79,7 +79,7 @@ MIT (code). Résultats publiés tels quels ; modèles sous licence d'origine.
 `scripts/bench_gateway.py` — stdlib-only OpenAI-compat client to bench any
 `/v1/chat/completions` endpoint. Configurable via `--endpoint`, `--models`,
 `--rounds`, `--max-tokens`, optional `--out` JSON dump. Used to characterize
-the eu-kiki/ailiance gateway (`electron-server:9300`) and direct workers
+the ailiance gateway (`electron-server:9300`) and direct workers
 (Tower `:9304`, kxkm-ai tunnel `:8002`).
 
 ```bash
@@ -89,7 +89,7 @@ python3 scripts/bench_gateway.py --rounds 3 --max-tokens 64
 # Bench a worker directly
 python3 scripts/bench_gateway.py \
   --endpoint http://tower:9304/v1/chat/completions \
-  --models eu-kiki-gemma --rounds 3
+  --models ailiance-gemma --rounds 3
 ```
 
 Results: `bench-results/gateway-*.json` (per-route p50 latency, tps, errors).

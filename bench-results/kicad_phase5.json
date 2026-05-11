@@ -6,7 +6,7 @@
     "kicad_version": "10.0.2",
     "phase4_path": "/Users/electron/bench-results/kicad_phase4.json",
     "phase2_path": "/Users/electron/bench-results/kicad_phase2.json",
-    "expected_dataset": "/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl",
+    "expected_dataset": "/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl",
     "score_weights": {
       "parse_ok": 0.3,
       "no_extra_errors": 0.4,
@@ -15,7 +15,7 @@
       "warn_delta_cap": 10
     },
     "models": [
-      "gemma-e4b-eu-kiki-base",
+      "gemma-e4b-ailiance-base",
       "gemma-e2b",
       "ministral-3b",
       "ministral-3-8b",
@@ -52,7 +52,7 @@
     }
   },
   "bench": {
-    "gemma-e4b-eu-kiki-base": {
+    "gemma-e4b-ailiance-base": {
       "n_samples": 5,
       "composite_v2_avg": 0.06,
       "composite_v1_avg": 0.06,

@@ -6,7 +6,7 @@
     "kicad_version": "10.0.2",
     "phase4_path": "/Users/electron/bench-results/kicad_phase4_lora.json",
     "phase2_path": "/Users/electron/bench-results/kicad_phase2_lora.json",
-    "expected_dataset": "/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl",
+    "expected_dataset": "/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl",
     "score_weights": {
       "parse_ok": 0.3,
       "no_extra_errors": 0.4,

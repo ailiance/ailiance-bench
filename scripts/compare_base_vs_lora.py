@@ -17,7 +17,7 @@ Phases couvertes :
        (`composite_v2_avg`)
 
 Hypothese : les 3 adapters LoRA sont sur la meme base gemma-4-E4B
-(`gemma-e4b-eu-kiki-base`), donc le baseline de comparaison pour chacun
+(`gemma-e4b-ailiance-base`), donc le baseline de comparaison pour chacun
 est ce modele unique.
 
 Output :
@@ -46,11 +46,11 @@ HOME = Path.home()
 BENCH_DIR = Path(os.environ.get("BENCH_RESULTS_DIR", HOME / "bench-results"))
 LOG_DIR = HOME / "logs"
 
-BASE_REF_NICK = "gemma-e4b-eu-kiki-base"  # le baseline de comparaison
+BASE_REF_NICK = "gemma-e4b-ailiance-base"  # le baseline de comparaison
 
 # Adapters LoRA et alias court pour les colonnes
 LORA_NICKS = [
-    ("gemma-e4b-eukiki-final", "+eu-kiki"),
+    ("gemma-e4b-eukiki-final", "+ailiance"),
     ("gemma-e4b-mascarade-final", "+mascarade"),
     ("gemma-e4b-aggro-test", "+aggro"),
     ("gemma-e4b-kicad9plus-final", "+kicad9plus"),
@@ -167,7 +167,7 @@ def build_matrix() -> dict:
            "datasets": {
              "kicad-dsl": {
                "base": 0.42,
-               "lora": {"+eu-kiki": 0.85, "+mascarade": 0.50, "+aggro": 0.43},
+               "lora": {"+ailiance": 0.85, "+mascarade": 0.50, "+aggro": 0.43},
              }, ...
            }
          }, ...

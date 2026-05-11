@@ -23,14 +23,14 @@ Portability:
     so it works on any machine. Override via:
 
       KIKI_TUNNER_DIR        — KIKI-Mac_tunner repo root  (default ~/KIKI-Mac_tunner)
-      EUKIKI_DATA_DIR        — hf-traced datasets dir     (default ~/eu-kiki/data/hf-traced)
-      EUKIKI_CURRICULUM_DIR  — LoRA curriculum dir        (default $KIKI_TUNNER_DIR/output/eu-kiki-v2-curriculum)
-      BENCH_RESULTS_DIR      — JSON/MD output dir         (default ~/electron-bench/bench-results)
+      EUKIKI_DATA_DIR        — hf-traced datasets dir     (default ~/ailiance/data/hf-traced)
+      EUKIKI_CURRICULUM_DIR  — LoRA curriculum dir        (default $KIKI_TUNNER_DIR/output/ailiance-v2-curriculum)
+      BENCH_RESULTS_DIR      — JSON/MD output dir         (default ~/ailiance-bench/bench-results)
       QWEN_BF16_MODEL        — Qwen36 BF16 model path     (default $KIKI_TUNNER_DIR/models/Qwen3.6-35B-A3B-MLX-BF16)
       MEDIUM_BF16_MODEL      — Medium35 BF16 model path   (default $KIKI_TUNNER_DIR/models/Mistral-Medium-3.5-128B-BF16)
 
     Example (macM1 with electron home):
-      EUKIKI_DATA_DIR=~/eu-kiki-data/hf-traced python scripts/bench_eu_kiki_v2.py --ppl-only
+      EUKIKI_DATA_DIR=~/ailiance-data/hf-traced python scripts/bench_eu_kiki_v2.py --ppl-only
 """
 
 from __future__ import annotations
@@ -52,11 +52,11 @@ from mlx_lm import load, generate
 
 HOME = Path.home()
 TUNNER = Path(os.environ.get("KIKI_TUNNER_DIR", HOME / "KIKI-Mac_tunner"))
-DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "eu-kiki" / "data" / "hf-traced"))
+DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "ailiance" / "data" / "hf-traced"))
 CURRICULUM_DIR = Path(os.environ.get(
-    "EUKIKI_CURRICULUM_DIR", TUNNER / "output" / "eu-kiki-v2-curriculum"))
+    "EUKIKI_CURRICULUM_DIR", TUNNER / "output" / "ailiance-v2-curriculum"))
 RESULTS_DIR = Path(os.environ.get(
-    "BENCH_RESULTS_DIR", HOME / "electron-bench" / "bench-results"))
+    "BENCH_RESULTS_DIR", HOME / "ailiance-bench" / "bench-results"))
 
 QWEN_MODEL = os.environ.get(
     "QWEN_BF16_MODEL", str(TUNNER / "models" / "Qwen3.6-35B-A3B-MLX-BF16"))
@@ -625,8 +625,8 @@ def main():
 
     # ── SAVE ──────────────────────────────────────────────────────────────────
     ts = time.strftime("%Y%m%d-%H%M")
-    json_path = RESULTS_DIR / f"eu-kiki-v2-bench-{ts}.json"
-    md_path = RESULTS_DIR / f"eu-kiki-v2-bench-{ts}.md"
+    json_path = RESULTS_DIR / f"ailiance-v2-bench-{ts}.json"
+    md_path = RESULTS_DIR / f"ailiance-v2-bench-{ts}.md"
 
     with open(json_path, "w") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)

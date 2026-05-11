@@ -21,16 +21,16 @@ Produce 6 LoRA adapters that close the `parse_ok_kicad_rate = 0` gap on `.kicad_
 
 ## Dependencies
 
-- **Foundation track:** `~/eu-kiki/scripts/kicad_sch/manifest.py` exposing `DatasetManifest(split: str)` with `.append(row: dict) -> None` and `.flush() -> Path` (writes CSV with the 8 Annex IV columns).
-- **Foundation track:** `~/eu-kiki/scripts/kicad_sch/audit_log.py` exposing `AuditLogger(run_id: str)` with `.event(kind: str, **fields) -> None` (NDJSON append).
+- **Foundation track:** `~/ailiance/scripts/kicad_sch/manifest.py` exposing `DatasetManifest(split: str)` with `.append(row: dict) -> None` and `.flush() -> Path` (writes CSV with the 8 Annex IV columns).
+- **Foundation track:** `~/ailiance/scripts/kicad_sch/audit_log.py` exposing `AuditLogger(run_id: str)` with `.event(kind: str, **fields) -> None` (NDJSON append).
 - **Eval N3 track:** smoke `parse_ok` scorer reused after each train run (`eval_smoke_one_lora.sh`).
 - Tools: `gh` CLI ≥ 2.40, `kicad-cli 10.0.2`, `mlx_lm`, `uv`, Python 3.14.
-- D2 compilers: `skidl`, `atopile` (`ato` CLI), `circuit-synth` — installed in `~/eu-kiki/.venv-d2/`.
+- D2 compilers: `skidl`, `atopile` (`ato` CLI), `circuit-synth` — installed in `~/ailiance/.venv-d2/`.
 
 ## File Structure
 
 ```
-~/eu-kiki/
+~/ailiance/
 ├── scripts/kicad_sch/
 │   ├── manifest.py                  # (Foundation)
 │   ├── audit_log.py                 # (Foundation)
@@ -50,7 +50,7 @@ Produce 6 LoRA adapters that close the `parse_ok_kicad_rate = 0` gap on `.kicad_
 │   └── test_train_lora.py           # task C9
 └── adapters/v3/                     # task C10 outputs
 
-~/eu-kiki-data/
+~/ailiance-data/
 ├── kicad-sch-scraped/               # D1
 ├── kicad-sch-scraped-stripped/      # D1 post-strip
 ├── kicad-sch-synth/                 # D2
@@ -59,16 +59,16 @@ Produce 6 LoRA adapters that close the `parse_ok_kicad_rate = 0` gap on `.kicad_
 └── kicad-sch-mixed-stripped/        # D3 post-strip
 
 ~/KIKI-Mac_tunner/configs/
-├── eu-kiki-v3-qwen36-kicad-sch-D1.yaml      # task C8 (M2)
-├── eu-kiki-v3-qwen36-kicad-sch-D2.yaml      # task C8
-├── eu-kiki-v3-qwen36-kicad-sch-D3.yaml      # task C8
-├── eu-kiki-v3-gemma4-kicad-sch-D1.yaml      # task C8
-├── eu-kiki-v3-gemma4-kicad-sch-D2.yaml      # task C8
-├── eu-kiki-v3-gemma4-kicad-sch-D3.yaml      # task C8
-├── eu-kiki-v3-devstral-kicad-sch-{D1,D2,D3}.yaml    # task C11 (M3, stubs)
-├── eu-kiki-v3-apertus-kicad-sch-{D1,D2,D3}.yaml     # task C11 (M4)
-├── eu-kiki-v3-eurollm-kicad-sch-{D1,D2,D3}.yaml     # task C11 (M4)
-└── eu-kiki-v3-medium35-kicad-sch-{D1,D2,D3}.yaml    # task C11 (M4)
+├── ailiance-v3-qwen36-kicad-sch-D1.yaml      # task C8 (M2)
+├── ailiance-v3-qwen36-kicad-sch-D2.yaml      # task C8
+├── ailiance-v3-qwen36-kicad-sch-D3.yaml      # task C8
+├── ailiance-v3-gemma4-kicad-sch-D1.yaml      # task C8
+├── ailiance-v3-gemma4-kicad-sch-D2.yaml      # task C8
+├── ailiance-v3-gemma4-kicad-sch-D3.yaml      # task C8
+├── ailiance-v3-devstral-kicad-sch-{D1,D2,D3}.yaml    # task C11 (M3, stubs)
+├── ailiance-v3-apertus-kicad-sch-{D1,D2,D3}.yaml     # task C11 (M4)
+├── ailiance-v3-eurollm-kicad-sch-{D1,D2,D3}.yaml     # task C11 (M4)
+└── ailiance-v3-medium35-kicad-sch-{D1,D2,D3}.yaml    # task C11 (M4)
 ```
 
 **Note on paths:** spec mentions `~/Projets/KIKI-Mac_tunner/configs/`; on Studio the actual root is `~/KIKI-Mac_tunner/configs/` (no `Projets/` prefix). All v2 configs live there; we follow existing convention.
@@ -77,7 +77,7 @@ Produce 6 LoRA adapters that close the `parse_ok_kicad_rate = 0` gap on `.kicad_
 
 ### C0 — Test scaffolding (≈ 3 min)
 
-**Files:** `~/eu-kiki/tests/kicad_sch/conftest.py`, `~/eu-kiki/tests/kicad_sch/__init__.py`.
+**Files:** `~/ailiance/tests/kicad_sch/conftest.py`, `~/ailiance/tests/kicad_sch/__init__.py`.
 
 Add fixtures for minimal valid `.kicad_sch` v10 strings (with and without `lib_symbols`) and a `kicad_cli_available` skip-marker fixture (checks `which kicad-cli`).
 
@@ -117,7 +117,7 @@ def kicad_cli_available():
 
 ### C1 — strip_lib_symbols (TDD red) (≈ 4 min)
 
-**File:** `~/eu-kiki/tests/kicad_sch/test_strip_lib_symbols.py`.
+**File:** `~/ailiance/tests/kicad_sch/test_strip_lib_symbols.py`.
 
 Write failing tests before any production code exists:
 
@@ -165,7 +165,7 @@ def test_strip_idempotent_when_no_lib_symbols(tmp_path):
 
 ### C2 — strip_lib_symbols (TDD green) (≈ 5 min)
 
-**File:** `~/eu-kiki/scripts/kicad_sch/strip_lib_symbols.py`.
+**File:** `~/ailiance/scripts/kicad_sch/strip_lib_symbols.py`.
 
 ```python
 """Strip (lib_symbols ...) block from .kicad_sch.
@@ -238,7 +238,7 @@ if __name__ == "__main__":
 
 ### C3 — scrape_d1 (TDD red) (≈ 5 min)
 
-**File:** `~/eu-kiki/tests/kicad_sch/test_scrape_d1.py`.
+**File:** `~/ailiance/tests/kicad_sch/test_scrape_d1.py`.
 
 ```python
 from pathlib import Path
@@ -294,17 +294,17 @@ def test_download_and_normalize_writes_dedup(tmp_path, monkeypatch):
 
 ### C4 — scrape_d1 (TDD green) (≈ 10 min)
 
-**File:** `~/eu-kiki/scripts/kicad_sch/scrape_d1.py`.
+**File:** `~/ailiance/scripts/kicad_sch/scrape_d1.py`.
 
 Reuses the license-regex + clone pattern from
-`~/eu-kiki/scripts/scrape_kicad_schematics.py` but discovers files via
+`~/ailiance/scripts/scrape_kicad_schematics.py` but discovers files via
 `gh search code extension:kicad_sch` for breadth instead of a repo
 whitelist.
 
 ```python
 """D1: scrape .kicad_sch from GitHub, license-filter, normalize, dedupe.
 
-Output: hash-named files in ~/eu-kiki-data/kicad-sch-scraped/ + manifest
+Output: hash-named files in ~/ailiance-data/kicad-sch-scraped/ + manifest
 (D1 split) + NDJSON audit log.
 """
 from __future__ import annotations
@@ -423,7 +423,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--out-dir",
         type=Path,
-        default=Path.home() / "eu-kiki-data/kicad-sch-scraped",
+        default=Path.home() / "ailiance-data/kicad-sch-scraped",
     )
     a = p.parse_args(argv)
     allow = set(a.license_allowlist.split(","))
@@ -486,7 +486,7 @@ if __name__ == "__main__":
 
 ### C5 — synth_d2 (TDD red) (≈ 5 min)
 
-**File:** `~/eu-kiki/tests/kicad_sch/test_synth_d2.py`.
+**File:** `~/ailiance/tests/kicad_sch/test_synth_d2.py`.
 
 ```python
 from pathlib import Path
@@ -561,7 +561,7 @@ def test_synth_one_returns_none_when_erc_fails(tmp_path, monkeypatch):
 
 ### C6 — synth_d2 (TDD green) (≈ 12 min)
 
-**File:** `~/eu-kiki/scripts/kicad_sch/synth_d2.py`.
+**File:** `~/ailiance/scripts/kicad_sch/synth_d2.py`.
 
 Ships 10 templates (extension to 20-30 deferred to follow-up patch once
 the venv has all three compilers).
@@ -692,7 +692,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--out-dir",
         type=Path,
-        default=Path.home() / "eu-kiki-data/kicad-sch-synth",
+        default=Path.home() / "ailiance-data/kicad-sch-synth",
     )
     a = p.parse_args(argv)
     a.out_dir.mkdir(parents=True, exist_ok=True)
@@ -870,17 +870,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--d1",
         type=Path,
-        default=Path.home() / "eu-kiki-data/kicad-sch-scraped",
+        default=Path.home() / "ailiance-data/kicad-sch-scraped",
     )
     p.add_argument(
         "--d2",
         type=Path,
-        default=Path.home() / "eu-kiki-data/kicad-sch-synth",
+        default=Path.home() / "ailiance-data/kicad-sch-synth",
     )
     p.add_argument(
         "--d3",
         type=Path,
-        default=Path.home() / "eu-kiki-data/kicad-sch-mixed",
+        default=Path.home() / "ailiance-data/kicad-sch-mixed",
     )
     p.add_argument("--n-total", type=int, default=10000)
     p.add_argument("--seed", type=int, default=42)
@@ -907,15 +907,15 @@ if __name__ == "__main__":
 
 ### C8 — M2 YAML configs (6 files) (≈ 4 min)
 
-**Files:** `~/KIKI-Mac_tunner/configs/eu-kiki-v3-{qwen36,gemma4}-kicad-sch-{D1,D2,D3}.yaml`.
+**Files:** `~/KIKI-Mac_tunner/configs/ailiance-v3-{qwen36,gemma4}-kicad-sch-{D1,D2,D3}.yaml`.
 
 Template (qwen36 × D1):
 
 ```yaml
-# eu-kiki-v3-qwen36-kicad-sch-D1.yaml
+# ailiance-v3-qwen36-kicad-sch-D1.yaml
 # Track C - kicad-sch v10 LoRA, qwen36 on D1 scraped
 model: /Users/clems/KIKI-Mac_tunner/models/Qwen3.6-35B-A3B-8bit
-data: /Users/clems/eu-kiki-data/kicad-sch-scraped-stripped
+data: /Users/clems/ailiance-data/kicad-sch-scraped-stripped
 train: true
 fine_tune_type: lora
 optimizer: adamw
@@ -934,7 +934,7 @@ save_every: 250
 grad_accumulation_steps: 8
 max_seq_length: 8192
 grad_checkpoint: true
-adapter_path: /Users/clems/eu-kiki/adapters/v3/kicad-sch-qwen36-D1
+adapter_path: /Users/clems/ailiance/adapters/v3/kicad-sch-qwen36-D1
 seed: 42
 ```
 
@@ -946,8 +946,8 @@ For `gemma4` variants swap `model:` to
 
 **Verify:**
 ```bash
-ls ~/KIKI-Mac_tunner/configs/eu-kiki-v3-qwen36-kicad-sch-*.yaml \
-   ~/KIKI-Mac_tunner/configs/eu-kiki-v3-gemma4-kicad-sch-*.yaml \
+ls ~/KIKI-Mac_tunner/configs/ailiance-v3-qwen36-kicad-sch-*.yaml \
+   ~/KIKI-Mac_tunner/configs/ailiance-v3-gemma4-kicad-sch-*.yaml \
    | wc -l
 ```
 → 6.
@@ -1090,33 +1090,33 @@ Steps:
 
 1. Generate 50 D2 samples:
    ```bash
-   cd ~/eu-kiki
+   cd ~/ailiance
    uv run python -m kicad_sch.synth_d2 \
        --n-samples 50 --compilers skidl
    ```
 2. Strip:
    ```bash
    uv run python -m kicad_sch.strip_lib_symbols \
-       --input  ~/eu-kiki-data/kicad-sch-synth \
-       --output ~/eu-kiki-data/kicad-sch-synth-stripped
+       --input  ~/ailiance-data/kicad-sch-synth \
+       --output ~/ailiance-data/kicad-sch-synth-stripped
    ```
 3. Copy + patch config to a smoke variant with `iters: 100`,
    `save_every: 100`:
    ```bash
-   cp ~/KIKI-Mac_tunner/configs/eu-kiki-v3-qwen36-kicad-sch-D2.yaml \
-      ~/KIKI-Mac_tunner/configs/eu-kiki-v3-qwen36-kicad-sch-D2-smoke.yaml
+   cp ~/KIKI-Mac_tunner/configs/ailiance-v3-qwen36-kicad-sch-D2.yaml \
+      ~/KIKI-Mac_tunner/configs/ailiance-v3-qwen36-kicad-sch-D2-smoke.yaml
    ```
 4. Run:
    ```bash
    uv run python -m kicad_sch.train_lora \
-       --config ~/KIKI-Mac_tunner/configs/eu-kiki-v3-qwen36-kicad-sch-D2-smoke.yaml
+       --config ~/KIKI-Mac_tunner/configs/ailiance-v3-qwen36-kicad-sch-D2-smoke.yaml
    ```
 5. Verify adapter dir contains `adapters.safetensors` and
    `adapter_config.json`.
 6. Smoke-score via Eval N3 `eval_smoke_one_lora.sh` (delegated to Eval
    N3 plan); fail-stop if `parse_ok` < baseline.
 
-**Verify:** `test -f ~/eu-kiki/adapters/v3/kicad-sch-qwen36-D2/adapters.safetensors`.
+**Verify:** `test -f ~/ailiance/adapters/v3/kicad-sch-qwen36-D2/adapters.safetensors`.
 
 **Commit:** `chore(kicad-sch): smoke train log and audit ndjson`
 (audit logs only; no code change).
@@ -1125,7 +1125,7 @@ Steps:
 
 ### C11 — M3/M4 stub configs (12 files) (≈ 6 min)
 
-**Files:** `eu-kiki-v3-{devstral,apertus,eurollm,medium35}-kicad-sch-{D1,D2,D3}.yaml`.
+**Files:** `ailiance-v3-{devstral,apertus,eurollm,medium35}-kicad-sch-{D1,D2,D3}.yaml`.
 
 Each stub is a copy of the matching qwen36/gemma4 template with the
 `model:` path swapped:
@@ -1145,7 +1145,7 @@ Add header comment to each:
 **Verify:**
 ```bash
 grep -l "STATUS: M3/M4 stub" \
-  ~/KIKI-Mac_tunner/configs/eu-kiki-v3-*-kicad-sch-*.yaml | wc -l
+  ~/KIKI-Mac_tunner/configs/ailiance-v3-*-kicad-sch-*.yaml | wc -l
 ```
 → 12.
 
@@ -1155,18 +1155,18 @@ grep -l "STATUS: M3/M4 stub" \
 
 ### C12 — Full M2 launcher (DEFERRED execution) (≈ 4 min author)
 
-**File:** `~/eu-kiki/scripts/kicad_sch/run_m2_all.sh`.
+**File:** `~/ailiance/scripts/kicad_sch/run_m2_all.sh`.
 
 ```bash
 #!/usr/bin/env bash
 # Run all 6 M2 LoRA training jobs sequentially on Studio.
 # Owner kicks off manually after C10 smoke passes and F1 frees the GPU.
 set -euo pipefail
-cd "${HOME}/eu-kiki"
+cd "${HOME}/ailiance"
 for model in qwen36 gemma4; do
   for split in D1 D2 D3; do
-    cfg="${HOME}/KIKI-Mac_tunner/configs/eu-kiki-v3-${model}-kicad-sch-${split}.yaml"
-    log="${HOME}/KIKI-Mac_tunner/logs/eu-kiki-v3-${model}-kicad-sch-${split}-$(date +%Y%m%d-%H%M).log"
+    cfg="${HOME}/KIKI-Mac_tunner/configs/ailiance-v3-${model}-kicad-sch-${split}.yaml"
+    log="${HOME}/KIKI-Mac_tunner/logs/ailiance-v3-${model}-kicad-sch-${split}-$(date +%Y%m%d-%H%M).log"
     echo "[$(date -Iseconds)] start ${model} ${split}"
     uv run python -m kicad_sch.train_lora --config "${cfg}" \
         2>&1 | tee "${log}"
@@ -1178,7 +1178,7 @@ done
 `feedback_no_launch_kxkm_without_ask.md` (also applies to Studio
 compute contention with F1).
 
-**Verify:** `bash -n ~/eu-kiki/scripts/kicad_sch/run_m2_all.sh`.
+**Verify:** `bash -n ~/ailiance/scripts/kicad_sch/run_m2_all.sh`.
 
 **Commit:** `feat(kicad-sch): M2 6 run launcher script`
 
@@ -1188,17 +1188,17 @@ compute contention with F1).
 
 **Files:**
 
-- `~/eu-kiki/scripts/kicad_sch/README.md` — list 5 entry points
+- `~/ailiance/scripts/kicad_sch/README.md` — list 5 entry points
   (strip, scrape_d1, synth_d2, mix_d3, train_lora), CLI examples,
   dependency on Foundation + Eval N3.
-- `~/electron-bench/docs/superpowers/plans/2026-05-11-kicad-sch-track-c.md`
+- `~/ailiance-bench/docs/superpowers/plans/2026-05-11-kicad-sch-track-c.md`
   — flip `Status:` to `EXECUTED-PARTIAL` or `DONE` per actual
   progress.
 
-**Verify:** `head -20 ~/eu-kiki/scripts/kicad_sch/README.md` shows the
+**Verify:** `head -20 ~/ailiance/scripts/kicad_sch/README.md` shows the
 five commands.
 
-**Commit (electron-bench):** `docs(plans): close Track C plan kicad sch`
+**Commit (ailiance-bench):** `docs(plans): close Track C plan kicad sch`
 
 ---
 
@@ -1222,7 +1222,7 @@ five commands.
 - 6 v3 M2 configs present in `~/KIKI-Mac_tunner/configs/`.
 - 12 M3/M4 stubs present with the `STATUS: M3/M4 stub` header.
 - Smoke train (C10) produces `adapters.safetensors` and `parse_ok` ≥ baseline on 50 eval samples.
-- NDJSON audit logs present in `~/eu-kiki/output/audit/kicad-sch-2026-05-11/` for every run.
+- NDJSON audit logs present in `~/ailiance/output/audit/kicad-sch-2026-05-11/` for every run.
 
 ## Out-of-band notes for executor
 

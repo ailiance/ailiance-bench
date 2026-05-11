@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bench eu-kiki gateway via OpenAI-compatible API on :9300.
+"""Bench ailiance gateway via OpenAI-compatible API on :9300.
 
 Per model: N rounds, fixed prompt set, capture latency + token throughput.
 Marks broken backends as ERROR with first error message.

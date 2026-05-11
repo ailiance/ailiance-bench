@@ -34,8 +34,8 @@ import urllib.error
 HF_BIN = os.environ.get("HF", "/Users/electron/mlx-stack/.venv/bin/hf")
 ORG = "Ailiance-fr"
 UPSTREAM_ORG = "electron-rare"
-AUDIT_URL = "https://github.com/electron-rare/electron-bench/blob/main/docs/audit_kicad9plus.md"
-SCRIPTS_URL = "https://github.com/electron-rare/electron-bench/tree/main/scripts"
+AUDIT_URL = "https://github.com/ailiance/ailiance-bench/blob/main/docs/audit_kicad9plus.md"
+SCRIPTS_URL = "https://github.com/ailiance/ailiance-bench/tree/main/scripts"
 
 ALL_NAMES = [
     "kicad9plus-permissive",
@@ -643,14 +643,14 @@ ABOUT_AILIANCE = """## About Ailiance
 - 🔬 SPICE simulation, KiCad PCB / schematic, EDA workflows
 - 🇫🇷 French + English technical content
 
-Maintainer contact: `c.saillant@gmail.com` — see also the public bench/audit repo: [electron-bench](https://github.com/electron-rare/electron-bench)."""
+Maintainer contact: `c.saillant@gmail.com` — see also the public bench/audit repo: [ailiance-bench](https://github.com/ailiance/ailiance-bench)."""
 
 
 PROVENANCE_TEMPLATE = """## Provenance & upstream attribution
 
 This dataset is co-published with [`electron-rare/{name}`](https://huggingface.co/datasets/electron-rare/{name}) under the same **{license_display}** license. Original collection, curation, and pipeline tooling: **electron-rare** (upstream contributor). Production maintenance, EU AI Act packaging, and downstream support: **Ailiance** (this org).
 
-Audit log (legal attribution, EU AI Act July 2025 template alignment): see [`docs/audit_kicad9plus.md`](""" + AUDIT_URL + """) and the companion [`docs/audit_mascarade_se_attribution.md`](https://github.com/electron-rare/electron-bench/blob/main/docs/audit_mascarade_se_attribution.md) on GitHub."""
+Audit log (legal attribution, EU AI Act July 2025 template alignment): see [`docs/audit_kicad9plus.md`](""" + AUDIT_URL + """) and the companion [`docs/audit_mascarade_se_attribution.md`](https://github.com/ailiance/ailiance-bench/blob/main/docs/audit_mascarade_se_attribution.md) on GitHub."""
 
 
 RELATED_DATASETS = """## Related datasets
@@ -730,7 +730,7 @@ size_categories:
 
 **{spec.license_display}**. Données collectées et curées dans le cadre du projet **electron-rare**, packagées et maintenues par **Ailiance** pour déploiement production aligné EU AI Act.
 
-Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence : [electron-bench](https://github.com/electron-rare/electron-bench).
+Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence : [ailiance-bench](https://github.com/ailiance/ailiance-bench).
 
 Audit log: [`docs/audit_kicad9plus.md`]({AUDIT_URL})."""
 

@@ -23,7 +23,7 @@ Everything else (scrapers, training, eval) depends on these existing and being t
 ## Architecture
 
 ```
-~/electron-bench/                                # docs repo (electron-rare/electron-bench)
+~/ailiance-bench/                                # docs repo (ailiance/ailiance-bench)
   preregistrations/
     2026-05-11-kicad-sch-prereg.md               # H1/H2/H3 lock
   docs/superpowers/
@@ -32,7 +32,7 @@ Everything else (scrapers, training, eval) depends on these existing and being t
     specs/risks/
       2026-05-11-kicad-sch-risks.md              # risk register
 
-~/eu-kiki/                                       # code repo
+~/ailiance/                                       # code repo
   scripts/kicad_sch/
     __init__.py
     audit_log.py                                 # AuditLogger + sha256_manifest + verify
@@ -58,14 +58,14 @@ No new third-party deps — stdlib only (`json`, `hashlib`, `csv`, `pathlib`, `t
 
 | Path | Type | Lines (target) |
 |---|---|---:|
-| `~/electron-bench/preregistrations/2026-05-11-kicad-sch-prereg.md` | doc | ~80 |
-| `~/electron-bench/docs/superpowers/specs/risks/2026-05-11-kicad-sch-risks.md` | doc | ~40 |
-| `~/eu-kiki/scripts/kicad_sch/__init__.py` | code | 1 |
-| `~/eu-kiki/scripts/kicad_sch/audit_log.py` | code | ~70 |
-| `~/eu-kiki/scripts/kicad_sch/manifest.py` | code | ~70 |
-| `~/eu-kiki/tests/kicad_sch/__init__.py` | code | 1 |
-| `~/eu-kiki/tests/kicad_sch/test_audit_log.py` | test | ~70 |
-| `~/eu-kiki/tests/kicad_sch/test_manifest.py` | test | ~60 |
+| `~/ailiance-bench/preregistrations/2026-05-11-kicad-sch-prereg.md` | doc | ~80 |
+| `~/ailiance-bench/docs/superpowers/specs/risks/2026-05-11-kicad-sch-risks.md` | doc | ~40 |
+| `~/ailiance/scripts/kicad_sch/__init__.py` | code | 1 |
+| `~/ailiance/scripts/kicad_sch/audit_log.py` | code | ~70 |
+| `~/ailiance/scripts/kicad_sch/manifest.py` | code | ~70 |
+| `~/ailiance/tests/kicad_sch/__init__.py` | code | 1 |
+| `~/ailiance/tests/kicad_sch/test_audit_log.py` | test | ~70 |
+| `~/ailiance/tests/kicad_sch/test_manifest.py` | test | ~60 |
 
 ## Tasks
 
@@ -79,36 +79,36 @@ Each task is 2–5 min. TDD where applicable: write failing test → run (red) �
 
 ```bash
 ssh studio 'mkdir -p \
-  ~/electron-bench/preregistrations \
-  ~/electron-bench/docs/superpowers/specs/risks \
-  ~/eu-kiki/scripts/kicad_sch \
-  ~/eu-kiki/tests/kicad_sch'
+  ~/ailiance-bench/preregistrations \
+  ~/ailiance-bench/docs/superpowers/specs/risks \
+  ~/ailiance/scripts/kicad_sch \
+  ~/ailiance/tests/kicad_sch'
 ```
 
 Create empty package markers:
 
 ```bash
 ssh studio 'touch \
-  ~/eu-kiki/scripts/kicad_sch/__init__.py \
-  ~/eu-kiki/tests/kicad_sch/__init__.py'
+  ~/ailiance/scripts/kicad_sch/__init__.py \
+  ~/ailiance/tests/kicad_sch/__init__.py'
 ```
 
 Verify:
 
 ```bash
-ssh studio 'ls -la ~/eu-kiki/scripts/kicad_sch ~/eu-kiki/tests/kicad_sch \
-  ~/electron-bench/preregistrations ~/electron-bench/docs/superpowers/specs/risks'
+ssh studio 'ls -la ~/ailiance/scripts/kicad_sch ~/ailiance/tests/kicad_sch \
+  ~/ailiance-bench/preregistrations ~/ailiance-bench/docs/superpowers/specs/risks'
 ```
 
 No commit yet — scaffold only.
 
 ---
 
-### Task 2 — Pre-registration doc (electron-bench)
+### Task 2 — Pre-registration doc (ailiance-bench)
 
 **Goal:** Lock H1/H2/H3, stopping rules, and the 5-seed list verbatim from the spec §Pre-registration. Must be committed BEFORE any training run starts.
 
-**File:** `~/electron-bench/preregistrations/2026-05-11-kicad-sch-prereg.md`
+**File:** `~/ailiance-bench/preregistrations/2026-05-11-kicad-sch-prereg.md`
 
 **Content (complete):**
 
@@ -176,7 +176,7 @@ Bootstrap CI 95% is reported on the composite mean.
 (none yet)
 ````
 
-**Commit (electron-bench):**
+**Commit (ailiance-bench):**
 
 ```
 docs(prereg): lock H1/H2/H3 kicad-sch hypotheses
@@ -191,11 +191,11 @@ Source: docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md
 
 ---
 
-### Task 3 — Risk register doc (electron-bench)
+### Task 3 — Risk register doc (ailiance-bench)
 
 **Goal:** Persist the risk table from spec §Risks as a standalone artefact.
 
-**File:** `~/electron-bench/docs/superpowers/specs/risks/2026-05-11-kicad-sch-risks.md`
+**File:** `~/ailiance-bench/docs/superpowers/specs/risks/2026-05-11-kicad-sch-risks.md`
 
 **Content (complete):**
 
@@ -226,7 +226,7 @@ materialisations are appended below as dated entries.
 (none yet)
 ````
 
-**Commit (electron-bench):**
+**Commit (ailiance-bench):**
 
 ```
 docs(risks): persist kicad-sch risk register
@@ -238,11 +238,11 @@ risks materialise during phases 0-6.
 
 ---
 
-### Task 4 — Failing tests for AuditLogger (eu-kiki)
+### Task 4 — Failing tests for AuditLogger (ailiance)
 
 **Goal:** Write the test file first; run; confirm import error / red.
 
-**File:** `~/eu-kiki/tests/kicad_sch/test_audit_log.py`
+**File:** `~/ailiance/tests/kicad_sch/test_audit_log.py`
 
 **Content (complete):**
 
@@ -311,7 +311,7 @@ def test_verify_passes_untampered(tmp_path: Path) -> None:
 **Run (expect red):**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_audit_log.py -x'
+ssh studio 'cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_audit_log.py -x'
 ```
 
 Expected: `ModuleNotFoundError: No module named 'scripts.kicad_sch.audit_log'`.
@@ -320,11 +320,11 @@ No commit yet — implementation follows in Task 5.
 
 ---
 
-### Task 5 — Implement AuditLogger (eu-kiki)
+### Task 5 — Implement AuditLogger (ailiance)
 
 **Goal:** Make the audit-log tests pass.
 
-**File:** `~/eu-kiki/scripts/kicad_sch/audit_log.py`
+**File:** `~/ailiance/scripts/kicad_sch/audit_log.py`
 
 **Content (complete):**
 
@@ -380,10 +380,10 @@ def verify(log_path: Path, expected_sha: str) -> bool:
 **Run (expect green):**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_audit_log.py -x'
+ssh studio 'cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_audit_log.py -x'
 ```
 
-**Commit (eu-kiki):**
+**Commit (ailiance):**
 
 ```
 feat(kicad-sch): NDJSON audit logger with sha256 sign
@@ -395,11 +395,11 @@ C/D runs with a tamper-evident audit trail. 5 tests, stdlib only.
 
 ---
 
-### Task 6 — Failing tests for DatasetManifest (eu-kiki)
+### Task 6 — Failing tests for DatasetManifest (ailiance)
 
 **Goal:** Write the manifest test file; run; confirm red.
 
-**File:** `~/eu-kiki/tests/kicad_sch/test_manifest.py`
+**File:** `~/ailiance/tests/kicad_sch/test_manifest.py`
 
 **Content (complete):**
 
@@ -468,7 +468,7 @@ def test_manifest_rejects_invalid_split(tmp_path: Path) -> None:
 **Run (expect red):**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_manifest.py -x'
+ssh studio 'cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_manifest.py -x'
 ```
 
 Expected: `ModuleNotFoundError: No module named 'scripts.kicad_sch.manifest'`.
@@ -477,11 +477,11 @@ No commit yet — implementation follows in Task 7.
 
 ---
 
-### Task 7 — Implement DatasetManifest (eu-kiki)
+### Task 7 — Implement DatasetManifest (ailiance)
 
 **Goal:** Make the manifest tests pass.
 
-**File:** `~/eu-kiki/scripts/kicad_sch/manifest.py`
+**File:** `~/ailiance/scripts/kicad_sch/manifest.py`
 
 **Content (complete):**
 
@@ -561,10 +561,10 @@ class DatasetManifest:
 **Run (expect green):**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_manifest.py -x'
+ssh studio 'cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_manifest.py -x'
 ```
 
-**Commit (eu-kiki):**
+**Commit (ailiance):**
 
 ```
 feat(kicad-sch): dataset manifest CSV writer
@@ -583,21 +583,21 @@ batches rows, writes once via DictWriter. 3 tests, stdlib only.
 **Run:**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/ -v'
+ssh studio 'cd ~/ailiance && uv run python -m pytest tests/kicad_sch/ -v'
 ```
 
 Expected: 8 tests pass (5 audit_log + 3 manifest).
 
-**Push electron-bench:**
+**Push ailiance-bench:**
 
 ```bash
-ssh studio 'cd ~/electron-bench && git log --oneline -5 && git push origin main'
+ssh studio 'cd ~/ailiance-bench && git log --oneline -5 && git push origin main'
 ```
 
-**Push eu-kiki:**
+**Push ailiance:**
 
 ```bash
-ssh studio 'cd ~/eu-kiki && git log --oneline -5 && git push origin main'
+ssh studio 'cd ~/ailiance && git log --oneline -5 && git push origin main'
 ```
 
 If pre-commit hooks reject any commit (subject >50, body line >72,
@@ -610,10 +610,10 @@ re-stage, create a fresh commit, re-push. Do not bypass hooks.
 
 After all tasks:
 
-- [ ] `~/electron-bench/preregistrations/2026-05-11-kicad-sch-prereg.md` exists, contains H1/H2/H3, the 5-seed list, and stopping rules verbatim from the spec.
-- [ ] `~/electron-bench/docs/superpowers/specs/risks/2026-05-11-kicad-sch-risks.md` exists, 7-row table matches spec §Risks.
-- [ ] `~/eu-kiki/scripts/kicad_sch/audit_log.py` exposes `AuditLogger`, `sha256_manifest`, `verify`.
-- [ ] `~/eu-kiki/scripts/kicad_sch/manifest.py` exposes `DatasetManifest` with `add()` + `write()`, split is `Literal["D1","D2","D3"]`.
+- [ ] `~/ailiance-bench/preregistrations/2026-05-11-kicad-sch-prereg.md` exists, contains H1/H2/H3, the 5-seed list, and stopping rules verbatim from the spec.
+- [ ] `~/ailiance-bench/docs/superpowers/specs/risks/2026-05-11-kicad-sch-risks.md` exists, 7-row table matches spec §Risks.
+- [ ] `~/ailiance/scripts/kicad_sch/audit_log.py` exposes `AuditLogger`, `sha256_manifest`, `verify`.
+- [ ] `~/ailiance/scripts/kicad_sch/manifest.py` exposes `DatasetManifest` with `add()` + `write()`, split is `Literal["D1","D2","D3"]`.
 - [ ] `uv run python -m pytest tests/kicad_sch/` reports 8 passed.
 - [ ] Both repos pushed; pre-commit hooks pass cleanly; no `Co-Authored-By` lines in any commit.
 - [ ] Author on every commit: `electron-rare <108685187+electron-rare@users.noreply.github.com>`.

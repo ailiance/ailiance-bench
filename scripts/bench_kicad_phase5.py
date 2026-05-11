@@ -34,7 +34,7 @@ Inputs :
                                                 a 3000 chars)
 
 Refs :
-  ~/eu-kiki-data/kicad-sch-gen/valid.jsonl  (id -> assistant content)
+  ~/ailiance-data/kicad-sch-gen/valid.jsonl  (id -> assistant content)
 
 Outputs :
   ~/bench-results/kicad_phase5.json           (base re-score)
@@ -89,7 +89,7 @@ OUT_MD_BASE = BENCH_DIR / "kicad_phase5.md"
 OUT_JSON_LORA = BENCH_DIR / "kicad_phase5_lora.json"
 OUT_MD_LORA = BENCH_DIR / "kicad_phase5_lora.md"
 
-GEN_DATASET = HOME / "eu-kiki-data" / "kicad-sch-gen" / "valid.jsonl"
+GEN_DATASET = HOME / "ailiance-data" / "kicad-sch-gen" / "valid.jsonl"
 
 # Plafonds delta (plus tolerants que Phase 4 absolue)
 ERR_DELTA_CAP = 5
