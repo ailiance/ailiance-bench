@@ -1,0 +1,61 @@
+From: electron-rare <c.saillant@gmail.com>
+Date: 2026-05-11
+Subject: [PATCH] gemma4_text: filter KV-shared k_proj/v_proj/k_norm in sanitize()
+
+Gemma4 architectures with `num_kv_shared_layers > 0` reuse K/V projections
+from earlier layers in the later layers. Quantized checkpoints from
+`lmstudio-community/gemma-4-*-it-MLX-*bit` (and others) ship the redundant
+`k_proj`, `v_proj` and `k_norm` tensors for those KV-shared layers in the
+safetensors. Without filtering, `mlx_lm.utils.load_model` raises:
+
+    ValueError: Received parameters not in model: <list...>.
+
+This patch reproduces the same logic as `make_cache` (which already accounts
+for `first_kv_shared = num_hidden_layers - num_kv_shared_layers`) inside
+`sanitize()`, dropping any K/V projection or K-norm tensor whose layer index
+is >= first_kv_shared.
+
+Reproducer
+----------
+
+    python -m mlx_lm generate --model lmstudio-community/gemma-4-E4B-it-MLX-4bit \
+        --prompt "hello"
+
+    # Without the patch:
+    # ValueError: Received 126 parameters not in model: [...]
+
+Tested on
+---------
+- macOS 26 (M1 Max, 64 GB)
+- macOS 26 (M3 Ultra, 512 GB)
+- mlx-lm 0.31.3 / mlx 0.29.x
+
+--- a/mlx_lm/models/gemma4_text.py
++++ b/mlx_lm/models/gemma4_text.py
+@@ -609,6 +609,7 @@
+
+     def sanitize(self, weights):
+         sanitized = {}
++        first_kv_shared = self.args.num_hidden_layers - self.args.num_kv_shared_layers
+         for k, v in weights.items():
+             if any(
+                 s in k
+@@ -622,6 +623,18 @@
+             ):
+                 continue
+
++            # KV-shared layers reuse K/V from earlier layers — drop their projections
++            if any(
++                s in k
++                for s in (".self_attn.k_proj", ".self_attn.v_proj", ".self_attn.k_norm")
++            ):
++                try:
++                    layer_idx = int(k.split("layers.")[1].split(".")[0])
++                    if layer_idx >= first_kv_shared:
++                        continue
++                except (IndexError, ValueError):
++                    pass
++
+             if k.endswith(".experts.gate_up_proj"):
+                 base = k.removesuffix(".gate_up_proj")
+                 gate, up = map(mx.contiguous, mx.split(v, 2, axis=-2))

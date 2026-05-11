@@ -98,6 +98,24 @@ Régénérer table markdown : `python scripts/regen_bench_table.py`.
 - **QuantizedKVCache 8-bit** : bloqué upstream mlx_lm 0.31.3 (pas `.merge()`).
   Voir `scripts/bench_oom_retry.py` (workaround patché, inutilisable jusqu'à ajout méthode).
 
+## Known issues
+
+### mlx-lm 0.31.3 — Gemma 4 load fails on quantized models with KV-shared layers
+
+- **Symptoms** : `ValueError: Received 126 parameters not in model`
+- **Affected** : any machine using vanilla `mlx-lm==0.31.3` (PyPI) to load
+  Gemma 4 (E2B, E4B, etc.) in 4-bit / 8-bit quantization
+  (`lmstudio-community/gemma-4-*-MLX-*bit`, `mlx-community/gemma-4-*-*bit`).
+- **Status** : already fixed upstream in
+  [`ml-explore/mlx-lm` PR #1240](https://github.com/ml-explore/mlx-lm/pull/1240)
+  (merged 2026-05-04), tracking
+  [issue #1242](https://github.com/ml-explore/mlx-lm/issues/1242). Waiting
+  for the next PyPI release > 0.31.3. Patch documented locally in
+  [`docs/mlx_lm_gemma4_kv_shared_fix.md`](docs/mlx_lm_gemma4_kv_shared_fix.md)
+  and [`patches/mlx_lm_gemma4_text_kv_shared.patch`](patches/mlx_lm_gemma4_text_kv_shared.patch).
+- **Quick workaround** :
+  `uv pip install --force-reinstall "mlx-lm @ git+https://github.com/ml-explore/mlx-lm@main"`
+
 ## Liens
 
 - Fork MLX : https://github.com/electron-rare/mlx (branche `metal-3x-buffer-limit`)
