@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # kill_mlx_servers_before_granite30b.sh
-# Surveille le log bench31 et tue les serveurs MLX gemma (eu-kiki + mascarade)
+# Surveille le log bench31 et tue les serveurs MLX gemma (ailiance + mascarade)
 # quand granite-4.1-3b commence — pour libérer ~12 Go RAM avant que bench
 # attaque granite-4.1-30b (17 Go en 4-bit) sur cette machine 32 Go.
 #
@@ -20,7 +20,7 @@ fi
 echo "[$(date)] watching $LOG"
 echo "[$(date)] trigger : ligne mentionnant 'granite-4.1-3b' (premier granite, juste avant le 30B)"
 
-# PIDs des serveurs à killer (eu-kiki port 8502, mascarade port 8503)
+# PIDs des serveurs à killer (ailiance port 8502, mascarade port 8503)
 # On résout dynamiquement pour gérer le cas où ils auraient été restartés
 TRIGGER_PATTERN="granite-4.1-3b"
 
@@ -30,7 +30,7 @@ while true; do
   if grep -qE "MODEL: $TRIGGER_PATTERN|-> $TRIGGER_PATTERN /" "$LOG" 2>/dev/null; then
     echo "[$(date)] granite-4.1-3b détecté dans le log — kill serveurs MLX gemma"
 
-    # Trouver les PIDs des serveurs MLX gemma (eu-kiki + mascarade)
+    # Trouver les PIDs des serveurs MLX gemma (ailiance + mascarade)
     PIDS=$(pgrep -f "mlx_lm.server.*gemma4-e4b-(eukiki|mascarade)" 2>/dev/null | head -10)
     if [ -z "$PIDS" ]; then
       echo "[$(date)] aucun serveur MLX gemma actif (peut-être déjà killés)"

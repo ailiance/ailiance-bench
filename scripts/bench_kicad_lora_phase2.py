@@ -313,7 +313,7 @@ def main() -> int:
             "timestamp": dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "data_path": str(Path(os.environ.get(
                 "KICAD_SCH_GEN_PATH",
-                HOME / "eu-kiki-data" / "kicad-sch-gen" / "valid.jsonl",
+                HOME / "ailiance-data" / "kicad-sch-gen" / "valid.jsonl",
             ))),
             "n_samples_total": n_total,
             "n_samples_eval": n_eval,

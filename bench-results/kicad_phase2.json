@@ -1,7 +1,7 @@
 {
   "metadata": {
     "timestamp": "2026-05-11 02:16:41",
-    "data_path": "/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl",
+    "data_path": "/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl",
     "n_samples_total": 6,
     "n_samples_eval": 5,
     "max_tokens": 4096,
@@ -10,7 +10,7 @@
     ],
     "models": [
       {
-        "nickname": "gemma-e4b-eu-kiki-base",
+        "nickname": "gemma-e4b-ailiance-base",
         "hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit"
       },
       {
@@ -40,7 +40,7 @@
     ]
   },
   "bench": {
-    "gemma-e4b-eu-kiki-base": {
+    "gemma-e4b-ailiance-base": {
       "n_samples": 5,
       "parse_ok_rate": 1.0,
       "starts_with_kicad_sch_rate": 0.0,

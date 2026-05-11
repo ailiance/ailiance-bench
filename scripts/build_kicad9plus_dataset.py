@@ -5,7 +5,7 @@ import json, os, re, sys, time, hashlib
 from pathlib import Path
 from collections import Counter, defaultdict
 
-ROOT = Path.home() / "eu-kiki-data" / "kicad9plus-corpus"
+ROOT = Path.home() / "ailiance-data" / "kicad9plus-corpus"
 MANIFEST = ROOT / "manifest.validated.txt"
 OUT_JSONL = ROOT / "dataset.jsonl"
 OUT_INVENTORY = ROOT / "LICENSE_INVENTORY.md"

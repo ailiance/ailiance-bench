@@ -420,7 +420,7 @@ TEMPLATES = [TPL_LED, TPL_VDIV, TPL_555, TPL_OPAMP, TPL_ESP32]
 def load_spi_bus_template() -> dict:
     """Load the real local schematic and infer ground truth via ad-hoc parse."""
     import pathlib
-    p = pathlib.Path.home() / "eu-kiki-data" / "kicad-sch-refs" / "spi_bus_4devices.kicad_sch"
+    p = pathlib.Path.home() / "ailiance-data" / "kicad-sch-refs" / "spi_bus_4devices.kicad_sch"
     if not p.exists():
         return None
     sch = p.read_text()

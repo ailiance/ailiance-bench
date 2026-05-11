@@ -10,7 +10,7 @@ _Generated: 2026-05-11 05:16:24_
 
 | Model | n | parse_ok_cli | avg_err | avg_warn | composite |
 |---|---:|---:|---:|---:|---:|
-| **gemma-e4b-eu-kiki-base** | 5 | 0.00 | 0.00 | 0.00 | 0.060 |
+| **gemma-e4b-ailiance-base** | 5 | 0.00 | 0.00 | 0.00 | 0.060 |
 | **gemma-e2b** | 5 | 0.00 | 0.00 | 0.00 | 0.051 |
 | **ministral-3b** | 5 | 0.00 | 0.00 | 0.00 | 0.042 |
 | **ministral-3-8b** | 5 | 0.00 | 0.00 | 0.00 | 0.060 |

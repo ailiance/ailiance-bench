@@ -3,7 +3,7 @@
 _Generated: 2026-05-11 05:16:37_
 
 - Source phase4   : `/Users/electron/bench-results/kicad_phase4.json`
-- Refs            : `/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl`
+- Refs            : `/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl`
 - KiCad CLI       : `/opt/homebrew/bin/kicad-cli` (10.0.2)
 - Score weights   : 0.30 parse_ok + 0.40 no_extra_errs + 0.30 no_extra_warns (caps 5/10)
 
@@ -21,7 +21,7 @@ _Generated: 2026-05-11 05:16:37_
 
 | Model | n | composite_v1 | composite_v2 | avg errs_delta | avg warns_delta |
 |---|---:|---:|---:|---:|---:|
-| **gemma-e4b-eu-kiki-base** | 5 | 0.060 | 0.060 | 0.00 | 0.00 |
+| **gemma-e4b-ailiance-base** | 5 | 0.060 | 0.060 | 0.00 | 0.00 |
 | **gemma-e2b** | 5 | 0.051 | 0.051 | 0.00 | 0.00 |
 | **ministral-3b** | 5 | 0.042 | 0.042 | 0.00 | 0.00 |
 | **ministral-3-8b** | 5 | 0.060 | 0.060 | 0.00 | 0.00 |

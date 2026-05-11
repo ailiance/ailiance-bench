@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Fine-tune LoRA gemma-4-E4B sur kicad9plus-permissive (98 samples MIT/Apache/CC0).
-# Config alignee sur eu-kiki existant : rank=32, scale=2.0 (lora_parameters defaults
+# Config alignee sur ailiance existant : rank=32, scale=2.0 (lora_parameters defaults
 # mlx_lm si pas de YAML), num_layers=16, lr=1e-5, batch=1, max_seq=4096.
 #
 # Bash 3.2 compat strict. Source: persist via wrapper.

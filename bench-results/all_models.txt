@@ -20,14 +20,14 @@
     "alias": "  - formal_logic",
     "acc,none": 0.29365079365079366,
 
---- eu-kiki / gsm8k_cot ---
+--- ailiance / gsm8k_cot ---
 "alias": "gsm8k_cot",
     "exact_match,strict-match": 0.52,
     "exact_match_stderr,strict-match": 0.050211673156867795,
     "exact_match,flexible-extract": 0.74,
     "exact_match_stderr,flexible-extract": 0.04408440022768078
 
---- eu-kiki / arc_easy ---
+--- ailiance / arc_easy ---
 "alias": "arc_easy",
     "acc,none": 0.785,
     "acc_norm,none": 0.805,
@@ -86,19 +86,19 @@ Perplexity: 32.500 ± 1.285
 --- base / ppl-emc_power ---
 Perplexity: 254.929 ± 11.188
 
---- eu-kiki / ppl-spice ---
+--- ailiance / ppl-spice ---
 Perplexity: 9.531 ± 0.274
 
---- eu-kiki / ppl-stm32 ---
+--- ailiance / ppl-stm32 ---
 Perplexity: 3.565 ± 0.092
 
---- eu-kiki / ppl-kicad ---
+--- ailiance / ppl-kicad ---
 Perplexity: 9.537 ± 0.267
 
---- eu-kiki / ppl-embedded_iot ---
+--- ailiance / ppl-embedded_iot ---
 Perplexity: 10.803 ± 0.321
 
---- eu-kiki / ppl-emc_power ---
+--- ailiance / ppl-emc_power ---
 Perplexity: 42.263 ± 1.332
 
 --- mascarade / ppl-spice ---
@@ -166,7 +166,7 @@ Perplexity: 12.499 ± 0.253
     "exact_match,custom-extract": 0.0,
     "exact_match_stderr,custom-extract": 0.0
 
---- eu-kiki / mmlu_pro_computer_science ---
+--- ailiance / mmlu_pro_computer_science ---
     "alias": "computer_science",
     "exact_match,custom-extract": 0.58,
     "exact_match_stderr,custom-extract": 0.07050835816716035

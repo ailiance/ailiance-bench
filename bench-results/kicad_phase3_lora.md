@@ -2,7 +2,7 @@
 
 _Generated: 2026-05-11 04:49:30_
 
-- Dataset    : `/Users/electron/eu-kiki-data/kicad-sch-extract/valid.jsonl` (6 samples)
+- Dataset    : `/Users/electron/ailiance-data/kicad-sch-extract/valid.jsonl` (6 samples)
 - Combos     : 3
 - Max tokens : 2048
 

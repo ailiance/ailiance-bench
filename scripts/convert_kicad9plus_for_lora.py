@@ -9,7 +9,7 @@ Split deterministe 90/5/5 via hash modulo (reproductible, pas de seed RNG).
 Sortie : ~/lora-data-kicad9plus/{train,valid,test}.jsonl
 
 Strategie de chargement :
-  1. Essayer copie locale ~/eu-kiki-data/kicad9plus-corpus/dataset_permissive.jsonl
+  1. Essayer copie locale ~/ailiance-data/kicad9plus-corpus/dataset_permissive.jsonl
      (98 samples, format identique uploaded sur HF).
   2. Si absent, telecharger via huggingface_hub.snapshot_download
      'electron-rare/kicad9plus-permissive' (token deja configure).
@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 HOME = Path.home()
-LOCAL_PERMISSIVE = HOME / "eu-kiki-data" / "kicad9plus-corpus" / "dataset_permissive.jsonl"
+LOCAL_PERMISSIVE = HOME / "ailiance-data" / "kicad9plus-corpus" / "dataset_permissive.jsonl"
 OUT_DIR = HOME / "lora-data-kicad9plus"
 HF_DATASET_ID = "electron-rare/kicad9plus-permissive"
 

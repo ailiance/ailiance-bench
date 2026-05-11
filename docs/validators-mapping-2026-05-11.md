@@ -71,5 +71,5 @@ on our domain-specific niches.
 
 - iact-bench v0.2.0: `electron-rare/iact-bench:configs/domain_validators.yaml`
 - Orchestrator wire-up: `L-electron-Rare/ailiance#21` (merged 2026-05-11 02:42), uses `IactBenchValidator` shim with lazy import.
-- PPL matrix: `electron-rare/electron-bench:docs/comparison_v{1,2}_2026-05-11.md`
-- lm-eval-harness in-progress: Studio `~/eu-kiki/output/lm-eval-base-2026-05-11/`
+- PPL matrix: `ailiance/ailiance-bench:docs/comparison_v{1,2}_2026-05-11.md`
+- lm-eval-harness in-progress: Studio `~/ailiance/output/lm-eval-base-2026-05-11/`

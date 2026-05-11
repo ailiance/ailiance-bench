@@ -4,7 +4,7 @@
 #   1. attendre la fin du test fork ministral (PID dans ~/bench-results/fork_test.pid)
 #   2. lancer bench_fork_retry.py (qwen3.5-9b + helium-1-2b avec wheel fork)
 #   3. regenerer ~/bench-results/BENCH_TABLE.md
-#   4. sync vers ~/electron-bench/, commit + push
+#   4. sync vers ~/ailiance-bench/, commit + push
 #
 # Compatible Bash 3.2 macOS : pas de `declare -A`, pas d'arrays associatifs,
 # juste des variables simples ou des boucles.
@@ -51,22 +51,22 @@ RC_REGEN=$?
 echo "[3/4] regen_bench_table.py done (rc=$RC_REGEN)"
 
 # ---------------------------------------------------------------------------
-# 4. Sync to ~/electron-bench/ and commit/push
+# 4. Sync to ~/ailiance-bench/ and commit/push
 # ---------------------------------------------------------------------------
 echo ""
-echo "[4/4] Sync electron-bench repo + commit + push"
+echo "[4/4] Sync ailiance-bench repo + commit + push"
 
-mkdir -p ~/electron-bench/scripts ~/electron-bench/bench-results
+mkdir -p ~/ailiance-bench/scripts ~/ailiance-bench/bench-results
 
-cp ~/scripts/bench_new_models.py     ~/electron-bench/scripts/ 2>/dev/null || echo "  (skip bench_new_models.py)"
-cp ~/scripts/bench_oom_retry.py      ~/electron-bench/scripts/ 2>/dev/null || echo "  (skip bench_oom_retry.py)"
-cp ~/scripts/bench_fork_retry.py     ~/electron-bench/scripts/ 2>/dev/null || echo "  (skip bench_fork_retry.py)"
-cp ~/scripts/regen_bench_table.py    ~/electron-bench/scripts/ 2>/dev/null || echo "  (skip regen_bench_table.py)"
-cp ~/scripts/post_fork_pipeline.sh   ~/electron-bench/scripts/ 2>/dev/null || echo "  (skip post_fork_pipeline.sh)"
-cp ~/bench-results/BENCH_TABLE.md    ~/electron-bench/bench-results/ 2>/dev/null || echo "  (skip BENCH_TABLE.md)"
-cp ~/bench-results/all_models.txt    ~/electron-bench/bench-results/ 2>/dev/null || echo "  (skip all_models.txt)"
+cp ~/scripts/bench_new_models.py     ~/ailiance-bench/scripts/ 2>/dev/null || echo "  (skip bench_new_models.py)"
+cp ~/scripts/bench_oom_retry.py      ~/ailiance-bench/scripts/ 2>/dev/null || echo "  (skip bench_oom_retry.py)"
+cp ~/scripts/bench_fork_retry.py     ~/ailiance-bench/scripts/ 2>/dev/null || echo "  (skip bench_fork_retry.py)"
+cp ~/scripts/regen_bench_table.py    ~/ailiance-bench/scripts/ 2>/dev/null || echo "  (skip regen_bench_table.py)"
+cp ~/scripts/post_fork_pipeline.sh   ~/ailiance-bench/scripts/ 2>/dev/null || echo "  (skip post_fork_pipeline.sh)"
+cp ~/bench-results/BENCH_TABLE.md    ~/ailiance-bench/bench-results/ 2>/dev/null || echo "  (skip BENCH_TABLE.md)"
+cp ~/bench-results/all_models.txt    ~/ailiance-bench/bench-results/ 2>/dev/null || echo "  (skip all_models.txt)"
 
-cd ~/electron-bench || { echo "[4/4] FATAL: cannot cd to ~/electron-bench"; exit 0; }
+cd ~/ailiance-bench || { echo "[4/4] FATAL: cannot cd to ~/ailiance-bench"; exit 0; }
 git add scripts/ bench-results/ 2>&1 || echo "  (git add a echoue)"
 
 if git diff --cached --quiet; then

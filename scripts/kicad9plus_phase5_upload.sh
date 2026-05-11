@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Phase 5 — Create HF dataset repo + upload dataset.jsonl + LICENSE_INVENTORY.md + README.md
 set -u
-ROOT=~/eu-kiki-data/kicad9plus-corpus
+ROOT=~/ailiance-data/kicad9plus-corpus
 LOG=~/bench-results/kicad9plus-upload.log
 REPO="electron-rare/kicad9plus-sch-corpus"
 
