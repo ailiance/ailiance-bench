@@ -54,7 +54,7 @@ Source de vérité : [`bench-results/compare_base_vs_lora.md`](bench-results/com
 
 **Perplexité MLX** (20 samples × 1024 seq) :
 - Niches : `spice`, `stm32`, `kicad`, `embedded_iot`, `emc_power`
-- Datasets HF : [`electron-rare/mascarade-*-dataset`](https://huggingface.co/electron-rare)
+- Datasets HF : [`Ailiance-fr/mascarade-*-dataset`](https://huggingface.co/Ailiance-fr)
 
 ## Reproduction sur autre Mac
 
@@ -91,7 +91,7 @@ Régénérer table markdown : `python scripts/regen_bench_table.py`.
 
 - Fork MLX : https://github.com/L-electron-Rare/mlx (branche `metal-3x-buffer-limit`)
 - Build wheels CI : https://github.com/L-electron-Rare/mlx/actions/workflows/build-wheels.yml
-- Datasets HF : https://huggingface.co/electron-rare
+- Datasets HF : https://huggingface.co/Ailiance-fr
 
 ## Licence
 
