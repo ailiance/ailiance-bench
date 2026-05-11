@@ -33,7 +33,7 @@ Here's a thinking process that leads to the suggested netlist:
 _Generation: 250 tokens, 54.978 tokens-per-sec_
 
 
-#### eu-kiki  _7.7s_
+#### ailiance  _7.7s_
 ```
 ```spice
 * Sallen-Key Low-Pass Filter
@@ -107,7 +107,7 @@ Here's a thinking process to generate the requested information:
 _Generation: 250 tokens, 55.164 tokens-per-sec_
 
 
-#### eu-kiki  _6.9s_
+#### ailiance  _6.9s_
 ```
 ```netlist
 * Common-emitter BJT amplifier
@@ -189,7 +189,7 @@ Here's a thinking process that leads to the suggested code:
 _Generation: 250 tokens, 55.372 tokens-per-sec_
 
 
-#### eu-kiki  _7.7s_
+#### ailiance  _7.7s_
 ```
 #include "stm32f4xx_hal.h"
 
@@ -274,7 +274,7 @@ Here's a thinking process that leads to the suggested solution:
 _Generation: 250 tokens, 55.256 tokens-per-sec_
 
 
-#### eu-kiki  _7.7s_
+#### ailiance  _7.7s_
 ```
 #include "stm32f4xx_hal.h"
 
@@ -355,7 +355,7 @@ Here's a thinking process that leads to the suggested solution:
 _Generation: 250 tokens, 55.275 tokens-per-sec_
 
 
-#### eu-kiki  _7.7s_
+#### ailiance  _7.7s_
 ```
 (module SMD_Resistor_0805 (layer F.Cu) (tedit 5A0B4444)
   (descr "SMD Resistor 0805"
@@ -448,7 +448,7 @@ Here's a thinking process to generate the KiCad symbol library entry:
 _Generation: 250 tokens, 54.845 tokens-per-sec_
 
 
-#### eu-kiki  _7.6s_
+#### ailiance  _7.6s_
 ```
 (module MIC5219-3.3 LDO (layer F.Cu) (tedit 5A0B444B)
   (descr "Diodes Inc. MIC5219-3.3 LDO")
@@ -507,7 +507,7 @@ Here's a plan to fulfill the request:
 _Generation: 250 tokens, 54.998 tokens-per-sec_
 
 
-#### eu-kiki  _7.6s_
+#### ailiance  _7.6s_
 ```
 #include <stdio.h>
 #include <stdlib.h>
@@ -597,7 +597,7 @@ Here's a thinking process to construct the comparison and recommendation:
 _Generation: 250 tokens, 55.342 tokens-per-sec_
 
 
-#### eu-kiki  _4.1s_
+#### ailiance  _4.1s_
 ```
 MQTT is TCP-based, requiring more overhead and power. CoAP is UDP-based, lightweight, and better suited for constrained devices. For battery-powered LoRaWAN sensors, CoAP is generally preferred due to its lower power consumption and smaller packet size.
 ```
@@ -641,7 +641,7 @@ Here's a thinking process that leads to the suggested design:
 _Generation: 250 tokens, 55.392 tokens-per-sec_
 
 
-#### eu-kiki  _7.7s_
+#### ailiance  _7.7s_
 ```
 Here is the design of the flyback transformer:
 
@@ -723,7 +723,7 @@ Here's a thinking process to arrive at the suggested snubber values:
 _Generation: 250 tokens, 55.398 tokens-per-sec_
 
 
-#### eu-kiki  _7.7s_
+#### ailiance  _7.7s_
 ```
 To determine the appropriate RC snubber values for clamping inductive kickback on a 24V/1A solenoid driven by an NMOS, we need to consider the following factors: the maximum voltage of the solenoid, the desired clamping voltage, the fall time of the NMOS, and the desired rise time of the snubber circuit.
 

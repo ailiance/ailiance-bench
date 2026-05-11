@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Phase 3 — Filter (version >= 20240722) + ERC validation via kicad-cli
 set -u
-ROOT=~/eu-kiki-data/kicad9plus-corpus
+ROOT=~/ailiance-data/kicad9plus-corpus
 SOURCES="$ROOT/sources"
 MANIFEST="$ROOT/manifest.txt"
 EXCLUDED="$ROOT/excluded.txt"

@@ -7,10 +7,10 @@ Aggregated from all machines (macM1, Studio, Tower, kxkm-ai, electron-server) at
 | Fichier | Origine | Date | Cellules |
 |---|---|---|---:|
 | `31_domains_baseline.json` | macM1 `~/bench-results/` | 2026-05-10 15:45 | 124 (4×31) |
-| `BENCH_TABLE.md` | macM1 + Studio `~/electron-bench/bench-results/` | 2026-05-10 13:12 | 72 (12×6) public + 60 (12×5) niches PPL |
-| `perplexity_v1-only_*.json` | Studio `~/eu-kiki/output/eval/raw/` | 2026-05-10 16:25 | 3 (Phase 1 quick eval) |
-| `gateway-2026-05-10-1730-final.json` | electron-bench | 2026-05-10 17:30 | 11 (gateway HTTP) |
-| `tower-direct-2026-05-10-1535.json` | electron-bench | 2026-05-10 15:35 | 1 |
+| `BENCH_TABLE.md` | macM1 + Studio `~/ailiance-bench/bench-results/` | 2026-05-10 13:12 | 72 (12×6) public + 60 (12×5) niches PPL |
+| `perplexity_v1-only_*.json` | Studio `~/ailiance/output/eval/raw/` | 2026-05-10 16:25 | 3 (Phase 1 quick eval) |
+| `gateway-2026-05-10-1730-final.json` | ailiance-bench | 2026-05-10 17:30 | 11 (gateway HTTP) |
+| `tower-direct-2026-05-10-1535.json` | ailiance-bench | 2026-05-10 15:35 | 1 |
 | `bench-complete.json` (older) | Studio `~/KIKI-Mac_tunner/output/micro-kiki/eval/` | 2026-04-19 | (Brainstacks v3) |
 
 ## Public benchmarks (% accuracy, ↑ better)
@@ -20,7 +20,7 @@ Aggregated from all machines (macM1, Studio, Tower, kxkm-ai, electron-server) at
 | Model | Provider | Lic | gsm-S | gsm-F | arc | arc-n | mmlu | mmluPro |
 |---|---|---|---:|---:|---:|---:|---:|---:|
 | **base (gemma3-4b)** | Google | Gemma | 23.0 | 31.0 | 62.0 | 63.0 | 56.8 | 0.0 |
-| **eu-kiki** | electron-rare | CC-BY-SA-4.0 | **52.0** | **74.0** | **78.5** | **80.5** | — | **58.0** |
+| **ailiance** | electron-rare | CC-BY-SA-4.0 | **52.0** | **74.0** | **78.5** | **80.5** | — | **58.0** |
 | **mascarade** | electron-rare | CC-BY-SA-4.0 | 29.0 | 73.0 | 77.0 | 78.0 | — | 40.0 |
 | **gemma3-4b** | Google | Gemma | — | — | 66.0 | 62.5 | — | 38.0 |
 | **ministral-3b** | Mistral | Apache 2.0 | — | — | 64.0 | 35.0 | — | 16.0 |
@@ -33,12 +33,12 @@ Aggregated from all machines (macM1, Studio, Tower, kxkm-ai, electron-server) at
 | **helium-1-2b** | Kyutai | CC-BY 4.0 | — | — | — | — | — | — |
 
 **Best per benchmark** (parmi les modèles testés) :
-- gsm-S: jackrong-9b-opus 64% (eu-kiki 52%)
-- gsm-F: jackrong-9b-opus 78% (eu-kiki 74%)
-- arc: **eu-kiki 78.5%**
-- arc-n: **eu-kiki 80.5%**
+- gsm-S: jackrong-9b-opus 64% (ailiance 52%)
+- gsm-F: jackrong-9b-opus 78% (ailiance 74%)
+- arc: **ailiance 78.5%**
+- arc-n: **ailiance 80.5%**
 - mmlu: base 56.8%
-- mmluPro: **eu-kiki 58%**
+- mmluPro: **ailiance 58%**
 
 ## Niches perplexity (lower=better) — 5 niches métier
 
@@ -47,7 +47,7 @@ Aggregated from all machines (macM1, Studio, Tower, kxkm-ai, electron-server) at
 | Model | spice | stm32 | kicad | embedded_iot | emc_power |
 |---|---:|---:|---:|---:|---:|
 | **base** | 21.75 | 6.39 | 19.55 | 32.50 | 254.93 |
-| **eu-kiki** | 9.53 | 3.56 | 9.54 | 10.80 | 42.26 |
+| **ailiance** | 9.53 | 3.56 | 9.54 | 10.80 | 42.26 |
 | **mascarade** | 6.61 | 3.00 | 7.95 | 9.03 | 39.71 |
 | **ministral-3b** | 6.18 | 2.54 | 3.94 | 8.73 | 18.30 |
 | **ministral-3-8b** | 4.48 | 2.67 | 1.82 | 5.93 | 18.98 |
@@ -55,7 +55,7 @@ Aggregated from all machines (macM1, Studio, Tower, kxkm-ai, electron-server) at
 | **jackrong-9b-opus** | **3.37** | **1.64** | 2.33 | **4.28** | **12.50** |
 | **granite-4.1-3b** | 9.84 | 41.43 | 2.85 | 33.46 | 35.75 |
 
-**Best per niche** : jackrong-9b-opus dominate spice/stm32/embedded_iot/emc_power; ministral-3-8b best sur kicad (1.82). eu-kiki et mascarade meilleurs que base mais battus par ministral-3-8b et jackrong-9b-opus sur niches.
+**Best per niche** : jackrong-9b-opus dominate spice/stm32/embedded_iot/emc_power; ministral-3-8b best sur kicad (1.82). ailiance et mascarade meilleurs que base mais battus par ministral-3-8b et jackrong-9b-opus sur niches.
 
 ## 31-domains MLX baseline (2026-05-10 15:45, 4/8 modèles complets)
 
@@ -67,7 +67,7 @@ PPL résumé per modèle (mean / max sur les 31 domaines) :
 
 | Modèle | mean PPL | min | max | best domain |
 |---|---:|---:|---:|---|
-| gemma-e4b-eu-kiki-base | (cf JSON détail) | — | — | — |
+| gemma-e4b-ailiance-base | (cf JSON détail) | — | — | — |
 | gemma-e2b | — | — | — | — |
 | ministral-3b | — | — | — | — |
 | ministral-3-8b | — | — | — | — |

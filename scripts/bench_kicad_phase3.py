@@ -44,7 +44,7 @@ from typing import Any
 HOME = Path.home()
 DATA_PATH = Path(os.environ.get(
     "KICAD_SCH_EXT_PATH",
-    HOME / "eu-kiki-data" / "kicad-sch-extract" / "valid.jsonl",
+    HOME / "ailiance-data" / "kicad-sch-extract" / "valid.jsonl",
 ))
 BENCH_DIR = Path(os.environ.get("BENCH_RESULTS_DIR", HOME / "bench-results"))
 LOG_DIR = HOME / "logs"
@@ -56,7 +56,7 @@ SKIP_HEAVY = os.environ.get("KICAD_SKIP_HEAVY", "1") == "1"
 HEAVY_NICKS = {"granite-4.1-30b"}
 
 MODELS: list[tuple[str, str]] = [
-    ("gemma-e4b-eu-kiki-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit"),
+    ("gemma-e4b-ailiance-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit"),
     ("gemma-e2b",                "lmstudio-community/gemma-4-E2B-it-MLX-4bit"),
     ("ministral-3b",             "mlx-community/Ministral-3-3B-Instruct-2512-4bit"),
     ("ministral-3-8b",           "mlx-community/Ministral-3-8B-Instruct-2512-4bit"),

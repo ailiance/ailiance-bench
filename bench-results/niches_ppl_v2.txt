@@ -7,7 +7,7 @@ Tokens per second: 458
   Total samples: 20
   Total tokens: 20480
 
---- eu-kiki on spice ---
+--- ailiance on spice ---
   Loaded 20 samples
 Perplexity: 9.531 ± 0.274
 Tokens per second: 458
@@ -28,7 +28,7 @@ Tokens per second: 458
   Total samples: 20
   Total tokens: 20480
 
---- eu-kiki on stm32 ---
+--- ailiance on stm32 ---
   Loaded 20 samples
 Perplexity: 3.565 ± 0.092
 Tokens per second: 457
@@ -49,7 +49,7 @@ Tokens per second: 458
   Total samples: 20
   Total tokens: 20480
 
---- eu-kiki on embedded_iot ---
+--- ailiance on embedded_iot ---
   Loaded 20 samples
 Perplexity: 10.803 ± 0.321
 Tokens per second: 458
@@ -70,7 +70,7 @@ Tokens per second: 459
   Total samples: 20
   Total tokens: 20480
 
---- eu-kiki on emc_power ---
+--- ailiance on emc_power ---
   Loaded 20 samples
 Perplexity: 42.263 ± 1.332
 Tokens per second: 459

@@ -3,9 +3,9 @@
 **Date:** 2026-05-11
 **Author:** Clément Saillant (LElectron Rare)
 **Status:** Plan (writing-plans skill)
-**Parent spec:** `~/electron-bench/docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md` (commit `e58731a`)
+**Parent spec:** `~/ailiance-bench/docs/superpowers/specs/2026-05-11-kicad-sch-gap-design.md` (commit `e58731a`)
 **Scope:** Eval N3 sub-project only — 5-axis evaluator (`parse_ok`, `erc_clean`, `sch_render`, `drc_clean`, `sem_equiv`), composite scoring, CLI runner, and `bench_comparison.py` extension. Foundation (audit_log.py + manifest.py) is assumed shipped.
-**Repo:** `electron-rare/electron-bench` (this plan only); code lands in `~/eu-kiki/` (separate worktree).
+**Repo:** `ailiance/ailiance-bench` (this plan only); code lands in `~/ailiance/` (separate worktree).
 **Estimated effort:** 10-12 TDD tasks, ~4-6h focused work.
 
 ## Goal
@@ -16,14 +16,14 @@ Ship a deterministic, audit-logged 5-axis evaluator for `.kicad_sch` v10 files p
 
 - **Foundation plan SHIPPED first** (separate plan): `kicad_sch/audit_log.py` exposes `AuditLogger` with `.log_event(event_type: str, payload: dict) -> None` and `.sha256_sign() -> str`. `kicad_sch/manifest.py` is unused by N3.
 - `kicad-cli 10.0.2` available on PATH (macM1 Homebrew, Studio Homebrew, Docker `kicad/kicad:10.0.2` pinned by digest).
-- `~/eu-kiki-data/kicad-sch-refs/spi_bus_4devices.kicad_sch` exists (verified in spec line "References").
-- Python 3.14 + uv; deps: `networkx>=3.3` (add to `~/eu-kiki/pyproject.toml`).
-- `bench_comparison.py` baseline at `~/eu-kiki/scripts/bench_comparison.py` (PR #24, commit `f01fa36`, 327 lines).
+- `~/ailiance-data/kicad-sch-refs/spi_bus_4devices.kicad_sch` exists (verified in spec line "References").
+- Python 3.14 + uv; deps: `networkx>=3.3` (add to `~/ailiance/pyproject.toml`).
+- `bench_comparison.py` baseline at `~/ailiance/scripts/bench_comparison.py` (PR #24, commit `f01fa36`, 327 lines).
 
 ## File Structure
 
 ```
-~/eu-kiki/
+~/ailiance/
 ├── scripts/
 │   ├── kicad_sch/
 │   │   ├── __init__.py                  # (created by Foundation)
@@ -45,7 +45,7 @@ Ship a deterministic, audit-logged 5-axis evaluator for `.kicad_sch` v10 files p
 Output artifacts (runtime, not committed):
 
 ```
-~/eu-kiki/output/eval/
+~/ailiance/output/eval/
 ├── raw/
 │   └── eval_results_2026-05-11.json      # run_eval_n3.py output
 └── audit/kicad-sch-2026-05-11/
@@ -63,7 +63,7 @@ Output artifacts (runtime, not committed):
 
 ## Test conventions
 
-- Runner: `cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/ -v`.
+- Runner: `cd ~/ailiance && uv run python -m pytest tests/kicad_sch/ -v`.
 - Each test is hermetic (uses `tmp_path` or the ref fixture; no network).
 - Tests that invoke `kicad-cli` are gated by `pytest.importorskip` style: skip if `shutil.which("kicad-cli") is None`. CI-friendly.
 - Mock `subprocess.run` where possible to keep unit tests fast; reserve real `kicad-cli` for one integration test per axis.
@@ -75,10 +75,10 @@ Output artifacts (runtime, not committed):
 **Red:** `tests/kicad_sch/test_eval_n3.py` imports `eval_parse_ok`; pytest fails ModuleNotFoundError.
 
 ```bash
-ssh studio 'mkdir -p ~/eu-kiki/tests/kicad_sch && touch ~/eu-kiki/tests/kicad_sch/__init__.py'
+ssh studio 'mkdir -p ~/ailiance/tests/kicad_sch && touch ~/ailiance/tests/kicad_sch/__init__.py'
 ```
 
-Write `~/eu-kiki/tests/kicad_sch/test_eval_n3.py`:
+Write `~/ailiance/tests/kicad_sch/test_eval_n3.py`:
 
 ```python
 """Tests for kicad_sch.eval_n3 (5-axis evaluator)."""
@@ -93,9 +93,9 @@ def test_module_imports():
     assert hasattr(eval_n3, "eval_parse_ok")
 ```
 
-Run: `cd ~/eu-kiki && uv run python -m pytest tests/kicad_sch/test_eval_n3.py -v` → ModuleNotFoundError.
+Run: `cd ~/ailiance && uv run python -m pytest tests/kicad_sch/test_eval_n3.py -v` → ModuleNotFoundError.
 
-**Green:** Create `~/eu-kiki/scripts/kicad_sch/eval_n3.py` (skeleton):
+**Green:** Create `~/ailiance/scripts/kicad_sch/eval_n3.py` (skeleton):
 
 ```python
 """5-axis evaluator for .kicad_sch v10 generation gap (spec 2026-05-11).
@@ -116,13 +116,13 @@ def eval_parse_ok(sch_path: Path, cli_path: Path = Path("kicad-cli")) -> int:
     raise NotImplementedError
 ```
 
-Ensure `~/eu-kiki/scripts/kicad_sch/__init__.py` re-exports (created by Foundation; add line):
+Ensure `~/ailiance/scripts/kicad_sch/__init__.py` re-exports (created by Foundation; add line):
 
 ```python
 from . import eval_n3  # noqa: F401
 ```
 
-Add networkx to `~/eu-kiki/pyproject.toml` dependencies block. Run `uv sync` on Studio.
+Add networkx to `~/ailiance/pyproject.toml` dependencies block. Run `uv sync` on Studio.
 
 Run pytest → green.
 
@@ -146,7 +146,7 @@ import pytest
 
 from kicad_sch.eval_n3 import eval_parse_ok
 
-REF_SCH = Path.home() / "eu-kiki-data/kicad-sch-refs/spi_bus_4devices.kicad_sch"
+REF_SCH = Path.home() / "ailiance-data/kicad-sch-refs/spi_bus_4devices.kicad_sch"
 
 
 def make_broken_sch(tmp_path: Path) -> Path:
@@ -785,7 +785,7 @@ AuditLogger. Handles missing ref by zeroing sem_equiv.
 
 ## Task 9 — `run_eval_n3.py` CLI runner (5 seeds × N files)
 
-**Red:** Create `~/eu-kiki/tests/kicad_sch/test_run_eval_n3.py`:
+**Red:** Create `~/ailiance/tests/kicad_sch/test_run_eval_n3.py`:
 
 ```python
 """Tests for run_eval_n3 CLI orchestrator."""
@@ -796,7 +796,7 @@ from pathlib import Path
 
 import pytest
 
-RUNNER = Path.home() / "eu-kiki/scripts/run_eval_n3.py"
+RUNNER = Path.home() / "ailiance/scripts/run_eval_n3.py"
 
 
 @pytest.mark.skipif(not RUNNER.exists(), reason="runner not yet created")
@@ -871,7 +871,7 @@ def test_runner_aggregates_pass_rate_for_bench_comparison(tmp_path):
     assert cell["n_samples"] == 5  # 1 file × 5 seeds
 ```
 
-**Green:** Create `~/eu-kiki/scripts/run_eval_n3.py`:
+**Green:** Create `~/ailiance/scripts/run_eval_n3.py`:
 
 ```python
 #!/usr/bin/env python3
@@ -1035,7 +1035,7 @@ keeps unit tests hermetic.
 
 ## Task 10 — `bench_comparison.py --metric-axes` extension
 
-**Red:** Create `~/eu-kiki/tests/kicad_sch/test_bench_comparison_axes.py`:
+**Red:** Create `~/ailiance/tests/kicad_sch/test_bench_comparison_axes.py`:
 
 ```python
 """Tests for bench_comparison.py --metric-axes extension."""
@@ -1046,7 +1046,7 @@ from pathlib import Path
 
 import pytest
 
-BENCH = Path.home() / "eu-kiki/scripts/bench_comparison.py"
+BENCH = Path.home() / "ailiance/scripts/bench_comparison.py"
 
 
 def _write_ppl(path: Path, model: str, domain: str, ppl: float, n=30):
@@ -1143,7 +1143,7 @@ def test_axes_flag_json_carries_axis_fields(tmp_path):
 
 Run pytest → all 3 fail (flag absent / columns missing).
 
-**Green:** Modify `~/eu-kiki/scripts/bench_comparison.py`. Surgical patches only — preserve PR #24 behavior when `--metric-axes` is absent.
+**Green:** Modify `~/ailiance/scripts/bench_comparison.py`. Surgical patches only — preserve PR #24 behavior when `--metric-axes` is absent.
 
 Patch A — add CLI flag in `argparse` block (after `--validator-min-cells`):
 
@@ -1297,7 +1297,7 @@ spi_bus_4devices reference schematic.
 
 ## Task 12 — Wire-up doc + README pointer
 
-Update `~/eu-kiki/scripts/kicad_sch/README.md` (create if absent) with a
+Update `~/ailiance/scripts/kicad_sch/README.md` (create if absent) with a
 "How to run N3" section:
 
 ```markdown
@@ -1307,7 +1307,7 @@ Run on a directory of generated `.kicad_sch` files:
 
     uv run python scripts/run_eval_n3.py \
         --sch-dir output/kicad_sch_gen/qwen36-D3/ \
-        --ref-dir ~/eu-kiki-data/kicad-sch-refs/ \
+        --ref-dir ~/ailiance-data/kicad-sch-refs/ \
         --model-key kicad-sch-qwen36-D3 \
         --domain kicad-sch \
         --out output/eval/raw/eval_n3_qwen36-D3.json \
@@ -1327,7 +1327,7 @@ Composite weights: 0.30·parse_ok + 0.30·erc_clean + 0.15·sch_render
 Push everything:
 
 ```bash
-ssh studio 'cd ~/eu-kiki && git push origin <branch>'
+ssh studio 'cd ~/ailiance && git push origin <branch>'
 ```
 
 **Commit:**

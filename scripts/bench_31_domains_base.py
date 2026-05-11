@@ -8,7 +8,7 @@ dans ~/.cache/huggingface/hub/, jamais les BF16 (Qwen3.6-35B / Mistral-Medium
 
 Pour chaque modèle, on calcule la perplexité sur le `valid.jsonl` de chacun
 des 31 domaines présents dans EUKIKI_DATA_DIR (par défaut
-~/eu-kiki-data/hf-traced).
+~/ailiance-data/hf-traced).
 
 Sortie :
   ~/bench-results/31_domains_baseline.json    (machine-readable, overwrite)
@@ -21,7 +21,7 @@ Lancement :
 
 Variables d'env :
   EUKIKI_DATA_DIR    : dossier hf-traced/<domain>/valid.jsonl
-                       (def: ~/eu-kiki-data/hf-traced)
+                       (def: ~/ailiance-data/hf-traced)
   BENCH_RESULTS_DIR  : où écrire baseline.{json,md}
                        (def: ~/bench-results)
   MLX_VENV_BIN       : bin du venv où vit mlx_lm.perplexity
@@ -45,7 +45,7 @@ from pathlib import Path
 # --------------------------------------------------------------------------- #
 
 HOME = Path.home()
-DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "eu-kiki-data" / "hf-traced"))
+DATA_DIR = Path(os.environ.get("EUKIKI_DATA_DIR", HOME / "ailiance-data" / "hf-traced"))
 BENCH_DIR = Path(os.environ.get("BENCH_RESULTS_DIR", HOME / "bench-results"))
 PYBIN = Path(os.environ.get("MLX_VENV_BIN", HOME / "mlx-stack" / ".venv" / "bin"))
 MLX_PERPLEXITY = str(PYBIN / "mlx_lm.perplexity")
@@ -59,7 +59,7 @@ OUT_MD = BENCH_DIR / "31_domains_baseline.md"
 #   jackrong-9b-opus, helium-1-2b, gemma3-4b.
 # Entrants : ministral-3-14b instruct/reasoning, granite-4.1-30b, gemma-e2b.
 MODELS: list[tuple[str, str]] = [
-    ("gemma-e4b-eu-kiki-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit"),
+    ("gemma-e4b-ailiance-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit"),
     ("gemma-e2b",                "lmstudio-community/gemma-4-E2B-it-MLX-4bit"),
     ("ministral-3b",             "mlx-community/Ministral-3-3B-Instruct-2512-4bit"),
     ("ministral-3-8b",           "mlx-community/Ministral-3-8B-Instruct-2512-4bit"),

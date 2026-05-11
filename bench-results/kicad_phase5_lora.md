@@ -3,7 +3,7 @@
 _Generated: 2026-05-11 05:16:37_
 
 - Source phase4   : `/Users/electron/bench-results/kicad_phase4_lora.json`
-- Refs            : `/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl`
+- Refs            : `/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl`
 - KiCad CLI       : `/opt/homebrew/bin/kicad-cli` (10.0.2)
 - Score weights   : 0.30 parse_ok + 0.40 no_extra_errs + 0.30 no_extra_warns (caps 5/10)
 

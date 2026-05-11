@@ -2,11 +2,11 @@
 
 _Generated: 2026-05-11 05:16:37_
 
-- Base ref     : `gemma-e4b-eu-kiki-base` (les 3 adapters LoRA sont sur cette meme base)
+- Base ref     : `gemma-e4b-ailiance-base` (les 3 adapters LoRA sont sur cette meme base)
 - Adapters     : gemma-e4b-eukiki-final, gemma-e4b-mascarade-final, gemma-e4b-aggro-test
 - Lift         : `composite_lora - composite_base` (en pts ; +X.Xpts)
 
-| Phase | Dataset | base | +eu-kiki | +mascarade | +aggro |
+| Phase | Dataset | base | +ailiance | +mascarade | +aggro |
 |---|---|---:|---:|---:|---:|
 | P1| kicad-dsl| 0.090| 0.640 (+55.0pts)| 0.090 (+0.0pts)| 0.090 (+0.0pts) |
 | P1| kicad-pcb| 0.010| 0.430 (+42.0pts)| 0.010 (+0.0pts)| 0.010 (+0.0pts) |

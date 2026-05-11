@@ -2,13 +2,13 @@
 
 _Generated: 2026-05-11 02:45:31_
 
-- Dataset    : `/Users/electron/eu-kiki-data/kicad-sch-extract/valid.jsonl` (6 samples)
+- Dataset    : `/Users/electron/ailiance-data/kicad-sch-extract/valid.jsonl` (6 samples)
 - Models     : 7
 - Max tokens : 2048
 
 | Model | n | json_ok | comp_F1 | comp_recall | netname_F1 | netpins_F1 | netpins_recall | composite |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| **gemma-e4b-eu-kiki-base** | 6 | 0.67 | 0.50 | 0.50 | 0.17 | 0.00 | 0.00 | 0.308 |
+| **gemma-e4b-ailiance-base** | 6 | 0.67 | 0.50 | 0.50 | 0.17 | 0.00 | 0.00 | 0.308 |
 | **gemma-e2b** | 6 | 0.33 | 0.33 | 0.33 | 0.33 | 0.00 | 0.00 | 0.233 |
 | **ministral-3b** | 6 | 1.00 | 1.00 | 1.00 | 0.93 | 0.00 | 0.00 | 0.687 |
 | **ministral-3-8b** | 6 | 1.00 | 1.00 | 1.00 | 0.17 | 0.15 | 0.15 | 0.579 |
@@ -18,7 +18,7 @@ _Generated: 2026-05-11 02:45:31_
 
 ## Models tested
 
-- **gemma-e4b-eu-kiki-base** — `lmstudio-community/gemma-4-E4B-it-MLX-4bit`
+- **gemma-e4b-ailiance-base** — `lmstudio-community/gemma-4-E4B-it-MLX-4bit`
 - **gemma-e2b** — `lmstudio-community/gemma-4-E2B-it-MLX-4bit`
 - **ministral-3b** — `mlx-community/Ministral-3-3B-Instruct-2512-4bit`
 - **ministral-3-8b** — `mlx-community/Ministral-3-8B-Instruct-2512-4bit`

@@ -19,9 +19,9 @@ as the curator of record.
 | README branding            | Primary curator (pretty_name `Ailiance — ...`)             | Upstream contributor (cited, linked)                  |
 | Citation (bibtex)          | Primary `@dataset{ailiance_<short>_2026, ...}`             | Secondary `@dataset{electron_rare_<short>_2026, ...}` |
 | EU AI Act packaging        | Maintains Template AI Office July 2025 alignment           | Provides source pipeline + audit logs                 |
-| Contact / opt-out          | `c.saillant@gmail.com` (Ailiance)                          | Same person, electron-bench repo for audit logs       |
+| Contact / opt-out          | `c.saillant@gmail.com` (Ailiance)                          | Same person, ailiance-bench repo for audit logs       |
 | Data files (`.jsonl`)      | Identical to upstream — never re-edited                    | Source of truth                                       |
-| Pipeline scripts           | Referenced (linked to electron-bench)                      | Lives at electron-bench/scripts/                      |
+| Pipeline scripts           | Referenced (linked to ailiance-bench)                      | Lives at ailiance-bench/scripts/                      |
 
 **No fork divergence**: data files are bit-identical to electron-rare/*. Only the
 README differs (branding + citation + about-Ailiance + related-datasets sections).

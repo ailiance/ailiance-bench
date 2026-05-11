@@ -78,17 +78,17 @@ def main() -> int:
     ap.add_argument(
         "--src",
         type=Path,
-        default=Path("/Users/electron/eu-kiki-data/kicad9plus-corpus/dataset.jsonl"),
+        default=Path("/Users/electron/ailiance-data/kicad9plus-corpus/dataset.jsonl"),
     )
     ap.add_argument(
         "--out-permissive",
         type=Path,
-        default=Path("/Users/electron/eu-kiki-data/kicad9plus-corpus/dataset_permissive.jsonl"),
+        default=Path("/Users/electron/ailiance-data/kicad9plus-corpus/dataset_permissive.jsonl"),
     )
     ap.add_argument(
         "--out-copyleft",
         type=Path,
-        default=Path("/Users/electron/eu-kiki-data/kicad9plus-corpus/dataset_copyleft.jsonl"),
+        default=Path("/Users/electron/ailiance-data/kicad9plus-corpus/dataset_copyleft.jsonl"),
     )
     args = ap.parse_args()
 

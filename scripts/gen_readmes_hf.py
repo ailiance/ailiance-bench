@@ -206,7 +206,7 @@ datasets:
 
 Données collectées et générées dans le cadre du projet **electron-rare** (fine-tuning LoRA sur Gemma-3n-E4B pour applications électronique embarquée).
 
-Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence du projet : [electron-bench](https://github.com/electron-rare/electron-bench).
+Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence du projet : [ailiance-bench](https://github.com/ailiance/ailiance-bench).
 
 ## Citation
 
@@ -326,7 +326,7 @@ Ce dataset sert à ancrer factuellement le LLM sur les détails du projet (BOM, 
 
 **CC-BY-SA-4.0** (attribution + sharealike).
 
-Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence du projet : [electron-bench](https://github.com/electron-rare/electron-bench).
+Compatible **EU AI Act** : voir les signataires du *GPAI Code of Practice* (Anthropic, Mistral, Google) et la documentation transparence du projet : [ailiance-bench](https://github.com/ailiance/ailiance-bench).
 
 ## Citation
 

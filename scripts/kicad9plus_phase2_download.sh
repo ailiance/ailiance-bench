@@ -7,7 +7,7 @@
 # Pour chaque sch téléchargé : génère .meta.json sidecar (IA Act).
 
 set -u
-ROOT=~/eu-kiki-data/kicad9plus-corpus
+ROOT=~/ailiance-data/kicad9plus-corpus
 SOURCES="$ROOT/sources"
 LOG=~/bench-results/kicad9plus-download.log
 LOG_RAW="$ROOT/logs/download.log"

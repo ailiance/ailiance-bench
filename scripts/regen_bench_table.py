@@ -23,7 +23,7 @@ TABLE_MD = HOME / "bench-results" / "BENCH_TABLE.md"
 
 # Ordre fixe des modèles affichés ; les nouveaux qu'on découvre sont ajoutés à la fin
 MODEL_ORDER = [
-    "base", "eu-kiki", "mascarade",
+    "base", "ailiance", "mascarade",
     "gemma3-4b", "ministral-3b", "qwen-coder-3b", "llama-3.2-3b",
     "qwen3.5-9b", "jackrong-9b-opus", "helium-1-2b",
     "ministral-3-8b", "granite-4.1-3b",
@@ -31,7 +31,7 @@ MODEL_ORDER = [
 
 MODEL_META = {
     "base":              ("Google",                     "Gemma Terms"),
-    "eu-kiki":           ("electron-rare",              "CC-BY-SA-4.0"),
+    "ailiance":           ("electron-rare",              "CC-BY-SA-4.0"),
     "mascarade":         ("electron-rare",              "CC-BY-SA-4.0"),
     "gemma3-4b":         ("Google",                     "Gemma Terms"),
     "ministral-3b":      ("Mistral",                    "Apache 2.0"),

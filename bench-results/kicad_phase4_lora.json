@@ -6,7 +6,7 @@
     "phase2_path": "/Users/electron/bench-results/kicad_phase2_lora.json",
     "phase2_metadata": {
       "timestamp": "2026-05-11 04:37:30",
-      "data_path": "/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl",
+      "data_path": "/Users/electron/ailiance-data/kicad-sch-gen/valid.jsonl",
       "n_samples_total": 6,
       "n_samples_eval": 5,
       "max_tokens": 4096,

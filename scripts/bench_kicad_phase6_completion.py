@@ -17,7 +17,7 @@ Sortie :
 Usage :
   python3 ~/scripts/bench_kicad_phase6_completion.py
   python3 ~/scripts/bench_kicad_phase6_completion.py --dry-run
-  python3 ~/scripts/bench_kicad_phase6_completion.py --models gemma-e4b-eu-kiki-base
+  python3 ~/scripts/bench_kicad_phase6_completion.py --models gemma-e4b-ailiance-base
 """
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ GEMMA_E4B_BASE = "lmstudio-community/gemma-4-E4B-it-MLX-4bit"
 # (nick, hf_id, adapter_path_or_None)
 MODELS: list[tuple[str, str, str | None]] = [
     # 7 base
-    ("gemma-e4b-eu-kiki-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit", None),
+    ("gemma-e4b-ailiance-base",   "lmstudio-community/gemma-4-E4B-it-MLX-4bit", None),
     ("gemma-e2b",                "lmstudio-community/gemma-4-E2B-it-MLX-4bit", None),
     ("ministral-3b",             "mlx-community/Ministral-3-3B-Instruct-2512-4bit", None),
     ("ministral-3-8b",           "mlx-community/Ministral-3-8B-Instruct-2512-4bit", None),

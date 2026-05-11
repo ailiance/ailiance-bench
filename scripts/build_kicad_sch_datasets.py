@@ -3,14 +3,14 @@
 Construit les datasets jsonl Phase 2 et Phase 3 a partir des templates
 hand-crafted + schemas locaux references.
 
-Phase 2 (~/eu-kiki-data/kicad-sch-gen/valid.jsonl) :
+Phase 2 (~/ailiance-data/kicad-sch-gen/valid.jsonl) :
   {"messages": [
      {"role": "user", "content": "<prompt>"},
      {"role": "assistant", "content": "<.kicad_sch>"}
    ],
    "_id": "...", "_source": "template|local"}
 
-Phase 3 (~/eu-kiki-data/kicad-sch-extract/valid.jsonl) :
+Phase 3 (~/ailiance-data/kicad-sch-extract/valid.jsonl) :
   {"messages": [
      {"role": "user", "content": "Extract components & nets from this KiCad schematic. Output JSON ...\\n\\n<.kicad_sch>"},
      {"role": "assistant", "content": "<json ground truth>"}
@@ -26,8 +26,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from kicad_sch_templates import all_templates  # noqa: E402
 
-OUT_GEN = Path.home() / "eu-kiki-data" / "kicad-sch-gen" / "valid.jsonl"
-OUT_EXT = Path.home() / "eu-kiki-data" / "kicad-sch-extract" / "valid.jsonl"
+OUT_GEN = Path.home() / "ailiance-data" / "kicad-sch-gen" / "valid.jsonl"
+OUT_EXT = Path.home() / "ailiance-data" / "kicad-sch-extract" / "valid.jsonl"
 
 EXTRACT_INSTRUCTION = (
     "You are a KiCad schematic parser. Read the .kicad_sch S-expression below "
