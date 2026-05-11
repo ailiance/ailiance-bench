@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-11 05:16:37",
+    "base_ref_nick": "gemma-e4b-eu-kiki-base",
+    "lora_nicks": [
+      {
+        "nick": "gemma-e4b-eukiki-final",
+        "alias": "+eu-kiki"
+      },
+      {
+        "nick": "gemma-e4b-mascarade-final",
+        "alias": "+mascarade"
+      },
+      {
+        "nick": "gemma-e4b-aggro-test",
+        "alias": "+aggro"
+      }
+    ],
+    "phases": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5"
+    ]
+  },
+  "matrix": {
+    "P1": {
+      "base_path": "/Users/electron/bench-results/kicad_functional_phase1.json",
+      "lora_path": "/Users/electron/bench-results/kicad_functional_phase1_lora.json",
+      "score_field": "composite_score",
+      "base_present": true,
+      "lora_present": true,
+      "datasets": {
+        "kicad-dsl": {
+          "base": 0.09,
+          "lora": {
+            "+eu-kiki": 0.64,
+            "+mascarade": 0.09,
+            "+aggro": 0.09
+          }
+        },
+        "kicad-pcb": {
+          "base": 0.01,
+          "lora": {
+            "+eu-kiki": 0.43,
+            "+mascarade": 0.01,
+            "+aggro": 0.01
+          }
+        },
+        "spice-sim": {
+          "base": 0.4247,
+          "lora": {
+            "+eu-kiki": 0.6758,
+            "+mascarade": 0.1762,
+            "+aggro": 0.1894
+          }
+        }
+      },
+      "warnings": []
+    },
+    "P2": {
+      "base_path": "/Users/electron/bench-results/kicad_phase2.json",
+      "lora_path": "/Users/electron/bench-results/kicad_phase2_lora.json",
+      "score_field": "composite_score",
+      "base_present": true,
+      "lora_present": true,
+      "datasets": {
+        "kicad-sch-gen": {
+          "base": 0.42,
+          "lora": {
+            "+eu-kiki": 0.22,
+            "+mascarade": 0.4,
+            "+aggro": 0.32
+          }
+        }
+      },
+      "warnings": []
+    },
+    "P3": {
+      "base_path": "/Users/electron/bench-results/kicad_phase3.json",
+      "lora_path": "/Users/electron/bench-results/kicad_phase3_lora.json",
+      "score_field": "composite_score",
+      "base_present": true,
+      "lora_present": true,
+      "datasets": {
+        "kicad-sch-extract": {
+          "base": 0.3083,
+          "lora": {
+            "+eu-kiki": 0.6902,
+            "+mascarade": 0.7847,
+            "+aggro": 0.35
+          }
+        }
+      },
+      "warnings": []
+    },
+    "P4": {
+      "base_path": "/Users/electron/bench-results/kicad_phase4.json",
+      "lora_path": "/Users/electron/bench-results/kicad_phase4_lora.json",
+      "score_field": "composite_avg",
+      "base_present": true,
+      "lora_present": true,
+      "datasets": {
+        "kicad-erc-abs": {
+          "base": 0.06,
+          "lora": {
+            "+eu-kiki": 0.057,
+            "+mascarade": 0.06,
+            "+aggro": 0.06
+          }
+        }
+      },
+      "warnings": []
+    },
+    "P5": {
+      "base_path": "/Users/electron/bench-results/kicad_phase5.json",
+      "lora_path": "/Users/electron/bench-results/kicad_phase5_lora.json",
+      "score_field": "composite_v2_avg",
+      "base_present": true,
+      "lora_present": true,
+      "datasets": {
+        "kicad-erc-delta": {
+          "base": 0.06,
+          "lora": {
+            "+eu-kiki": 0.057,
+            "+mascarade": 0.06,
+            "+aggro": 0.06
+          }
+        }
+      },
+      "warnings": []
+    }
+  }
+}

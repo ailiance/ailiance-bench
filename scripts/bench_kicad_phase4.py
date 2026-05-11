@@ -200,20 +200,35 @@ def run_erc(sch_text: str, model_nick: str, sample_id: str) -> dict[str, Any]:
                 "report_path": str(rpt_path),
             }
 
-    # Fallback : parser pure-Python pour parse_ok partiel
+    # Fallback : parser pure-Python pour parse_ok partiel (graded)
+    # Quand kicad-cli refuse de charger la sch, on donne du credit
+    # partiel selon la "kicad-likeness" de la sortie pour distinguer
+    # les modeles (sinon tout finit a 0.0, plus aucun signal).
     try:
         comps = extract_components(sch_text)
         labs = extract_labels(sch_text)
         balanced = balanced_parens(sch_text)
-        starts_ok = sch_text.lstrip().startswith("(kicad_sch")
-        # on accorde 0.5 si la structure haut-niveau est plausible
-        py_ok = balanced and starts_ok and (len(comps) >= 1 or len(labs) >= 1)
+        starts_kicad = sch_text.lstrip().startswith("(kicad_sch")
+        has_paren = "(" in sch_text and ")" in sch_text
+        # Score gradue [0.0, 1.0] :
+        #   0.40 starts_with_kicad_sch (header correct)
+        #   0.20 parens balanced
+        #   0.20 >=1 component detected
+        #   0.10 >=1 label detected
+        #   0.05 a au moins essaye une syntaxe parens (parens unbalanced)
+        py_score = 0.0
+        if starts_kicad: py_score += 0.40
+        if balanced: py_score += 0.20
+        if len(comps) >= 1: py_score += 0.20
+        if len(labs) >= 1: py_score += 0.10
+        if has_paren and not balanced: py_score += 0.05
+        py_score = min(py_score, 1.0)
     except Exception:
-        py_ok = False
+        py_score = 0.0
 
     return {
-        "parse_ok": 0.5 if py_ok else 0.0,
-        "parse_via": "py_fallback" if py_ok else "failed",
+        "parse_ok": round(py_score, 3),
+        "parse_via": "py_partial" if py_score > 0 else "failed",
         "errors_count": None,
         "warnings_count": None,
         "violations_by_type": {},

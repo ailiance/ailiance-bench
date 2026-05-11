@@ -2348,6 +2348,1161 @@
           }
         ]
       }
+    },
+    "gemma-e4b-aggro-test": {
+      "kicad-dsl": {
+        "n_samples": 20,
+        "parse_ok_rate": 0.0,
+        "composite_score": 0.09,
+        "fields_complete_rate": 0.0,
+        "pin_count_match_rate": 0.05,
+        "fplist_balanced_rate": 1.0,
+        "samples": [
+          {
+            "prompt": "Define a KiCad symbol for AT45DB161D-SU (16Mb Serial DataFlash, 2.5V Vcc, SOIC-8) in the Memory_Flash library.",
+            "expected": "DEF AT45DB161D-SU U 0 20 Y Y 1 F N\nF0 \"U\" -300 350 50 H V C CNN\nF1 \"AT45DB161D-SU\" 400 350 50 H V C CNN\nF2 \"Package_SO:SOIC-8_5.275x5.275mm_P1.27mm\" 1150 -600 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n SOIC*P1.27mm*\n$ENDFPLIST\nDRAW\nS -300 300 300 -300 1 1 10 f\nX SI 1 -400 200 100 R 50 50 1 1 I\nX SCK 2 -400 -200 100 R 50 50 1 1 I\nX ~RESET~ 3 -400 100 100 R 50 50 1 1 B\nX ~CS 4 -400 -100 100 R 50 50 1 1 I\nX ~WP 5 -400 0 100 R 50 50 1 1 I\nX VCC 6 0 400 100 D 50 50 1 1 W\nX GND 7 0 -400 100 U 50 50 1 1 W\nX SO 8 400 200 100 L 50 50 1 1 O\nENDDRAW\nENDDEF",
+            "generated": "A KiCad symbol for AT45DB161D-SU (16Mb Serial DataFlash, 2.5V Vcc, SOIC-8) in the Memory_Flash library.\n\n**Symbol Name:** AT45DB161D-SU\n\n**Symbol Type:** Serial DataFlash\n\n**Symbol Description:** Serial DataFlash (16Mb)\n\n**Symbol Pins:**\n\n*   **VSS** (GND)\n*   **VSS** (GND)\n*   **VSS** (GND)\n*   **VSS** (GND)\n*   **VSS** (GND)\n*   **VSS** (GND)\n*   **VSS** (GND)\n*   **VSS** (GND)\n\n**Symbol Footprint:**\n\n*   **AT45DB161D-SU** (SOIC-8)\n\n**Symbolic Link:**\n\n*   **AT45DB161D-SU** (SOIC-8)\n\n**Symbolic Link (for the AT45DB161D-SU):**\n\n*   **AT45DB161D-SU** (SOIC-8)",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 8,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 8.6
+          },
+          {
+            "prompt": "Define a KiCad symbol for HCPL-2201 (Opto Coupler, 1kV/us, 50V CMR, Schmitt trigger output, DIP-8) in the Isolator library.",
+            "expected": "DEF HCPL-2201 U 0 20 Y Y 1 F N\nF0 \"U\" -200 250 50 H V C CNN\nF1 \"HCPL-2201\" 250 250 50 H V C CNN\nF2 \"Package_DIP:DIP-8_W7.62mm\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\nALIAS HCPL-2211\n$FPLIST\n DIP*W7.62mm*\n$ENDFPLIST\nDRAW\nA 50 0 100 -899 899 1 1 0 N 50 -100 50 100\nS -200 200 200 -200 1 1 10 f\nS 10 60 60 -60 1 1 0 N\nP 2 0 1 0 200 0 150 0 N\nP 2 1 1 0 -175 -25 -125 -25 N\nP 2 1 1 0 0 100 0 200 N\nP 2 1 1 0 10 -60 -10 -60 N\nP 2 1 1 0 60 60 80 60 N\nP 3 1 1 0 0 -100 0 -200 0 -150 N\nP 4 1 1 0 -200 -100 -150 -100 -150 100 -200 100 N\nP 4 1 1 0 -150 -25 -175 25 -125 25 -150 -25 N\nP 4 1 1 0 50 -100 -50 -100",
+            "generated": "Define a KiCad symbol for HCPL-2201 (Opto Coupler, 1kV/us, 50V CMR, Schmitt trigger output, DIP-8) in the Isolator library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 8,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 1.74
+          },
+          {
+            "prompt": "Define a KiCad symbol for TPS7A7200RGW (2A, Low-Dropout Voltage Regulator, 1.5-6.5V Input, Adjustable 0.9-5V Output, VQFN-20) in the Regulator_Linear library.",
+            "expected": "DEF TPS7A7200RGW U 0 20 Y Y 1 F N\nF0 \"U\" -250 650 50 H V C CNN\nF1 \"TPS7A7200RGW\" 150 650 50 H V C CNN\nF2 \"Package_DFN_QFN:Texas_S-PVQFN-N20_EP3.15x3.15mm_ThermalVias\" 50 750 50 H I C CNN\nF3 \"\" -150 500 50 H I C CNN\n$FPLIST\n Texas*S?PVQFN*\n$ENDFPLIST\nDRAW\nS -300 600 300 -600 0 1 10 f\nX OUT 1 400 500 100 L 50 50 1 1 w\nX 800mV 10 -400 -300 100 R 50 50 1 1 I\nX 1.6V 11 -400 -400 100 R 50 50 1 1 I\nX NC 12 -300 400 100 R 50 50 1 1 N N\nX SS 13 -400 200 100 R 50 50 1 1 I\nX EN 14 -400 300 100 R 50 50 1 1 I\nX IN 15 -400 500 100 R 50 50 1 1 W\nX IN 16 -400 500 100 R 50 50 1 1 P N\nX IN 17 -400 500 100 R 50 ",
+            "generated": "TPS7A7200RGW (2A, Low-Dropout Voltage Regulator, 1.5-6.5V Input, Adjustable 0.9-5V Output, VQFN-20)\n\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    ",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 21,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 32.0
+          },
+          {
+            "prompt": "Define a KiCad symbol for 4P2C_Shielded (RJ connector, 4P2C (4 positions 2 connected), Shielded) in the Connector library.",
+            "expected": "DEF 4P2C_Shielded J 0 40 Y Y 1 F N\nF0 \"J\" -200 350 50 H V R CNN\nF1 \"4P2C_Shielded\" 100 350 50 H V L CNN\nF2 \"\" 0 50 50 V I C CNN\nF3 \"\" 0 50 50 V I C CNN\n$FPLIST\n 4P2C*\n$ENDFPLIST\nDRAW\nS 300 300 -300 -200 0 1 10 f\nP 3 0 1 0 -250 -25 -200 -25 -200 -25 N\nP 3 0 1 0 -250 25 -200 25 -200 25 N\nP 3 0 1 0 -250 75 -200 75 -200 75 N\nP 3 0 1 0 -250 125 -200 125 -200 125 N\nP 15 0 1 0 -250 -125 -250 225 -50 225 150 225 150 175 200 175 200 125 250 125 250 -25 200 -25 200 -75 150 -75 150 -125 -250 -125 -250 -125 N\nX ~ 1 400 0 100 L 50 50 1 1 P\nX ~ 2 400 100 100 L 50 50 1 1 P\nX ~ SH 0 -300 100 U 50 50 1 1 P\nEND",
+            "generated": "A KiCad symbol for 4P2C_Shielded (RJ connector, 4P2C (4 positions 2 connected), Shielded) in the Connector library.\n\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n   ",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 3,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 32.0
+          },
+          {
+            "prompt": "Design a KiCad schematic for issue19090 circuit (connector): with 2 resistors.",
+            "expected": "(kicad_sch\n\t(version 20231120)\n\t(generator \"eeschema\")\n\t(generator_version \"8.0\")\n\t(uuid \"93c69c92-db2d-496f-91b5-d4084385cad3\")\n\t(paper \"A4\")\n\t(lib_symbols\n\t\t(symbol \"Device:R\"\n\t\t\t(pin_numbers hide)\n\t\t\t(pin_names\n\t\t\t\t(offset 0)\n\t\t\t)\n\t\t\t(exclude_from_sim no)\n\t\t\t(in_bom yes)\n\t\t\t(on_board yes)\n\t\t\t(property \"Reference\" \"R\"\n\t\t\t\t(at 2.032 0 90)\n\t\t\t\t(effects\n\t\t\t\t\t(font\n\t\t\t\t\t\t(size 1.27 1.27)\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(property \"Value\" \"R\"\n\t\t\t\t(at 0 0 90)\n\t\t\t\t(effects\n\t\t\t\t\t(font\n\t\t\t\t\t\t(size 1.27 1.27)\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(property \"Footprint\" \"\"\n\t\t\t\t(at -1.778 0 90)\n\t\t\t\t(effects\n\t\t\t\t\t(font\n\t\t\t\t\t\t(size 1.",
+            "generated": "Design a KiCad schematic for issue19090 circuit (connector): with 2 resistors.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 0,
+              "generated_pin_count": 0,
+              "pin_count_match": true,
+              "composite": 0.28
+            },
+            "gen_time_s": 1.0
+          },
+          {
+            "prompt": "Define a KiCad symbol for IPWL (Current source, piece-wise linear) in the Simulation_SPICE library.",
+            "expected": "DEF IPWL I 0 1 N Y 1 F N\nF0 \"I\" 100 100 50 H V L CNN\nF1 \"IPWL\" 100 0 50 H V L CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\nF4 \"Y\" 0 0 50 H I L CNN \"Spice_Netlist_Enabled\"\nF5 \"I\" 0 0 50 H I L CNN \"Spice_Primitive\"\nF6 \"pwl(0 -1 50n -1 51n 0 97n 1 171n -1 200n -1)\" 100 -100 50 H V L CNN \"Spice_Model\"\nDRAW\nC 0 0 100 0 1 10 f\nP 5 0 0 0 -70 -40 -30 40 -10 0 30 0 50 50 N\nP 2 0 1 0 0 50 0 90 N\nP 3 0 1 0 -10 70 0 50 10 70 N\nX ~ 1 0 200 100 D 50 50 1 1 P\nX ~ 2 0 -200 100 U 50 50 1 1 P\nENDDRAW\nENDDEF",
+            "generated": "IPWL (Current source, piece-wise linear) in the Simulation_SPICE library is defined as follows:\n\n**Symbol:**\n\n*   **Name:** `IPWL`\n*   **Library:** `Simulation_SPICE`\n*   **Description:** Current source, piece-wise linear\n*   **Function:**\n    *   `IPWL(V1, V2, V3, V4, V5, V6, V7, V8, V9, V10)`\n    *   `V1` to `V10` are the parameters defining the piece-wise linear function.\n    *   `V1` to `V5` define the points on the linear function.\n    *   `V6` to `V10` define the slopes of the linear function.\n    *   `V1` to `V5` are the points on the linear function.\n    *   `V6` to `V10` are the slopes of the linear function.\n    *   `V1` to `V5` are the points on the linear function.\n    *   `V6` to `V10` are the slopes of the linear function.\n    *   `V1` to `V5` are the points on the linear function.\n    *   `V6` to `V10` are the slopes of the linear function.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 2,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 9.64
+          },
+          {
+            "prompt": "Define a KiCad symbol for TLV320AIC23BPW (Stero Audio CODEC, 8- to 96-kHz, With Integrated Headphone Amplifier, TSSOP-28) in the Audio library.",
+            "expected": "DEF TLV320AIC23BPW U 0 20 Y Y 1 F N\nF0 \"U\" 650 1050 50 H V C CNN\nF1 \"TLV320AIC23BPW\" 650 950 50 H V C CNN\nF2 \"Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm\" 0 0 50 H I C CIN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n TSSOP*4.4x9.7mm*P0.65mm*\n$ENDFPLIST\nDRAW\nS -700 900 700 -900 0 1 10 f\nX BVDD 1 -300 1000 100 D 50 50 1 1 W\nX RHPOUT 10 800 300 100 L 50 50 1 1 P\nX HPGND 11 300 -1000 100 U 50 50 1 1 W\nX LOUT 12 800 700 100 L 50 50 1 1 P\nX ROUT 13 800 600 100 L 50 50 1 1 P\nX AVDD 14 100 1000 100 D 50 50 1 1 W\nX AGND 15 100 -1000 100 U 50 50 1 1 W\nX VMID 16 800 -600 100 L 50 50 1 1 P\nX MICBIAS 17 800 -200 100 L 50 50 ",
+            "generated": "TLV320AIC23BPW (Stero Audio CODEC, 8- to 96-kHz, With Integrated Headphone Amplifier, TSSOP-28) in the Audio library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 28,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 1.69
+          },
+          {
+            "prompt": "Define a KiCad symbol for -5VA (Power symbol creates a global label with name \"-5VA\") in the power library.",
+            "expected": "DEF -5VA #PWR 0 0 Y Y 1 F P\nF0 \"#PWR\" 0 100 50 H I C CNN\nF1 \"-5VA\" 0 150 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\nDRAW\nP 6 0 1 0 0 0 0 50 30 50 0 100 -30 50 0 50 F\nX -5VA 1 0 0 0 U 50 50 0 0 W N\nENDDRAW\nENDDEF",
+            "generated": "-5VA (Power symbol creates a global label with name \"-5VA\") in the power library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 1,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 1.0
+          },
+          {
+            "prompt": "Define a KiCad symbol for Conn_02x30_Row_Letter_First_Shielded (Generic shielded connector, double row, 02x30, row letter first pin numbering scheme (pin number consists of a letter for the row and a number for the pin index in this row. a1, ..., aN; b1, ..., bN), script generated (kicad-library-uti",
+            "expected": "DEF Conn_02x30_Row_Letter_First_Shielded J 0 40 Y N 1 F N\nF0 \"J\" 60 1490 50 H V C CNN\nF1 \"Conn_02x30_Row_Letter_First_Shielded\" 90 -1590 50 H V L CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n Connector*:*_2x??-1SH*\n$ENDFPLIST\nDRAW\nS -40 -1095 10 -1105 1 1 6 N\nS -40 -1195 10 -1205 1 1 6 N\nS -40 -1295 10 -1305 1 1 6 N\nS -40 -1395 10 -1405 1 1 6 N\nS -40 -1495 10 -1505 1 1 6 N\nS -40 -195 10 -205 1 1 6 N\nS -40 -295 10 -305 1 1 6 N\nS -40 -395 10 -405 1 1 6 N\nS -40 -495 10 -505 1 1 6 N\nS -40 -595 10 -605 1 1 6 N\nS -40 -695 10 -705 1 1 6 N\nS -40 -795 10 -805 1 1 6 N\nS -40 -895 10 -905 1 1",
+            "generated": "Define a KiCad symbol for Conn_02x30_Row_Letter_First_Shielded (Generic shielded connector, double row, 02x30, row letter first pin numbering scheme (pin number consists of a letter for the row and a number for the pin index in this row. a1, ..., aN; b1, ..., bN), script generated (kicad-library-utils/schlib/autogen/connector/)) in the Connector_Generic_Shielded library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 61,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 3.72
+          },
+          {
+            "prompt": "Define a KiCad symbol for DIN41612_02x16_ZB_EvenPins (DIN41612 connector, double row (ZB) even pins only, 02x16, script generated (kicad-library-utils/schlib/autogen/connector/)) in the Connector library.",
+            "expected": "DEF DIN41612_02x16_ZB_EvenPins J 0 40 Y N 1 F N\nF0 \"J\" 50 800 50 H V C CNN\nF1 \"DIN41612_02x16_ZB_EvenPins\" 50 -900 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n DIN41612*2x*\n$ENDFPLIST\nDRAW\nS -50 -795 0 -805 1 1 6 N\nS -50 -695 0 -705 1 1 6 N\nS -50 -595 0 -605 1 1 6 N\nS -50 -495 0 -505 1 1 6 N\nS -50 -395 0 -405 1 1 6 N\nS -50 -295 0 -305 1 1 6 N\nS -50 -195 0 -205 1 1 6 N\nS -50 -95 0 -105 1 1 6 N\nS -50 5 0 -5 1 1 6 N\nS -50 105 0 95 1 1 6 N\nS -50 205 0 195 1 1 6 N\nS -50 305 0 295 1 1 6 N\nS -50 405 0 395 1 1 6 N\nS -50 505 0 495 1 1 6 N\nS -50 605 0 595 1 1 6 N\nS -50 705 0 695 1",
+            "generated": "A KiCad symbol for DIN41612_02x16_ZB_EvenPins (DIN41612 connector, double row (ZB) even pins only, 02x16, script generated (kicad-library-utils/schlib/autogen/connector/)) in the Connector library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 32,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 2.59
+          },
+          {
+            "prompt": "Define a KiCad symbol for STM32L496VEYx (ARM Cortex-M4 MCU, 512KB flash, 320KB RAM, 80MHz, 1.71-3.6V, 81 GPIO, WLCSP-100) in the MCU_ST_STM32L4 library.",
+            "expected": "DEF STM32L496VEYx U 0 20 Y Y 1 F N\nF0 \"U\" -800 2550 50 H V L CNN\nF1 \"STM32L496VEYx\" 600 2550 50 H V L CNN\nF2 \"Package_CSP:ST_WLCSP-100_Die461\" -800 -2600 50 H I R CNN\nF3 \"\" 0 0 50 H I C CNN\nALIAS STM32L496VGYx\n$FPLIST\n ST_WLCSP*Die461*\n$ENDFPLIST\nDRAW\nS -800 -2600 800 2500 0 1 10 f\nX VDDUSB A1 500 2700 200 D 50 50 1 1 W\nX VDD A10 -200 2700 200 D 50 50 1 1 W\nX PA15 A2 1000 900 200 L 50 50 1 1 B\nX PD1 A3 -1000 -1500 200 R 50 50 1 1 B\nX VDD A4 -300 2700 200 D 50 50 1 1 W\nX PG10 A5 -1000 500 200 R 50 50 1 1 B\nX VDDIO2 A6 400 2700 200 D 50 50 1 1 W\nX PB6 A7 1000 100 200 L 50 50 1 1 B\nX PB9 A8 1000 ",
+            "generated": "Define a KiCad symbol for STM32L496VEYx (ARM Cortex-M4 MCU, 512KB flash, 320KB RAM, 80MHz, 1.71-3.6V, 81 GPIO, WLCSP-100) in the MCU_ST_STM32L4 library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 100,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 2.79
+          },
+          {
+            "prompt": "Define a KiCad symbol for TPS76901 (Ultra Low Power 100mA Low Drop Adjustable Out Regulator, SOT-23-5) in the Regulator_Linear library.",
+            "expected": "DEF TPS76901 U 0 10 Y Y 1 F N\nF0 \"U\" -250 225 50 H V C CNN\nF1 \"TPS76901\" 0 225 50 H V L CNN\nF2 \"Package_TO_SOT_SMD:SOT-23-5\" 0 325 50 H I C CIN\nF3 \"\" 0 -50 50 H I C CNN\n$FPLIST\n SOT?23*\n$ENDFPLIST\nDRAW\nS -300 175 300 -200 0 1 10 f\nX IN 1 -400 100 100 R 50 50 1 1 W\nX GND 2 0 -300 100 U 50 50 1 1 W\nX ~EN~ 3 -400 0 100 R 50 50 1 1 I\nX FB 4 400 0 100 L 50 50 1 1 I\nX OUT 5 400 100 100 L 50 50 1 1 w\nENDDRAW\nENDDEF",
+            "generated": "TPS76901 (Ultra Low Power 100mA Low Drop Adjustable Out Regulator, SOT-23-5)\n\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n  ",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 5,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 32.0
+          },
+          {
+            "prompt": "Define a KiCad symbol for R_Small (Resistor, small symbol) in the Device library.",
+            "expected": "DEF R_Small R 0 10 N N 1 F N\nF0 \"R\" 30 20 50 H V L CNN\nF1 \"R_Small\" 30 -40 50 H V L CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n R_*\n$ENDFPLIST\nDRAW\nS -30 70 30 -70 0 1 8 N\nX ~ 1 0 100 30 D 50 50 1 1 P\nX ~ 2 0 -100 30 U 50 50 1 1 P\nENDDRAW\nENDDEF",
+            "generated": "R_Small (Resistor, small symbol) in the Device library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 2,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 0.82
+          },
+          {
+            "prompt": "Define a KiCad symbol for Conn_01x25_Male (Generic connector, single row, 01x25, script generated (kicad-library-utils/schlib/autogen/connector/)) in the Connector library.",
+            "expected": "DEF Conn_01x25_Male J 0 40 Y N 1 F N\nF0 \"J\" 0 1300 50 H V C CNN\nF1 \"Conn_01x25_Male\" 0 -1300 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n Connector*:*_1x??_*\n$ENDFPLIST\nDRAW\nS 34 -1195 0 -1205 1 1 6 F\nS 34 -1095 0 -1105 1 1 6 F\nS 34 -995 0 -1005 1 1 6 F\nS 34 -895 0 -905 1 1 6 F\nS 34 -795 0 -805 1 1 6 F\nS 34 -695 0 -705 1 1 6 F\nS 34 -595 0 -605 1 1 6 F\nS 34 -495 0 -505 1 1 6 F\nS 34 -395 0 -405 1 1 6 F\nS 34 -295 0 -305 1 1 6 F\nS 34 -195 0 -205 1 1 6 F\nS 34 -95 0 -105 1 1 6 F\nS 34 5 0 -5 1 1 6 F\nS 34 105 0 95 1 1 6 F\nS 34 205 0 195 1 1 6 F\nS 34 305 0 295 1 1 6 F\nS 34 405 0 ",
+            "generated": "Define a KiCad symbol for Conn_01x25_Male (Generic connector, single row, 01x25, script generated (kicad-library-utils/schlib/autogen/connector/)) in the Connector library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 25,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 2.03
+          },
+          {
+            "prompt": "Define a KiCad symbol for R_Small_US (Resistor, small US symbol) in the Device library.",
+            "expected": "DEF R_Small_US R 0 10 N N 1 F N\nF0 \"R\" 30 20 50 H V L CNN\nF1 \"R_Small_US\" 30 -40 50 H V L CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n R_*\n$ENDFPLIST\nDRAW\nP 5 1 1 0 0 0 40 -15 0 -30 -40 -45 0 -60 N\nP 5 1 1 0 0 60 40 45 0 30 -40 15 0 0 N\nX ~ 1 0 100 40 D 50 50 1 1 P\nX ~ 2 0 -100 40 U 50 50 1 1 P\nENDDRAW\nENDDEF",
+            "generated": "R_Small_US (Resistor, small US symbol) in the Device library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 2,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 0.92
+          },
+          {
+            "prompt": "Define a KiCad symbol for DIAC (Diode for alternating current) in the Device library.",
+            "expected": "DEF DIAC D 0 40 N N 1 F N\nF0 \"D\" 0 150 50 H V C CNN\nF1 \"DIAC\" 0 -150 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n TO-???*\n *_Diode_*\n *SingleDiode*\n D_*\n$ENDFPLIST\nDRAW\nP 4 0 1 10 -50 -100 -50 100 50 50 -50 0 F\nP 4 0 1 10 50 100 50 -100 -50 -50 50 0 F\nX K 1 -150 0 100 R 50 50 1 1 P\nX A 2 150 0 100 L 50 50 1 1 P\nENDDRAW\nENDDEF",
+            "generated": "A KiCad symbol for DIAC (Diode for alternating current) in the Device library should be created to represent the device's function and its electrical characteristics.\n\nHere is a step-by-step guide on how to create the symbol:\n\n1.  **Open the Symbol Editor:** Open the Symbol Editor in KiCad.\n2.  **Draw the Symbol:** Draw the symbol for a DIAC. It should look like a diode symbol, but with a small gap or break in the line to indicate that it is a two-terminal device (or a device that can be used as a two-terminal device).\n3.  **Add Pins:** Add two pins to the symbol, representing the two terminals of the DIAC.\n4.  **Add Text/Labels:** Add text labels to the symbol to clearly identify the device (e.g., \"DIAC\").\n5.  **Set Pin Properties:**\n    *   Set the pin properties to match the DIAC's function (e.g., \"DIAC\").\n    *   Set the pin properties to match the DIAC's electrical characteristics (e.g., \"DIAC\").\n    *   Set the pin properties to match the DIAC's physical characteristics (e.g., \"DIAC\").\n6.  **Set the Symbol Properties:**\n    *   Set the symbol properties to match the DIAC's function (e.g., \"DIAC\").\n    *   Set the symbol properties to match the DIAC's electrical characteristics (e.g., \"DIAC\").\n    *   Set the symbol properties to match the DIAC's physical characteristics (e.g., \"DIAC\").\n7.  **Set the Symbol Properties (Final):**\n    *   Set the symbol properties to match the DIAC's function (e.g., \"DIAC\").\n    *   Set the symbol properties to match the DIAC's electrical characteristics (e.g., \"DIAC\").\n    *   Set the symbol properties to match the DIAC's physical characteristics (e.g., \"DIAC\").",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 2,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 14.03
+          },
+          {
+            "prompt": "Define a KiCad symbol for -9V (Power symbol creates a global label with name \"-9V\") in the power library.",
+            "expected": "DEF -9V #PWR 0 0 Y Y 1 F P\nF0 \"#PWR\" 0 -125 50 H I C CNN\nF1 \"-9V\" 0 150 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\nDRAW\nP 2 0 1 0 0 0 0 100 N\nP 4 0 1 0 30 50 -30 50 0 100 30 50 F\nX -9V 1 0 0 0 U 50 50 1 1 W N\nENDDRAW\nENDDEF",
+            "generated": "-9V (Power symbol creates a global label with name \"-9V\") in the power library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 1,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 1.01
+          },
+          {
+            "prompt": "Define a KiCad symbol for 74LS240 (Octal Buffer and Line Driver With 3-State Output, active-low enables, inverting outputs) in the 74xx library.",
+            "expected": "DEF 74LS240 U 0 40 Y Y 1 F N\nF0 \"U\" -300 650 50 H V C CNN\nF1 \"74LS240\" -300 -650 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\n$FPLIST\n DIP?20*\n$ENDFPLIST\nDRAW\nS -300 600 300 -600 1 1 10 f\nP 3 1 0 0 -25 -50 -25 50 25 50 N\nP 4 1 0 0 -50 -50 25 -50 25 50 50 50 N\nX OEa 1 -500 -400 200 R 50 50 1 0 I I\nX GND 10 0 -800 200 U 50 50 1 0 W\nX I0b 11 -500 100 200 R 50 50 1 0 I\nX O3a 12 500 200 200 L 50 50 1 0 T I\nX I1b 13 -500 0 200 R 50 50 1 0 I\nX O2a 14 500 300 200 L 50 50 1 0 T I\nX I2b 15 -500 -100 200 R 50 50 1 0 I\nX O1a 16 500 400 200 L 50 50 1 0 T I\nX I3b 17 -500 -200 200 R 50 50 1 0 I",
+            "generated": "A KiCad symbol for 74LS240 (Octal Buffer and Line Driver With 3-State Output, active-low enables, inverting outputs) in the 74xx library.\n\nThe symbol is a standard 16-pin DIP package.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol is named `74LS240` and is placed in the `74xx` library.\n\nThe symbol is created in KiCad's Symbol Editor.\n\nThe symbol ",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 20,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 31.98
+          },
+          {
+            "prompt": "Define a KiCad symbol for Transformer_SP_1S (Transformer, split primary, single secondary) in the Device library.",
+            "expected": "DEF Transformer_SP_1S T 0 40 Y N 1 F N\nF0 \"T\" 0 250 50 H V C CNN\nF1 \"Transformer_SP_1S\" 0 -300 50 H V C CNN\nF2 \"\" 0 0 50 H I C CNN\nF3 \"\" 0 0 50 H I C CNN\nDRAW\nA -100 -150 50 899 1 0 1 0 N -100 -100 -50 -150\nA -100 -150 50 -1 -899 0 1 0 N -50 -150 -100 -199\nA -100 -50 50 899 1 0 1 0 N -100 0 -50 -50\nA -100 -50 50 -1 -899 0 1 0 N -50 -50 -100 -99\nA -100 50 50 899 1 0 1 0 N -100 100 -50 50\nA -100 50 50 -1 -899 0 1 0 N -50 50 -100 1\nA -100 150 50 899 1 0 1 0 N -100 200 -50 150\nA -100 150 50 -1 -899 0 1 0 N -50 150 -100 101\nA 100 -50 50 899 -1799 0 1 0 N 100 0 51 -50\nA 100 -50 50 1799 -899 0 1 0 N ",
+            "generated": "A KiCad symbol for Transformer_SP_1S (Transformer, split primary, single secondary) in the Device library should be created to represent the physical device.\n\nThe symbol should include:\n\n*   **A schematic symbol:** To represent the transformer in the schematic editor.\n*   **A footprint:** To represent the physical transformer in the PCB layout editor.\n*   **A name:** To identify the symbol (e.g., `Transformer_SP_1S`).\n*   **A description:** To explain the function of the symbol (e.g., `Transformer, split primary, single secondary`).\n*   **Pins:** To represent the electrical connections (e.g., `P1`, `P2`, `P3`, `P4`).\n*   **A schematic symbol:** To represent the transformer in the schematic editor.\n*   **A footprint:** To represent the physical transformer in the PCB layout editor.\n-   **A name:** To identify the symbol (e.g., `Transformer_SP_1S`).\n-   **A description:** To explain the function of the symbol (e.g., `Transformer, split primary, single secondary`).\n-   **Pins:** To represent the electrical connections (e.g., `P1`, `P2`, `P3`, `P4`).",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 5,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 8.83
+          },
+          {
+            "prompt": "Define a KiCad symbol for STM32F745IETx (ARM Cortex-M7 MCU, 512KB flash, 320KB RAM, 216MHz, 1.7-3.6V, 140 GPIO, LQFP-176) in the MCU_ST_STM32F7 library.",
+            "expected": "DEF STM32F745IETx U 0 20 Y Y 1 F N\nF0 \"U\" -1300 4250 50 H V L CNN\nF1 \"STM32F745IETx\" 1000 4250 50 H V L CNN\nF2 \"Package_QFP:LQFP-176_24x24mm_P0.5mm\" -1300 -4300 50 H I R CNN\nF3 \"\" 0 0 50 H I C CNN\nALIAS STM32F745IGTx\n$FPLIST\n LQFP*24x24mm*P0.5mm*\n$ENDFPLIST\nDRAW\nS -1300 -4300 1200 4200 0 1 10 f\nX BOOT0 166 -1500 3700 200 R 50 50 1 1 I\nX BYPASS_REG 48 -1500 4000 200 R 50 50 1 1 I\nX NRST 31 -1500 4100 200 R 50 50 1 1 I\nX PA0 40 1400 4100 200 L 50 50 1 1 B\nX PA1 41 1400 4000 200 L 50 50 1 1 B\nX PA10 121 1400 3100 200 L 50 50 1 1 B\nX PA11 122 1400 3000 200 L 50 50 1 1 B\nX PA12 123 1400 2900 200 L ",
+            "generated": "Define a KiCad symbol for STM32F745IETx (ARM Cortex-M7 MCU, 512KB flash, 320KB RAM, 216MHz, 1.7-3.6V, 140 GPIO, LQFP-176) in the MCU_ST_STM32F7 library.",
+            "scores": {
+              "parse_ok": false,
+              "fields_complete": false,
+              "has_draw_or_rect": false,
+              "fplist_balanced": true,
+              "expected_pin_count": 176,
+              "generated_pin_count": 0,
+              "pin_count_match": false,
+              "composite": 0.08
+            },
+            "gen_time_s": 2.82
+          }
+        ]
+      },
+      "kicad-pcb": {
+        "n_samples": 20,
+        "parse_ok_rate": 0.0,
+        "composite_score": 0.01,
+        "structure_ok_rate": 0.0,
+        "pad_count_match_rate": 0.05,
+        "has_at_rate": 0.0,
+        "samples": [
+          {
+            "prompt": "Define a KiCad footprint for WSON-6-1EP_3x3mm_P0.95mm: WSON6 3*3 MM, 0.95 PITCH; http://www.ti.com/lit/ds/symlink/lmr62421.pdf",
+            "expected": "(module WSON-6-1EP_3x3mm_P0.95mm (layer F.Cu) (tedit 5A0AB51B)\n  (descr \"WSON6 3*3 MM, 0.95 PITCH; http://www.ti.com/lit/ds/symlink/lmr62421.pdf\")\n  (tags \"WSON6 0.95\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -2.575) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value WSON-6-1EP_3x3mm_P0.95mm (at 0 2.575) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text user %R (at 0 0) (layer F.Fab)\n    (effects (font (size 0.6 0.6) (thickness 0.1)))\n  )\n  (fp_line (start -0.5 -1.5) (end 1.5 -1.5) (layer F.Fab) (width 0.15))\n  (fp_line (star",
+            "generated": "WSON6 3*3 MM, 0.95 PITCH; http://www.ti.com/lit/ds/symlink/lmr62421.pdf",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 10,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.64
+          },
+          {
+            "prompt": "Define a KiCad footprint for DFN-16-1EP_4x5mm_P0.5mm_EP2.44x4.34mm: DHD Package; 16-Lead Plastic DFN (5mm x 4mm) (see Linear Technology 05081707_A_DHD16.pdf)",
+            "expected": "(module DFN-16-1EP_4x5mm_P0.5mm_EP2.44x4.34mm (layer F.Cu) (tedit 5EA4C074)\n  (descr \"DHD Package; 16-Lead Plastic DFN (5mm x 4mm) (see Linear Technology 05081707_A_DHD16.pdf)\")\n  (tags \"DFN 0.5\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -3.55) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value DFN-16-1EP_4x5mm_P0.5mm_EP2.44x4.34mm (at 0 3.55) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text user %R (at 0 0) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start -1 -2.5) (end 2 -2.5) (layer F.Fab",
+            "generated": "DFN-16-1EP_4x5mm_P0.5mm_EP2.44x4.34mm: DHD Package; 16-Lead Plastic DFN (5mm x 4mm) (see Linear Technology 05081707_A_DHD16.pdf)",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 25,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 2.68
+          },
+          {
+            "prompt": "Define a KiCad footprint for EA_DOGXL160-7: Grapchical,Display,LCD,160x104 http://www.lcd-module.com/eng/pdf/grafik/dogxl160-7e.pdf",
+            "expected": "(module EA_DOGXL160-7 (layer F.Cu) (tedit 5A02FE80)\n  (descr \"Grapchical,Display,LCD,160x104 http://www.lcd-module.com/eng/pdf/grafik/dogxl160-7e.pdf\")\n  (tags EA_DOGXL160-7)\n  (fp_text reference REF** (at 1.03 -21.11) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value EA_DOGXL160-7 (at 5.1 59.36) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start 0 39.5) (end 0 58.19) (layer F.SilkS) (width 0.12))\n  (fp_line (start 0.2 -1.35) (end -1.35 -1.35) (layer F.SilkS) (width 0.12))\n  (fp_line (start 60.96 -20.09) (end 0 -20.09) (laye",
+            "generated": "EA_DOGXL160-7: Grapchical,Display,LCD,160x104 http://www.lcd-module.com/eng/pdf/grafik/dogxl160-7e.pdf",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 22,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 2.04
+          },
+          {
+            "prompt": "Define a KiCad footprint for BatteryHolder_MPD_BC2AAPC_2xAA: 2xAA cell battery holder, Memory Protection Devices P/N BC2AAPC, http://www.memoryprotectiondevices.com/datasheets/BC2AAPC-datasheet.pdf",
+            "expected": "(module BatteryHolder_MPD_BC2AAPC_2xAA (layer F.Cu) (tedit 5AC8F8F7)\n  (descr \"2xAA cell battery holder, Memory Protection Devices P/N BC2AAPC, http://www.memoryprotectiondevices.com/datasheets/BC2AAPC-datasheet.pdf\")\n  (tags \"AA battery cell holder\")\n  (fp_text reference REF** (at 26.16 -10.11) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value BatteryHolder_MPD_BC2AAPC_2xAA (at 26.16 23.39) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start -2.84 -8.61) (end -2.84 21.89) (layer F.Fab) (width 0.1))\n  (fp_line (start -2.84 21",
+            "generated": "A KiCad footprint for BatteryHolder_MPD_BC2AAPC_2xAA is a two-cell battery holder that holds two AA cells and is designed to be used with a specific memory protection device (MPD) from the manufacturer.\n\nThe footprint is designed to be used with the MPD from the manufacturer, which is a specific device that is used to protect the battery cells from overcharging and over-discharging.\n\nThe footprint is designed to be used with the MPD from the manufacturer, which is a specific device that is used to protect the battery cells from overcharging and over-discharging.",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 3,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 4.25
+          },
+          {
+            "prompt": "Define a KiCad footprint for QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm_ThermalVias: QFN, 48 Pin (https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf#page=38), generated with kicad-footprint-generator ipc_noLead_generator.py",
+            "expected": "(module QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm_ThermalVias (layer F.Cu) (tedit 5DC5F6A5)\n  (descr \"QFN, 48 Pin (https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf#page=38), generated with kicad-footprint-generator ipc_noLead_generator.py\")\n  (tags \"QFN NoLead\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -3.8) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm_ThermalVias (at 0 3.8) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start 1.935 -2.61) (end 2.61 -2",
+            "generated": "QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm_ThermalVias",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 75,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.45
+          },
+          {
+            "prompt": "Define a KiCad footprint for Altech_AK300_1x13_P5.00mm_45-Degree: Altech AK300 serie terminal block (Script generated with StandardBox.py) (http://www.altechcorp.com/PDFS/PCBMETRC.PDF)",
+            "expected": "(module Altech_AK300_1x13_P5.00mm_45-Degree (layer F.Cu) (tedit 5C27907F)\n  (descr \"Altech AK300 serie terminal block (Script generated with StandardBox.py) (http://www.altechcorp.com/PDFS/PCBMETRC.PDF)\")\n  (tags \"Altech AK300 serie connector\")\n  (fp_text reference REF** (at 0 -7.2) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Altech_AK300_1x13_P5.00mm_45-Degree (at 30 7.5) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start -2 -6) (end 62.5 -6) (layer F.Fab) (width 0.1))\n  (fp_line (start 62.5 -6) (end 62.5 6.5) (layer ",
+            "generated": "Altech_AK300_1x13_P5.00mm_45-Degree: Altech AK300 serie terminal block (Script generated with StandardBox.py) (http://www.altechcorp.com/PDFS/PCBMETRC.PDF)",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 13,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 2.33
+          },
+          {
+            "prompt": "Define a KiCad footprint for Symbol_ESD-Logo-Text_CopperTop in the Symbol library.",
+            "expected": "(module Symbol_ESD-Logo-Text_CopperTop (layer F.Cu)\n  (at 0 0)\n  (attr virtual)\n  (fp_text reference REF** (at 0 -10.80008) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Symbol_ESD-Logo-Text_CopperTop (at -0.0508 13.4493) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start 3.7211 10.52068) (end 3.50012 10.42924) (layer F.Cu) (width 0.3048))\n  (fp_line (start 3.50012 10.42924) (end 3.23088 10.42924) (layer F.Cu) (width 0.3048))\n  (fp_line (start 3.23088 10.42924) (end 2.99974 10.59942) (layer F.Cu) (width 0.3048))\n  (fp_li",
+            "generated": "A KiCad footprint for Symbol_ESD-Logo-Text_CopperTop in the Symbol library is a custom footprint that represents the symbol in the Symbol library. It is used to create a custom footprint for the symbol in the Symbol library.",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 0,
+              "generated_pad_count": 0,
+              "pad_count_match": true,
+              "composite": 0.2
+            },
+            "gen_time_s": 1.82
+          },
+          {
+            "prompt": "Define a KiCad footprint for PinHeader_2x23_P2.54mm_Vertical_SMD: surface-mounted straight pin header, 2x23, 2.54mm pitch, double rows",
+            "expected": "(module PinHeader_2x23_P2.54mm_Vertical_SMD (layer F.Cu) (tedit 59FED5CC)\n  (descr \"surface-mounted straight pin header, 2x23, 2.54mm pitch, double rows\")\n  (tags \"Surface mounted pin header SMD 2x23 2.54mm double row\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -30.27) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value PinHeader_2x23_P2.54mm_Vertical_SMD (at 0 30.27) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start 2.54 29.21) (end -2.54 29.21) (layer F.Fab) (width 0.1))\n  (fp_line (start -1.59 -29.21) (end 2.54 -29.21)",
+            "generated": "PinHeader_2x23_P2.54mm_Vertical_SMD: surface-mounted straight pin header, 2x23, 2.54mm pitch, double rows",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 46,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.65
+          },
+          {
+            "prompt": "Define a KiCad footprint for Molex_Sabre_43160-0105_1x05_P7.49mm_Vertical_ThermalVias: Molex Sabre Power Connector, 43160-0105, With thermal vias in pads, 5 Pins per row (http://www.molex.com/pdm_docs/sd/431600105_sd.pdf), generated with kicad-footprint-generator",
+            "expected": "(module Molex_Sabre_43160-0105_1x05_P7.49mm_Vertical_ThermalVias (layer F.Cu) (tedit 5A18AC76)\n  (descr \"Molex Sabre Power Connector, 43160-0105, With thermal vias in pads, 5 Pins per row (http://www.molex.com/pdm_docs/sd/431600105_sd.pdf), generated with kicad-footprint-generator\")\n  (tags \"connector Molex Sabre side entry\")\n  (fp_text reference REF** (at 14.98 -10.7) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Molex_Sabre_43160-0105_1x05_P7.49mm_Vertical_ThermalVias (at 14.98 5.08) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  ",
+            "generated": "Molex Sabre Power Connector, 43160-0105, With thermal vias in pads, 5 Pins per row (http://www.molex.com/pdm_docs/sd/431600105_sd.pdf), generated with kicad-footprint-generator",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 75,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 2.53
+          },
+          {
+            "prompt": "Define a KiCad footprint for Molex_200528-0040_1x04-1MP_P1.00mm_Horizontal: Molex Molex 1.00mm Pitch Easy-On BackFlip, Right-Angle, Bottom Contact FFC/FPC, 200528-0040, 4 Circuits (https://www.molex.com/pdm_docs/sd/2005280040_sd.pdf), generated with kicad-footprint-generator",
+            "expected": "(module Molex_200528-0040_1x04-1MP_P1.00mm_Horizontal (layer F.Cu) (tedit 5C60BCA5)\n  (descr \"Molex Molex 1.00mm Pitch Easy-On BackFlip, Right-Angle, Bottom Contact FFC/FPC, 200528-0040, 4 Circuits (https://www.molex.com/pdm_docs/sd/2005280040_sd.pdf), generated with kicad-footprint-generator\")\n  (tags \"connector Molex  top entry\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -2.61) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Molex_200528-0040_1x04-1MP_P1.00mm_Horizontal (at 0 5.39) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  ",
+            "generated": "Molex Molex 1.00mm Pitch Easy-On BackFlip, Right-Angle, Bottom Contact FFC/FPC, 200528-0040, 4 Circuits (https://www.molex.com/pdm_docs/sd/2005280040_sd.pdf), generated with kicad-footprint-generator",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 6,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 3.1
+          },
+          {
+            "prompt": "Define a KiCad footprint for Hirose_FH12-18S-0.5SH_1x18-1MP_P0.50mm_Horizontal: Hirose FH12, FFC/FPC connector, FH12-18S-0.5SH, 18 Pins per row (https://www.hirose.com/product/en/products/FH12/FH12-24S-0.5SH(55)/), generated with kicad-footprint-generator",
+            "expected": "(module Hirose_FH12-18S-0.5SH_1x18-1MP_P0.50mm_Horizontal (layer F.Cu) (tedit 5D24667B)\n  (descr \"Hirose FH12, FFC/FPC connector, FH12-18S-0.5SH, 18 Pins per row (https://www.hirose.com/product/en/products/FH12/FH12-24S-0.5SH(55)/), generated with kicad-footprint-generator\")\n  (tags \"connector Hirose FH12 horizontal\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -3.7) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Hirose_FH12-18S-0.5SH_1x18-1MP_P0.50mm_Horizontal (at 0 5.6) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (st",
+            "generated": "Hirose FH12-18S-0.5SH_1x18-1MP_P0.50mm_Horizontal",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 20,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.42
+          },
+          {
+            "prompt": "Define a KiCad footprint for PhoenixContact_MCV_1,5_11-GF-3.81_1x11_P3.81mm_Vertical_ThreadedFlange_MountHole: Generic Phoenix Contact connector footprint for: MCV_1,5/11-GF-3.81; number of pins: 11; pin pitch: 3.81mm; Vertical; threaded flange; footprint includes mount hole for mounting screw: ISO ",
+            "expected": "(module PhoenixContact_MCV_1,5_11-GF-3.81_1x11_P3.81mm_Vertical_ThreadedFlange_MountHole (layer F.Cu) (tedit 5B784ED2)\n  (descr \"Generic Phoenix Contact connector footprint for: MCV_1,5/11-GF-3.81; number of pins: 11; pin pitch: 3.81mm; Vertical; threaded flange; footprint includes mount hole for mounting screw: ISO 1481-ST 2.2x4.5 C or ISO 7049-ST 2.2x4.5 C (http://www.fasteners.eu/standards/ISO/7049/) || order number: 1830680 8A 160V\")\n  (tags \"phoenix_contact connector MCV_01x11_GF_3.81mm_MH\")\n  (fp_text reference REF** (at 19.05 -5.45) (layer F.SilkS)\n    (effects (font (size 1 1) (thickne",
+            "generated": "Generic Phoenix Contact connector footprint for: MCV_1,5/11-GF-3.81; number of pins: 11; pin pitch: 3.81mm; Vertical; threaded flange; footprint includes mount hole for mounting screw: ISO 1481-ST 2.2x4.5 C or ISO 7049-ST 2.2x4.5 C (http://www.fasteners.eu/standards/ISO/7049/) || order number: 1830680 8A 160V\n\n\n.. code-block:: cdk\n\n    :doc:\n        :param:\n            name: PhoenixContact_MCV_1,5_11-GF-3.81_1x11_P3.81mm_Vertical_ThreadedFlange_MountHole\n        :param:\n            manufacturer: Phoenix Contact\n        :param:\n            model: MCV_1,5/11-GF-3.81\n        :param:\n            pin_pitch: 3.81mm\n        :param:\n            pin_count: 11\n        :param:\n            pin_type: Vertical\n        :param:\n            pin_type_detail: ThreadedFlange\n        :param:\n            pin_type_detail_2: MountHole\n        :param:\n            pin_type_detail_3: ThreadedFlange\n        :param:\n            pin_type_detail_4: MountHole\n        :param:\n            pin_type_detail_5: ThreadedFlange\n        :param:\n            pin_type_detail_6: MountHole\n        :param:\n            pin_type_detail_7: ThreadedFlange\n        :param:\n            pin_type_detail_8: MountHole\n        :param:\n            pin_type_detail_9: ThreadedFlange\n        :param:\n            pin_type_detail_10: MountHole\n        :param:\n            pin_type_detail_11: ThreadedFlange\n        :param:\n            pin_type_detail_12: MountHole\n<pad>",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 13,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 15.91
+          },
+          {
+            "prompt": "Define a KiCad footprint for Samtec_MECF-05-02-L-DV_2x05_P1.27mm_Polarized_Socket_Horizontal: Highspeed card edge connector for 2.4mm PCB's with 05 contacts (polarized)",
+            "expected": "(module Samtec_MECF-05-02-L-DV_2x05_P1.27mm_Polarized_Socket_Horizontal (layer F.Cu) (tedit 5A1FF529)\n  (descr \"Highspeed card edge connector for 2.4mm PCB's with 05 contacts (polarized)\")\n  (tags \"conn samtec card-edge high-speed\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -4.4) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Samtec_MECF-05-02-L-DV_2x05_P1.27mm_Polarized_Socket_Horizontal (at 0 4.4) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start -3.96 3.2) (end 5.23 3.2) (layer F.Fab) (width 0.1))\n  (fp_line (star",
+            "generated": "Samtec_MECF-05-02-L-DV_2x05_P1.27mm_Polarized_Socket_Horizontal: Highspeed card edge connector for 2.4mm PCB's with 05 contacts (polarized)",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 10,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 2.17
+          },
+          {
+            "prompt": "Define a KiCad footprint for QFN-56-1EP_8x8mm_P0.5mm_EP5.6x5.6mm_ThermalVias: QFN, 56 Pin (http://www.ti.com/lit/ds/symlink/tlc5957.pdf#page=23), generated with kicad-footprint-generator ipc_noLead_generator.py",
+            "expected": "(module QFN-56-1EP_8x8mm_P0.5mm_EP5.6x5.6mm_ThermalVias (layer F.Cu) (tedit 5DC5F6A5)\n  (descr \"QFN, 56 Pin (http://www.ti.com/lit/ds/symlink/tlc5957.pdf#page=23), generated with kicad-footprint-generator ipc_noLead_generator.py\")\n  (tags \"QFN NoLead\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -5.32) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value QFN-56-1EP_8x8mm_P0.5mm_EP5.6x5.6mm_ThermalVias (at 0 5.32) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start 3.635 -4.11) (end 4.11 -4.11) (layer F.SilkS) (width 0.12))\n  (",
+            "generated": "QFN-56-1EP_8x8mm_P0.5mm_EP5.6x5.6mm_ThermalVias",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 99,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.44
+          },
+          {
+            "prompt": "Define a KiCad footprint for L_Toroid_Horizontal_D6.5mm_P10.00mm_Diameter7-5mm_Amidon-T25: L_Toroid, Horizontal series, Radial, pin pitch=10.00mm, , diameter=6.476999999999999mm, Diameter7-5mm, Amidon-T25",
+            "expected": "(module L_Toroid_Horizontal_D6.5mm_P10.00mm_Diameter7-5mm_Amidon-T25 (layer F.Cu) (tedit 5AE59B06)\n  (descr \"L_Toroid, Horizontal series, Radial, pin pitch=10.00mm, , diameter=6.476999999999999mm, Diameter7-5mm, Amidon-T25\")\n  (tags \"L_Toroid Horizontal series Radial pin pitch 10.00mm  diameter 6.476999999999999mm Diameter7-5mm Amidon-T25\")\n  (fp_text reference REF** (at 5 -4.4885) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value L_Toroid_Horizontal_D6.5mm_P10.00mm_Diameter7-5mm_Amidon-T25 (at 5 4.4885) (layer F.Fab)\n    (effects (font (size 1 1) (thickness",
+            "generated": "L_Toroid_Horizontal_D6.5mm_P10.00mm_Diameter7-5mm_Amidon-T25",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 2,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.44
+          },
+          {
+            "prompt": "Define a KiCad footprint for Harwin_LTek-Male_2x17_P2.00mm_Vertical: Harwin LTek Connector, 34 pins, single row male, vertical entry",
+            "expected": "(module Harwin_LTek-Male_2x17_P2.00mm_Vertical (layer F.Cu) (tedit 5A16B2BF)\n  (descr \"Harwin LTek Connector, 34 pins, single row male, vertical entry\")\n  (tags \"connector harwin ltek M80\")\n  (fp_text reference REF** (at 16 -5.5) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Harwin_LTek-Male_2x17_P2.00mm_Vertical (at 16 4) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_line (start -3.15 -4.1) (end -3.15 2.1) (layer F.SilkS) (width 0.12))\n  (fp_line (start -3.15 2.1) (end 35.15 2.1) (layer F.SilkS) (width 0.12))\n  (fp_line (start",
+            "generated": "Harwin LTek Connector, 34 pins, single row male, vertical entry",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 34,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 0.9
+          },
+          {
+            "prompt": "Define a KiCad footprint for TerminalBlock_Phoenix_PT-1,5-10-3.5-H_1x10_P3.50mm_Horizontal: Terminal Block Phoenix PT-1,5-10-3.5-H, 10 pins, pitch 3.5mm, size 35x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scrip",
+            "expected": "(module TerminalBlock_Phoenix_PT-1,5-10-3.5-H_1x10_P3.50mm_Horizontal (layer F.Cu) (tedit 5B294F49)\n  (descr \"Terminal Block Phoenix PT-1,5-10-3.5-H, 10 pins, pitch 3.5mm, size 35x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix\")\n  (tags \"THT Terminal Block Phoenix PT-1,5-10-3.5-H pitch 3.5mm size 35x7.6mm^2 drill 1.2mm pad 2.4mm\")\n  (fp_text reference REF** (at 15.75 -4.16) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value TerminalBlock_Phoenix",
+            "generated": "Terminal Block Phoenix PT-1,5-10-3.5-H_1x10_P3.50mm_Horizontal: Terminal Block Phoenix PT-1,5-10-3.5-H, 10 pins, pitch 3.5mm, size 35x7.6mm^2, drill diamater 1.2mm, pad diameter 2.4mm, see , script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 10,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 4.2
+          },
+          {
+            "prompt": "Define a KiCad footprint for Transformer_Toroid_Tapped_Horizontal_D9.0mm_Amidon-T30: Transformer, Toroid, tapped, horizontal, laying, Diameter 9mm, Amidon, T30,",
+            "expected": "(module Transformer_Toroid_Tapped_Horizontal_D9.0mm_Amidon-T30 (layer F.Cu) (tedit 5A030845)\n  (descr \"Transformer, Toroid, tapped, horizontal, laying, Diameter 9mm, Amidon, T30,\")\n  (tags \"Transformer Toroid tapped horizontal laying Diameter 9mm Amidon T30 \")\n  (fp_text reference REF** (at 9.5 -9) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Transformer_Toroid_Tapped_Horizontal_D9.0mm_Amidon-T30 (at 5.4 5.1) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text user %R (at 9.5 -9) (layer F.Fab)\n    (effects (font (size 1 1) (thi",
+            "generated": "Transformer_Toroid_Tapped_Horizontal_D9.0mm_Amidon-T30",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 6,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.05
+          },
+          {
+            "prompt": "Define a KiCad footprint for PowerIntegrations_SO-8B: Power-Integrations variant of 8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm Body [SOIC], see https://www.mouser.com/ds/2/328/linkswitch-pl_family_datasheet-12517.pdf",
+            "expected": "(module PowerIntegrations_SO-8B (layer F.Cu) (tedit 5A4231ED)\n  (descr \"Power-Integrations variant of 8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm Body [SOIC], see https://www.mouser.com/ds/2/328/linkswitch-pl_family_datasheet-12517.pdf\")\n  (tags \"SOIC 1.27\")\n  (attr smd)\n  (fp_text reference REF** (at 0 -3.5) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value PowerIntegrations_SO-8B (at 0 3.5) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text user %R (at 0 0) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  ",
+            "generated": "PowerIntegrations_SO-8B: Power-Integrations variant of 8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm Body [SOIC], see https://www.mouser.com/ds/2/328/linkswitch-pl_family_datasheet-12517.pdf",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 7,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 2.65
+          },
+          {
+            "prompt": "Define a KiCad footprint for Jack_XLR_Neutrik_NC3FAH2-DA_Horizontal: A Series, 3 pole female XLR receptacle, grounding: separate ground contact to mating connector shell and front panel, horizontal PCB mount, asymmetric push, https://www.neutrik.com/en/product/nc3fah2-da",
+            "expected": "(module Jack_XLR_Neutrik_NC3FAH2-DA_Horizontal (layer F.Cu) (tedit 5E696EDA)\n  (descr \"A Series, 3 pole female XLR receptacle, grounding: separate ground contact to mating connector shell and front panel, horizontal PCB mount, asymmetric push, https://www.neutrik.com/en/product/nc3fah2-da\")\n  (tags \"neutrik xlr a\")\n  (fp_text reference REF** (at 4.3 -10) (layer F.SilkS)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text value Jack_XLR_Neutrik_NC3FAH2-DA_Horizontal (at 4.3 18) (layer F.Fab)\n    (effects (font (size 1 1) (thickness 0.15)))\n  )\n  (fp_text user %R (at 10.35 3.81) (lay",
+            "generated": "A Series, 3 pole female XLR receptacle, grounding: separate ground contact to mating connector shell and front panel, horizontal PCB mount, asymmetric push, https://www.neutrik.com/en/product/nc3fah2-da_horizontal",
+            "scores": {
+              "parse_ok": false,
+              "layer_fcu": false,
+              "has_fp_text": false,
+              "has_at_coords": false,
+              "has_size_dims": false,
+              "expected_pad_count": 6,
+              "generated_pad_count": 0,
+              "pad_count_match": false,
+              "composite": 0.0
+            },
+            "gen_time_s": 1.95
+          }
+        ]
+      },
+      "spice-sim": {
+        "n_samples": 20,
+        "parse_ok_rate": 0.0,
+        "composite_score": 0.1894,
+        "has_end_rate": 0.0,
+        "ground_present_rate": 0.0,
+        "balanced_rate": 0.0,
+        "component_count_match_avg": 0.0,
+        "analysis_count_match_avg": 0.3,
+        "floating_nodes_low_avg": 0.9625,
+        "samples": [
+          {
+            "prompt": "Write a SPICE netlist for: MOSdriver -- 2 lossy lines LTRA model -- C load",
+            "expected": "```spice\nMOSdriver -- 2 lossy lines LTRA model -- C load \nm5     0     168    2     0  mn0p9  w = 18.0u l=0.9u\nm6     1     168    2     1  mp1p0  w = 36.0u l=1.0u\nm1     0     3    4     0  mn0p9  w = 18.0u l=0.9u\nm2     1     3    4     1  mp1p0  w = 36.0u l=1.0u\nCN2  2   0  0.025398e-12\nCN3  3   0  0.007398e-12\nCN4  4   0  0.025398e-12\nCN5  5   0  0.007398e-12\no1  2 0 3 0  lline\no2  4 0 5 0  lline\nvdd    1    0   dc \t5.0\nVS 168  0  PULSE (0 5 15.9NS 0.2NS 0.2NS 15.8NS 32NS )\n.OPTION NOACCT\n.TRAN 0.2N 47N 0 0.1N\n.PRINT TRAN V(2) V(3) V(4) V(5)\n.MODEL mn0p9 NMOS VTO=0.8 KP=48U GAMMA=0.30 PHI=",
+            "generated": "MOSdriver -- 2 lossy lines LTRA model -- C load",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 12,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 3,
+              "floating_nodes_low": 0.75,
+              "composite": 0.1125
+            },
+            "gen_time_s": 0.78
+          },
+          {
+            "prompt": "Write a SPICE netlist for an inverting op-amp with gain -5, Rf=22k ohms, Rin=4.7k ohms.",
+            "expected": "```spice\n* Inverting Op-Amp Amplifier\n* Gain = -5, Rf=22k, Rin=4.7k\n\nVin in 0 AC 1 SIN(0 0.1 1k)\nVpos vcc 0 DC 15\nVneg vee 0 DC -15\n\nRin in inv_in 4700.0\nRf out inv_in 22000\n\n* Ideal op-amp subcircuit\n.subckt OPAMP inp inn out\nE1 out 0 inp inn 1e6\n.ends\n\nX1 0 inv_in out OPAMP\n\n.tran 0.01m 5m\n.print TRAN V(out) V(in)\n.end\n```",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 7,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.95
+          },
+          {
+            "prompt": "Write a SPICE netlist for: Two ports Examples: Bipolar,  Tschebyschef, RC The two-port circuit: port 1: in 0 port 2: out 0",
+            "expected": "```spice\nTest for Scattering Parameters\n** Two ports\n** Examples: Bipolar,  Tschebyschef, RC\n\n.param Rbase=50 Vbias_in=0 Vbias_out=0\n\n*** The two-port circuit: \n** port 1: in 0\n** port 2: out 0\n** Bias on both ports through resistor Rbase (to obtain operating point)\n\n** Example RF Bipolar mrf5711\n** VCE 1 V, IE = 5mA\n** QXXXXXXX nc nb ne\n** model obtained from\n** http://141.69.160.32/~krausg/Spice_Model_CD/Vendor%20List/Motorola/Spice/RFBJT/\n*.include MRF5711.lib\n*XMRF5711 out in e  MRF5711\n*Ie e 0 5m\n*Ce e 0 1\n\n** Example Tschebyschef Low Pass filter\nC1 in 0 33.2p\nL1 in 2 99.2n\nC2 2 0 57.2p\nL",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 29,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 0,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 1.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.25
+            },
+            "gen_time_s": 39.96
+          },
+          {
+            "prompt": "Write a SPICE netlist for: A paralled resistor array",
+            "expected": "```spice\nA paralled resistor array\n\nVin 1 0 DC 1 SIN (0 1 100MEG 1NS 0.0) AC 1\n\nVR1 1 2 DC 0\nR1  2 0 10K\n\nVR2 1 3 DC 0\nR2  3 0 10K ac=5K\n\nVR3 1 4 DC 0\nR3  4 0 rmodel1 L=11u W=2u ac=2.5k\n\nVR4 1 5 DC 0\nR4  5 0 10K ac=5k m=2\n.model rmodel1 R  RSH = 1000 NARROW = 1u\n\nVR5 1 6 DC 0\nR5  6 0 10 ac=5 scale=1K\n\n.options noacct\n.OP\n.TRAN 1ns 10ns\n.AC DEC 100 1MEG 100MEG\n.PRINT TRAN I(VR1), I(VR2), I(VR3), I(VR4),I(VR5)\n.PRINT AC I(VR1), I(VR2), I(VR3), I(VR4),I(VR5)\n\n.END\n\n```",
+            "generated": "A paralled resistor array",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 11,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 3,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 0.46
+          },
+          {
+            "prompt": "Write a SPICE netlist for: Prediceted frequency is about 4.54167e+06 Hz. Third harmonic is high as the first one Q is about 10 La\tgib 0\t1e-9 Ra\tgib 0\t474.6",
+            "expected": "```spice\nVan Der Pol Oscillator\n* Prediceted frequency is about 4.54167e+06 Hz.\n\n* Third harmonic is high as the first one\nBa\tgib 0\tI=-1e-2*v(gib,0)+1e-2*v(gib,0)^3\n* Q is about 10\nLa\tgib 0\t1.2e-6\nRa\tgib 0\t158.113\nCa\tgib 0\t1e-9 ic=0.5\n*La\tgib 0\t1e-9\n*Ra\tgib 0\t474.6\n*Ca\tgib 0\t1e-9 ic=0.5\n* Ghost node... Test for my PSS!\nRb\tbad 0\t1k\n\n*.tran 1e-9 150e-6 uic\n.pss 0.8e6 130e-6 1 50 10 50 5e-3 uic\n\n```",
+            "generated": "M1 (VSS) (VSS) (VSS)\nM2 (VSS) (VSS)\nM3 (VSS) (VSS)\nM4 (VSS) (VSS)\nM5 (VSS) (VSS)\nM6 (VSS) (VSS)\nM7 (VSS) (VSS)\nM8 (VSS) (VSS)\nM9 (VSS) (VSS)\nM10 (VSS) (VSS)\nM11 (VSS) (VSS)\nM12 (VSS) (VSS)\nM13 (VSS) (VSS)\nM14 (VSS) (VSS)\nM15 (VSS) (VSS)\nM16 (VSS) (VSS)\nM17 (VSS) (VSS)\nM18 (VSS) (VSS)\nM19 (VSS) (VSS)\nM20 (VSS) (VSS)\nM21 (VSS) (VSS)\nM22 (VSS) (VSS)\nM23 (VSS) (VSS)\nM24 (VSS) (VSS)\nM25 (VSS) (VSS)\nM26 (VSS) (VSS)\nM27 (VSS) (VSS)\nM28 (VSS) (VSS)\nM29 (VSS) (VSS)\nM30 (VSS) (VSS)\nM31 (VSS) (VSS)\nM32 (VSS) (VSS)\nM33 (VSS) (VSS)\nM34 (VSS) (VSS)\nM35 (VSS) (VSS)\nM36 (VSS) (VSS)\nM37 (VSS) (VSS)\nM38 (VSS) (VSS)\nM39 (VSS) (VSS)\nM40 (VSS) (VSS)\nM41 (VSS) (VSS)\nM42 (VSS) (VSS)\nM43 (VSS) (VSS)\nM44 (VSS) (VSS)\nM45 (VSS) (VSS)\nM46 (VSS) (VSS)\nM47 (VSS) (VSS)\nM48 (VSS) (VSS)\nM49 (VSS) (VSS)\nM50 (VSS) (VSS)\nM51 (VSS) (VSS)\nM52 (VSS) (VSS)\nM53 (VSS) (VSS)\nM54 (VSS) (VSS)\nM55 (VSS) (VSS)\nM56 (VSS) (VSS)\nM57 (VSS) (VSS)\nM58 (VSS) (VSS)\nM59 (VSS) (VSS)\nM60 (VSS) (VSS)\nM61 (VSS) (VSS)\nM62 (VSS) (VSS)\nM63 (VSS) (VSS)\nM64 (VSS) (VSS)\nM65 (VSS) (VSS)\nM66 (VSS) (VSS)\nM67 (VSS) (VSS)\nM68 (VSS) (VSS)\nM69 (VSS) (VSS)\nM70 (VSS) (VSS)\nM71 (VSS) (VSS)\nM72 (VSS) (VSS)\nM73 (VSS) (VSS)\nM74 (VSS) (VSS)\nM75 (VSS) (VSS)\nM76 (VSS) (VSS)\nM77 (VSS) (VSS)\nM78 (VSS) (VSS)\nM79 (VSS) (VSS)\nM80 (VSS) (VSS)\nM81 (VSS) (VSS)\nM82 (VSS) (VSS)\nM83 (VSS) (VSS)\nM84 (VSS) (VSS)\nM85 (VSS) (VSS)\nM86 (VSS) (VSS)\nM87 (VSS) (VSS)\nM88 (VSS) (VSS)\nM89 (VSS) (VSS)\nM90 (VSS) (VSS)\nM91 (VSS) (VSS)\nM92 (VSS) (VSS)\nM93 (VSS) (VSS)\nM94 (VSS) (VSS)\nM95 (VSS) (VSS)\nM96 (VSS) (VSS)\nM97 (VSS) (VSS)\nM98 (VSS) (VSS)\nM99 (VSS) (VSS)\nM100 (VSS) (VSS)\nM101 (VSS) (VSS)\nM102 (VSS) (VSS)\nM103 (VSS) (VSS)\nM104 (VSS) (VSS)\nM105 (VSS) (VSS)\nM106 (VSS) (VSS)\nM107 (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 6,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.25
+            },
+            "gen_time_s": 40.14
+          },
+          {
+            "prompt": "Write a SPICE netlist for: counter, latch DAC 10 bit synchronous digital counter inhibit at overflow, no revolving j k clk set reset out nout inhibit revolving of counter, just let it saturate",
+            "expected": "```spice\n* counter, latch DAC\n\n* 10 bit synchronous digital counter\n* inhibit at overflow, no revolving\n.subckt count10 din dinb dclk drs dout1 dout2 dout3 dout4 dout5 dout6 dout7 dout8 dout9 dout10 \n\n* j k clk set reset out nout\najk1 din dinb diclk ds1 drs dout1 dnout1 jkflop\najk2 dout1 dout1 diclk ds2 drs dout2 dnout2 jkflop\najk3 djk3 djk3 diclk ds3 drs dout3 dnout3 jkflop\najk4 djk4 djk4 diclk ds4 drs dout4 dnout4 jkflop\najk5 djk5 djk5 diclk ds1 drs dout5 dnout5 jkflop\najk6 djk6 djk6 diclk ds2 drs dout6 dnout6 jkflop\najk7 djk7 djk7 diclk ds3 drs dout7 dnout8 jkflop\najk8 djk8 djk8 diclk ds4 d",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 21,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 0,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 1.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.35
+            },
+            "gen_time_s": 39.98
+          },
+          {
+            "prompt": "Write a SPICE netlist for an inverting op-amp with gain -2, Rf=100k ohms, Rin=22k ohms.",
+            "expected": "```spice\n* Inverting Op-Amp Amplifier\n* Gain = -2, Rf=100k, Rin=22k\n\nVin in 0 AC 1 SIN(0 0.1 1k)\nVpos vcc 0 DC 15\nVneg vee 0 DC -15\n\nRin in inv_in 22000\nRf out inv_in 100000\n\n* Ideal op-amp subcircuit\n.subckt OPAMP inp inn out\nE1 out 0 inp inn 1e6\n.ends\n\nX1 0 inv_in out OPAMP\n\n.tran 0.01m 5m\n.print TRAN V(out) V(in)\n.end\n```",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 7,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.94
+          },
+          {
+            "prompt": "Write a SPICE netlist for: (compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')",
+            "expected": "```spice\nnew ft_getpnames parser check 3, try ternary\n\n* (compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t)\n\nVIN  1 0  DC=0\n\n.control\n\ndc VIN 0 10 5\n\n* trying the ternary\n\nlet checks = 0\n\nlet const0 = 0\nlet const5 = 5\nlet const6 = 6\n\n\nlet tmp = const0 ? const5 : const6\nif tmp eq const6\n  let checks = checks + 1\nelse\n  echo \"ERROR:\"\nend\n\nlet tmp = const6 ? const5 : const6\nif tmp eq const5\n  let checks = checks + 1\nelse\n  echo \"ERROR:\"\nend\n\ndefine foo(a,b,d) a ? b : d\n\nif foo(const0,const5,const6) eq const6\n  let checks = checks + 1\nelse\n  echo \"ERROR:\"\nend\n\nif foo(const",
+            "generated": "(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name separator ':')\n\n\n(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \"  buffer-file-name) t) trying the ternary FIXME, \"1 ? 1:1\" (without spaces around of ':') doesnt work, \"1:1\" is a lexem, WHY !!! ist that an old artifact, (ancient hierarchical name s",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 11,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 0,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 1.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.25
+            },
+            "gen_time_s": 40.03
+          },
+          {
+            "prompt": "Write a SPICE netlist for: delta sigma A/D converter 9 bit first-order continuous time delta sigma modulator sinc filter with counter according to Schreier, Temes: Understanding Delta-Sigma Data Converters, 2005 Fig. 2.13, p. 31; Fig. 2.27, p.58",
+            "expected": "```spice\n* delta sigma A/D converter 9 bit\n* first-order continuous time delta sigma modulator\n* sinc filter with counter\n* according to Schreier, Temes: Understanding Delta-Sigma Data Converters, 2005\n* Fig. 2.13, p. 31; Fig. 2.27, p.58\n\n** sine input signal parameters\n.param infreq=500 inampl=0.5\n** clock\n.param clkfreq=5Meg\n** simulation time\n.param simtime = 2m\n.csparam simtime = 'simtime'\n** sample clock cycles\n.param samples=500\n\n.global dzero done\n\n.options interp ; strongly reduces memory requirements\n\n** input signal\n* SIN(VO VA FREQ TD THETA)\nvin inp inm dc 0 sin(0 'inampl' 'infreq' ",
+            "generated": "```spice\nM1 (VSS) (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM6",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 13,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 0,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 1.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.25
+            },
+            "gen_time_s": 39.97
+          },
+          {
+            "prompt": "Write a SPICE netlist for an inverting op-amp with gain -5, Rf=10k ohms, Rin=2.2k ohms.",
+            "expected": "```spice\n* Inverting Op-Amp Amplifier\n* Gain = -5, Rf=10k, Rin=2.2k\n\nVin in 0 AC 1 SIN(0 0.1 1k)\nVpos vcc 0 DC 15\nVneg vee 0 DC -15\n\nRin in inv_in 2200.0\nRf out inv_in 10000\n\n* Ideal op-amp subcircuit\n.subckt OPAMP inp inn out\nE1 out 0 inp inn 1e6\n.ends\n\nX1 0 inv_in out OPAMP\n\n.tran 0.01m 5m\n.print TRAN V(out) V(in)\n.end\n```",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 7,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.91
+          },
+          {
+            "prompt": "Write a SPICE netlist for a simple voltage divider with R1=47000 ohms and R2=1000 ohms, powered by a 3.3V DC source.",
+            "expected": "```spice\n* Voltage Divider Circuit\n* R1=47000, R2=1000, Vin=3.3V\n* Vout = Vin * R2/(R1+R2) = 0.07V\n\nVin in 0 DC 3.3\nR1 in out 47000\nR2 out 0 1000\n\n.op\n.print DC V(out)\n.end\n```",
+            "generated": "R1=47000\nR2=1000\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 3,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 2.86
+          },
+          {
+            "prompt": "Write a SPICE netlist for an RC low-pass filter with R=470 ohms and C=47nF, and run an AC analysis from 1Hz to 1000000Hz.",
+            "expected": "```spice\n* RC Low-Pass Filter\n* R=470, C=47n\n* Cutoff frequency = 7204.8 Hz\n\nVin in 0 AC 1\nR1 in out 470\nC1 out 0 47n\n\n.ac dec 100 1 1000000\n.print AC VM(out) VP(out)\n.end\n```",
+            "generated": "R=470\nC=47nF\nR_AC=470\nC_AC=47nF\nR_AC_AC=470\nC_AC_AC=47nF\nR_AC_AC_AC=470\nC_AC_AC_AC=47nF\nR_AC_AC_AC_AC=470\nC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=47nF\nR_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC_AC=470\nC_AC_AC_AC_AC_AC_AC_AC_AC_AC_",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 3,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.93
+          },
+          {
+            "prompt": "Write a SPICE netlist for: model = BSIMSOI (DD)   SOI Inverter - floating body",
+            "expected": "```spice\n* model = BSIMSOI (DD)\n*\n*\n* SOI Inverter - floating body\n\nvin in 0 dc 2.5\nvdd dd 0 dc 2.5\nvss ss 0 dc 0\nve  e  0 dc 1.25\nm1 out in dd e p1 w=20u l=0.25u \nm2 out in ss e n1 w=10u l=0.25u\n\n.option itl1=500 gmin=1e-25 noacct\n.dc vin 0 2.5 0.01 \n.print dc v(in), v(out)\n.include nmosdd.mod\n.include pmosdd.mod\n\n```",
+            "generated": "model = BSIMSOI (DD)   SOI Inverter - floating body",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 6,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 2,
+              "floating_nodes_low": 0.5,
+              "composite": 0.175
+            },
+            "gen_time_s": 0.84
+          },
+          {
+            "prompt": "Write a SPICE netlist for: This netlist demonstrates the following: global nodes (vdd, gnd) autostop (.tran defines simulation end as 4ns but simulation stops at 142.5ps when .measure statements are evaluated) scale (all device units are in microns)",
+            "expected": "```spice\nInverter example circuit\n* This netlist demonstrates the following:\n* global nodes (vdd, gnd)\n* autostop (.tran defines simulation end as 4ns but simulation stops at\n* 142.5ps when .measure statements are evaluated)\n* scale (all device units are in microns)\n* model binning (look in device.values file for which bin chosen)\n*\n*     m.x1.mn:\n*     model              = nch.2\n*\n*     m.x1.mp:\n*     model              = pch.2\n*\n* parameters\n* parameterized subckt\n* vsrc with repeat\n* .measure statements for delay and an example ternary operator\n* device listing and parameter listing\n* You c",
+            "generated": "M1 (VSS)\nM2 (VSS)\nM3 (VSS)\nM4 (VSS)\nM5 (VSS)\nM6 (VSS)\nM7 (VSS)\nM8 (VSS)\nM9 (VSS)\nM10 (VSS)\nM11 (VSS)\nM12 (VSS)\nM13 (VSS)\nM14 (VSS)\nM15 (VSS)\nM16 (VSS)\nM17 (VSS)\nM18 (VSS)\nM19 (VSS)\nM20 (VSS)\nM21 (VSS)\nM22 (VSS)\nM23 (VSS)\nM24 (VSS)\nM25 (VSS)\nM26 (VSS)\nM27 (VSS)\nM28 (VSS)\nM29 (VSS)\nM30 (VSS)\nM31 (VSS)\nM32 (VSS)\nM33 (VSS)\nM34 (VSS)\nM35 (VSS)\nM36 (VSS)\nM37 (VSS)\nM38 (VSS)\nM39 (VSS)\nM40 (VSS)\nM41 (VSS)\nM42 (VSS)\nM43 (VSS)\nM44 (VSS)\nM45 (VSS)\nM46 (VSS)\nM47 (VSS)\nM48 (VSS)\nM49 (VSS)\nM50 (VSS)\nM51 (VSS)\nM52 (VSS)\nM53 (VSS)\nM54 (VSS)\nM55 (VSS)\nM56 (VSS)\nM57 (VSS)\nM58 (VSS)\nM59 (VSS)\nM60 (VSS)\nM61 (VSS)\nM62 (VSS)\nM63 (VSS)\nM64 (VSS)\nM65 (VSS)\nM66 (VSS)\nM67 (VSS)\nM68 (VSS)\nM69 (VSS)\nM70 (VSS)\nM71 (VSS)\nM72 (VSS)\nM73 (VSS)\nM74 (VSS)\nM75 (VSS)\nM76 (VSS)\nM77 (VSS)\nM78 (VSS)\nM79 (VSS)\nM80 (VSS)\nM81 (VSS)\nM82 (VSS)\nM83 (VSS)\nM84 (VSS)\nM85 (VSS)\nM86 (VSS)\nM87 (VSS)\nM88 (VSS)\nM89 (VSS)\nM90 (VSS)\nM91 (VSS)\nM92 (VSS)\nM93 (VSS)\nM94 (VSS)\nM95 (VSS)\nM96 (VSS)\nM97 (VSS)\nM98 (VSS)\nM99 (VSS)\nM100 (VSS)\nM101 (VSS)\nM102 (VSS)\nM103 (VSS)\nM104 (VSS)\nM105 (VSS)\nM106 (VSS)\nM107 (VSS)\nM108 (VSS)\nM109 (VSS)\nM110 (VSS)\nM111 (VSS)\nM112 (VSS)\nM113 (VSS)\nM114 (VSS)\nM115 (VSS)\nM116 (VSS)\nM117 (VSS)\nM118 (VSS)\nM119 (VSS)\nM120 (VSS)\nM121 (VSS)\nM122 (VSS)\nM123 (VSS)\nM124 (VSS)\nM125 (VSS)\nM126 (VSS)\nM127 (VSS)\nM128 (VSS)\nM129 (VSS)\nM130 (VSS)\nM131 (VSS)\nM132 (VSS)\nM133 (VSS)\nM134 (VSS)\nM135 (VSS)\nM136 (VSS)\nM137 (VSS)\nM138 (VSS)\nM139 (VSS)\nM140 (VSS)\nM141 (VSS)\nM142 (VSS)\nM143 (VSS)\nM144 (VSS)\nM145 (VSS)\nM146 (VSS)\nM147 (VSS)\nM148 (VSS)\nM149 (VSS)\nM150 (VSS)\nM151 (VSS)\nM152 (VSS)\nM153 (VSS)\nM154 (VSS)\nM1",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 8,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.99
+          },
+          {
+            "prompt": "Write a SPICE netlist for an inverting op-amp with gain -10, Rf=220k ohms, Rin=10k ohms.",
+            "expected": "```spice\n* Inverting Op-Amp Amplifier\n* Gain = -10, Rf=220k, Rin=10k\n\nVin in 0 AC 1 SIN(0 0.1 1k)\nVpos vcc 0 DC 15\nVneg vee 0 DC -15\n\nRin in inv_in 10000\nRf out inv_in 220000\n\n* Ideal op-amp subcircuit\n.subckt OPAMP inp inn out\nE1 out 0 inp inn 1e6\n.ends\n\nX1 0 inv_in out OPAMP\n\n.tran 0.01m 5m\n.print TRAN V(out) V(in)\n.end\n```",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 7,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.94
+          },
+          {
+            "prompt": "Write a SPICE netlist for: gnetlist -g spice-sdb -o tmp.lst FB14_batterie.sch  Spice file generated by gnetlist spice-sdb version 12.27.2005 by SDB -- provides advanced spice netlisting capability.",
+            "expected": "```spice\n* gnetlist -g spice-sdb -o tmp.lst FB14_batterie.sch\n*********************************************************\n* Spice file generated by gnetlist                      *\n* spice-sdb version 12.27.2005 by SDB --                *\n* provides advanced spice netlisting capability.        *\n* Documentation at http://www.brorson.com/gEDA/SPICE/   *\n*********************************************************\n*vvvvvvvv  Included SPICE model from models/tl431.cir vvvvvvvv\n* modele du TL431\n.subckt TL431-R REFIN ANODE CATHODE\nQ8 Q2_C Q2_C R4_N 0 P1\nQ9 CATHODE Q7_C Q9_E 0 n1\nR8 Q4_E ANODE 800\nR9 Q2_",
+            "generated": "g_netlist_spice_sdb_version_12_27_2005_by_SDB_\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spice-sdb\n-i FB14_batterie.sch\n-o tmp.lst\n-g spic",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 166,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 0,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 1.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.25
+            },
+            "gen_time_s": 39.98
+          },
+          {
+            "prompt": "Write a SPICE netlist for an RC low-pass filter with R=4700 ohms and C=10nF, and run an AC analysis from 1Hz to 1000000Hz.",
+            "expected": "```spice\n* RC Low-Pass Filter\n* R=4700, C=10n\n* Cutoff frequency = 3386.3 Hz\n\nVin in 0 AC 1\nR1 in out 4700\nC1 out 0 10n\n\n.ac dec 100 1 1000000\n.print AC VM(out) VP(out)\n.end\n```",
+            "generated": "R=4700\nC=10nF\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>\n<pad>\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>\n<pad>\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>\n<pad>\nVSS=0\nVSS=0\n<pad>\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\n<pad>\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nVSS=0\nV",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 3,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 39.99
+          },
+          {
+            "prompt": "Write a SPICE netlist for: MOSdriver -- lossy line LTRA model -- C load",
+            "expected": "```spice\nMOSdriver -- lossy line LTRA model -- C load \nm5     0     168    2     0  mn0p9  w = 18.0u l=0.9u\nm6     1     168    2     1  mp1p0  w = 36.0u l=1.0u\nCN2  2   0  0.025398e-12\nCN3  3   0  0.007398e-12\no1  2 0 3 0 lline\nvdd    1    0   dc \t5.0\nVS 168  0  PULSE (0 5 15.9NS 0.2NS 0.2NS 15.8NS 32NS )\n.OPTION NOACCT\n.TRAN 0.2N 47N 0 0.1N\n.PRINT TRAN V(2) V(3)\n.MODEL mn0p9 NMOS VTO=0.8 KP=48U GAMMA=0.30 PHI=0.55\n+LAMBDA=0.00 CGSO=0 CGDO=0 CJ=0 CJSW=0 TOX=18000N LD=0.0U\n.MODEL mp1p0 PMOS VTO=-0.8 KP=21U GAMMA=0.45 PHI=0.61\n+LAMBDA=0.00 CGSO=0 CGDO=0 CJ=0 CJSW=0 TOX=18000N LD=0.0U\n.model lli",
+            "generated": "MOSdriver -- lossy line LTRA model -- C load",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 7,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 3,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 0.72
+          },
+          {
+            "prompt": "Write a SPICE netlist for: (compile (concat \"tmp-1/ng-spice-rework/src/ngspice \" buffer-file-name) t) check some relational operators, which are in danger to mixed up with csh semantic, that is IO redirection check some wired non-equality operators note: there are some awkward tranformations ahead o",
+            "expected": "```spice\ndemonstrate < etc in ft_getpnames\n\n* (compile (concat \"tmp-1/ng-spice-rework/src/ngspice \" buffer-file-name) t)\n\nVIN  1 0  DC=0\n\n.control\n\ndc VIN 0 10 5\n\nlet checks = 0\n\nlet const0 = 0\nlet const5 = 5\nlet const6 = 6\n\n* check some relational operators, which are in danger to mixed up\n*   with csh semantic, that is IO redirection\n\nif const5 < const6\n  let checks = checks + 1\nelse\n  echo \"ERROR:\"\nend\n\nif const6 > const5\n  let checks = checks + 1\nelse\n  echo \"ERROR:\"\nend\n\nif const5 >= const5\n  let checks = checks + 1\nelse\n  echo \"ERROR:\"\nend\n\nif const5 <= const5\n  let checks = checks + 1\ne",
+            "generated": "(compile (concat \"tmp-1/ng-spice-rework/src/ngspice \" buffer-file-name) t)",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 9,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 0,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 1.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.25
+            },
+            "gen_time_s": 1.3
+          },
+          {
+            "prompt": "Write a SPICE netlist for a common-emitter BJT amplifier with Vcc=5V, Rc=2200 ohms, Rb=1000k ohms.",
+            "expected": "```spice\n* Common Emitter BJT Amplifier\n* Vcc=5V, Rc=2200 ohms, Rb=1000k ohms\n\nVcc vcc 0 DC 5\nVin in 0 AC 0.01 SIN(0 10m 1k)\nRb in base 1000000\nRc vcc collector 2200\nQ1 collector base 0 Q2N2222\n\n.model Q2N2222 NPN(BF=200 IS=1e-14)\n.tran 0.01m 5m\n.print TRAN V(collector) V(in)\n.end\n```",
+            "generated": "M1 (VSS) (VSS) (VSS) (VSS)\nM2 (VSS) (VSS) (VSS) (VSS)\nM3 (VSS) (VSS) (VSS) (VSS)\nM4 (VSS) (VSS) (VSS) (VSS)\nM5 (VSS) (VSS) (VSS) (VSS)\nM6 (VSS) (VSS) (VSS) (VSS)\nM7 (VSS) (VSS) (VSS) (VSS)\nM8 (VSS) (VSS) (VSS) (VSS)\nM9 (VSS) (VSS) (VSS) (VSS)\nM10 (VSS) (VSS) (VSS) (VSS)\nM11 (VSS) (VSS) (VSS) (VSS)\nM12 (VSS) (VSS) (VSS) (VSS)\nM13 (VSS) (VSS) (VSS) (VSS)\nM14 (VSS) (VSS) (VSS) (VSS)\nM15 (VSS) (VSS) (VSS) (VSS)\nM16 (VSS) (VSS) (VSS) (VSS)\nM17 (VSS) (VSS) (VSS) (VSS)\nM18 (VSS) (VSS) (VSS) (VSS)\nM19 (VSS) (VSS) (VSS) (VSS)\nM20 (VSS) (VSS) (VSS) (VSS)\nM21 (VSS) (VSS) (VSS) (VSS)\nM22 (VSS) (VSS) (VSS) (VSS)\nM23 (VSS) (VSS) (VSS) (VSS)\nM24 (VSS) (VSS) (VSS) (VSS)\nM25 (VSS) (VSS) (VSS) (VSS)\nM26 (VSS) (VSS) (VSS) (VSS)\nM27 (VSS) (VSS) (VSS) (VSS)\nM28 (VSS) (VSS) (VSS) (VSS)\nM29 (VSS) (VSS) (VSS) (VSS)\nM30 (VSS) (VSS) (VSS) (VSS)\nM31 (VSS) (VSS) (VSS) (VSS)\nM32 (VSS) (VSS) (VSS) (VSS)\nM33 (VSS) (VSS) (VSS) (VSS)\nM34 (VSS) (VSS) (VSS) (VSS)\nM35 (VSS) (VSS) (VSS) (VSS)\nM36 (VSS) (VSS) (VSS) (VSS)\nM37 (VSS) (VSS) (VSS) (VSS)\nM38 (VSS) (VSS) (VSS) (VSS)\nM39 (VSS) (VSS) (VSS) (VSS)\nM40 (VSS) (VSS) (VSS) (VSS)\nM41 (VSS) (VSS) (VSS) (VSS)\nM42 (VSS) (VSS) (VSS) (VSS)\nM43 (VSS) (VSS) (VSS) (VSS)\nM44 (VSS) (VSS) (VSS) (VSS)\nM45 (VSS) (VSS) (VSS) (VSS)\nM46 (VSS) (VSS) (VSS) (VSS)\nM47 (VSS) (VSS) (VSS) (VSS)\nM48 (VSS) (VSS) (VSS) (VSS)\nM49 (VSS) (VSS) (VSS) (VSS)\nM50 (VSS) (VSS) (VSS) (VSS)\nM51 (VSS) (VSS) (VSS) (VSS)\nM52 (VSS) (VSS) (VSS) (VSS)\nM53 (VSS) (VSS) (VSS) (VSS)\nM54 (VSS) (VSS) (VSS) (VSS)\nM55 (VSS) (VSS) (VSS) (VSS)\nM56 (VSS) (VSS) (VSS) (VSS)\nM57 (VSS) (VSS) (VSS) (VSS)\nM58 (VSS) (VSS) (VSS) (VSS)\nM59 (VSS) (VSS) (VSS) (VSS)\nM60 (VSS) (VSS) (VSS) (VSS)\nM61 (VSS) (VSS) (VSS) (VSS)\nM62 (VSS) (VSS) (VSS) (VSS)\nM63 (VSS) (VSS) (VSS) (VSS)\nM64 (VSS) (VSS) (VSS) (VSS)\nM65 (VSS) (V",
+            "scores": {
+              "parse_ok": false,
+              "has_end": false,
+              "ground_node_present": false,
+              "balanced": false,
+              "expected_n_components": 5,
+              "generated_n_components": 0,
+              "component_count_match": 0.0,
+              "expected_n_analyses": 1,
+              "generated_n_analyses": 0,
+              "analysis_count_match": 0.0,
+              "n_models": 0,
+              "n_subckts": 0,
+              "n_floating_nodes": 0,
+              "floating_nodes_low": 1.0,
+              "composite": 0.15
+            },
+            "gen_time_s": 40.01
+          }
+        ]
+      }
     }
   }
 }

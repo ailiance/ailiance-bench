@@ -1,0 +1,828 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-11 04:49:30",
+    "data_path": "/Users/electron/eu-kiki-data/kicad-sch-extract/valid.jsonl",
+    "n_samples": 6,
+    "max_tokens": 2048,
+    "models": [
+      {
+        "nickname": "gemma-e4b-eukiki-final",
+        "base_hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit",
+        "adapter_path": "/Users/electron/lora-adapters/gemma4-e4b-eukiki/final"
+      },
+      {
+        "nickname": "gemma-e4b-mascarade-final",
+        "base_hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit",
+        "adapter_path": "/Users/electron/lora-adapters/gemma4-e4b-mascarade/final"
+      },
+      {
+        "nickname": "gemma-e4b-aggro-test",
+        "base_hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit",
+        "adapter_path": "/Users/electron/lora-adapters/aggro-test"
+      }
+    ]
+  },
+  "bench": {
+    "gemma-e4b-eukiki-final": {
+      "n_samples": 6,
+      "json_ok_rate": 0.8333,
+      "components_f1_avg": 0.8333,
+      "components_recall_avg": 0.8333,
+      "components_precision_avg": 0.8333,
+      "nets_f1_avg": 0.8,
+      "nets_recall_avg": 0.7778,
+      "nets_precision_avg": 0.8333,
+      "net_pins_f1_avg": 0.3786,
+      "net_pins_recall_avg": 0.3783,
+      "composite_score": 0.6902,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 520,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"330\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Red\",\n      \"footprint\": \"LED_SMD:LED_0805_2012Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"R1.1\",\n        \"D1.1\"\n      ]\n    },\n    {\n      \"name\": \"MID\",\n      \"pins\": [\n        \"R1.2\",\n        \"D1.2\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"R1.3\",\n        \"D1.3\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 2,
+              "fp": 4,
+              "fn": 2,
+              "precision": 0.3333,
+              "recall": 0.5,
+              "f1": 0.4
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.82
+          },
+          "gen_time_s": 8.54
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 488,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VIN\",\n      \"pins\": [\n        \"R1.1\"\n      ]\n    },\n    {\n      \"name\": \"VOUT\",\n      \"pins\": [\n        \"R1.2\",\n        \"R2.1\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"R2.2\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 1.0
+          },
+          "gen_time_s": 8.0
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 1068,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"NE555\",\n      \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"47k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"10nF\",\n      \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"U1.1\",\n        \"R1.2\",\n        \"R2.1\",\n        \"C1.2\"\n      ]\n    },\n    {\n      \"name\": \"DIS\",\n      \"pins\": [\n        \"U1.2\",\n        \"R1.1\",\n        \"R2.2\",\n        \"C1.1\"\n      ]\n    },\n    {\n      \"name\": \"THR\",\n      \"pins\": [\n        \"U1.3\",\n        \"R1.3\",\n        \"R2.3\",\n        \"C1.3\"\n      ]\n    },\n    {\n      \"name\": \"OUT\",\n      \"pins\": [\n        \"U1.4\",\n        \"R1.4\",\n        \"R2.4\",\n        \"C1.4\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.5\",\n        \"R1.5\",\n        \"R2.5\",\n        \"C1.5\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 4,
+            "predicted_n_components": 4,
+            "components": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 20,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 17.24
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 793,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"TL072\",\n      \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"100\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VIN\",\n      \"pins\": [\n        \"U1.1\",\n        \"R1.2\"\n      ]\n    },\n    {\n      \"name\": \"VOUT\",\n      \"pins\": [\n        \"U1.8\",\n        \"R2.1\"\n      ]\n    },\n    {\n      \"name\": \"FB\",\n      \"pins\": [\n        \"U1.7\",\n        \"R2.2\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"U1.5\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.6\",\n        \"U1.4\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 1,
+              "fp": 8,
+              "fn": 8,
+              "precision": 0.1111,
+              "recall": 0.1111,
+              "f1": 0.1111
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7333
+          },
+          "gen_time_s": 12.84
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 4004,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"ESP32-S3-WROOM-1\",\n      \"footprint\": \"RF_Module:ESP32-S2-WROOM\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"AMS1117-3.3\",\n      \"footprint\": \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"\n    },\n    {\n      \"ref\": \"J1\",\n      \"value\": \"USB_C\",\n      \"footprint\": \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C2\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Status\",\n      \"footprint\": \"LED_SMD:LED_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VBUS\",\n      \"pins\": [\n        \"U1.3\",\n        \"U2.1\",\n        \"J1.1\",\n        \"C1.1\",\n        \"C2.1\",\n        \"D1.1\"\n      ]\n    },\n    {\n      \"name\": \"3V3\",\n      \"pins\": [\n        \"U1.2\",\n        \"U2.2\",\n        \"J1.2\",\n        \"C1.2\",\n        \"C2.2\",\n        \"D1.2\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.4\",\n        \"U2.3\",\n        \"J1.3\",\n        \"C1.3\",\n        \"C2.3\",\n        \"D1.3\"\n      ]\n    },\n    {\n      \"name\": \"EN\",\n      \"pins\": [\n        \"U1.5\",\n        \"U2.4\",\n        \"J1.4\",\n        \"R1.1\",\n        \"R1.2\",\n        \"R2.1\",\n        \"R2.2\",\n        \"D1.4\"\n      ]\n    },\n    {\n      \"name\": \"USB_DP\",\n      \"pins\": [\n        \"U1.6\",\n        \"J1.5\",\n        \"J1.6\",\n        \"J1.7\",\n        \"J1.8\",\n        \"J1.9\",\n        \"J1.10\",\n        \"J1.11\",\n        \"J1.12\",\n        \"J1.13\",\n        \"J1.14\",\n        \"J1.15\",\n        \"J1.16\",\n        \"J1.17\",\n        \"J1.18\",\n        \"J1.19\",\n        \"J1.20\",\n        \"J1.21\",\n        \"J1.22\",\n        \"J1.23\",\n        \"J1.24\",\n        \"J1.25\",\n        \"J1.26\",\n        \"J1.27\",\n        \"J1.28\",\n        \"J1.29\",\n        \"J1.30\",\n        \"J1.31\",\n        \"J1.32\",\n        \"J1.33\",\n        \"J1.34\",\n        \"J1.35\",\n        \"J1.36\",\n        \"J1.37\",\n        \"J1.38\",\n        \"J1.39\",\n        \"J1.40\",\n        \"J1.41\",\n        \"J1.42\",\n        \"J1.43\",\n        \"J1.44\",\n        \"J1.45\",\n        \"J1.46\",\n        \"J1.47\",\n        \"J1.48\",\n        \"J1.49\",\n        \"J1.50\",\n        \"J1.51\",\n        \"J1.52\",\n        \"J1.53\",\n        \"J1.54\",\n        \"J1.55\",",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 8,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 67.36
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 1606,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"J1\",\n      \"value\": \"SPI_HOST\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U1\",\n      \"value\": \"SPI_DEVICE_1\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"SPI_DEVICE_2\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U3\",\n      \"value\": \"SPI_DEVICE_3\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U4\",\n      \"value\": \"SPI_DEVICE_4\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R3\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R4\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"SPI_SCLK\",\n      \"pins\": [\n        \"J1.1\",\n        \"U1.1\",\n        \"U2.1\",\n        \"U3.1\",\n        \"U4.1\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MOSI\",\n      \"pins\": [\n        \"J1.2\",\n        \"U1.2\",\n        \"U2.2\",\n        \"U3.2\",\n        \"U4.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MISO\",\n      \"pins\": [\n        \"J1.3\",\n        \"U1.3\",\n        \"U2.3\",\n        \"U3.3\",\n        \"U4.3\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS1\",\n      \"pins\": [\n        \"J1.4\",\n        \"U1.4\",\n        \"U2.4\",\n        \"U3.4\",\n        \"U4.4\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"J1.8\",\n        \"U1.5\",\n        \"U2.5\",\n        \"U3.5\",\n        \"U4.5\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"J1.9\",\n        \"U1.6\",\n        \"U2.6\",\n        \"U3.6\",\n        \"U4.6\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 9,
+            "predicted_n_components": 9,
+            "components": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 6,
+            "nets": {
+              "tp": 6,
+              "fp": 0,
+              "fn": 3,
+              "precision": 1.0,
+              "recall": 0.6667,
+              "f1": 0.8
+            },
+            "net_pins": {
+              "tp": 27,
+              "fp": 3,
+              "fn": 14,
+              "precision": 0.9,
+              "recall": 0.6585,
+              "f1": 0.7606
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.8882
+          },
+          "gen_time_s": 51.94
+        }
+      ]
+    },
+    "gemma-e4b-mascarade-final": {
+      "n_samples": 6,
+      "json_ok_rate": 1.0,
+      "components_f1_avg": 1.0,
+      "components_recall_avg": 1.0,
+      "components_precision_avg": 1.0,
+      "nets_f1_avg": 0.9386,
+      "nets_recall_avg": 0.9444,
+      "nets_precision_avg": 0.9333,
+      "net_pins_f1_avg": 0.3233,
+      "net_pins_recall_avg": 0.3484,
+      "composite_score": 0.7847,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 520,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"330\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Red\",\n      \"footprint\": \"LED_SMD:LED_0805_2012Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"D1.1\",\n        \"R1.1\"\n      ]\n    },\n    {\n      \"name\": \"MID\",\n      \"pins\": [\n        \"D1.2\",\n        \"R1.2\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"D1.3\",\n        \"R1.3\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 2,
+              "fp": 4,
+              "fn": 2,
+              "precision": 0.3333,
+              "recall": 0.5,
+              "f1": 0.4
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.82
+          },
+          "gen_time_s": 8.58
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 504,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VIN\",\n      \"pins\": [\n        \"R1.1\",\n        \"R2.1\"\n      ]\n    },\n    {\n      \"name\": \"VOUT\",\n      \"pins\": [\n        \"R1.2\",\n        \"R2.2\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"R2.2\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 3,
+              "fp": 2,
+              "fn": 1,
+              "precision": 0.6,
+              "recall": 0.75,
+              "f1": 0.6667
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.9
+          },
+          "gen_time_s": 8.24
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 940,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"NE555\",\n      \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"47k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"10nF\",\n      \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"U1.1\",\n        \"R1.1\",\n        \"R2.1\"\n      ]\n    },\n    {\n      \"name\": \"DIS\",\n      \"pins\": [\n        \"U1.2\",\n        \"C1.1\"\n      ]\n    },\n    {\n      \"name\": \"THR\",\n      \"pins\": [\n        \"U1.3\",\n        \"R2.2\",\n        \"C1.2\"\n      ]\n    },\n    {\n      \"name\": \"OUT\",\n      \"pins\": [\n        \"U1.4\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.5\",\n        \"R1.2\",\n        \"C1.2\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 4,
+            "predicted_n_components": 4,
+            "components": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 3,
+              "fp": 9,
+              "fn": 10,
+              "precision": 0.25,
+              "recall": 0.2308,
+              "f1": 0.24
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.772
+          },
+          "gen_time_s": 15.22
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 793,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"TL072\",\n      \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"100\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VIN\",\n      \"pins\": [\n        \"U1.1\",\n        \"R1.1\"\n      ]\n    },\n    {\n      \"name\": \"VOUT\",\n      \"pins\": [\n        \"U1.2\",\n        \"R2.1\"\n      ]\n    },\n    {\n      \"name\": \"FB\",\n      \"pins\": [\n        \"U1.3\",\n        \"R2.2\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"U1.4\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.5\",\n        \"U1.6\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 9,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 12.85
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 1695,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"ESP32-S3-WROOM-1\",\n      \"footprint\": \"RF_Module:ESP32-S2-WROOM\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"AMS1117-3.3\",\n      \"footprint\": \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"\n    },\n    {\n      \"ref\": \"J1\",\n      \"value\": \"USB_C\",\n      \"footprint\": \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C2\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Status\",\n      \"footprint\": \"LED_SMD:LED_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VBUS\",\n      \"pins\": [\n        \"U1.VBUS\",\n        \"U2.VBUS\",\n        \"C1.VBUS\"\n      ]\n    },\n    {\n      \"name\": \"3V3\",\n      \"pins\": [\n        \"U1.3V3\",\n        \"U2.3V3\",\n        \"C2.3V3\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.GND\",\n        \"U2.GND\",\n        \"C1.GND\",\n        \"C2.GND\"\n      ]\n    },\n    {\n      \"name\": \"EN\",\n      \"pins\": [\n        \"U1.EN\",\n        \"U2.EN\"\n      ]\n    },\n    {\n      \"name\": \"USB_DP\",\n      \"pins\": [\n        \"J1.USB_DP\",\n        \"U1.GPIO2\"\n      ]\n    },\n    {\n      \"name\": \"USB_DM\",\n      \"pins\": [\n        \"J1.USB_DM\",\n        \"U1.GPIO2\"\n      ]\n    },\n    {\n      \"name\": \"GPIO2\",\n      \"pins\": [\n        \"U1.GPIO2\",\n        \"R1.1\",\n        \"R1.2\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 7,
+            "nets": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 19,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 27.54
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 1960,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"J1\",\n      \"value\": \"SPI_HOST\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U1\",\n      \"value\": \"SPI_DEVICE_1\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"SPI_DEVICE_2\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U3\",\n      \"value\": \"SPI_DEVICE_3\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U4\",\n      \"value\": \"SPI_DEVICE_4\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R3\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R4\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"SPI_SCLK\",\n      \"pins\": [\n        \"J1.1\",\n        \"U1.1\",\n        \"U2.1\",\n        \"U3.1\",\n        \"U4.1\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MOSI\",\n      \"pins\": [\n        \"J1.2\",\n        \"U1.2\",\n        \"U2.2\",\n        \"U3.2\",\n        \"U4.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MISO\",\n      \"pins\": [\n        \"J1.3\",\n        \"U1.3\",\n        \"U2.3\",\n        \"U3.3\",\n        \"U4.3\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS1\",\n      \"pins\": [\n        \"J1.4\",\n        \"U1.4\",\n        \"U2.4\",\n        \"U3.4\",\n        \"U4.4\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"J1.5\",\n        \"U1.5\",\n        \"U2.5\",\n        \"U3.5\",\n        \"U4.5\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"J1.6\",\n        \"U1.6\",\n        \"U2.6\",\n        \"U3.6\",\n        \"U4.6\"\n      ]\n    },\n    {\n      \"name\": \"R1\",\n      \"pins\": [\n        \"J1.7\",\n        \"U1.7\"\n      ]\n    },\n    {\n      \"name\": \"R2\",\n      \"pins\": [\n        \"J1.8\",\n        \"U1.8\"\n      ]\n    },\n    {\n      \"name\": \"R3\",\n      \"pins\": [\n        \"J1.9\",\n        \"U1.9\"\n      ]\n    },\n    {\n      \"name\": \"R4\",\n      \"pins\": [\n        \"J1.10\",\n        \"U1.10\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 9,
+            "predicted_n_components": 9,
+            "components": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 10,
+            "nets": {
+              "tp": 6,
+              "fp": 4,
+              "fn": 3,
+              "precision": 0.6,
+              "recall": 0.6667,
+              "f1": 0.6316
+            },
+            "net_pins": {
+              "tp": 25,
+              "fp": 13,
+              "fn": 16,
+              "precision": 0.6579,
+              "recall": 0.6098,
+              "f1": 0.6329
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.8162
+          },
+          "gen_time_s": 58.08
+        }
+      ]
+    },
+    "gemma-e4b-aggro-test": {
+      "n_samples": 6,
+      "json_ok_rate": 0.5,
+      "components_f1_avg": 0.5,
+      "components_recall_avg": 0.5,
+      "components_precision_avg": 0.5,
+      "nets_f1_avg": 0.5,
+      "nets_recall_avg": 0.5,
+      "nets_precision_avg": 0.5,
+      "net_pins_f1_avg": 0.0,
+      "net_pins_recall_avg": 0.0,
+      "composite_score": 0.35,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 336,
+          "generated": "{\"components\": [{\"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}, {\"ref\": \"D1\", \"value\": \"LED_Red\", \"footprint\": \"LED_SMD:LED_0805_2012Metric\"}], \"nets\": [{\"name\": \"VCC\", \"pins\": [\"R1.PIN_1\", \"D1.PIN_1\"]}, {\"name\": \"MID\", \"pins\": [\"R1.PIN_2\", \"D1.PIN_2\"]}, {\"name\": \"GND\", \"pins\": [\"R1.PIN_2\", \"D1.PIN_2\"]}]}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 6.11
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 330,
+          "generated": "{\"components\": [{\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}, {\"ref\": \"R2\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}], \"nets\": [{\"name\": \"VIN\", \"pins\": [\"R1.PIN0\", \"R2.PIN0\"]}, {\"name\": \"VOUT\", \"pins\": [\"R1.PIN1\", \"R2.PIN1\"]}, {\"name\": \"GND\", \"pins\": [\"R1.PIN1\", \"R2.PIN1\"]}]}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 5.88
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 838,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"NE555\",\n      \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"47k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"10nF\",\n      \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"U1.VCC\"\n      ]\n    },\n    {\n      \"name\": \"DIS\",\n      \"pins\": [\n        \"U1.DIS\"\n      ]\n    },\n    {\n      \"name\": \"THR\",\n      \"pins\": [\n        \"U1.THR\"\n      ]\n    },\n    {\n      \"name\": \"OUT\",\n      \"pins\": [\n        \"U1.OUT\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.GND\"\n      ]\n    }\n<pad>",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 4,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 13.44
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 3761,
+          "generated": "components:\n  - {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n  - {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n  - {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: U1, value: TL072, footprint: Package_SO:SOIC-8_3.9x4.9mm_P1.27mm}\n- {ref: R1, value: 1k, footprint: Resistor_SMD:R_0603_1608Metric}\n- {ref: R2, value: 100, footprint: Resistor_SMD:R_0603_1608Metric",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 3,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 65.64
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 1052,
+          "generated": "{\"components\": [{\"ref\": \"U1\", \"value\": \"ESP32-S3-WROOM-1\", \"footprint\": \"RF_Module:ESP32-S2-WROOM\"}, {\"ref\": \"U2\", \"value\": \"AMS1117-3.3\", \"footprint\": \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"}, {\"ref\": \"J1\", \"value\": \"USB_C\", \"footprint\": \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"}, {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}, {\"ref\": \"R2\", \"value\": \"1k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}, {\"ref\": \"C1\", \"value\": \"22uF\", \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"}, {\"ref\": \"C2\", \"value\": \"22uF\", \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"}, {\"ref\": \"D1\", \"value\": \"LED_Status\", \"footprint\": \"LED_SMD:LED_0603_1608Metric\"}], \"nets\": [{\"name\": \"VBUS\", \"pins\": [\"U1.VBUS\", \"U2.VBUS\"]}, {\"name\": \"3V3\", \"pins\": [\"U1.3V3\", \"U2.3V3\"]}, {\"name\": \"GND\", \"pins\": [\"U1.GND\", \"U2.GND\"]}, {\"name\": \"EN\", \"pins\": [\"U1.EN\", \"U2.EN\"]}, {\"name\": \"USB_DP\", \"pins\": [\"U1.USB_DP\", \"U2.USB_DP\"]}, {\"name\": \"USB_DM\", \"pins\": [\"U1.USB_DM\", \"U2.USB_DM\"]}, {\"name\": \"GPIO2\", \"pins\": [\"U1.GPIO2\", \"U2.GPIO2\"]}]}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 7,
+            "nets": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 14,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 18.74
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 2035,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"J1\",\n      \"value\": \"SPI_HOST\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U1\",\n      \"value\": \"SPI_DEVICE_1\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"SPI_DEVICE_2\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U3\",\n      \"value\": \"SPI_DEVICE_3\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U4\",\n      \"value\": \"SPI_DEVICE_4\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R3\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R4\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"SPI_SCLK\",\n      \"pins\": [\n        \"J1.1\",\n        \"U1.1\",\n        \"U2.1\",\n        \"U3.1\",\n        \"U4.1\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MOSI\",\n      \"pins\": [\n        \"J1.2\",\n        \"U1.2\",\n        \"U2.2\",\n        \"U3.2\",\n        \"U4.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MISO\",\n      \"pins\": [\n        \"J1.3\",\n        \"U1.3\",\n        \"U2.3\",\n        \"U3.3\",\n        \"U4.3\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS1\",\n      \"pins\": [\n        \"J1.4\",\n        \"U1.4\",\n        \"U2.4\",\n        \"U3.4\",\n        \"U4.4\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS2\",\n      \"pins\": [\n        \"J1.5\",\n        \"U1.5\",\n        \"U2.5\",\n        \"U3.5\",\n        \"U4.5\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS3\",\n      \"pins\": [\n        \"J1.6\",\n        \"U1.6\",\n        \"U2.6\",\n        \"U3.6\",\n        \"U4.6\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS4\",\n      \"pins\": [\n        \"J1.7\",\n        \"U1.7\",\n        \"U2.7\",\n        \"U3.7\",\n        \"U4.7\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"J1.8\",\n        \"U1.8\",\n        \"U2.8\",\n        \"U3.8\",\n        \"U4.8\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"J1.9\",\n        \"U1.9\",\n        \"U2.9\",\n        \"U3.9\",\n        \"U4.9\"\n      ]\n    }\n<pad>\n<pad>",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 9,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 41,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 59.34
+        }
+      ]
+    }
+  }
+}
