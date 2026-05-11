@@ -1,7 +1,7 @@
 # Bench domains → iact-bench validators mapping (2026-05-11)
 
 Cross-reference between the 32 bench domains we evaluate (PPL matrix v1+v2)
-and the 25 functional validators in `electron-rare/iact-bench` v0.2.0.
+and the 25 functional validators in `ailiance/iact-bench` v0.2.0.
 
 ## Coverage summary
 
@@ -69,7 +69,7 @@ on our domain-specific niches.
 
 ## References
 
-- iact-bench v0.2.0: `electron-rare/iact-bench:configs/domain_validators.yaml`
+- iact-bench v0.2.0: `ailiance/iact-bench:configs/domain_validators.yaml`
 - Orchestrator wire-up: `ailiance/ailiance#21` (merged 2026-05-11 02:42), uses `IactBenchValidator` shim with lazy import.
 - PPL matrix: `ailiance/ailiance-bench:docs/comparison_v{1,2}_2026-05-11.md`
 - lm-eval-harness in-progress: Studio `~/ailiance/output/lm-eval-base-2026-05-11/`
