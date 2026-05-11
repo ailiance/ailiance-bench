@@ -22,6 +22,29 @@ Benchmarking MLX pour modèles open-source et fine-tunes Ailiance sur Mac Apple 
 
 Scores complets : voir [`bench-results/BENCH_TABLE.md`](bench-results/BENCH_TABLE.md).
 
+## Scoreboard LoRA (Phase 6 — 2026-05-11)
+
+Base = `gemma-e4b-eu-kiki-base`. 4 adaptateurs LoRA comparés sur 7 tâches.
+Source de vérité : [`bench-results/compare_base_vs_lora.md`](bench-results/compare_base_vs_lora.md).
+
+| Phase | Tâche             | base  | +eu-kiki        | +mascarade       | +aggro       | +kicad9plus      |
+|-------|-------------------|------:|----------------:|-----------------:|-------------:|-----------------:|
+| P1    | kicad-dsl         | 0.090 | **0.640 (+55)** | 0.090            | 0.090        | 0.090            |
+| P1    | kicad-pcb         | 0.010 | **0.430 (+42)** | 0.010            | 0.010        | 0.015            |
+| P1    | spice-sim         | 0.425 | **0.676 (+25)** | 0.176 (−25)      | 0.189 (−24)  | 0.268 (−16)      |
+| P2    | kicad-sch-gen     | 0.420 | 0.220 (−20)     | 0.400 (−2)       | 0.320 (−10)  | 0.180 (−24)      |
+| P3    | kicad-sch-extract | 0.308 | 0.690 (+38)     | **0.785 (+48)**  | 0.350 (+4)   | 0.000 (−31)      |
+| P4    | kicad-erc-abs     | 0.060 | 0.057           | 0.060            | 0.060        | 0.033 (−3)       |
+| P5    | kicad-erc-delta   | 0.060 | 0.057           | 0.060            | 0.060        | 0.033 (−3)       |
+
+### Verdicts
+
+- 🥇 **eu-kiki** : champion généraliste (4/7 tâches, peak P1-DSL +55 pts)
+- 🥇 **mascarade** : champion ciblé P3 extraction (+48 pts)
+- ⚠️ **aggro** : neutre (sanity check)
+- ❌ **kicad9plus** : catastrophic forgetting — régression sur SPICE/P2/P3. **À utiliser uniquement** si le contexte est exclusivement KiCad permissive.
+- 🚫 **Génération `.kicad_sch` from-scratch** : non résolue (`parse_kicad=0` partout sur P4/P5) — bottleneck = absence de KiCad 6+ S-expr en pré-entraînement, pas le mode chat.
+
 ## Tâches d'évaluation
 
 **lm-eval-harness** (100 exemples, seed 0) :
@@ -72,7 +95,7 @@ Régénérer table markdown : `python scripts/regen_bench_table.py`.
 
 ## Licence
 
-MIT (code). Résultats publiés tels quels ; modèles sous licence d'origine.
+Apache-2.0 (code). Résultats publiés tels quels ; modèles sous licence d'origine.
 
 ## Gateway HTTP bench (2026-05-10)
 
