@@ -28,7 +28,7 @@ README differs (branding + citation + about-Ailiance + related-datasets sections
 A future re-pull / re-build of an electron-rare dataset would propagate to the
 matching Ailiance-fr/* via the rebrand script (`~/scripts/rebrand_ailiance_readmes.py`).
 
-## Catalog (7 datasets)
+## Catalog (11 datasets)
 
 | Ailiance-fr name                                    | Upstream (electron-rare)              | License        | Samples | Pretty name (Ailiance)                                       |
 |-----------------------------------------------------|---------------------------------------|----------------|---------|--------------------------------------------------------------|
@@ -39,6 +39,10 @@ matching Ailiance-fr/* via the rebrand script (`~/scripts/rebrand_ailiance_readm
 | `Ailiance-fr/mascarade-spice-dataset`               | `mascarade-spice-dataset`             | CC-BY-SA-4.0   | 3,091   | Ailiance — SPICE & Analog Simulation Q&A                     |
 | `Ailiance-fr/mascarade-iot-dataset`                 | `mascarade-iot-dataset`               | CC-BY-SA-4.0   | 6,005   | Ailiance — IoT & Connected Devices Q&A                       |
 | `Ailiance-fr/mascarade-embedded-dataset`            | `mascarade-embedded-dataset`          | CC-BY-SA-4.0   | 8,344   | Ailiance — Embedded Systems & Linux Q&A                      |
+| `Ailiance-fr/mascarade-power-dataset`               | `mascarade-power-dataset`             | CC-BY-SA-4.0   | 3,267   | Mascarade — Power Electronics Q&A (✅ AUDITED — 4.87 % SE)   |
+| `Ailiance-fr/mascarade-dsp-dataset`                 | `mascarade-dsp-dataset`               | CC-BY-SA-4.0   | 3,160   | Mascarade — DSP & Signal Processing Q&A (✅ AUDITED — 5.35 % SE) |
+| `Ailiance-fr/mascarade-emc-dataset`                 | `mascarade-emc-dataset`               | CC-BY-SA-4.0   | 3,360   | Mascarade — EMC & EMI Q&A (✅ AUDITED — 4.05 % SE)           |
+| `Ailiance-fr/mascarade-kicad-dataset`               | `mascarade-kicad-dataset`             | CC-BY-SA-4.0   | 2,645   | Mascarade — KiCad EDA Q&A (✅ AUDITED — 5.52 % SE)            |
 
 URLs:
 
@@ -49,16 +53,35 @@ URLs:
 - https://huggingface.co/datasets/Ailiance-fr/mascarade-spice-dataset
 - https://huggingface.co/datasets/Ailiance-fr/mascarade-iot-dataset
 - https://huggingface.co/datasets/Ailiance-fr/mascarade-embedded-dataset
+- https://huggingface.co/datasets/Ailiance-fr/mascarade-power-dataset
+- https://huggingface.co/datasets/Ailiance-fr/mascarade-dsp-dataset
+- https://huggingface.co/datasets/Ailiance-fr/mascarade-emc-dataset
+- https://huggingface.co/datasets/Ailiance-fr/mascarade-kicad-dataset
 
-## What is NOT co-published yet (deliberately)
+## SE attribution audit (2026-05-11) — `mascarade-{power,dsp,emc,kicad}`
 
-These remain `electron-rare/*` only until the Stack Exchange API attribution audit
-lands:
+All four datasets carry per-sample Stack Exchange Electronics attribution after the
+2026-05-11 audit (see [`audit_mascarade_se_attribution.md`](./audit_mascarade_se_attribution.md)).
+The previous PARTIAL ATTRIBUTION DISCLOSURE bandeau ("~30 % SE") is replaced on all
+4 × 2 = 8 dataset cards (electron-rare canonical + Ailiance-fr mirror) by the audited
+numbers:
 
-- `electron-rare/mascarade-{power,dsp,emc,kicad}` — pending SE API attribution
-  recovery (PARTIAL ATTRIBUTION warning on some splits, task #23).
-- `electron-rare/kicad9plus-sch-corpus` — deprecated (replaced by the two splits
-  above after the CC-BY-SA-4.0 / GPL compatibility audit).
+| Dataset                       | Total | SE confirmed | %     | Not-found-on-API | Synthetic | Over-count |
+|-------------------------------|------:|-------------:|------:|-----------------:|----------:|-----------:|
+| `mascarade-power-dataset`     | 3 267 |          159 | 4.87 %|              424 |     2 682 |     ~6.4×  |
+| `mascarade-dsp-dataset`       | 3 160 |          169 | 5.35 %|              535 |     2 453 |     ~5.7×  |
+| `mascarade-emc-dataset`       | 3 360 |          136 | 4.05 %|              482 |     2 740 |     ~7.6×  |
+| `mascarade-kicad-dataset`     | 2 645 |          146 | 5.52 %|              386 |     2 108 |     ~5.6×  |
+
+All 8 dataset cards now display ✅ **ATTRIBUTION AUDIT COMPLETED (2026-05-11)** as the
+header bandeau, with per-sample `metadata.stack_exchange_attribution` for the 610
+confirmed samples and `metadata.attribution_recovery` markers for the 1 827
+not-found-on-API and 12 low-confidence samples.
+
+## What is NOT co-published yet
+
+- `electron-rare/kicad9plus-sch-corpus` — deprecated (replaced by `kicad9plus-permissive`
+  / `kicad9plus-copyleft` after the CC-BY-SA-4.0 / GPL compatibility audit).
 
 ## Rebrand procedure
 
@@ -92,7 +115,9 @@ Options:
 ```bash
 for name in kicad9plus-permissive kicad9plus-copyleft kill-life-embedded-qa \
             mascarade-stm32-dataset mascarade-spice-dataset \
-            mascarade-iot-dataset mascarade-embedded-dataset; do
+            mascarade-iot-dataset mascarade-embedded-dataset \
+            mascarade-power-dataset mascarade-dsp-dataset \
+            mascarade-emc-dataset mascarade-kicad-dataset; do
   echo "=== $name ==="
   curl -sL "https://huggingface.co/api/datasets/Ailiance-fr/$name" | python3 -c "
 import sys, json
@@ -135,11 +160,12 @@ catalog and benchmark matrix.
 
 ## Future direction
 
-- **Ailiance Hub** — Ailiance org page on HF surfaces these 7 datasets as the
+- **Ailiance Hub** — Ailiance org page on HF surfaces these 11 datasets as the
   official catalog ; electron-rare/* stays as the canonical source / changelog
   reference.
-- Once SE API key arrives, the four pending `mascarade-{power,dsp,emc,kicad}`
-  datasets join the Ailiance catalog with the same rebrand procedure.
+- Audit récurrent : re-run `audit_remaining.py` every quarter (or before any
+  major release) to verify new samples respect the per-sample attribution
+  invariant.
 - Ailiance fine-tuned models (e.g. Gemma-3n-E4B trained on this corpus) will
   cite the `Ailiance-fr/*` URLs as primary training data, with cross-links
   to `electron-rare/*` for archive.

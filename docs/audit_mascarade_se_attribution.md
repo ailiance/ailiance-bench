@@ -1,31 +1,36 @@
-# Audit attribution Stack Exchange — `electron-rare/mascarade-kicad-dataset`
+# Audit attribution Stack Exchange — famille `mascarade-*-dataset`
 
 **Date** : 2026-05-11
 **Auditeur** : revue de conformité interne (electron-rare)
-**Statut** : COMPLIANT (attribution effective sur 61 samples + marquage `not_found_on_se` sur 169)
+**Statut** : COMPLIANT (4 datasets audités : `kicad`, `power`, `dsp`, `emc`)
 
 ## TL;DR
 
-Le dataset `mascarade-kicad-dataset` (2 645 samples, CC-BY-SA-4.0) était présenté comme « ~31 % scrapé depuis Stack Exchange Electronics », sans attribution per-sample (URL + auteur + post_id).
+Les 4 datasets `electron-rare/mascarade-{kicad,power,dsp,emc}-dataset` (CC-BY-SA-4.0) étaient présentés comme « ~30 % scrapés depuis Stack Exchange Electronics », sans attribution per-sample (URL + auteur + post_id).
 
-L'audit empirique via l'API Stack Exchange (`/search/advanced` + `/questions/{id}` avec body) montre que **seuls 61 samples (~2.31 %)** proviennent réellement d'un post SE Electronics identifiable. **L'estimation initiale était sur-estimée par ~13×** (style ≠ source).
+L'audit empirique via l'API Stack Exchange (`/search/advanced` + `/questions/{id}` avec body) confirme la même tendance sur les 4 datasets : **l'estimation initiale était sur-estimée par ~5,5–7×** (style ≠ source). Au total, **610 samples (~4.7 % du corpus mascarade-{kicad,power,dsp,emc} agrégé)** proviennent réellement de Stack Exchange Electronics et portent désormais une attribution complète.
 
-| Catégorie                                | Samples | %      |
-|------------------------------------------|--------:|-------:|
-| SE confirmé (match ≥ 0.60)               |      61 | 2.31 % |
-| SE-style mais introuvable sur l'API SE   |     169 | 6.39 % |
-| SE-style avec match faible (< 0.60)      |       2 | 0.08 % |
-| Synthétique LLM / unique                 |   2 413 | 91.23 % |
-| **Total**                                | **2 645** | 100 % |
+### Synthèse — 4 datasets
 
-Action prise :
+| Dataset                | Samples | SE-detected (heuristique) | SE confirmés (≥0.60) | %    | Not-found-on-API | Low-conf | Synthetic | Over-count |
+|------------------------|--------:|--------------------------:|---------------------:|-----:|-----------------:|---------:|----------:|-----------:|
+| `mascarade-kicad`      |   2 645 |                       537 |                  146 | 5.52 |              386 |        5 |     2 108 |     ~5.6×  |
+| `mascarade-power`      |   3 267 |                       585 |                  159 | 4.87 |              424 |        2 |     2 682 |     ~6.4×  |
+| `mascarade-dsp`        |   3 160 |                       707 |                  169 | 5.35 |              535 |        3 |     2 453 |     ~5.7×  |
+| `mascarade-emc`        |   3 360 |                       620 |                  136 | 4.05 |              482 |        2 |     2 740 |     ~7.6×  |
+| **Total**              |**12 432**|                **2 449**|              **610**| **4.91** |        **1 827**|   **12** | **9 983** |  **~6.3×** |
 
-1. Les 61 samples confirmés portent désormais `metadata.stack_exchange_attribution` (URL, auteur display name, user_id, post_id, creation_date_unix, license, match_confidence).
-2. Les 169 « style SE non trouvés » portent `metadata.attribution_recovery=not_found_on_se` (avec note expliquant la classification).
-3. Les 2 candidats faibles portent `metadata.attribution_recovery=low_confidence_match`.
-4. README HF mis à jour : remplacement du bandeau « 31 % SE » par les chiffres audités.
+> NB : pour `mascarade-kicad`, le compteur est passé de 61 (POC du 2026-05-11 matin, budget anonyme 232/537 cachés) à 146 après l'audit complet (456 nouveaux appels API avec key, couverture 537/537 candidats).
 
-## Méthodologie
+Action prise par dataset :
+
+1. Les samples confirmés portent `metadata.stack_exchange_attribution` (URL, auteur `display_name`, `user_id`, `post_id`, `creation_date_unix`, `license`, `match_confidence`).
+2. Les « style SE non trouvés sur l'API » portent `metadata.attribution_recovery=not_found_on_se` (avec note expliquant la classification).
+3. Les candidats faibles portent `metadata.attribution_recovery=low_confidence_match` (URL candidate uniquement).
+4. README HF mis à jour (sur les 4 datasets electron-rare + 4 mirrors Ailiance-fr) : remplacement du bandeau « ~30 % SE » par les chiffres audités.
+5. LoRA héritant du warning : `Ailiance-fr/apertus-emc-dsp-power-lora` et `apertus-emc-dsp-power-curriculum-lora` mis à jour avec les vrais chiffres training-data.
+
+## Méthodologie (commune aux 4 datasets)
 
 ### Étape 1 — Détection heuristique (recall élevé, précision faible)
 
@@ -41,7 +46,7 @@ Pour chaque sample, on lit le premier message `human` et on calcule un score de 
 | Présence de « ? »                                             |   +1  |
 | Première personne « I'm / I've / my »                         |   +1  |
 
-Seuil de candidat : `score >= 4`. Sur 2 645 samples, **537 candidats** (20 %) ont été flaggés comme « SE-style » par cette heuristique. C'est cohérent avec l'estimation initiale (~31 %), mais cette heuristique mesure un **style**, pas une **source**.
+Seuil de candidat : `score >= 4`. Mesure un **style**, pas une **source**.
 
 ### Étape 2 — Recherche API Stack Exchange (vraie source)
 
@@ -50,10 +55,10 @@ Pour chaque candidat, on construit une requête keyword (premier ~200 mots, stop
 ```
 GET https://api.stackexchange.com/2.3/search/advanced
     ?site=electronics&q=<keywords>&order=desc&sort=relevance&pagesize=5
-    &filter=!9_bDDxJY5
+    &filter=!9_bDDxJY5&key=<SE_API_KEY>
 ```
 
-Réponses cachées dans `~/ailiance-data/se_attribution_cache.json` (244 KB, idempotent par hash de requête).
+Réponses cachées en JSON idempotent par hash de requête. Une clé API gratuite (registration `https://stackapps.com/apps/oauth/register`) lève la limite anonyme 300 req/jour à 10 000 req/jour par IP.
 
 ### Étape 3 — Confirmation via body
 
@@ -68,89 +73,146 @@ match_confidence = max(
 )
 ```
 
-Seuils : `accept = 0.60`, `high_conf = 0.85`.
+Seuils : `accept = 0.60`, `high_conf = 0.85`. **Pass-rate sur API hits = 96–99 %** (le scoring discrimine très bien le bruit). La perte de signal est presque exclusivement liée à l'étape 1 → étape 2 (samples qui ressemblent à SE mais qui ont été paraphrasés assez pour échapper à la recherche keyword).
 
 ### Étape 4 — Marquage et enrichissement JSONL
 
 Chaque sample reçoit un champ `metadata.attribution_recovery` parmi :
 
-- `matched_on_se` (61) : attribution complète ajoutée dans `metadata.stack_exchange_attribution`.
-- `not_found_on_se` (169) : style SE mais aucune réponse API (probable synthétique).
-- `low_confidence_match` (2) : candidat API trouvé, score < 0.60.
-- (absent) (2 413) : pas même détecté comme SE-style.
+- `matched_on_se` (610 total) : attribution complète ajoutée dans `metadata.stack_exchange_attribution`.
+- `not_found_on_se` (1 827 total) : style SE mais aucune réponse API (probable synthétique / paraphrase lourde).
+- `low_confidence_match` (12 total) : candidat API trouvé, score < 0.60.
+- (absent) (9 983 total) : pas même détecté comme SE-style (synthétique LLM ou unique).
 
-## Stats per-dataset
+## Stats détaillées par dataset
 
-### `mascarade-kicad-dataset` ✅ AUDITÉ
+### `mascarade-kicad-dataset` ✅ AUDITED
 
 | Métrique                              | Valeur            |
 |---------------------------------------|-------------------|
 | Total samples                         | 2 645             |
 | Candidates SE-style (heuristique)     | 537               |
-| Samples cachés API (POC budget 200)   | 232               |
-| API hits                              | 63                |
-| API no-results                        | 169               |
-| Match high-conf (≥ 0.85)              | 61                |
-| Match accepté (≥ 0.60)                | 61                |
-| Match faible / échoué                 | 2                 |
-| Pass-rate sur cache                   | 26.3 %            |
+| API calls totaux (POC + complement)   | 232 + 456 = 688   |
+| Match high-conf (≥ 0.85)              | 146               |
+| Match accepté (≥ 0.60)                | 146               |
+| Not-found-on-SE                       | 386               |
+| Low-conf                              | 5                 |
+| Synthetic / unique                    | 2 108             |
 | Pass-rate sur API hits                | **96.8 %**        |
-| **Décision POC**                      | **STOP** (sur cache faible, mais hits quasi-parfaits sur ce qui matche réellement) |
-| **Verdict final**                     | **2.31 % SE réel** vs 31 % annoncé (sur-estimation **~13×**) |
+| **Verdict final**                     | **5.52 % SE réel** vs 30 % annoncé (sur-estimation **~5.6×**) |
 
-### `mascarade-power-dataset` 🔒 PENDING (besoin SE API key)
+### `mascarade-power-dataset` ✅ AUDITED
 
-### `mascarade-dsp-dataset` 🔒 PENDING (besoin SE API key)
+| Métrique                              | Valeur            |
+|---------------------------------------|-------------------|
+| Total samples                         | 3 267             |
+| Candidates SE-style (heuristique)     | 585               |
+| API calls (avec key)                  | 746               |
+| Match high-conf (≥ 0.85)              | 159               |
+| Not-found-on-SE                       | 424               |
+| Low-conf                              | 2                 |
+| Synthetic / unique                    | 2 682             |
+| **Verdict final**                     | **4.87 % SE réel** vs 30 % annoncé (sur-estimation **~6.2×**) |
 
-### `mascarade-emc-dataset` 🔒 PENDING (besoin SE API key)
+### `mascarade-dsp-dataset` ✅ AUDITED
 
-## Analyse — pourquoi seulement 2.31 % vs 31 % attendus ?
+| Métrique                              | Valeur            |
+|---------------------------------------|-------------------|
+| Total samples                         | 3 160             |
+| Candidates SE-style (heuristique)     | 707               |
+| API calls (avec key)                  | 879               |
+| Match high-conf (≥ 0.85)              | 169               |
+| Not-found-on-SE                       | 535               |
+| Low-conf                              | 3                 |
+| Synthetic / unique                    | 2 453             |
+| **Verdict final**                     | **5.35 % SE réel** vs 30 % annoncé (sur-estimation **~5.6×**) |
+
+### `mascarade-emc-dataset` ✅ AUDITED
+
+| Métrique                              | Valeur            |
+|---------------------------------------|-------------------|
+| Total samples                         | 3 360             |
+| Candidates SE-style (heuristique)     | 620               |
+| API calls (avec key)                  | 758               |
+| Match high-conf (≥ 0.85)              | 136               |
+| Not-found-on-SE                       | 482               |
+| Low-conf                              | 2                 |
+| Synthetic / unique                    | 2 740             |
+| **Verdict final**                     | **4.05 % SE réel** vs 30 % annoncé (sur-estimation **~7.4×**) |
+
+## Analyse — pourquoi seulement ~5 % vs ~30 % attendus ?
+
+**Constat reproduit sur 4 datasets indépendants** : la fraction réelle scrapée depuis SE est de **4.05 %–5.52 %**, alors que l'estimation initiale était de ~30 %. La sur-estimation est cohérente (~5.6×–7.6×) à travers les 4 domaines, ce qui confirme un biais méthodologique commun et non un artefact spécifique à un dataset.
 
 1. **Style ≠ source** : la prose anglophone informelle « how do I / can someone » est aussi reproductible par un LLM que copiable depuis SE. Le détecteur de style ne discrimine pas ces deux cas.
-2. **Curation lourde** : les 169 « style SE introuvables sur l'API SE » résultent probablement d'un mélange (a) prompts paraphrasés assez pour échapper à la recherche keyword, (b) prompts entièrement synthétiques avec une persona « curieux qui pose une question », (c) prompts inspirés mais réécrits.
-3. **Échantillon initial biaisé** : l'audit pré-API regardait 100 samples au hasard et extrapolait la fraction SE. Sur ces 100, beaucoup étaient des paraphrases qui ressemblaient à des questions SE → intuition trompeuse.
+2. **Curation lourde** : les 1 827 samples « style SE introuvables sur l'API SE » résultent probablement d'un mélange (a) prompts paraphrasés assez pour échapper à la recherche keyword, (b) prompts entièrement synthétiques avec une persona « curieux qui pose une question », (c) prompts inspirés mais réécrits.
+3. **Échantillon initial biaisé** : l'audit pré-API regardait ~100 samples au hasard et extrapolait la fraction SE. Sur ces 100, beaucoup étaient des paraphrases qui ressemblaient à des questions SE → intuition trompeuse.
+4. **Fiabilité API-search** : le pass-rate sur API hits est de 96–99 % — quand l'API renvoie un candidat, le scoring confirme presque toujours la correspondance. Les faux-positifs SE sont donc *quasi nuls*, ce qui valide a posteriori le `match_confidence >= 0.60` comme seuil sûr.
+
+## Méthodologie validée
+
+L'audit est **reproductible et idempotent** :
+
+- Cache JSON par hash de requête (`~/eu-kiki-data/{ds}_attribution_cache.json` pour `power|dsp|emc`, `~/eu-kiki-data/se_attribution_cache.json` pour `kicad`).
+- Coût : ~3 200 appels API total pour les 4 datasets (largement sous le quota 10 000/jour avec key).
+- Temps : ~25 min pour ré-auditer les 4 datasets from-scratch.
 
 ## Recommandations
 
-### Pour `mascarade-power|dsp|emc-dataset`
-
-Nécessite une **SE API key** (gratuite, [https://stackapps.com/apps/oauth/register](https://stackapps.com/apps/oauth/register)) :
-
-- Anonyme : 300 req/jour total (quota épuisé pour le 2026-05-11).
-- Avec key : **10 000 req/jour** par IP.
-
-Lancement prévu via `~/scripts/se_attribution/audit_remaining.py --dataset {power,dsp,emc} --api-key <KEY>`. Pas de modification des datasets `power/dsp/emc` tant que l'API key n'est pas fournie.
-
 ### Pour les futurs scrapings
 
-1. **Capturer l'attribution à la source** : tout pipeline qui scrape SE doit conserver `(url, post_id, owner.display_name, owner.user_id, license, creation_date)` au moment du scrape. La récupération a posteriori est lossy (61/537 candidats ≈ 11 % seulement).
+1. **Capturer l'attribution à la source** : tout pipeline qui scrape SE doit conserver `(url, post_id, owner.display_name, owner.user_id, license, creation_date)` au moment du scrape. La récupération a posteriori est lossy (~25 % des candidats heuristiques sont confirmés ; ~75 % échappent au keyword search par paraphrase).
 2. **Marquer la provenance** : chaque sample doit porter `metadata.source_kind` ∈ {`scraped`, `synthetic`, `curated`, `original`} et `metadata.source_url` quand applicable.
 3. **Audit récurrent** : ré-auditer chaque trimestre (ou avant chaque release majeure) pour vérifier que les nouveaux samples respectent l'invariant.
+
+### Pour les autres datasets de la famille mascarade
+
+Les datasets `mascarade-{stm32,spice,iot,embedded}` ont des profils différents (plus de contenu généré, moins de prose SE-style). Un audit similaire serait utile pour confirmation, mais la priorité conformité est traitée avec les 4 datasets ci-dessus (ceux qui portaient explicitement le bandeau « ~30 % SE »).
+
+## Artefacts
+
+- Script POC kicad : `~/scripts/se_attribution/poc_kicad.py`
+- Script audit `power|dsp|emc|kicad` : `~/scripts/se_attribution/audit_remaining.py`
+- Script finalize (marqueurs not_found, post-POC) : `~/scripts/se_attribution/finalize_enriched.py`
+- Script rendering READMEs : `~/scripts/se_attribution/render_dataset_readmes.py`
+- Script update LoRA disclosure : `~/scripts/se_attribution/update_lora_disclosure.py`
+- Script upload HF : `~/scripts/se_attribution/upload_to_hf.sh`
+- Caches API : `~/eu-kiki-data/{power,dsp,emc}_attribution_cache.json` (~ 650–700 KB chacun) ; `~/eu-kiki-data/se_attribution_cache.json` (kicad, ~ 580 KB).
+- Stats : `~/eu-kiki-data/{power,dsp,emc,kicad}_audit_stats.json`
+- JSONL enrichis : `~/eu-kiki-data/{power,dsp,emc,kicad}_chat_enriched.jsonl`
 
 ## Reproductibilité
 
 ```bash
-# Re-run sur cache (gratuit, pas d'API call) :
-HF=/Users/electron/mlx-stack/.venv/bin/hf
-$HF download electron-rare/mascarade-kicad-dataset --repo-type dataset
+# Pre-requis : clé API SE (gratuite, https://stackapps.com/apps/oauth/register)
+mkdir -p ~/.cache/stackexchange && echo "<KEY>" > ~/.cache/stackexchange/api_key
 
-python3 ~/scripts/se_attribution/finalize_enriched.py
-# Sortie : ~/ailiance-data/kicad_chat_enriched_poc.jsonl
-#          ~/ailiance-data/kicad_poc_stats.json (clé "finalize_enrichment")
+# Audit complet, 4 datasets, ~25 min :
+KEY=$(cat ~/.cache/stackexchange/api_key)
+for ds in power dsp emc kicad; do
+  /Users/electron/mlx-stack/.venv/bin/python ~/scripts/se_attribution/audit_remaining.py --dataset $ds --api-key "$KEY"
+done
+
+# Re-render des 8 READMEs (electron-rare + Ailiance-fr) :
+/Users/electron/mlx-stack/.venv/bin/python ~/scripts/se_attribution/render_dataset_readmes.py
+
+# Upload (JSONL + README) sur les 2 mirrors :
+for ds in power dsp emc kicad; do
+  bash ~/scripts/se_attribution/upload_to_hf.sh $ds
+done
+
+# Update LoRA cards qui héritent :
+/Users/electron/mlx-stack/.venv/bin/python ~/scripts/se_attribution/update_lora_disclosure.py
+# upload manuel des 2 README.md ensuite
 ```
 
-## Artefacts
+## Audit log HF (2026-05-11)
 
-- Script POC : `~/scripts/se_attribution/poc_kicad.py`
-- Script finalize (marqueurs not_found) : `~/scripts/se_attribution/finalize_enriched.py`
-- Script audit power/dsp/emc (en attente API key) : `~/scripts/se_attribution/audit_remaining.py`
-- Cache API : `~/ailiance-data/se_attribution_cache.json` (244 KB, idempotent)
-- Stats : `~/ailiance-data/kicad_poc_stats.json`
-- JSONL enrichi uploadé : `kicad_chat.jsonl` @ `electron-rare/mascarade-kicad-dataset`
-
-## Audit log HF
-
-| Action                             | Commit SHA (HF)                              |
-|------------------------------------|----------------------------------------------|
-| Upload `kicad_chat.jsonl` enrichi  | `5ae255ade19f285eedeb6ae7ab25278d75a4c23f` |
-| Update `README.md` avec audit      | `7f8db437a89182d1a8d3acd4587e67d96eba18e7` |
+| Action                                                  | Org / Repo                                                   |
+|---------------------------------------------------------|--------------------------------------------------------------|
+| Upload `power_chat.jsonl` + README                      | `electron-rare/mascarade-power-dataset`, `Ailiance-fr/...`   |
+| Upload `dsp_chat.jsonl` + README                        | `electron-rare/mascarade-dsp-dataset`, `Ailiance-fr/...`     |
+| Upload `emc_chat.jsonl` + README                        | `electron-rare/mascarade-emc-dataset`, `Ailiance-fr/...`     |
+| Upload `kicad_chat.jsonl` + README (audit complet)      | `electron-rare/mascarade-kicad-dataset`, `Ailiance-fr/...`   |
+| Update README `apertus-emc-dsp-power-lora`              | `Ailiance-fr/apertus-emc-dsp-power-lora`                     |
+| Update README `apertus-emc-dsp-power-curriculum-lora`   | `Ailiance-fr/apertus-emc-dsp-power-curriculum-lora`          |
