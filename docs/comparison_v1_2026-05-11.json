@@ -1,0 +1,830 @@
+[
+  {
+    "model_key": "apertus",
+    "domain": "chat-fr",
+    "base_ppl": 7.0481,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "cpp",
+    "base_ppl": 3.0385,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "docker-devops",
+    "base_ppl": 2.9566,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "electronics",
+    "base_ppl": 3.1329,
+    "tuned_ppl": 3.17,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": -1.18,
+    "lift_log": -0.0118
+  },
+  {
+    "model_key": "apertus",
+    "domain": "embedded",
+    "base_ppl": 13.267,
+    "tuned_ppl": 10.32,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 22.21,
+    "lift_log": 0.2512
+  },
+  {
+    "model_key": "apertus",
+    "domain": "emc-dsp-power",
+    "base_ppl": 11.385,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "freecad",
+    "base_ppl": 3.528,
+    "tuned_ppl": null,
+    "base_n_samples": 3,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "html-css",
+    "base_ppl": 2.9499,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "iot",
+    "base_ppl": 14.4319,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "kicad-dsl",
+    "base_ppl": 2.3915,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "kicad-pcb",
+    "base_ppl": 1.5547,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "llm-ops",
+    "base_ppl": 25.1843,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "llm-orch",
+    "base_ppl": 7.495,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "lua-upy",
+    "base_ppl": 4.2831,
+    "tuned_ppl": null,
+    "base_n_samples": 44,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "math-gsm8k",
+    "base_ppl": 4.7497,
+    "tuned_ppl": 4.19,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 11.78,
+    "lift_log": 0.1254
+  },
+  {
+    "model_key": "apertus",
+    "domain": "math-reasoning",
+    "base_ppl": 2.0394,
+    "tuned_ppl": 2.17,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": -6.4,
+    "lift_log": -0.0621
+  },
+  {
+    "model_key": "apertus",
+    "domain": "ml-training",
+    "base_ppl": 2.1838,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "multilingual-eu",
+    "base_ppl": 7.2846,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "music-audio",
+    "base_ppl": 3.597,
+    "tuned_ppl": null,
+    "base_n_samples": 25,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "platformio",
+    "base_ppl": 4.0071,
+    "tuned_ppl": null,
+    "base_n_samples": 35,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "python",
+    "base_ppl": 2.8396,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "rust",
+    "base_ppl": 2.8207,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "rust-embedded",
+    "base_ppl": 2.9861,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "security-fenrir",
+    "base_ppl": 6.1666,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "shell",
+    "base_ppl": 49.8794,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "spice-sim",
+    "base_ppl": 5.1841,
+    "tuned_ppl": 3.99,
+    "base_n_samples": 25,
+    "tuned_n_samples": 25,
+    "lift_pct": 23.03,
+    "lift_log": 0.2618
+  },
+  {
+    "model_key": "apertus",
+    "domain": "sql",
+    "base_ppl": 4.0137,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "traduction-tech",
+    "base_ppl": 26.0059,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "typescript",
+    "base_ppl": 2.7828,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "web-backend",
+    "base_ppl": 3.6535,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "web-frontend",
+    "base_ppl": 3.1581,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "apertus",
+    "domain": "yaml-json",
+    "base_ppl": 3.1648,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "chat-fr",
+    "base_ppl": 6.4577,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "cpp",
+    "base_ppl": 2.4355,
+    "tuned_ppl": 1.94,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 20.34,
+    "lift_log": 0.2275
+  },
+  {
+    "model_key": "devstral",
+    "domain": "docker-devops",
+    "base_ppl": 2.3794,
+    "tuned_ppl": 2.06,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 13.42,
+    "lift_log": 0.1441
+  },
+  {
+    "model_key": "devstral",
+    "domain": "electronics",
+    "base_ppl": 2.6021,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "embedded",
+    "base_ppl": 9.806,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "emc-dsp-power",
+    "base_ppl": 8.4449,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "freecad",
+    "base_ppl": 2.6858,
+    "tuned_ppl": 2.49,
+    "base_n_samples": 3,
+    "tuned_n_samples": 3,
+    "lift_pct": 7.29,
+    "lift_log": 0.0757
+  },
+  {
+    "model_key": "devstral",
+    "domain": "html-css",
+    "base_ppl": 2.3159,
+    "tuned_ppl": 2.0,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 13.64,
+    "lift_log": 0.1467
+  },
+  {
+    "model_key": "devstral",
+    "domain": "iot",
+    "base_ppl": 10.5029,
+    "tuned_ppl": 6.15,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 41.44,
+    "lift_log": 0.5352
+  },
+  {
+    "model_key": "devstral",
+    "domain": "kicad-dsl",
+    "base_ppl": 1.826,
+    "tuned_ppl": 1.37,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 24.97,
+    "lift_log": 0.2873
+  },
+  {
+    "model_key": "devstral",
+    "domain": "kicad-pcb",
+    "base_ppl": 1.3965,
+    "tuned_ppl": 1.24,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 11.21,
+    "lift_log": 0.1189
+  },
+  {
+    "model_key": "devstral",
+    "domain": "llm-ops",
+    "base_ppl": 9.9532,
+    "tuned_ppl": 6.8,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 31.68,
+    "lift_log": 0.381
+  },
+  {
+    "model_key": "devstral",
+    "domain": "llm-orch",
+    "base_ppl": 4.3541,
+    "tuned_ppl": 3.53,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 18.93,
+    "lift_log": 0.2098
+  },
+  {
+    "model_key": "devstral",
+    "domain": "lua-upy",
+    "base_ppl": 3.2904,
+    "tuned_ppl": 2.67,
+    "base_n_samples": 44,
+    "tuned_n_samples": 44,
+    "lift_pct": 18.85,
+    "lift_log": 0.2089
+  },
+  {
+    "model_key": "devstral",
+    "domain": "math-gsm8k",
+    "base_ppl": 3.4253,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "math-reasoning",
+    "base_ppl": 1.7502,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "ml-training",
+    "base_ppl": 1.9076,
+    "tuned_ppl": 1.78,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 6.69,
+    "lift_log": 0.0692
+  },
+  {
+    "model_key": "devstral",
+    "domain": "multilingual-eu",
+    "base_ppl": 7.0474,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "music-audio",
+    "base_ppl": 2.4385,
+    "tuned_ppl": 1.73,
+    "base_n_samples": 25,
+    "tuned_n_samples": 25,
+    "lift_pct": 29.05,
+    "lift_log": 0.3433
+  },
+  {
+    "model_key": "devstral",
+    "domain": "platformio",
+    "base_ppl": 3.2229,
+    "tuned_ppl": 1.56,
+    "base_n_samples": 35,
+    "tuned_n_samples": 35,
+    "lift_pct": 51.6,
+    "lift_log": 0.7256
+  },
+  {
+    "model_key": "devstral",
+    "domain": "python",
+    "base_ppl": 2.2769,
+    "tuned_ppl": 2.04,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 10.4,
+    "lift_log": 0.1099
+  },
+  {
+    "model_key": "devstral",
+    "domain": "rust",
+    "base_ppl": 2.2903,
+    "tuned_ppl": 2.06,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 10.06,
+    "lift_log": 0.106
+  },
+  {
+    "model_key": "devstral",
+    "domain": "rust-embedded",
+    "base_ppl": 2.335,
+    "tuned_ppl": 2.0,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 14.35,
+    "lift_log": 0.1549
+  },
+  {
+    "model_key": "devstral",
+    "domain": "security-fenrir",
+    "base_ppl": 4.0882,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "shell",
+    "base_ppl": 14.4948,
+    "tuned_ppl": 13.44,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 7.28,
+    "lift_log": 0.0756
+  },
+  {
+    "model_key": "devstral",
+    "domain": "spice-sim",
+    "base_ppl": 3.8341,
+    "tuned_ppl": null,
+    "base_n_samples": 25,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "sql",
+    "base_ppl": 2.7401,
+    "tuned_ppl": 2.2,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 19.71,
+    "lift_log": 0.2195
+  },
+  {
+    "model_key": "devstral",
+    "domain": "traduction-tech",
+    "base_ppl": 15.632,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "devstral",
+    "domain": "typescript",
+    "base_ppl": 2.2345,
+    "tuned_ppl": 1.96,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 12.28,
+    "lift_log": 0.1311
+  },
+  {
+    "model_key": "devstral",
+    "domain": "web-backend",
+    "base_ppl": 2.6519,
+    "tuned_ppl": 2.13,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 19.68,
+    "lift_log": 0.2192
+  },
+  {
+    "model_key": "devstral",
+    "domain": "web-frontend",
+    "base_ppl": 2.4984,
+    "tuned_ppl": 2.16,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 13.54,
+    "lift_log": 0.1455
+  },
+  {
+    "model_key": "devstral",
+    "domain": "yaml-json",
+    "base_ppl": 2.4509,
+    "tuned_ppl": 2.12,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 13.5,
+    "lift_log": 0.145
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "chat-fr",
+    "base_ppl": 7.1409,
+    "tuned_ppl": 5.12,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 28.3,
+    "lift_log": 0.3327
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "cpp",
+    "base_ppl": 3.2736,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "docker-devops",
+    "base_ppl": 3.0455,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "electronics",
+    "base_ppl": 3.2062,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "embedded",
+    "base_ppl": 13.8874,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "emc-dsp-power",
+    "base_ppl": 9.5807,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "freecad",
+    "base_ppl": 2.8383,
+    "tuned_ppl": null,
+    "base_n_samples": 3,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "html-css",
+    "base_ppl": 2.7564,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "iot",
+    "base_ppl": 15.0451,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "kicad-dsl",
+    "base_ppl": 2.5925,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "kicad-pcb",
+    "base_ppl": 1.5656,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "llm-ops",
+    "base_ppl": 13.8565,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "llm-orch",
+    "base_ppl": 4.8595,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "lua-upy",
+    "base_ppl": 3.4673,
+    "tuned_ppl": null,
+    "base_n_samples": 44,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "math-gsm8k",
+    "base_ppl": 3.2587,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "math-reasoning",
+    "base_ppl": 1.9585,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "ml-training",
+    "base_ppl": 2.1377,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "multilingual-eu",
+    "base_ppl": 9.0867,
+    "tuned_ppl": 6.63,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 27.04,
+    "lift_log": 0.3152
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "music-audio",
+    "base_ppl": 2.9347,
+    "tuned_ppl": null,
+    "base_n_samples": 25,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "platformio",
+    "base_ppl": 4.3107,
+    "tuned_ppl": null,
+    "base_n_samples": 35,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "python",
+    "base_ppl": 3.0579,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "rust",
+    "base_ppl": 2.9942,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "rust-embedded",
+    "base_ppl": 3.3348,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "security-fenrir",
+    "base_ppl": 4.7759,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "shell",
+    "base_ppl": 45.7311,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "spice-sim",
+    "base_ppl": 4.7247,
+    "tuned_ppl": null,
+    "base_n_samples": 25,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "sql",
+    "base_ppl": 3.735,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "traduction-tech",
+    "base_ppl": 29.3798,
+    "tuned_ppl": 9.37,
+    "base_n_samples": 50,
+    "tuned_n_samples": 50,
+    "lift_pct": 68.11,
+    "lift_log": 1.1428
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "typescript",
+    "base_ppl": 2.8815,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "web-backend",
+    "base_ppl": 2.9383,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "web-frontend",
+    "base_ppl": 2.8502,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  },
+  {
+    "model_key": "eurollm",
+    "domain": "yaml-json",
+    "base_ppl": 2.908,
+    "tuned_ppl": null,
+    "base_n_samples": 50,
+    "tuned_n_samples": null
+  }
+]
