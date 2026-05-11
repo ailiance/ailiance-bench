@@ -1,0 +1,921 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-11 03:08:26",
+    "kicad_cli": "/opt/homebrew/bin/kicad-cli",
+    "kicad_version": "10.0.2",
+    "phase2_path": "/Users/electron/bench-results/kicad_phase2.json",
+    "phase2_metadata": {
+      "timestamp": "2026-05-11 02:16:41",
+      "data_path": "/Users/electron/eu-kiki-data/kicad-sch-gen/valid.jsonl",
+      "n_samples_total": 6,
+      "n_samples_eval": 5,
+      "max_tokens": 4096,
+      "skipped_ids": [
+        "spi_bus_4devices"
+      ],
+      "models": [
+        {
+          "nickname": "gemma-e4b-eu-kiki-base",
+          "hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit"
+        },
+        {
+          "nickname": "gemma-e2b",
+          "hf_id": "lmstudio-community/gemma-4-E2B-it-MLX-4bit"
+        },
+        {
+          "nickname": "ministral-3b",
+          "hf_id": "mlx-community/Ministral-3-3B-Instruct-2512-4bit"
+        },
+        {
+          "nickname": "ministral-3-8b",
+          "hf_id": "mlx-community/Ministral-3-8B-Instruct-2512-4bit"
+        },
+        {
+          "nickname": "ministral-3-14b-instruct",
+          "hf_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit"
+        },
+        {
+          "nickname": "ministral-3-14b-reasoning",
+          "hf_id": "mlx-community/Ministral-3-14B-Reasoning-2512-4bit"
+        },
+        {
+          "nickname": "granite-4.1-3b",
+          "hf_id": "mlx-community/granite-4.1-3b-4bit"
+        }
+      ]
+    },
+    "erc_timeout_s": 30,
+    "score_weights": {
+      "parse_ok": 0.3,
+      "erc_no_errors": 0.4,
+      "erc_low_warnings": 0.3,
+      "err_cap": 10,
+      "warn_cap": 20
+    },
+    "models": [
+      "gemma-e4b-eu-kiki-base",
+      "gemma-e2b",
+      "ministral-3b",
+      "ministral-3-8b",
+      "ministral-3-14b-instruct",
+      "ministral-3-14b-reasoning",
+      "granite-4.1-3b"
+    ]
+  },
+  "bench": {
+    "gemma-e4b-eu-kiki-base": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 4681,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 4378,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 5516,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 6438,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 4084,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    },
+    "gemma-e2b": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 3657,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 4370,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 5746,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 5292,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 5988,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    },
+    "ministral-3b": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 3277,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 2320,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 3980,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 3583,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 2160,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    },
+    "ministral-3-8b": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 2102,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 1799,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 2565,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 7496,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 15537,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    },
+    "ministral-3-14b-instruct": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 8358,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 4489,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 5311,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 2723,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 6368,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    },
+    "ministral-3-14b-reasoning": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 13771,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 4995,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 12319,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 12912,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 9903,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    },
+    "granite-4.1-3b": {
+      "n_samples": 5,
+      "parse_ok_kicad_rate": 0.0,
+      "parse_ok_any_rate": 0.0,
+      "avg_errors": null,
+      "avg_warnings": null,
+      "max_errors": null,
+      "max_warnings": null,
+      "composite_avg": 0.0,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic (S-expression format) for a simple LED indicator circuit: a 5V power source, a 330 ohm current-limiting resistor R1, and a red LED D1 to ground. Use Device:R for the resi",
+          "generated_chars_phase2": 502,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a 2:1 resistive voltage divider: VIN at the top, two equal 10k resistors R1 (top) and R2 (bottom) in series, with the midpoint labelled VOUT and the bottom tied to GN",
+          "generated_chars_phase2": 3710,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a classic NE555 astable multivibrator: U1 is the NE555, R1 (10k) between VCC and pin 7 (DIS), R2 (47k) between pin 7 and pin 6 (THR), C1 (10nF) between pin 6 and GND,",
+          "generated_chars_phase2": 2801,
+          "generated_truncated_in_phase2": false,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a non-inverting op-amp amplifier: U1 is a TL072 (single-supply OK), input VIN goes to the +input pin 3, output is pin 1 labelled VOUT. R1 (1k) is the feedback resisto",
+          "generated_chars_phase2": 3112,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "prompt": "Generate a KiCad 10 schematic for a minimal ESP32-S3 dev board: U1 is an ESP32-S3-WROOM-1 module, U2 is an AMS1117-3.3 LDO regulator (input from VBUS, output 3V3, with C1 22uF input cap and C2 22uF ou",
+          "generated_chars_phase2": 4695,
+          "generated_truncated_in_phase2": true,
+          "erc": {
+            "parse_ok": 0.0,
+            "parse_via": "failed",
+            "errors_count": null,
+            "warnings_count": null,
+            "violations_by_type": {},
+            "rc": 3,
+            "stderr": "Échec du chargement de la schématique\n"
+          },
+          "scores": {
+            "parse_ok_score": 0.0,
+            "erc_no_errors": 0.0,
+            "erc_low_warnings": 0.0,
+            "composite": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

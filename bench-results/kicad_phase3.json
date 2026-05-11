@@ -1,0 +1,1909 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-11 02:45:31",
+    "data_path": "/Users/electron/eu-kiki-data/kicad-sch-extract/valid.jsonl",
+    "n_samples": 6,
+    "max_tokens": 2048,
+    "models": [
+      {
+        "nickname": "gemma-e4b-eu-kiki-base",
+        "hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit"
+      },
+      {
+        "nickname": "gemma-e2b",
+        "hf_id": "lmstudio-community/gemma-4-E2B-it-MLX-4bit"
+      },
+      {
+        "nickname": "ministral-3b",
+        "hf_id": "mlx-community/Ministral-3-3B-Instruct-2512-4bit"
+      },
+      {
+        "nickname": "ministral-3-8b",
+        "hf_id": "mlx-community/Ministral-3-8B-Instruct-2512-4bit"
+      },
+      {
+        "nickname": "ministral-3-14b-instruct",
+        "hf_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit"
+      },
+      {
+        "nickname": "ministral-3-14b-reasoning",
+        "hf_id": "mlx-community/Ministral-3-14B-Reasoning-2512-4bit"
+      },
+      {
+        "nickname": "granite-4.1-3b",
+        "hf_id": "mlx-community/granite-4.1-3b-4bit"
+      }
+    ]
+  },
+  "bench": {
+    "gemma-e4b-eu-kiki-base": {
+      "n_samples": 6,
+      "json_ok_rate": 0.6667,
+      "components_f1_avg": 0.5,
+      "components_recall_avg": 0.5,
+      "components_precision_avg": 0.5,
+      "nets_f1_avg": 0.1667,
+      "nets_recall_avg": 0.1667,
+      "nets_precision_avg": 0.1667,
+      "net_pins_f1_avg": 0.0,
+      "net_pins_recall_avg": 0.0,
+      "composite_score": 0.3083,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 185,
+          "generated": "{\"components\": [{\"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}, {\"ref\": \"D1\", \"value\": \"LED_Red\", \"footprint\": \"LED_SMD:LED_0805_2012Metric\"}], \"nets\": []}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 2.68
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 294,
+          "generated": "{\"components\": [{\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}, {\"ref\": \"R2\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}], \"nets\": [{\"name\": \"VIN\", \"pins\": [\"R1.PIN\"]}, {\"name\": \"VOUT\", \"pins\": [\"R2.PIN\"]}, {\"name\": \"GND\", \"pins\": [\"R2.PIN\"]}]}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 3,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 3.43
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 3733,
+          "generated": "<|channel>thought\nThe user wants me to parse a KiCad schematic S-expression and output a specific JSON structure.\nThe JSON must have two keys: \"components\" and \"nets\".\n\n1.  **Analyze the input S-expression:** It contains definitions for symbols, instances (symbols placed on the board), and labels.\n2.  **Identify Components:** I need to find all instances of symbols and extract their `ref`, `value`, and `footprint`.\n\n    *   **Symbol 1 (U1):**\n        *   `lib_id`: \"Timer:NE555\"\n        *   `Reference`: \"U1\"\n        *   `Value`: \"NE555\"\n        *   `Footprint`: \"Package_DIP:DIP-8_W7.62mm\"\n        *   Component: {ref: \"U1\", value: \"NE555\", footprint: \"Package_DIP:DIP-8_W7.62mm\"}\n\n    *   **Symbol 2 (R1):**\n        *   `lib_id`: \"Device:R\"\n        *   `Reference`: \"R1\"\n        *   `Value`: \"10k\"\n        *   `Footprint`: \"Resistor_SMD:R_0805_2012Metric\"\n        *   Component: {ref: \"R1\", value: \"10k\", footprint: \"Resistor_SMD:R_0805_2012Metric\"}\n\n    *   **Symbol 3 (R2):**\n        *   `lib_id`: \"Device:R\"\n        *   `Reference`: \"R2\"\n        *   `Value`: \"47k\"\n        *   `Footprint`: \"Resistor_SMD:R_0805_2012Metric\"\n        *   Component: {ref: \"R2\", value: \"47k\", footprint: \"Resistor_SMD:R_0805_2012Metric\"}\n\n    *   **Symbol 4 (C1):**\n        *   `lib_id`: \"Device:C\"\n        *   `Reference`: \"C1\"\n        *   `Value`: \"10nF\"\n        *   `Footprint`: \"Capacitor_SMD:C_0603_1608Metric\"\n        *   Component: {ref: \"C1\", value: \"10nF\", footprint: \"Capacitor_SMD:C_0603_1608Metric\"}\n\n3.  **Identify Nets:** The provided S-expression snippet does not contain explicit net definitions (wires connecting pins). It only contains component placements and labels (VCC, GND, DIS, THR, OUT). Since the prompt requires a list of nets with pins, and the schematic structure is incomplete regarding connectivity (no explicit netlist or pin connections are shown), I must assume that the labels represent the nets, but I cannot determine the specific pins they connect to without the full wiring diagram.\n\n    *   *Self-Correction/Constraint Check:* The prompt asks for `nets: list of {name, pins}`. If the schematic doesn't define the connections, I cannot populate the `pins` array accurately. However, if I treat the labels as the net names, I can list them. Since no pin connections are visible in the provided data structure, I will list the net names and leave the `pins` array empty or omit it if it implies no pins are defined in this snippet. Given the strict requirement for `pins` to ",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 4,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 24.48
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 268,
+          "generated": "{\"components\": [{\"ref\": \"U1\", \"value\": \"TL072\", \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"}, {\"ref\": \"R1\", \"value\": \"1k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}, {\"ref\": \"R2\", \"value\": \"100\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}], \"nets\": []}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 3.7
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 3915,
+          "generated": "<|channel>thought\nThe user wants me to parse a KiCad schematic S-expression and output a specific JSON structure.\nThe JSON must have two keys: \"components\" and \"nets\".\nNo net information is present in the provided S-expression snippet (only labels are present, but no explicit net connections or wires are defined). I must assume that if net information is required, it would typically be defined by wires connecting pins, but since the input is incomplete regarding connectivity, I will focus on extracting the component data first.\n\nConstraint Checklist & Confidence Score:\n1. Parse S-expression: Yes.\n2. Output ONLY JSON: Yes.\n3. JSON structure: {\"components\": [], \"nets\": []}: Yes.\n4. Components list format: [{ref, value, footprint}]: Yes.\n5. Nets list format: [{name, pins}]: Yes.\n6. Pin format: \"REF.PIN\": Yes.\n7. No markdown fences: Yes.\n8. No commentary: Yes.\n\nConfidence Score: 5/5 (Assuming the net list should be empty if no connectivity is defined, which seems to be the case here).\n\nExtraction Plan:\n1. Iterate through all `(symbol ...)` blocks that represent placed components.\n2. Extract `Reference`, `Value`, and `Footprint` properties for each symbol.\n3. Collect these into the `components` list.\n4. Analyze the labels and symbols for net information. Since no wires or explicit net definitions are present, the `nets` list will likely be empty based on the provided data structure.\n\nExecution:\n\n1. Component 1 (U1):\n   - `lib_id`: \"RF_Module:ESP32-S3-WROOM-1\"\n   - `Reference`: \"U1\"\n   - `Value`: \"ESP32-S3-WROOM-1\"\n   - `Footprint`: \"RF_Module:ESP32-S2-WROOM\"\n   -> {ref: \"U1\", value: \"ESP32-S3-WROOM-1\", footprint: \"RF_Module:ESP32-S2-WROOM\"}\n\n2. Component 2 (U2):\n   - `lib_id`: \"Regulator_Linear:AMS1117-3.3\"\n   - `Reference`: \"U2\"\n   - `Value`: \"AMS1117-3.3\"\n   - `Footprint`: \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"\n   -> {ref: \"U2\", value: \"AMS1117-3.3\", footprint: \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"}\n\n3. Component 3 (J1):\n   - `lib_id`: \"Connector:USB_C_Receptacle_USB2.0_16P\"\n   - `Reference`: \"J1\"\n   - `Value`: \"USB_C\"\n   - `Footprint`: \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"\n   -> {ref: \"J1\", value: \"USB_C\", footprint: \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"}\n\n4. Component 4 (R1):\n   - `lib_id`: \"Device:R\"\n   - `Reference`: \"R1\"\n   - `Value`: \"10k\"\n   - `Footprint`: \"Resistor_SMD:R_0603_1608Metric\"\n   -> {ref: \"R1\", value: \"10k\", footprint: \"Resistor_SMD:R_0603_1608Metric\"}\n\n5. Component 5 (R2):\n   - `lib_id`: \"Device:R\"\n   - `Refere",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.15
+          },
+          "gen_time_s": 32.42
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 4894,
+          "generated": "<|channel>thought\nThe user wants me to parse a KiCad schematic S-expression and extract information about components and nets.\nThe output must be a strict JSON object with two keys: \"components\" and \"nets\".\n\nConstraints:\n1. Output ONLY VALID JSON.\n2. No markdown fences.\n3. No commentary.\n4. `components`: list of `{ref, value, footprint}` for every instance symbol.\n5. `nets`: list of `{name, pins}` where each pin is \"REF.PIN\".\n\nI need to identify all instantiated symbols (components) and all nets (wires/connections).\n\n---\n**1. Identify Components (Instances)**\n\nI will look for `(symbol ...)` blocks that contain `instances` definitions.\n\n**Component 1 (J1):**\n*   Symbol: `micro-kiki:SPI_Host_4CS`\n*   Instance properties:\n    *   `Reference`: \"J1\"\n    *   `Value`: \"SPI_HOST\"\n    *   `Footprint`: \"\" (Empty string, but present)\n*   Component data: `{ref: \"J1\", value: \"SPI_HOST\", footprint: \"\"}`\n\n**Component 2 (U1):**\n*   Symbol: `micro-kiki:SPI_Device_Generic`\n*   Instance properties:\n    *   `Reference`: \"U1\"\n    *   `Value`: \"SPI_DEVICE_1\"\n    *   `Footprint`: \"\"\n*   Component data: `{ref: \"U1\", value: \"SPI_DEVICE_1\", footprint: \"\"}`\n\n**Component 3 (U2):**\n*   Symbol: `micro-kiki:SPI_Device_Generic`\n*   Instance properties:\n    *   `Reference`: \"U2\"\n    *   `Value`: \"SPI_DEVICE_2\"\n    *   `Footprint`: \"\"\n*   Component data: `{ref: \"U2\", value: \"SPI_DEVICE_2\", footprint: \"\"}`\n\n**Component 4 (U3):**\n*   Symbol: `micro-kiki:SPI_Device_Generic`\n*   Instance properties:\n    *   `Reference`: \"U3\"\n    *   `Value`: \"SPI_DEVICE_3\"\n    *   `Footprint`: \"\"\n*   Component data: `{ref: \"U3\", value: \"SPI_DEVICE_3\", footprint: \"\"}`\n\n**Component 5 (U4):**\n*   Symbol: `micro-kiki:SPI_Device_Generic`\n*   Instance properties:\n    *   `Reference`: \"U4\"\n    *   `Value`: \"SPI_DEVICE_4\"\n    *   `Footprint`: \"\"\n*   Component data: `{ref: \"U4\", value: \"SPI_DEVICE_4\", footprint: \"\"}`\n\n**Component 6 (R1):**\n*   Symbol: `micro-kiki:R_Pullup`\n*   Instance properties:\n    *   `Reference`: \"R1\"\n    *   `Value`: \"10k\"\n    *   `Footprint`: \"\"\n*   Component data: `{ref: \"R1\", value: \"10k\", footprint: \"\"}`\n\n**Component 7 (R2):**\n*   Symbol: `micro-kiki:R_Pullup`\n*   Instance properties:\n    *   `Reference`: \"R2\"\n    *   `Value`: \"10k\"\n    *   `Footprint`: \"\"\n*   Component data: `{ref: \"R2\", value: \"10k\", footprint: \"\"}`\n\n**Component 8 (R3):**\n*   Symbol: `micro-kiki:R_Pullup`\n*   Instance properties:\n    *   `Reference`: \"R3\"\n    *   `Value`: \"10k\"\n    *   `Footprint`: \"\"\n*   Component data: `{",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 9,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 41,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 77.34
+        }
+      ]
+    },
+    "gemma-e2b": {
+      "n_samples": 6,
+      "json_ok_rate": 0.3333,
+      "components_f1_avg": 0.3333,
+      "components_recall_avg": 0.3333,
+      "components_precision_avg": 0.3333,
+      "nets_f1_avg": 0.3333,
+      "nets_recall_avg": 0.3333,
+      "nets_precision_avg": 0.3333,
+      "net_pins_f1_avg": 0.0,
+      "net_pins_recall_avg": 0.0,
+      "composite_score": 0.2333,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 2123,
+          "generated": "<|channel>thought\nThinking Process:\n\n1.  **Understand the Goal:** The task is to parse a KiCad schematic S-expression and output a JSON object containing two main keys: \"components\" (list of instances) and \"nets\" (list of nets).\n\n2.  **Analyze the Input Schema (S-expression):**\n\n    *   `(kicad_sch ...)`: Start of the schematic definition.\n    *   `(lib_symbols ...)`: Defines available symbols.\n        *   `\"Device:R\"`: Reference \"R\", Value \"R\".\n        *   `\"Device:LED\"`: Reference \"D\", Value \"LED\".\n    *   `(symbol ...)`: Defines specific component instances.\n\n    *   **Instance 1 (R1):**\n        *   `lib_id`: \"Device:R\"\n        *   `Reference`: \"R1\"\n        *   `Value`: \"330\"\n        *   `Footprint`: \"Resistor_SMD:R_0805_2012Metric\"\n\n    *   **Instance 2 (D1):**\n        *   `lib_id`: \"Device:LED\"\n        *   `Reference`: \"D1\"\n        *   `Value`: \"LED_Red\"\n        *   `Footprint`: \"LED_SMD:LED_0805_2012Metric\"\n\n    *   `(label \"VCC\" ...)`: Defines a net/node.\n    *   `(label \"MID\" ...)`: Defines a net/node.\n    *   `(label \"GND\" ...)`: Defines a net/node.\n\n3.  **Process Components:** Extract the component details.\n\n    *   Component 1: R1\n        *   ref: R1\n        *   value: 330\n        *   footprint: Resistor_SMD:R_0805_2012Metric\n    *   Component 2: D1\n        *   ref: D1\n        *   value: LED_Red\n        *   footprint: LED_SMD:LED_0805_2012Metric\n\n4.  **Process Nets:** Extract the net details.\n\n    *   Net 1: VCC\n    *   Net 2: MID\n    *   Net 3: GND\n\n5.  **Construct the Output JSON:** Format the extracted data according to the required structure.\n\n    *   *Self-Correction/Refinement:* The prompt requires the pin format to be \"REF.PIN\". Since these are just labels, I will treat the label name as the net name.\n\n6.  **Final JSON Generation.** (Ensure strict JSON format, no markdown fences or commentary.)<channel|>{\"components\": [{\"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}, {\"ref\": \"D1\", \"value\": \"LED_Red\", \"footprint\": \"LED_SMD:LED_0805_2012Metric\"}], \"nets\": [{\"name\": \"VCC\", \"pins\": []}, {\"name\": \"MID\", \"pins\": []}, {\"name\": \"GND\", \"pins\": []}]}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.7
+          },
+          "gen_time_s": 8.8
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 2999,
+          "generated": "<|channel>thought\nThinking Process:\n\n1.  **Understand the Goal:** The request is to parse a KiCad schematic S-expression and output a specific JSON structure containing component instances and nets.\n\n2.  **Analyze the Input Schema (S-expression):**\n\n    ```\n    (kicad_sch\n      (version 20250114)\n      (generator \"hand\")\n      (uuid \"20000000-0000-0000-0000-000000000001\")\n      (paper \"A4\")\n      (title_block (title \"Voltage Divider\"))\n      (lib_symbols\n        (symbol \"Device:R\" (property \"Reference\" \"R\" (at 0 0 0)) (property \"Value\" \"R\" (at 0 0 0)))\n      )\n      (symbol\n        (lib_id \"Device:R\")\n        (at 100 60 0)\n        (uuid \"20000000-0000-0000-0000-000000000R01\")\n        (property \"Reference\" \"R1\" (at 100 55 0))\n        (property \"Value\" \"10k\" (at 100 65 0))\n        (property \"Footprint\" \"Resistor_SMD:R_0603_1608Metric\" (at 100 60 0))\n      )\n      (symbol\n        (lib_id \"Device:R\")\n        (at 100 80 0)\n        (uuid \"20000000-0000-0000-0000-000000000R02\")\n        (property \"Reference\" \"R2\" (at 100 75 0))\n        (property \"Value\" \"10k\" (at 100 85 0))\n        (property \"Footprint\" \"Resistor_SMD:R_0603_1608Metric\" (at 100 80 0))\n      )\n      (label \"VIN\" (at 100 50 0))\n      (label \"VOUT\" (at 100 70 0))\n      (label \"GND\" (at 100 90 0))\n    )\n    ```\n\n3.  **Extract Components:** I need to iterate through the `symbol` definitions.\n\n    *   **Component 1 (R1):**\n        *   lib_id: \"Device:R\"\n        *   Reference: \"R1\"\n        *   Value: \"10k\"\n        *   Footprint: \"Resistor_SMD:R_0603_1608Metric\"\n        *   (Note: Since this is a schematic definition, I assume these are the components present.)\n\n    *   **Component 2 (R2):**\n        *   lib_id: \"Device:R\"\n        *   Reference: \"R2\"\n        *   Value: \"10k\"\n        *   Footprint: \"Resistor_SMD:R_0603_1608Metric\"\n\n4.  **Extract Nets:** I need to iterate through the `label` definitions.\n\n    *   **Net 1:** \"VIN\"\n    *   **Net 2:** \"VOUT\"\n    *   **Net 3:** \"GND\"\n\n5.  **Format the Output (JSON Construction):**\n\n    *   **Components List:**\n        *   R1: {ref: \"R1\", value: \"10k\", footprint: \"Resistor_SMD:R_0603_1608Metric\"}\n        *   R2: {ref: \"R2\", value: \"10k\", footprint: \"Resistor_SMD:R_0603_1608Metric\"}\n\n    *   **Nets List:**\n        *   VIN: pins: [\"VIN\"]\n        *   VOUT: pins: [\"VOUT\"]\n        *   GND: pins: [\"GND\"]\n\n6.  **Final Review:** Ensure the output is valid JSON, no markdown fences, and adheres strictly to the requested structure. (Self-Correction: The prompt asks for the l",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 2,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 14.14
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 2630,
+          "generated": "<|channel>thought\nThinking Process:\n\n1.  **Understand the Goal:** The request is to parse a KiCad schematic S-expression and output a JSON object containing two keys: \"components\" (list of instances) and \"nets\" (list of nets).\n\n2.  **Analyze the Input Schema (KiCad S-expression):** I need to iterate through the `symbol` definitions to find component instances and through the `label` definitions to find nets.\n\n3.  **Process Components:**\n    *   Look for `(symbol ...)` definitions. These define the component types.\n    *   Look for instances (which are implicitly defined by the structure, usually involving a reference like U1, R1, C1).\n\n    *   *Symbol 1 (Timer:NE555):*\n        *   Reference: U1\n        *   Value: NE555\n        *   Footprint: Package_DIP:DIP-8_W7.62mm\n    *   *Symbol 2 (Device:R):*\n        *   Reference: R1\n        *   Value: 10k\n        *   Footprint: Resistor_SMD:R_0805_2012Metric\n    *   *Symbol 3 (Device:R):*\n        *   Reference: R2\n        *   Value: 47k\n        *   Footprint: Resistor_SMD:R_0805_2012Metric\n    *   *Symbol 4 (Device:C):*\n        *   Reference: C1\n        *   Value: 10nF\n        *   Footprint: Capacitor_SMD:C_0603_1608Metric\n\n4.  **Process Nets:**\n    *   Look for `(label ...)` definitions.\n\n    *   *Label 1:* VCC\n    *   *Label 2:* DIS\n    *   *Label 3:* THR\n    *   *Label 4:* OUT\n    *   *Label 5:* GND\n\n5.  **Construct the Output JSON:**\n\n    *   **Components List:**\n        *   U1: {ref: \"U1\", value: \"NE555\", footprint: \"Package_DIP:DIP-8_W7.62mm\"}\n        *   R1: {ref: \"R1\", value: \"10k\", footprint: \"Resistor_SMD:R_0805_2012Metric\"}\n        *   R2: {ref: \"R2\", value: \"47k\", footprint: \"Resistor_SMD:R_0805_2012Metric\"}\n        *   C1: {ref: \"C1\", value: \"10nF\", footprint: \"Capacitor_SMD:C_0603_1608Metric\"}\n\n    *   **Nets List:**\n        *   VCC\n        *   DIS\n        *   THR\n        *   OUT\n        *   GND\n\n6.  **Final Review and Formatting:** Ensure the output is valid JSON, no markdown fences, and adheres strictly to the requested structure. (Self-Correction: Ensure the component list format matches the requirement: {ref, value, footprint}).<channel|>{\"components\": [{\"ref\": \"U1\", \"value\": \"NE555\", \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"}, {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}, {\"ref\": \"R2\", \"value\": \"47k\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}, {\"ref\": \"C1\", \"value\": \"10nF\", \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"}], \"nets\": [{\"name\": \"VCC\", \"pins\": \"VCC\"}",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 4,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 11.58
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 2432,
+          "generated": "<|channel>thought\nThinking Process:\n\n1.  **Understand the Goal:** The request is to parse a KiCad schematic S-expression and output a JSON object containing two main keys: \"components\" (list of instances) and \"nets\" (list of nets).\n\n2.  **Analyze the Input Schema (S-expression):** I need to iterate through the `symbol` definitions to find component instances and through the `label` definitions to find nets.\n\n3.  **Process Symbols (Components):**\n\n    *   **Symbol 1 (TL072 - Amplifier_Operational):**\n        *   `lib_id`: \"Amplifier_Operational:TL072\"\n        *   `Reference`: \"U1\"\n        *   `Footprint`: \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"\n        *   *Instance Check:* I need to look for how U1 is used. (The provided snippet only defines the symbol, not its placement in a schematic, but I assume the definition itself represents the component instance.)\n\n    *   **Symbol 2 (R - Resistor):**\n        *   `lib_id`: \"Device:R\"\n        *   `Reference`: \"R1\"\n        *   `Value`: \"1k\"\n        *   `Footprint`: \"Resistor_SMD:R_0603_1608Metric\"\n\n    *   **Symbol 3 (R - Resistor):**\n        *   `lib_id`: \"Device:R\"\n        *   `Reference`: \"R2\"\n        *   `Value`: \"100\"\n        *   `Footprint`: \"Resistor_SMD:R_0603_1608Metric\"\n\n4.  **Process Labels (Nets):**\n\n    *   `label \"VIN\"`\n    *   `label \"VOUT\"`\n    *   `label \"FB\"`\n    *   `label \"VCC\"`\n    *   `label \"GND\"`\n\n5.  **Construct the Output JSON:**\n\n    *   **Components List:**\n        *   U1: ref=\"U1\", value=\"TL072\", footprint=\"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"\n        *   R1: ref=\"R1\", value=\"1k\", footprint=\"Resistor_SMD:R_0603_1608Metric\"\n        *   R2: ref=\"R2\", value=\"100\", footprint=\"Resistor_SMD:R_0603_1608Metric\"\n\n    *   **Nets List:**\n        *   VIN\n        *   VOUT\n        *   FB\n        *   VCC\n        *   GND\n\n6.  **Final Review and Formatting:** Ensure the output is valid JSON, no markdown fences, and strictly adheres to the required structure. (Self-Correction: Ensure the pin format is \"REF.PIN\".)<channel|>{\"components\": [{\"ref\": \"U1\", \"value\": \"TL072\", \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"}, {\"ref\": \"R1\", \"value\": \"1k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}, {\"ref\": \"R2\", \"value\": \"100\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}], \"nets\": [{\"name\": \"VIN\", \"pins\": \"VIN\"}, {\"name\": \"VOUT\", \"pins\": \"VOUT\"}, {\"name\": \"FB\", \"pins\": \"FB\"}, {\"name\": \"VCC\", \"pins\": \"VCC\"}, {\"name\": \"GND\", \"pins\": \"GND\"}]}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 14,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 10.55
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 4979,
+          "generated": "<|channel>thought\nThinking Process:\n\n1.  **Goal:** Parse the provided KiCad schematic S-expression and extract component instances and net connections, outputting a specific JSON structure.\n\n2.  **Input Analysis (S-expression):** I need to iterate through the `symbol` definitions (instances) and identify the components and their connections (which are implied by the structure, usually by looking at the coordinates or explicit connections, but since this is a simple list of symbols, I will focus on the component definitions and assume connections are defined by the structure if explicit connections aren't provided, or look for explicit connections if they exist. In this specific format, connections are usually defined by wires/nets, but since the input only provides symbols and labels, I must infer connections based on typical schematic parsing rules, which usually involve looking for explicit connections (which are missing here) or assuming connections based on proximity/context. Since the prompt asks for `nets: list of {name, pins} where each pin is \"REF.PIN\"`, I must assume the connections are defined by the structure of the schematic, which is usually implicit in the parsing process.\n\n3.  **Component Extraction:** I will extract all symbols defined under `(symbol ...)` and map their references to their properties.\n\n    *   **U1 (RF_Module:ESP32-S3-WROOM-1):**\n        *   Ref: U1\n        *   Value: ESP32-S3-WROOM-1\n        *   Footprint: RF_Module:ESP32-S2-WROOM\n\n    *   **U2 (Regulator_Linear:AMS1117-3.3):**\n        *   Ref: U2\n        *   Value: AMS1117-3.3\n        *   Footprint: Package_TO_SOT_SMD:SOT-223-3_TabPin2\n\n    *   **J1 (Connector:USB_C_Receptacle_USB2.0_16P):**\n        *   Ref: J1\n        *   Value: USB_C\n        *   Footprint: Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\n\n    *   **R1 (Device:R):**\n        *   Ref: R1\n        *   Value: 10k\n        *   Footprint: Resistor_SMD:R_0603_1608Metric\n\n    *   **R2 (Device:R):**\n        *   Ref: R2\n        *   Value: 1k\n        *   Footprint: Resistor_SMD:R_0603_1608Metric\n\n    *   **C1 (Device:C):**\n        *   Ref: C1\n        *   Value: 22uF\n        *   Footprint: Capacitor_SMD:C_0805_2012Metric\n\n    *   **C2 (Device:C):**\n        *   Ref: C2\n        *   Value: 22uF\n        *   Footprint: Capacitor_SMD:C_0805_2012Metric\n\n    *   **D1 (Device:LED):**\n        *   Ref: D1\n        *   Value: LED_Status\n        *   Footprint: LED_SMD:LED_0603_1608Metric\n\n4.  **Net Extraction (Implicit/Inferred):*",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 8,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 18.87
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 3751,
+          "generated": "<|channel>thought\nThinking Process:\n\n1.  **Understand the Goal:** The request is to parse a KiCad schematic S-expression and extract component instances and net connections, outputting only a specific JSON structure.\n\n2.  **Analyze the Input (KiCad S-expression):** I need to scan the S-expression for `symbol` definitions (components) and `wire` definitions (nets).\n\n3.  **Identify Components (Instances):** I will look for `(symbol ...)` definitions that contain `(instances ...)` to find the actual component placements.\n\n    *   **Component 1 (SPI Host):**\n        *   `symbol \"micro-kiki:SPI_Host_4CS\"`\n        *   `instances`: `(project \"spi_bus_4devices\" (path \"/00000000-0000-0000-0000-000000000001\" (reference \"J1\") (unit 1)))`\n        *   Ref: J1, Value: SPI_HOST, Footprint: (at 50.8 95.25 0)\n\n    *   **Component 2 (SPI Device 1):**\n        *   `symbol \"micro-kiki:SPI_Device_Generic\"` (at 147.32 128.27 0)\n        *   `instances`: `(project \"spi_bus_4devices\" (path \"/00000000-0000-0000-0000-000000000001\" (reference \"U1\") (unit 1)))`\n        *   Ref: U1, Value: SPI_DEVICE_1, Footprint: (at 147.32 128.27 0)\n\n    *   **Component 3 (SPI Device 2):**\n        *   `symbol \"micro-kiki:SPI_Device_Generic\"` (at 147.32 101.6 0)\n        *   `instances`: `(project \"spi_bus_4devices\" (path \"/00000000-0000-0000-0000-000000000001\" (reference \"U2\") (unit 1)))`\n        *   Ref: U2, Value: SPI_DEVICE_2, Footprint: (at 147.32 101.6 0)\n\n    *   **Component 4 (SPI Device 3):**\n        *   `symbol \"micro-kiki:SPI_Device_Generic\"` (at 147.32 74.93 0)\n        *   `instances`: `(project \"spi_bus_4devices\" (path \"/00000000-0000-0000-0000-000000000001\" (reference \"U3\") (unit 1)))`\n        *   Ref: U3, Value: SPI_DEVICE_3, Footprint: (at 147.32 74.93 0)\n\n    *   **Component 5 (SPI Device 4):**\n        *   `symbol \"micro-kiki:SPI_Device_Generic\"` (at 147.32 48.26 0)\n        *   `instances`: `(project \"spi_bus_4devices\" (path \"/00000000-0000-0000-0000-000000000001\" (reference \"U4\") (unit 1)))`\n        *   Ref: U4, Value: SPI_DEVICE_4, Footprint: (at 147.32 48.26 0)\n\n    *   **Passive Components (Pull-ups):**\n        *   `symbol \"micro-kiki:R_Pullup\"` (at 109.22 125.73 0) -> R1\n        *   `symbol \"micro-kiki:R_Pullup\"` (at 109.22 99.06 0) -> R2\n        *   `symbol \"micro-kiki:R_Pullup\"` (at 109.22 72.39 0) -> R3\n        *   `symbol \"micro-kiki:R_Pullup\"` (at 109.22 45.72 0) -> R4\n\n4.  **Identify Nets (Wires):** I will list all `wire` definitions.\n\n    *   W1: (xy 60.96 102.87) to (xy 71.",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 9,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 41,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 35.85
+        }
+      ]
+    },
+    "ministral-3b": {
+      "n_samples": 6,
+      "json_ok_rate": 1.0,
+      "components_f1_avg": 1.0,
+      "components_recall_avg": 1.0,
+      "components_precision_avg": 1.0,
+      "nets_f1_avg": 0.9333,
+      "nets_recall_avg": 1.0,
+      "nets_precision_avg": 0.9048,
+      "net_pins_f1_avg": 0.0,
+      "net_pins_recall_avg": 0.0,
+      "composite_score": 0.6867,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 360,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"},\n    {\"ref\": \"D1\", \"value\": \"LED_Red\", \"footprint\": \"LED_SMD:LED_0805_2012Metric\"}\n  ],\n  \"nets\": [\n    {\"name\": \"VCC\", \"pins\": [\"R1.PIN\", \"D1.PIN\"]},\n    {\"name\": \"MID\", \"pins\": [\"D1.PIN\"]},\n    {\"name\": \"GND\", \"pins\": [\"R1.PIN\", \"D1.PIN\"]}\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 5,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 3.05
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 508,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"},\n    {\"ref\": \"R2\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}\n  ],\n  \"nets\": [\n    {\"name\": \"VIN\", \"pins\": [\"VIN.PIN\"]},\n    {\"name\": \"VOUT\", \"pins\": [\"VOUT.PIN\"]},\n    {\"name\": \"GND\", \"pins\": [\"GND.PIN\"]},\n    {\"name\": \"R1+\", \"pins\": [\"R1.PIN\"]},\n    {\"name\": \"R1-\", \"pins\": [\"R1.PIN\"]},\n    {\"name\": \"R2+\", \"pins\": [\"R2.PIN\"]},\n    {\"name\": \"R2-\", \"pins\": [\"R2.PIN\"]}\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 7,
+            "nets": {
+              "tp": 3,
+              "fp": 4,
+              "fn": 0,
+              "precision": 0.4286,
+              "recall": 1.0,
+              "f1": 0.6
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 7,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.62
+          },
+          "gen_time_s": 3.5
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 644,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"U1\", \"value\": \"NE555\", \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"},\n    {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"},\n    {\"ref\": \"R2\", \"value\": \"47k\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"},\n    {\"ref\": \"C1\", \"value\": \"10nF\", \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"}\n  ],\n  \"nets\": [\n    {\"name\": \"VCC\", \"pins\": [\"R1.PIN\", \"R2.PIN\", \"C1.PIN\", \"U1.PIN\"]},\n    {\"name\": \"DIS\", \"pins\": [\"U1.DIS\"]},\n    {\"name\": \"THR\", \"pins\": [\"U1.THR\"]},\n    {\"name\": \"OUT\", \"pins\": [\"U1.OUT\"]},\n    {\"name\": \"GND\", \"pins\": [\"R1.PIN\", \"R2.PIN\", \"C1.PIN\", \"U1.GND\"]}\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 4,
+            "predicted_n_components": 4,
+            "components": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 11,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 4.8
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 543,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"U1\", \"value\": \"TL072\", \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"},\n    {\"ref\": \"R1\", \"value\": \"1k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"},\n    {\"ref\": \"R2\", \"value\": \"100\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"}\n  ],\n  \"nets\": [\n    {\"name\": \"VIN\", \"pins\": [\"U1.PIN.1\"]},\n    {\"name\": \"VOUT\", \"pins\": [\"U1.PIN.2\"]},\n    {\"name\": \"FB\", \"pins\": [\"U1.PIN.3\"]},\n    {\"name\": \"VCC\", \"pins\": [\"U1.PIN.4\"]},\n    {\"name\": \"GND\", \"pins\": [\"U1.PIN.5\", \"R1.PIN.1\", \"R2.PIN.1\"]}\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 7,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 4.23
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 1231,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"U1\", \"value\": \"ESP32-S3-WROOM-1\", \"footprint\": \"RF_Module:ESP32-S2-WROOM\"},\n    {\"ref\": \"U2\", \"value\": \"AMS1117-3.3\", \"footprint\": \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"},\n    {\"ref\": \"J1\", \"value\": \"USB_C\", \"footprint\": \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"},\n    {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"},\n    {\"ref\": \"R2\", \"value\": \"1k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"},\n    {\"ref\": \"C1\", \"value\": \"22uF\", \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"},\n    {\"ref\": \"C2\", \"value\": \"22uF\", \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"},\n    {\"ref\": \"D1\", \"value\": \"LED_Status\", \"footprint\": \"LED_SMD:LED_0603_1608Metric\"}\n  ],\n  \"nets\": [\n    {\"name\": \"VBUS\", \"pins\": [\"J1.USB_DP\", \"J1.USB_DM\", \"U1.VCC\", \"U2.VCC\", \"R1\", \"C1\", \"C2\", \"D1.ANODE\"]},\n    {\"name\": \"GND\", \"pins\": [\"J1.GND\", \"U1.GND\", \"U2.GND\", \"R1.GND\", \"R2.GND\", \"C1.GND\", \"C2.GND\", \"D1.GND\"]},\n    {\"name\": \"3V3\", \"pins\": [\"U1.3V3\", \"U2.IN1\", \"R2\", \"C2\", \"D1.CATHODE\"]},\n    {\"name\": \"EN\", \"pins\": [\"U1.EN\"]},\n    {\"name\": \"GPIO2\", \"pins\": [\"U1.GPIO2\"]},\n    {\"name\": \"USB_DP\", \"pins\": [\"J1.USB_DP\"]},\n    {\"name\": \"USB_DM\", \"pins\": [\"J1.USB_DM\"]}\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 7,
+            "nets": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 25,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 8.81
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 1332,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"J1\", \"value\": \"SPI_HOST\", \"footprint\": \"\"},\n    {\"ref\": \"U1\", \"value\": \"SPI_DEVICE_1\", \"footprint\": \"\"},\n    {\"ref\": \"U2\", \"value\": \"SPI_DEVICE_2\", \"footprint\": \"\"},\n    {\"ref\": \"U3\", \"value\": \"SPI_DEVICE_3\", \"footprint\": \"\"},\n    {\"ref\": \"U4\", \"value\": \"SPI_DEVICE_4\", \"footprint\": \"\"},\n    {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"\"},\n    {\"ref\": \"R2\", \"value\": \"10k\", \"footprint\": \"\"},\n    {\"ref\": \"R3\", \"value\": \"10k\", \"footprint\": \"\"},\n    {\"ref\": \"R4\", \"value\": \"10k\", \"footprint\": \"\"}\n  ],\n  \"nets\": [\n    {\"name\": \"SPI_SCLK\", \"pins\": [\"J1.SCLK\", \"U1.SCLK\", \"U2.SCLK\", \"U3.SCLK\", \"U4.SCLK\", \"R1.PIN.1\"]},\n    {\"name\": \"SPI_MOSI\", \"pins\": [\"J1.MOSI\", \"U1.MOSI\", \"U2.MOSI\", \"U3.MOSI\", \"U4.MOSI\", \"R2.PIN.1\"]},\n    {\"name\": \"SPI_MISO\", \"pins\": [\"J1.MISO\", \"U1.MISO\", \"U2.MISO\", \"U3.MISO\", \"U4.MISO\"]},\n    {\"name\": \"SPI_CS1\", \"pins\": [\"J1.CS1\", \"U1.CS\", \"R1.PIN.2\"]},\n    {\"name\": \"SPI_CS2\", \"pins\": [\"J1.CS2\", \"U2.CS\", \"R2.PIN.2\"]},\n    {\"name\": \"SPI_CS3\", \"pins\": [\"J1.CS3\", \"U3.CS\", \"R3.PIN.2\"]},\n    {\"name\": \"SPI_CS4\", \"pins\": [\"J1.CS4\", \"U4.CS\", \"R4.PIN.2\"]},\n    {\"name\": \"VCC\", \"pins\": [\"J1.VCC\", \"U1.VCC\", \"U2.VCC\", \"U3.VCC\", \"U4.VCC\", \"R1.PIN.2\", \"R2.PIN.2\", \"R3.PIN.2\", \"R4.PIN.2\"]},\n    {\"name\": \"GND\", \"pins\": [\"J1.GND\", \"U1.GND\", \"U2.GND\", \"U3.GND\", \"U4.GND\"]}\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 9,
+            "predicted_n_components": 9,
+            "components": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 9,
+            "nets": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 43,
+              "fn": 41,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 52.47
+        }
+      ]
+    },
+    "ministral-3-8b": {
+      "n_samples": 6,
+      "json_ok_rate": 1.0,
+      "components_f1_avg": 1.0,
+      "components_recall_avg": 1.0,
+      "components_precision_avg": 1.0,
+      "nets_f1_avg": 0.1667,
+      "nets_recall_avg": 0.1667,
+      "nets_precision_avg": 0.1667,
+      "net_pins_f1_avg": 0.1504,
+      "net_pins_recall_avg": 0.1504,
+      "composite_score": 0.5785,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 263,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"330\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Red\",\n      \"footprint\": \"LED_SMD:LED_0805_2012Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 5.76
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 262,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 5.6
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 473,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"NE555\",\n      \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"47k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"10nF\",\n      \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 4,
+            "predicted_n_components": 4,
+            "components": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 8.59
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 374,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"TL072\",\n      \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"100\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 7.45
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 755,
+          "generated": "```json\n{\n  \"components\": [\n    {\"ref\": \"U1\", \"value\": \"ESP32-S3-WROOM-1\", \"footprint\": \"RF_Module:ESP32-S2-WROOM\"},\n    {\"ref\": \"U2\", \"value\": \"AMS1117-3.3\", \"footprint\": \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"},\n    {\"ref\": \"J1\", \"value\": \"USB_C\", \"footprint\": \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"},\n    {\"ref\": \"R1\", \"value\": \"10k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"},\n    {\"ref\": \"R2\", \"value\": \"1k\", \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"},\n    {\"ref\": \"C1\", \"value\": \"22uF\", \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"},\n    {\"ref\": \"C2\", \"value\": \"22uF\", \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"},\n    {\"ref\": \"D1\", \"value\": \"LED_Status\", \"footprint\": \"LED_SMD:LED_0603_1608Metric\"}\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 14.22
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 1977,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"J1\",\n      \"value\": \"SPI_HOST\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U1\",\n      \"value\": \"SPI_DEVICE_1\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"SPI_DEVICE_2\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U3\",\n      \"value\": \"SPI_DEVICE_3\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U4\",\n      \"value\": \"SPI_DEVICE_4\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R3\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R4\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"SPI_SCLK\",\n      \"pins\": [\n        \"J1.1\",\n        \"U1.1\",\n        \"U2.1\",\n        \"U3.1\",\n        \"U4.1\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MOSI\",\n      \"pins\": [\n        \"J1.2\",\n        \"U1.2\",\n        \"U2.2\",\n        \"U3.2\",\n        \"U4.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MISO\",\n      \"pins\": [\n        \"J1.3\",\n        \"U1.3\",\n        \"U2.3\",\n        \"U3.3\",\n        \"U4.3\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS1\",\n      \"pins\": [\n        \"J1.4\",\n        \"U1.4\",\n        \"R1.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS2\",\n      \"pins\": [\n        \"J1.5\",\n        \"U2.4\",\n        \"R2.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS3\",\n      \"pins\": [\n        \"J1.6\",\n        \"U3.4\",\n        \"R3.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS4\",\n      \"pins\": [\n        \"J1.7\",\n        \"U4.4\",\n        \"R4.2\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"J1.8\",\n        \"U1.5\",\n        \"U2.5\",\n        \"U3.5\",\n        \"U4.5\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"J1.9\",\n        \"U1.6\",\n        \"U2.6\",\n        \"U3.6\",\n        \"U4.6\",\n        \"R1.1\",\n        \"R2.1\",\n        \"R3.1\",\n        \"R4.1\"\n      ]\n    }\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 9,
+            "predicted_n_components": 9,
+            "components": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 9,
+            "nets": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 37,
+              "fp": 4,
+              "fn": 4,
+              "precision": 0.9024,
+              "recall": 0.9024,
+              "f1": 0.9024
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.9707
+          },
+          "gen_time_s": 106.0
+        }
+      ]
+    },
+    "ministral-3-14b-instruct": {
+      "n_samples": 6,
+      "json_ok_rate": 1.0,
+      "components_f1_avg": 1.0,
+      "components_recall_avg": 1.0,
+      "components_precision_avg": 1.0,
+      "nets_f1_avg": 0.1667,
+      "nets_recall_avg": 0.1667,
+      "nets_precision_avg": 0.1667,
+      "net_pins_f1_avg": 0.1487,
+      "net_pins_recall_avg": 0.1341,
+      "composite_score": 0.5779,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 263,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"330\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Red\",\n      \"footprint\": \"LED_SMD:LED_0805_2012Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 9.11
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 262,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 8.82
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 473,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"NE555\",\n      \"footprint\": \"Package_DIP:DIP-8_W7.62mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"47k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"10nF\",\n      \"footprint\": \"Capacitor_SMD:C_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 4,
+            "predicted_n_components": 4,
+            "components": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 13.66
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 374,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"TL072\",\n      \"footprint\": \"Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"100\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 11.8
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 947,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"ESP32-S3-WROOM-1\",\n      \"footprint\": \"RF_Module:ESP32-S2-WROOM\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"AMS1117-3.3\",\n      \"footprint\": \"Package_TO_SOT_SMD:SOT-223-3_TabPin2\"\n    },\n    {\n      \"ref\": \"J1\",\n      \"value\": \"USB_C\",\n      \"footprint\": \"Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C2\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Status\",\n      \"footprint\": \"LED_SMD:LED_0603_1608Metric\"\n    }\n  ],\n  \"nets\": []\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 23.74
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 1849,
+          "generated": "```json\n{\n  \"components\": [\n    {\n      \"ref\": \"J1\",\n      \"value\": \"SPI_HOST\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U1\",\n      \"value\": \"SPI_DEVICE_1\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"SPI_DEVICE_2\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U3\",\n      \"value\": \"SPI_DEVICE_3\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U4\",\n      \"value\": \"SPI_DEVICE_4\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R3\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R4\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"SPI_SCLK\",\n      \"pins\": [\n        \"J1.1\",\n        \"U1.1\",\n        \"U2.1\",\n        \"U3.1\",\n        \"U4.1\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MOSI\",\n      \"pins\": [\n        \"J1.2\",\n        \"U1.2\",\n        \"U2.2\",\n        \"U3.2\",\n        \"U4.2\"\n      ]\n    },\n    {\n      \"name\": \"SPI_MISO\",\n      \"pins\": [\n        \"J1.3\",\n        \"U1.3\",\n        \"U2.3\",\n        \"U3.3\",\n        \"U4.3\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS1\",\n      \"pins\": [\n        \"J1.4\",\n        \"U1.4\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS2\",\n      \"pins\": [\n        \"J1.5\",\n        \"U2.4\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS3\",\n      \"pins\": [\n        \"J1.6\",\n        \"U3.4\"\n      ]\n    },\n    {\n      \"name\": \"SPI_CS4\",\n      \"pins\": [\n        \"J1.7\",\n        \"U4.4\"\n      ]\n    },\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"J1.8\",\n        \"U1.5\",\n        \"U2.5\",\n        \"U3.5\",\n        \"U4.5\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"J1.9\",\n        \"U1.6\",\n        \"U2.6\",\n        \"U3.6\",\n        \"U4.6\"\n      ]\n    }\n  ]\n}\n```",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 9,
+            "predicted_n_components": 9,
+            "components": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 9,
+            "nets": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 33,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8049,
+              "f1": 0.8919
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.9676
+          },
+          "gen_time_s": 156.95
+        }
+      ]
+    },
+    "ministral-3-14b-reasoning": {
+      "n_samples": 6,
+      "json_ok_rate": 0.1667,
+      "components_f1_avg": 0.1667,
+      "components_recall_avg": 0.1667,
+      "components_precision_avg": 0.1667,
+      "nets_f1_avg": 0.0,
+      "nets_recall_avg": 0.0,
+      "nets_precision_avg": 0.0,
+      "net_pins_f1_avg": 0.0,
+      "net_pins_recall_avg": 0.0,
+      "composite_score": 0.0833,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 8597,
+          "generated": "[THINK]Okay, I need to parse this KiCad schematic S-expression and extract two main pieces of information: components and nets. The components should be a list of objects with ref, value, and footprint. The nets should be a list of objects with a name and a list of pins, where each pin is in the format \"REF.PIN\".\n\nFirst, I need to identify the components. Looking at the schematic, there are two symbol elements that represent components. Each symbol has a lib_id, properties like Reference, Value, and Footprint, and a position. The components are the ones with lib_id \"Device:R\" and \"Device:LED\". For each of these, I need to extract the Reference (which is the ref), Value, and Footprint.\n\nFor the first symbol:\n- lib_id is \"Device:R\"\n- Reference is \"R1\"\n- Value is \"330\"\n- Footprint is \"Resistor_SMD:R_0805_2012Metric\"\n\nFor the second symbol:\n- lib_id is \"Device:LED\"\n- Reference is \"D1\"\n- Value is \"LED_Red\"\n- Footprint is \"LED_SMD:LED_0805_2012Metric\"\n\nSo, the components list should have two entries:\n1. { \"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\" }\n2. { \"ref\": \"D1\", \"value\": \"LED_Red\", \"footprint\": \"LED_SMD:LED_0805_2012Metric\" }\n\nNext, I need to handle the nets. Nets are typically represented by labels or connections between pins. In this schematic, there are three labels: \"VCC\", \"MID\", and \"GND\". However, the problem specifies that nets should be a list of {name, pins}, where each pin is \"REF.PIN\".\n\nBut looking at the schematic, there are no explicit net definitions or wire connections shown in the S-expression provided. The labels are just text labels, not necessarily representing nets with multiple pins. The problem might be implying that the labels are the net names, but without pin connections, it's unclear how to form the nets.\n\nWait, perhaps the labels are the net names, and the pins connected to them would be the components' pins. But in the given S-expression, there are no wire or connection elements that show which pins are connected to which nets. The labels are standalone and don't seem to be connected to any pins.\n\nLooking at the schematic structure, it seems that the labels are just text labels placed at certain positions, but there's no information about which pins they are connected to. This might mean that the nets list is empty or that the labels are the net names without any pins connected, which doesn't make sense in a real schematic.\n\nBut the problem statement says to output a JSON object with two keys: \"com",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 2,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 57.91
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 8406,
+          "generated": "[THINK]Okay, I need to parse this KiCad schematic S-expression and extract two main pieces of information: components and nets. The components should be a list of objects with ref, value, and footprint for every instance symbol. The nets should be a list of objects with a name and a list of pins, where each pin is in the format \"REF.PIN\".\n\nFirst, I need to identify the components. Looking at the schematic, there are two symbol elements that represent resistors. Each symbol has a lib_id, properties like Reference, Value, and Footprint, and a uuid. The relevant properties for components are Reference, Value, and Footprint.\n\nFor the first symbol:\n- Reference is \"R1\"\n- Value is \"10k\"\n- Footprint is \"Resistor_SMD:R_0603_1608Metric\"\n\nFor the second symbol:\n- Reference is \"R2\"\n- Value is \"10k\"\n- Footprint is the same as the first one.\n\nSo, the components list should have two entries:\n1. {ref: \"R1\", value: \"10k\", footprint: \"Resistor_SMD:R_0603_1608Metric\"}\n2. {ref: \"R2\", value: \"10k\", footprint: \"Resistor_SMD:R_0603_1608Metric\"}\n\nNext, I need to handle the nets. Nets are typically represented by labels or connections between symbols. In this schematic, there are labels: \"VIN\", \"VOUT\", and \"GND\". However, the problem statement specifies that nets should be a list of {name, pins}, where each pin is \"REF.PIN\".\n\nBut looking at the schematic, there are no explicit net definitions or wire connections shown in the S-expression provided. The labels are present, but they don't directly indicate which pins are connected. In KiCad, nets are usually defined by wires or buses connecting pins, but in this S-expression, there are no wire or bus elements shown. The only connections implied are through the labels, but without seeing how the symbols are connected, it's unclear which pins are connected to which nets.\n\nWait, the problem statement says: \"nets: list of {name, pins} where each pin is \"REF.PIN\"\". So, for each net, we need to know its name and which pins (from components) are connected to it.\n\nBut in the given S-expression, there are no explicit net definitions or wire elements. The labels are present, but they don't specify connections to component pins. Typically, in a KiCad schematic, nets are defined by wires or buses that connect pins of symbols. Since this S-expression doesn't show any wires or buses, it's ambiguous how the labels are connected to the component pins.\n\nHowever, looking at the labels:\n- \"VIN\" is at (100 50 0)\n- \"VOUT\" is at (100 70 0)\n- \"GND\" is at (",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 2,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 57.62
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 9332,
+          "generated": "[THINK]Okay, I need to parse this KiCad schematic S-expression and extract two main pieces of information: components and nets. The components should be a list of objects with ref, value, and footprint for every instance symbol. The nets should be a list of objects with a name and a list of pins, where each pin is in the format \"REF.PIN\".\n\nFirst, I need to identify the components. Looking at the schematic, there are several `symbol` entries. Each symbol has properties like Reference, Value, and Footprint. The components are the actual instances of symbols in the schematic, not the library symbols. So, I should look for the `symbol` entries that are part of the schematic, not the ones under `lib_symbols`.\n\nLet me list out the symbols in the schematic:\n1. The first symbol has lib_id \"Timer:NE555\", reference \"U1\", value \"NE555\", and footprint \"Package_DIP:DIP-8_W7.62mm\".\n2. The second symbol is a resistor with reference \"R1\", value \"10k\", and footprint \"Resistor_SMD:R_0805_2012Metric\".\n3. The third symbol is another resistor with reference \"R2\", value \"47k\", and same footprint as R1.\n4. The fourth symbol is a capacitor with reference \"C1\", value \"10nF\", and footprint \"Capacitor_SMD:C_0603_1608Metric\".\n\nSo, the components list should include these four entries with their respective ref, value, and footprint.\n\nNow, for the nets, I need to identify the connections between components. In KiCad, nets are usually represented by labels or connections between pins. However, in this S-expression, I don't see explicit net definitions like `(net ...)`. Instead, there are labels like \"VCC\", \"DIS\", \"THR\", \"OUT\", and \"GND\". These labels likely represent net names, but I need to see which pins are connected to them.\n\nBut the problem is that the S-expression doesn't show the actual pin connections. It only shows the symbols and labels. Typically, in a schematic, pins are connected to nets via labels or wires, but here, the connections aren't explicitly defined in the S-expression provided. The labels are present, but without knowing which pins are connected to which labels, it's challenging to determine the nets.\n\nLooking at the schematic data, there are labels like \"VCC\", \"DIS\", \"THR\", \"OUT\", and \"GND\". These are likely net names, but the pins connected to them aren't specified here. The problem statement says that the nets should be a list of {name, pins}, where each pin is \"REF.PIN\". But without the pin connection information, it's impossible to determine which pins are c",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 4,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 60.51
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 9646,
+          "generated": "[THINK]Okay, I need to parse this KiCad schematic S-expression and output a JSON object with two keys: \"components\" and \"nets\".\n\nFirst, I need to understand the structure of the input. The schematic is given as an S-expression, which is a nested list structure. The main elements I need to focus on are the components (symbols) and the nets (connections between pins).\n\nLooking at the input, I see that there are several `symbol` entries. Each symbol has properties like Reference, Value, and Footprint. The components should be a list of objects with ref, value, and footprint for each instance symbol.\n\nFor the components:\n- Each `symbol` block represents a component instance.\n- The `property` blocks inside each symbol contain the details like Reference, Value, and Footprint.\n- I need to extract the Reference (which is the ref), Value, and Footprint for each symbol.\n\nFor the nets:\n- The nets are represented by labels in the schematic. Labels like \"VIN\", \"VOUT\", etc., are used to name nets.\n- However, the problem statement says that nets should be a list of {name, pins} where each pin is \"REF.PIN\".\n- But in the given schematic, there are no explicit net definitions or pin connections shown in the S-expression provided. The S-expression includes labels but doesn't show how pins are connected to nets or to each other.\n- The problem statement mentions that each pin in the nets list should be in the format \"REF.PIN\", but the schematic doesn't provide pin information or net connections. This is a problem because without knowing which pins are connected to which nets, I can't generate the nets list accurately.\n\nWait, the problem statement says: \"nets: list of {name, pins} where each pin is \"REF.PIN\".\"\n\nBut in the given schematic, there are no pin definitions or net connections. The S-expression includes labels (like VIN, VOUT, etc.), but no information about which pins are connected to which nets.\n\nLooking back at the problem statement, it says: \"Read the .kicad_sch S-expression below and output ONLY a JSON object with two keys: 'components' and 'nets'.\"\n\nBut the provided S-expression doesn't contain any net definitions or pin-to-net connections. It only has symbols (components) and labels (which are net names, but without pin connections).\n\nThis is confusing. Maybe the labels are the net names, and the pins are implied by the component references, but without pin information, it's impossible to know which pins are connected to which nets.\n\nBut the problem statement sa",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 3,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 59.42
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 6485,
+          "generated": "[THINK]Okay, I need to parse this KiCad schematic S-expression and extract two main pieces of information: components and nets.\n\nFirst, let's understand the structure. The schematic is given in an S-expression format, which is a nested list structure. The main keys we're interested in are \"components\" and \"nets\".\n\nFor components, the problem specifies that we need a list of objects with \"ref\", \"value\", and \"footprint\" for every instance symbol. Looking at the schematic, the components are defined under the (symbol) tags. Each symbol has properties like Reference, Value, and Footprint.\n\nFor nets, we need a list of objects with \"name\" and \"pins\", where each pin is in the format \"REF.PIN\". However, looking at the provided schematic, there are no explicit net definitions or pin connections shown. The schematic only includes symbols and labels, but no wire or net connections. This might mean that the nets section is empty or needs to be inferred, but since the problem says to output only what's in the schematic, and there are no net definitions, the nets list might be empty.\n\nLet's break this down:\n\n1. **Components**:\n   - Each (symbol) block represents a component instance.\n   - We need to extract the Reference (ref), Value (value), and Footprint (footprint) from each symbol.\n   - The Reference is usually something like \"U1\", \"R1\", etc.\n   - The Value is the component's value, like \"ESP32-S3-WROOM-1\" or \"10k\".\n   - The Footprint is the physical footprint, like \"RF_Module:ESP32-S2-WROOM\".\n\n   Looking at the symbols in the schematic:\n   - U1: ESP32-S3-WROOM-1, Footprint is RF_Module:ESP32-S2-WROOM\n   - U2: AMS1117-3.3, Footprint is Package_TO_SOT_SMD:SOT-223-3_TabPin2\n   - J1: USB_C, Footprint is Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\n   - R1: 10k, Footprint is Resistor_SMD:R_0603_1608Metric\n   - R2: 1k, Footprint is Resistor_SMD:R_0603_1608Metric\n   - C1: 22uF, Footprint is Capacitor_SMD:C_0805_2012Metric\n   - C2: 22uF, Footprint is Capacitor_SMD:C_0805_2012Metric\n   - D1: LED_Status, Footprint is LED_SMD:LED_0603_1608Metric\n\n   So, the components list should have 8 entries, one for each symbol.\n\n2. **Nets**:\n   - The problem defines nets as a list of {name, pins}, where each pin is \"REF.PIN\".\n   - However, in the provided schematic, there are no explicit net definitions or pin connections. There are labels like \"VBUS\", \"3V3\", etc., but these are just labels, not nets with pins.\n   - Since there are no net definitions or wire connections in the schem",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 7,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.5
+          },
+          "gen_time_s": 66.55
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 7888,
+          "generated": "[THINK]Okay, I need to parse this KiCad schematic S-expression and extract two things: components and nets. The components should be a list of objects with ref, value, and footprint. The nets should be a list of objects with name and pins, where each pin is in the format \"REF.PIN\".\n\nFirst, I need to identify where the components are defined. Looking at the S-expression, components are likely under the (symbol) elements, especially those that have (instances) with references. The (lib_symbols) section defines the symbol libraries, but the actual instances are under the main schematic with (symbol) elements that have (instances) inside them.\n\nFor components, I need to extract:\n- ref: This is the reference designator, like \"J1\", \"U1\", etc. It's found in the (instances) section under (reference).\n- value: This is the value property of the component, like \"SPI_HOST\" or \"10k\".\n- footprint: This is usually empty in the given data, but I should check the (property \"Footprint\") section.\n\nFor nets, I need to find all the labels and see which pins they are connected to. The labels have names like \"SPI_SCLK\", \"SPI_MOSI\", etc. The pins are part of the (symbol) elements, and their connections are implied by the wires and labels.\n\nLet me break this down:\n\n1. **Components**:\n   - Look for (symbol) elements that have (instances) with (reference).\n   - For each such symbol, extract:\n     - ref: from (instances) -> (reference)\n     - value: from (property \"Value\")\n     - footprint: from (property \"Footprint\"), if it exists, else empty string.\n\n2. **Nets**:\n   - Look for (label) elements, which define net names.\n   - For each net name, find all the pins connected to that net. Pins are defined in (symbol) elements under (pin).\n   - The pin connections are implied by the wires and labels. However, the S-expression doesn't explicitly show which pins are connected to which nets unless there's a label near a wire or pin.\n   - The labels are placed near wires, and the wires connect to pins. But the S-expression doesn't have explicit net connections like in a netlist. So, I might need to infer the connections based on the label positions and wire paths, but that's complex.\n   - Alternatively, perhaps the labels are associated with the pins they are closest to or connected via wires. But without a clear mapping, this might be tricky.\n   - Maybe the approach is to collect all labels and then for each label, collect all pins that are connected to the same wire segment. But the S-expres",
+          "scores": {
+            "json_ok": false,
+            "expected_n_components": 9,
+            "predicted_n_components": 0,
+            "components": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 0,
+            "nets": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 41,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": false,
+            "composite": 0.0
+          },
+          "gen_time_s": 207.72
+        }
+      ]
+    },
+    "granite-4.1-3b": {
+      "n_samples": 6,
+      "json_ok_rate": 1.0,
+      "components_f1_avg": 1.0,
+      "components_recall_avg": 1.0,
+      "components_precision_avg": 1.0,
+      "nets_f1_avg": 0.8333,
+      "nets_recall_avg": 0.8333,
+      "nets_precision_avg": 0.8333,
+      "net_pins_f1_avg": 0.1163,
+      "net_pins_recall_avg": 0.122,
+      "composite_score": 0.7016,
+      "samples": [
+        {
+          "id": "led_blinker",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 320,
+          "generated": "{\"components\": [{\"ref\": \"R1\", \"value\": \"330\", \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"}, {\"ref\": \"D1\", \"value\": \"LED_Red\", \"footprint\": \"LED_SMD:LED_0805_2012Metric\"}], \"nets\": [{\"name\": \"VCC\", \"pins\": [\"R1.V\", \"VCC.LABEL\"]}, {\"name\": \"MID\", \"pins\": [\"D1.V\", \"MID.LABEL\"]}, {\"name\": \"GND\", \"pins\": [\"GND.LABEL\"]}] }",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 5,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 2.23
+        },
+        {
+          "id": "voltage_divider",
+          "source": "template",
+          "expected_chars": 296,
+          "generated_chars": 476,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_1608Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VIN\",\n      \"pins\": [\n        \"R1.VIN\"\n      ]\n    },\n    {\n      \"name\": \"VOUT\",\n      \"pins\": [\n        \"R2.VOUT\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"GND\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 2,
+            "predicted_n_components": 2,
+            "components": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 3,
+            "predicted_n_nets": 3,
+            "nets": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 3,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 2.52
+        },
+        {
+          "id": "ne555_astable",
+          "source": "template",
+          "expected_chars": 576,
+          "generated_chars": 843,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"NE555\",\n      \"footprint\": \"Package_ DIP: DIP-8_ W7.62mm\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"47k\",\n      \"footprint\": \"Resistor_SMD:R_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"10nF\",\n      \"footprint\": \"Capacitor_SMD: C_0603_16 08Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VCC\",\n      \"pins\": [\n        \"U1.VCC\"\n      ]\n    },\n    {\n      \"name\": \"DIS\",\n      \"pins\": [\n        \"U1.DIS\"\n      ]\n    },\n    {\n      \"name\": \"THR\",\n      \"pins\": [\n        \"U1.THR\"\n      ]\n    },\n    {\n      \"name\": \"OUT\",\n      \"pins\": [\n        \"U1.OUT\"\n      ]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\n        \"U1.GND\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 4,
+            "predicted_n_components": 4,
+            "components": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 5,
+            "nets": {
+              "tp": 5,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 5,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 4.53
+        },
+        {
+          "id": "opamp_noninv",
+          "source": "template",
+          "expected_chars": 473,
+          "generated_chars": 559,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"TL072\",\n      \"footprint\": \"Package_8mm_SOT23\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_16x8mm\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"100\",\n      \"footprint\": \"Resistor_SMD:R_0603_16x8mm\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"NET1\",\n      \"pins\": [\n        \"U1.IN\",\n        \"R1.IN\",\n        \"R2.IN\"\n      ]\n    },\n    {\n      \"name\": \"NET2\",\n      \"pins\": [\n        \"U1.OUT\",\n        \"R1.OUT\",\n        \"R2.OUT\"\n      ]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 3,
+            "predicted_n_components": 3,
+            "components": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 5,
+            "predicted_n_nets": 2,
+            "nets": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.5
+          },
+          "gen_time_s": 3.21
+        },
+        {
+          "id": "esp32_mini",
+          "source": "template",
+          "expected_chars": 1071,
+          "generated_chars": 1336,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"U1\",\n      \"value\": \"ESP32-S3-WROOM-1\",\n      \"footprint\": \"RF_Module:ESP32-S2-WROOM\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"AMS1117-3.3\",\n      \"footprint\": \"Package_2SOT_3_3V_SMD:2SOT-223-3_3V_SMD\"\n    },\n    {\n      \"ref\": \"J1\",\n      \"value\": \"USB_C\",\n      \"footprint\": \"Connector_2USB:USB_C_2P4_2P0\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"Resistor_SMD:R_0603_16_08Metric\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"1k\",\n      \"footprint\": \"Resistor_SMD:R_0603_16_08Metric\"\n    },\n    {\n      \"ref\": \"C1\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"C2\",\n      \"value\": \"22uF\",\n      \"footprint\": \"Capacitor_SMD:C_0805_2012Metric\"\n    },\n    {\n      \"ref\": \"D1\",\n      \"value\": \"LED_Status\",\n      \"footprint\": \"LED_SMD:LED_0603_16_08Metric\"\n    }\n  ],\n  \"nets\": [\n    {\n      \"name\": \"VBUS\",\n      \"pins\": [\"U1.P1\"]\n    },\n    {\n      \"name\": \"3V3\",\n      \"pins\": [\"U2.P1\"]\n    },\n    {\n      \"name\": \"GND\",\n      \"pins\": [\"U2.P2\"]\n    },\n    {\n      \"name\": \"EN\",\n      \"pins\": [\"U1.P2\"]\n    },\n    {\n      \"name\": \"USB_DP\",\n      \"pins\": [\"J1.P1\"]\n    },\n    {\n      \"name\": \"USB_DM\",\n      \"pins\": [\"J1.P2\"]\n    },\n    {\n      \"name\": \"GPIO2\",\n      \"pins\": [\"D1.P1\"]\n    }\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 8,
+            "predicted_n_components": 8,
+            "components": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 7,
+            "predicted_n_nets": 7,
+            "nets": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 0,
+              "fp": 7,
+              "fn": 21,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.7
+          },
+          "gen_time_s": 8.2
+        },
+        {
+          "id": "spi_bus_4devices",
+          "source": "local",
+          "expected_chars": 787,
+          "generated_chars": 1440,
+          "generated": "{\n  \"components\": [\n    {\n      \"ref\": \"J1\",\n      \"value\": \"SPI__HOST_4CS\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U1\",\n      \"value\": \"SPI_DEVICE_1\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U2\",\n      \"value\": \"SPI_DEVICE_2\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U3\",\n      \"value\": \"SPI_DEVICE_3\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"U4\",\n      \"value\": \"SPI_DEVICE_4\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R1\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R2\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R3\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    },\n    {\n      \"ref\": \"R4\",\n      \"value\": \"10k\",\n      \"footprint\": \"\"\n    }\n  ],\n  \"nets\": [\n    {\"name\": \"SPI_SCLK\", \"pins\": [\"J1.1\", \"U1.1\", \"U2.1\", \"U3.1\", \"U4.1\"]},\n    {\"name\": \"SPI_MOSI\", \"pins\": [\"J1.2\", \"U1.2\", \"U2.2\", \"U3.2\", \"U4.2\"]},\n    {\"name\": \"SPI_MISO\", \"pins\": [\"J1.3\", \"U1.3\", \"U2.3\", \"U3.3\", \"U4.3\"]},\n    {\"name\": \"SPI_CS1\", \"pins\": [\"J1.4\", \"U1.4\", \"U2.4\", \"U3.4\", \"U4.4\"]},\n    {\"name\": \"SPI_CS2\", \"pins\": [\"J1.5\", \"U1.5\", \"U2.5\", \"U3.5\", \"U4.5\"]},\n    {\"name\": \"SPI_CS3\", \"pins\": [\"J1.6\", \"U1.6\", \"U2.6\", \"U3.6\", \"U4.6\"]},\n    {\"name\": \"SPI_CS4\", \"pins\": [\"J1.7\", \"U1.7\", \"U2.7\", \"U3.7\", \"U4.7\"]},\n    {\"name\": \"VCC\", \"pins\": [\"J1.8\", \"U1.5\", \"U2.5\", \"U3.5\", \"U4.5\"]},\n    {\"name\": \"GND\", \"pins\": [\"J1.9\", \"U1.6\", \"U2.6\", \"U3.6\", \"U4.6\"]}\n  ]\n}",
+          "scores": {
+            "json_ok": true,
+            "expected_n_components": 9,
+            "predicted_n_components": 9,
+            "components": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "expected_n_nets": 9,
+            "predicted_n_nets": 9,
+            "nets": {
+              "tp": 9,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "net_pins": {
+              "tp": 30,
+              "fp": 15,
+              "fn": 11,
+              "precision": 0.6667,
+              "recall": 0.7317,
+              "f1": 0.6977
+            },
+            "gt_has_pins": true,
+            "pred_has_pins": true,
+            "composite": 0.9093
+          },
+          "gen_time_s": 48.38
+        }
+      ]
+    }
+  }
+}

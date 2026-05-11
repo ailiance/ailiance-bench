@@ -1,0 +1,1334 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-10 15:45:07",
+    "data_dir": "/Users/electron/eu-kiki-data/hf-traced",
+    "num_samples": 25,
+    "sequence_length": 1024,
+    "batch_size": 1,
+    "models": [
+      {
+        "nickname": "gemma-e4b-eu-kiki-base",
+        "hf_id": "lmstudio-community/gemma-4-E4B-it-MLX-4bit"
+      },
+      {
+        "nickname": "gemma-e2b",
+        "hf_id": "lmstudio-community/gemma-4-E2B-it-MLX-4bit"
+      },
+      {
+        "nickname": "ministral-3b",
+        "hf_id": "mlx-community/Ministral-3-3B-Instruct-2512-4bit"
+      },
+      {
+        "nickname": "ministral-3-8b",
+        "hf_id": "mlx-community/Ministral-3-8B-Instruct-2512-4bit"
+      },
+      {
+        "nickname": "ministral-3-14b-instruct",
+        "hf_id": "mlx-community/Ministral-3-14B-Instruct-2512-4bit"
+      },
+      {
+        "nickname": "ministral-3-14b-reasoning",
+        "hf_id": "mlx-community/Ministral-3-14B-Reasoning-2512-4bit"
+      },
+      {
+        "nickname": "granite-4.1-3b",
+        "hf_id": "mlx-community/granite-4.1-3b-4bit"
+      },
+      {
+        "nickname": "granite-4.1-30b",
+        "hf_id": "mlx-community/granite-4.1-30b-4bit"
+      }
+    ],
+    "domains": [
+      "chat-fr",
+      "cpp",
+      "docker-devops",
+      "embedded",
+      "emc-dsp-power",
+      "freecad",
+      "html-css",
+      "iot",
+      "kicad-dsl",
+      "kicad-pcb",
+      "llm-ops",
+      "llm-orch",
+      "lua-upy",
+      "math-gsm8k",
+      "math-reasoning",
+      "ml-training",
+      "multilingual-eu",
+      "music-audio",
+      "platformio",
+      "python",
+      "rust",
+      "rust-embedded",
+      "security-fenrir",
+      "shell",
+      "spice-sim",
+      "sql",
+      "traduction-tech",
+      "typescript",
+      "web-backend",
+      "web-frontend",
+      "yaml-json"
+    ]
+  },
+  "bench": {
+    "gemma-e4b-eu-kiki-base": {
+      "chat-fr": {
+        "ppl": 115.536,
+        "stderr_ppl": 4.472,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 23.707,
+        "stderr_ppl": 0.785,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 12.843,
+        "stderr_ppl": 0.381,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 198.964,
+        "stderr_ppl": 8.318,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 170.164,
+        "stderr_ppl": 6.647,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 21.927,
+        "stderr_ppl": 0.733,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 16.135,
+        "stderr_ppl": 0.544,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 175.163,
+        "stderr_ppl": 7.299,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 11.012,
+        "stderr_ppl": 0.326,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 5.444,
+        "stderr_ppl": 0.146,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 41.154,
+        "stderr_ppl": 1.653,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 29.509,
+        "stderr_ppl": 1.1,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 24.219,
+        "stderr_ppl": 0.8,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 22.11,
+        "stderr_ppl": 0.755,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 9.54,
+        "stderr_ppl": 0.278,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 20.931,
+        "stderr_ppl": 0.685,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 196.981,
+        "stderr_ppl": 8.079,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 18.228,
+        "stderr_ppl": 0.633,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 15.847,
+        "stderr_ppl": 0.558,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 12.42,
+        "stderr_ppl": 0.371,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 12.164,
+        "stderr_ppl": 0.359,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 20.953,
+        "stderr_ppl": 0.68,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 98.283,
+        "stderr_ppl": 3.455,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 373.047,
+        "stderr_ppl": 17.049,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 33.623,
+        "stderr_ppl": 1.158,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 19.773,
+        "stderr_ppl": 0.717,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 334.512,
+        "stderr_ppl": 15.07,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 11.784,
+        "stderr_ppl": 0.344,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 16.024,
+        "stderr_ppl": 0.544,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 14.368,
+        "stderr_ppl": 0.484,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 17.634,
+        "stderr_ppl": 0.6,
+        "status": "ok"
+      }
+    },
+    "gemma-e2b": {
+      "chat-fr": {
+        "ppl": 201.556,
+        "stderr_ppl": 8.238,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 42.132,
+        "stderr_ppl": 1.509,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 13.771,
+        "stderr_ppl": 0.411,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 150.307,
+        "stderr_ppl": 5.62,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 316.078,
+        "stderr_ppl": 12.246,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 35.805,
+        "stderr_ppl": 1.261,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 17.969,
+        "stderr_ppl": 0.616,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 141.111,
+        "stderr_ppl": 5.285,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 16.026,
+        "stderr_ppl": 0.506,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 7.348,
+        "stderr_ppl": 0.206,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 26.334,
+        "stderr_ppl": 0.86,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 24.958,
+        "stderr_ppl": 0.831,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 35.484,
+        "stderr_ppl": 1.233,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 24.305,
+        "stderr_ppl": 0.821,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 10.677,
+        "stderr_ppl": 0.311,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 32.717,
+        "stderr_ppl": 1.136,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 270.778,
+        "stderr_ppl": 10.888,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 16.089,
+        "stderr_ppl": 0.528,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 16.332,
+        "stderr_ppl": 0.54,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 12.873,
+        "stderr_ppl": 0.382,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 13.259,
+        "stderr_ppl": 0.397,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 32.053,
+        "stderr_ppl": 1.08,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 220.883,
+        "stderr_ppl": 8.363,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 126.064,
+        "stderr_ppl": 4.875,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 42.404,
+        "stderr_ppl": 1.45,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 14.408,
+        "stderr_ppl": 0.458,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 328.381,
+        "stderr_ppl": 13.865,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 13.343,
+        "stderr_ppl": 0.393,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 16.836,
+        "stderr_ppl": 0.565,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 15.324,
+        "stderr_ppl": 0.514,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 18.423,
+        "stderr_ppl": 0.618,
+        "status": "ok"
+      }
+    },
+    "ministral-3b": {
+      "chat-fr": {
+        "ppl": 7.118,
+        "stderr_ppl": 0.117,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 5.386,
+        "stderr_ppl": 0.085,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 6.265,
+        "stderr_ppl": 0.098,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 8.64,
+        "stderr_ppl": 0.148,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 10.154,
+        "stderr_ppl": 0.173,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 5.561,
+        "stderr_ppl": 0.087,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 6.083,
+        "stderr_ppl": 0.099,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 8.978,
+        "stderr_ppl": 0.154,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 4.286,
+        "stderr_ppl": 0.062,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 2.945,
+        "stderr_ppl": 0.039,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 6.743,
+        "stderr_ppl": 0.108,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 6.653,
+        "stderr_ppl": 0.108,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 6.675,
+        "stderr_ppl": 0.106,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 6.278,
+        "stderr_ppl": 0.102,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 5.611,
+        "stderr_ppl": 0.084,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 5.416,
+        "stderr_ppl": 0.084,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 7.781,
+        "stderr_ppl": 0.129,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 5.906,
+        "stderr_ppl": 0.094,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 6.919,
+        "stderr_ppl": 0.115,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 6.377,
+        "stderr_ppl": 0.1,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 6.146,
+        "stderr_ppl": 0.096,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 7.15,
+        "stderr_ppl": 0.121,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 10.477,
+        "stderr_ppl": 0.175,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 5.78,
+        "stderr_ppl": 0.096,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 6.814,
+        "stderr_ppl": 0.11,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 6.048,
+        "stderr_ppl": 0.097,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 6.478,
+        "stderr_ppl": 0.106,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 6.343,
+        "stderr_ppl": 0.099,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 6.212,
+        "stderr_ppl": 0.102,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 6.073,
+        "stderr_ppl": 0.098,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 6.475,
+        "stderr_ppl": 0.106,
+        "status": "ok"
+      }
+    },
+    "ministral-3-8b": {
+      "chat-fr": {
+        "ppl": 7.56,
+        "stderr_ppl": 0.13,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 4.853,
+        "stderr_ppl": 0.078,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 6.139,
+        "stderr_ppl": 0.098,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 10.416,
+        "stderr_ppl": 0.189,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 10.359,
+        "stderr_ppl": 0.181,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 5.015,
+        "stderr_ppl": 0.078,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 6.19,
+        "stderr_ppl": 0.104,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 10.915,
+        "stderr_ppl": 0.2,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 4.022,
+        "stderr_ppl": 0.057,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 2.606,
+        "stderr_ppl": 0.033,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 6.469,
+        "stderr_ppl": 0.107,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 6.402,
+        "stderr_ppl": 0.106,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 6.737,
+        "stderr_ppl": 0.112,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 6.159,
+        "stderr_ppl": 0.1,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 4.988,
+        "stderr_ppl": 0.074,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 4.994,
+        "stderr_ppl": 0.078,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 7.9,
+        "stderr_ppl": 0.136,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 6.057,
+        "stderr_ppl": 0.101,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 7.601,
+        "stderr_ppl": 0.132,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 6.093,
+        "stderr_ppl": 0.098,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 6.223,
+        "stderr_ppl": 0.099,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 6.385,
+        "stderr_ppl": 0.108,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 9.306,
+        "stderr_ppl": 0.155,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 6.295,
+        "stderr_ppl": 0.109,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 7.608,
+        "stderr_ppl": 0.133,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 6.087,
+        "stderr_ppl": 0.1,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 6.186,
+        "stderr_ppl": 0.103,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 6.229,
+        "stderr_ppl": 0.1,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 6.383,
+        "stderr_ppl": 0.109,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 6.033,
+        "stderr_ppl": 0.102,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 6.626,
+        "stderr_ppl": 0.114,
+        "status": "ok"
+      }
+    },
+    "ministral-3-14b-instruct": {
+      "chat-fr": {
+        "ppl": 5.386,
+        "stderr_ppl": 0.084,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 3.829,
+        "stderr_ppl": 0.056,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 4.826,
+        "stderr_ppl": 0.072,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 6.129,
+        "stderr_ppl": 0.101,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 7.521,
+        "stderr_ppl": 0.124,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 4.234,
+        "stderr_ppl": 0.062,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 4.579,
+        "stderr_ppl": 0.071,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 6.363,
+        "stderr_ppl": 0.105,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 3.388,
+        "stderr_ppl": 0.045,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 2.314,
+        "stderr_ppl": 0.027,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 4.697,
+        "stderr_ppl": 0.072,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 4.724,
+        "stderr_ppl": 0.073,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 5.236,
+        "stderr_ppl": 0.081,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 4.706,
+        "stderr_ppl": 0.071,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 4.103,
+        "stderr_ppl": 0.057,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 4.36,
+        "stderr_ppl": 0.065,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 5.614,
+        "stderr_ppl": 0.089,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 4.453,
+        "stderr_ppl": 0.068,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 5.592,
+        "stderr_ppl": 0.092,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 4.799,
+        "stderr_ppl": 0.072,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 4.803,
+        "stderr_ppl": 0.071,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 5.211,
+        "stderr_ppl": 0.083,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 7.337,
+        "stderr_ppl": 0.115,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 4.279,
+        "stderr_ppl": 0.068,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 5.077,
+        "stderr_ppl": 0.079,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 4.595,
+        "stderr_ppl": 0.07,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 4.799,
+        "stderr_ppl": 0.075,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 4.824,
+        "stderr_ppl": 0.072,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 4.846,
+        "stderr_ppl": 0.077,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 4.556,
+        "stderr_ppl": 0.071,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 4.896,
+        "stderr_ppl": 0.078,
+        "status": "ok"
+      }
+    },
+    "ministral-3-14b-reasoning": {
+      "chat-fr": {
+        "ppl": 6.793,
+        "stderr_ppl": 0.158,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 3.347,
+        "stderr_ppl": 0.056,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 3.895,
+        "stderr_ppl": 0.074,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 7.716,
+        "stderr_ppl": 0.184,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 9.977,
+        "stderr_ppl": 0.221,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 3.965,
+        "stderr_ppl": 0.066,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 3.683,
+        "stderr_ppl": 0.076,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 8.118,
+        "stderr_ppl": 0.193,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 2.866,
+        "stderr_ppl": 0.042,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 1.956,
+        "stderr_ppl": 0.023,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 4.509,
+        "stderr_ppl": 0.106,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 4.658,
+        "stderr_ppl": 0.108,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 4.866,
+        "stderr_ppl": 0.094,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 4.183,
+        "stderr_ppl": 0.086,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 3.211,
+        "stderr_ppl": 0.059,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 3.805,
+        "stderr_ppl": 0.063,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 7.365,
+        "stderr_ppl": 0.168,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 3.956,
+        "stderr_ppl": 0.083,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 3.838,
+        "stderr_ppl": 0.078,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 3.832,
+        "stderr_ppl": 0.073,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 3.8,
+        "stderr_ppl": 0.072,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 5.134,
+        "stderr_ppl": 0.099,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 7.42,
+        "stderr_ppl": 0.145,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 4.648,
+        "stderr_ppl": 0.116,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 5.23,
+        "stderr_ppl": 0.107,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 3.976,
+        "stderr_ppl": 0.086,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 5.963,
+        "stderr_ppl": 0.146,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 3.825,
+        "stderr_ppl": 0.072,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 4.075,
+        "stderr_ppl": 0.086,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 3.959,
+        "stderr_ppl": 0.083,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 4.137,
+        "stderr_ppl": 0.085,
+        "status": "ok"
+      }
+    },
+    "granite-4.1-3b": {
+      "chat-fr": {
+        "ppl": 22.663,
+        "stderr_ppl": 0.82,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 36.701,
+        "stderr_ppl": 1.213,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 19.381,
+        "stderr_ppl": 0.722,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 73.581,
+        "stderr_ppl": 2.917,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 26.232,
+        "stderr_ppl": 0.786,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 26.214,
+        "stderr_ppl": 0.786,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 72.913,
+        "stderr_ppl": 3.109,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 70.59,
+        "stderr_ppl": 2.754,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 6.702,
+        "stderr_ppl": 0.172,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 4.873,
+        "stderr_ppl": 0.121,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 132.853,
+        "stderr_ppl": 6.566,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 145.491,
+        "stderr_ppl": 6.859,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 46.564,
+        "stderr_ppl": 1.686,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 24.729,
+        "stderr_ppl": 1.109,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 9.9,
+        "stderr_ppl": 0.376,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 37.724,
+        "stderr_ppl": 1.187,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 29.05,
+        "stderr_ppl": 1.065,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 59.134,
+        "stderr_ppl": 2.488,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 17.751,
+        "stderr_ppl": 0.658,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 20.192,
+        "stderr_ppl": 0.763,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 17.691,
+        "stderr_ppl": 0.664,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 50.373,
+        "stderr_ppl": 1.706,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 17.687,
+        "stderr_ppl": 0.481,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 883.123,
+        "stderr_ppl": 54.27,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 19.583,
+        "stderr_ppl": 0.673,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 26.333,
+        "stderr_ppl": 1.128,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 89.168,
+        "stderr_ppl": 4.416,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 17.558,
+        "stderr_ppl": 0.644,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 64.662,
+        "stderr_ppl": 2.506,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 76.762,
+        "stderr_ppl": 3.221,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 78.126,
+        "stderr_ppl": 3.114,
+        "status": "ok"
+      }
+    },
+    "granite-4.1-30b": {
+      "chat-fr": {
+        "ppl": 12.842,
+        "stderr_ppl": 0.382,
+        "status": "ok"
+      },
+      "cpp": {
+        "ppl": 41.726,
+        "stderr_ppl": 1.454,
+        "status": "ok"
+      },
+      "docker-devops": {
+        "ppl": 16.107,
+        "stderr_ppl": 0.535,
+        "status": "ok"
+      },
+      "embedded": {
+        "ppl": 37.481,
+        "stderr_ppl": 1.184,
+        "status": "ok"
+      },
+      "emc-dsp-power": {
+        "ppl": 20.323,
+        "stderr_ppl": 0.57,
+        "status": "ok"
+      },
+      "freecad": {
+        "ppl": 27.651,
+        "stderr_ppl": 0.872,
+        "status": "ok"
+      },
+      "html-css": {
+        "ppl": 41.594,
+        "stderr_ppl": 1.487,
+        "status": "ok"
+      },
+      "iot": {
+        "ppl": 38.632,
+        "stderr_ppl": 1.228,
+        "status": "ok"
+      },
+      "kicad-dsl": {
+        "ppl": 5.662,
+        "stderr_ppl": 0.143,
+        "status": "ok"
+      },
+      "kicad-pcb": {
+        "ppl": 3.763,
+        "stderr_ppl": 0.083,
+        "status": "ok"
+      },
+      "llm-ops": {
+        "ppl": 52.712,
+        "stderr_ppl": 1.924,
+        "status": "ok"
+      },
+      "llm-orch": {
+        "ppl": 75.888,
+        "stderr_ppl": 2.944,
+        "status": "ok"
+      },
+      "lua-upy": {
+        "ppl": 39.194,
+        "stderr_ppl": 1.347,
+        "status": "ok"
+      },
+      "math-gsm8k": {
+        "ppl": 5.719,
+        "stderr_ppl": 0.171,
+        "status": "ok"
+      },
+      "math-reasoning": {
+        "ppl": 6.397,
+        "stderr_ppl": 0.204,
+        "status": "ok"
+      },
+      "ml-training": {
+        "ppl": 45.115,
+        "stderr_ppl": 1.509,
+        "status": "ok"
+      },
+      "multilingual-eu": {
+        "ppl": 13.552,
+        "stderr_ppl": 0.406,
+        "status": "ok"
+      },
+      "music-audio": {
+        "ppl": 43.469,
+        "stderr_ppl": 1.592,
+        "status": "ok"
+      },
+      "platformio": {
+        "ppl": 12.647,
+        "stderr_ppl": 0.405,
+        "status": "ok"
+      },
+      "python": {
+        "ppl": 18.047,
+        "stderr_ppl": 0.613,
+        "status": "ok"
+      },
+      "rust": {
+        "ppl": 14.918,
+        "stderr_ppl": 0.498,
+        "status": "ok"
+      },
+      "rust-embedded": {
+        "ppl": 74.465,
+        "stderr_ppl": 2.8,
+        "status": "ok"
+      },
+      "security-fenrir": {
+        "ppl": 16.461,
+        "stderr_ppl": 0.46,
+        "status": "ok"
+      },
+      "shell": {
+        "ppl": 75.663,
+        "stderr_ppl": 2.7,
+        "status": "ok"
+      },
+      "spice-sim": {
+        "ppl": 17.92,
+        "stderr_ppl": 0.587,
+        "status": "ok"
+      },
+      "sql": {
+        "ppl": 16.27,
+        "stderr_ppl": 0.54,
+        "status": "ok"
+      },
+      "traduction-tech": {
+        "ppl": 18.347,
+        "stderr_ppl": 0.541,
+        "status": "ok"
+      },
+      "typescript": {
+        "ppl": 15.282,
+        "stderr_ppl": 0.505,
+        "status": "ok"
+      },
+      "web-backend": {
+        "ppl": 52.17,
+        "stderr_ppl": 1.827,
+        "status": "ok"
+      },
+      "web-frontend": {
+        "ppl": 52.784,
+        "stderr_ppl": 1.907,
+        "status": "ok"
+      },
+      "yaml-json": {
+        "ppl": 62.937,
+        "stderr_ppl": 2.258,
+        "status": "ok"
+      }
+    }
+  }
+}
