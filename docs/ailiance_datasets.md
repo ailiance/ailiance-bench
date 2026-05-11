@@ -144,6 +144,22 @@ electron-rare versions:
 - Audit log URL: `docs/audit_kicad9plus.md` (and the SE-specific
   `docs/audit_mascarade_se_attribution.md` referenced in the Provenance block).
 
+## Scraping methodology
+
+Future collections feeding any Ailiance dataset MUST go through the
+EU-AI-Act-compliant pipeline documented in
+[`scraping_compliance.md`](./scraping_compliance.md). The pipeline:
+
+- runs `check_robots_txt` and `check_tdmrep` before every HTTP GET,
+- uses the contactable User-Agent `Ailiance-Compliance-Crawler/1.0`,
+- honors HTTP 429 + `Retry-After` and Stack Exchange `backoff`,
+- persists a per-sample `compliance` block in every `.meta.json` sidecar,
+- appends a JSONL audit trail to `~/eu-kiki-data/scraping_logs/`.
+
+Source files: `scripts/scraping_compliant/lib_compliance.py`,
+`scripts/scraping_compliant/scrape_kicad9plus.py`,
+`scripts/scraping_compliant/scrape_se_attribution.py`.
+
 ## Models trained on these datasets
 
 The Ailiance org also publishes 4 LoRA adapters on
