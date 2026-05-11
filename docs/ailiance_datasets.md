@@ -119,6 +119,20 @@ electron-rare versions:
 - Audit log URL: `docs/audit_kicad9plus.md` (and the SE-specific
   `docs/audit_mascarade_se_attribution.md` referenced in the Provenance block).
 
+## Models trained on these datasets
+
+The Ailiance org also publishes 4 LoRA adapters on
+`lmstudio-community/gemma-4-E4B-it-MLX-4bit` that use this dataset catalog as
+training data. See [`ailiance_models.md`](./ailiance_models.md) for the full
+catalog and benchmark matrix.
+
+| Model                                                  | Status                | Primary training data                                                                                       |
+|--------------------------------------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------|
+| `Ailiance-fr/gemma-4-E4B-eukiki-lora`                  | Champion general (4/7)| eu-kiki curation over kicad9plus-permissive + mascarade-spice + mascarade-embedded                          |
+| `Ailiance-fr/gemma-4-E4B-mascarade-lora`               | Champion extraction   | mascarade-{stm32,spice,iot,embedded}                                                                        |
+| `Ailiance-fr/gemma-4-E4B-aggro-test-lora`              | Sanity baseline       | curriculum phase-1 subset                                                                                   |
+| `Ailiance-fr/gemma-4-E4B-kicad9plus-lora`              | Negative result       | kicad9plus-permissive only (98 samples)                                                                     |
+
 ## Future direction
 
 - **Ailiance Hub** — Ailiance org page on HF surfaces these 7 datasets as the
