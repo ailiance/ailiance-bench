@@ -10,11 +10,13 @@ from .runner import chat_completion
 GATEWAY = "http://localhost:9300/v1/chat/completions"
 HOME_JUDGE = "ailiance-mistral-medium"
 _RUBRIC_DIR = Path(__file__).resolve().parent / "rubrics"
-_SCORE_RE = re.compile(r"SCORE:\s*(\d+)", re.IGNORECASE)
+_SCORE_RE = re.compile(r"SCORE:\s*(\d+)(?!\.\d)", re.IGNORECASE)
 
 
 def parse_judge_score(judge_output: str) -> int | None:
     """Extract the integer 0-10 score from a judge response, or None."""
+    if not isinstance(judge_output, str):
+        return None
     m = _SCORE_RE.search(judge_output)
     if not m:
         return None
