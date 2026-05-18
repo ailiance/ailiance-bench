@@ -25,7 +25,10 @@ CONFIGS = {
 
 def chat_completion(url: str, model: str, prompt: str,
                     max_tokens: int = 1024, timeout: int = 90) -> str:
-    """One OpenAI-compatible chat call; returns the assistant content."""
+    """One OpenAI-compatible chat call; returns the assistant content.
+
+    Temperature pinned to 0.0 for reproducible eval scoring.
+    """
     body = json.dumps({
         "model": model,
         "messages": [{"role": "user", "content": prompt}],

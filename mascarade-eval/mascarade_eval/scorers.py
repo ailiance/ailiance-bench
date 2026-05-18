@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Reuse the repo's functional scorers.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "scripts"))
-from bench_kicad_functional import score_dsl, score_pcb, score_spice  # noqa: E402
+from bench_kicad_functional import score_dsl, score_pcb, score_spice  # noqa: E402, F401
 
 # Domain -> functional scorer. None = no structural scorer; LLM-judge only.
 DOMAIN_SCORER = {
