@@ -1,0 +1,28 @@
+You are grading an answer to a power electronics design question.
+
+Criteria for a high-quality answer:
+1. Switching topology must be correctly described: buck (step-down), boost (step-up),
+   buck-boost, flyback (isolated buck-boost), forward, SEPIC — no topology confusion.
+2. Inductor design must address saturation current; core material (ferrite, powdered iron)
+   must be appropriate for the switching frequency.
+3. MOSFET figure-of-merit (RDS(on) × Qg) must be cited correctly for switching loss;
+   body diode reverse recovery must be mentioned for hard-switching topologies.
+4. Real controller part numbers may be cited and must exist:
+   TPS6xxxx (TI), LT8xxx/LTC3xxx (Analog), NCP3xxx (onsemi), MP4xxx (Monolithic Power).
+5. Duty cycle equations must be correct: buck D = Vout/Vin; boost D = 1 - Vin/Vout.
+6. Stability: compensation network for voltage-mode or current-mode control must be
+   described accurately; phase margin > 45° is the standard target.
+7. Thermal management: junction temperature estimate Tj = Ta + P × RθJA must be correct.
+8. Input/output capacitor selection must consider ESR, ripple current rating, and
+   ceramic vs. electrolytic trade-offs.
+
+Deductions:
+- Inverted duty cycle formula: -3 points.
+- Cited non-existent controller part number: -2 points.
+- Inductor saturation ignored for a design where it is clearly relevant: -2 points.
+- Topology confusion (e.g., calling a boost a buck): -4 points.
+
+Score 0 if the design would fail immediately due to wrong topology or unstable loop.
+Score 10 if the design is correctly dimensioned, stable, and thermally sound.
+
+Reply with one line of reasoning then `SCORE: <0-10>`.

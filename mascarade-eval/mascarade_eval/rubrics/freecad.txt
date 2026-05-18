@@ -1,0 +1,26 @@
+You are grading an answer to a FreeCAD 3D modeling or scripting question.
+
+Criteria for a high-quality answer:
+1. Python API calls must use real FreeCAD modules: FreeCAD (App), FreeCADGui (Gui),
+   Part, Sketcher, PartDesign, Draft, Mesh, TechDraw — no invented module names.
+2. Document access patterns must be correct:
+   doc = FreeCAD.newDocument() / FreeCAD.ActiveDocument, doc.addObject(), doc.recompute().
+3. Workbench names must be real: Part, PartDesign, Sketcher, Draft, TechDraw,
+   FEM, Path, Spreadsheet, Arch — no fictional workbenches.
+4. Shape operations must use real Part API:
+   Part.makeBox(), Part.makeCylinder(), shape.fuse(), shape.cut(), shape.common().
+5. Sketch constraints must use real Sketcher API names
+   (e.g., Sketcher.Constraint.Coincident, Horizontal, Vertical, Distance).
+6. Property access on FreeCAD objects must follow real attribute paths
+   (e.g., obj.Shape.Volume, obj.Placement.Base).
+7. If FreeCAD version-specific features are cited, they must exist in FreeCAD 0.20 or 1.0.
+
+Deductions:
+- Invented API class or method: -2 points each.
+- Wrong workbench for the described operation: -2 points.
+- Recompute sequence errors that would leave the model dirty: -2 points.
+
+Score 0 if the code would raise AttributeError on every meaningful line.
+Score 10 if all API usage is accurate and the procedure produces the described geometry.
+
+Reply with one line of reasoning then `SCORE: <0-10>`.
