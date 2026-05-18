@@ -232,19 +232,27 @@ measured live 2026-05-18.
   Exchange, no timestamps.** Temporal cut impossible.
 - **Held-out plan**: there is no FreeCAD-specific SE site. Candidate
   sources, in preference order:
-  1. The **KiCad/FreeCAD-adjacent doc route is not applicable** (no Q&A
-     corpus). Try `blender.stackexchange.com` / general — too off-domain.
+  1. **r/FreeCAD via Reddit public JSON API** — recommended fallback,
+     implemented in `mascarade-eval/scripts/curate_freecad_reddit.py`.
+     Paginates `/r/FreeCAD/new.json`, ranks by engagement
+     (comments × score), pairs each question post with its top-voted
+     non-stickied substantive comment as the reference. No API key
+     required. Polite 1.8s pacing. Validated 2026-05-18: yielded 25
+     items in ~60s from 200 paged posts, cutoff `2026-04-01` (post
+     LoRA-training date 2026-04-12). Items are flagged
+     `_source_type: hand-curated-reddit-r-freecad` so the aggregator
+     can mark verdicts low-confidence per the spec.
   2. The **FreeCAD forum** (`forum.freecad.org`) has Python-scripting Q&A
      but no clean API and uncertain TOS — not recommended.
-  3. **Fallback — hand-curate** ≥25 parametric-CAD tasks (write a FreeCAD
+  3. Pure hand-curation by a FreeCAD domain expert (write a FreeCAD
      Python script for an enclosure with X; an OpenSCAD module for Y),
-     flagged `source: "hand-curated"`. The functional scorer can still run
-     (does the script execute / produce valid geometry).
-- **Recommendation**: **hand-curate, explicitly flagged**. freecad is the
-  one domain with no clean fresh upstream. Its verdict will be marked
-  *low-confidence* per the spec's "held-out insuffisant" rule unless ≥25
-  curated items are authored.
-- **Status**: ⚠️ no clean upstream — hand-curate fallback required.
+     flagged `source: "hand-curated"`. Highest quality, highest cost.
+- **Recommendation**: option 1 (Reddit curator) for the first run; if
+  verdict warrants closer inspection, supplement with option 3.
+- **Status**: ✅ Reddit fallback shipped + validated; output expected
+  at `heldout/freecad.curated.jsonl` (rename to `freecad.clean.jsonl`
+  for `run_eval` consumption since leakage-filter does not apply to
+  hand-curated items).
 
 ### iot — alternative source, NO temporal cut ⚠️
 
