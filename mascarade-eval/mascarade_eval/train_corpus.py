@@ -20,9 +20,13 @@ def extract_prompts(jsonl_path: str) -> list[str]:
             d = json.loads(line)
             msgs = d.get("messages") or d.get("conversations") or []
             for m in msgs:
+                if not isinstance(m, dict):
+                    continue
                 role = m.get("role") or m.get("from")
                 if role in ("user", "human"):
-                    prompts.append(m.get("content") or m.get("value") or "")
+                    content = m.get("content") or m.get("value") or ""
+                    if content:
+                        prompts.append(content)
     return prompts
 
 
