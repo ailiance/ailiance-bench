@@ -331,6 +331,10 @@ def main() -> int:
                     help="Max items per domain (default: 40)")
     ap.add_argument("--cutoff-date", required=True,
                     help="ISO date (YYYY-MM-DD); only items newer are mined")
+    ap.add_argument("--with-leakage-filter", action="store_true",
+                    help="After mining, immediately apply the leakage "
+                         "filter so heldout/<d>.clean.jsonl is produced "
+                         "directly (zero manual step before run_eval).")
     args = ap.parse_args()
     HELDOUT_DIR.mkdir(parents=True, exist_ok=True)
     for domain in args.domains:
@@ -342,6 +346,10 @@ def main() -> int:
             encoding="utf-8",
         )
         print(f"{domain}: {len(items)} items -> {out}")
+        if args.with_leakage_filter:
+            from .filter_heldout import filter_domain
+            kept, dropped = filter_domain(domain)
+            print(f"{domain}: leakage-filter kept={kept} dropped={dropped}")
     return 0
 
 

@@ -279,6 +279,27 @@ measured live 2026-05-18.
 unseen by upstream-source argument, leakage guard does the rest; **low** =
 no clean upstream, hand-curated and explicitly flagged per spec §"garde".
 
+## Pipeline (raw → clean → eval)
+
+`run_eval` reads `heldout/<domain>.clean.jsonl`. To produce that file
+from the raw mined output:
+
+```bash
+# All in one (recommended): mine + filter in a single call
+python -m mascarade_eval.mine_upstream \
+    --cutoff-date 2025-01-01 --with-leakage-filter
+
+# Or two steps (filter only, after a previous mine run)
+python -m mascarade_eval.filter_heldout                 # all 10 domains
+python -m mascarade_eval.filter_heldout --domain kicad  # one domain
+```
+
+The filter calls `leakage_check.filter_leaks` against the LoRA
+training corpus loaded via `train_corpus.load_train_prompts(domain)`
+(downloads `Ailiance-fr/mascarade-<domain>-dataset` from HF). Each
+dropped item is written to `heldout/<domain>.dropped.jsonl` with an
+`overlap` score so the discard is auditable.
+
 ## Open items for `mine_upstream.py` implementation
 
 1. Get an SE API key (`~/.cache/stackexchange/api_key` per the existing
