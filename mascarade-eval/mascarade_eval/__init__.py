@@ -5,8 +5,9 @@ DOMAINS: tuple[str, ...] = (
     "kicad", "spice", "stm32", "emc", "embedded",
     "platformio", "freecad", "dsp", "iot", "power",
 )
-BASE_MODEL = "Qwen/Qwen3-4B-Instruct-2507"      # HF registry ID
-BASE_MODEL_ALIAS = "Qwen3-4B-Instruct-2507"     # short alias served at :9341
+BASE_MODEL = "Qwen/Qwen3-4B-Instruct-2507"      # HF ID; mlx_lm.server
+                                                 # exposes this same string as
+                                                 # the OpenAI-API `model` alias
 HF_ORG = "Ailiance-fr"
 
 _ROOT = Path(__file__).resolve().parent.parent

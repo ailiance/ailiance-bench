@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from statistics import mean
-from . import DOMAINS, RESULTS_DIR, HELDOUT_DIR, BASE_MODEL_ALIAS
+from . import DOMAINS, RESULTS_DIR, HELDOUT_DIR, BASE_MODEL
 from .runner import run_config
 from .scorers import functional_score
 from .judge import judge_one
@@ -32,7 +32,7 @@ def eval_domain(domain: str) -> dict:
     heldout = [json.loads(l) for l in
                (HELDOUT_DIR / f"{domain}.clean.jsonl").read_text().splitlines() if l]
     n = len(heldout)
-    base = run_config(heldout, "base", BASE_MODEL_ALIAS)
+    base = run_config(heldout, "base", BASE_MODEL)
     lora = run_config(heldout, "lora", f"ailiance-{domain}")
     base_scored = [s for s in (_score_one(domain, it) for it in base) if s is not None]
     lora_scored = [s for s in (_score_one(domain, it) for it in lora) if s is not None]
