@@ -40,8 +40,36 @@ def test_verdict_high_base_with_large_delta_learned():
 def test_render_report_shapes_a_table_row_per_row():
     rows = [{"domain": "iot", "n": 3, "base_score": 0.700,
              "lora_score": 0.700, "verdict": "basse confiance",
-             "routed_to": "re-miner du held-out"}]
+             "routed_to": "re-miner du held-out", "scorer": "judge"}]
     out = render_report(rows)
     assert out.startswith("# Mascarade Eval")
-    assert "| iot | 3 | 0.700 | 0.700 | basse confiance |" in out
+    assert "| iot | 3 | 0.700 | 0.700 | judge | basse confiance |" in out
     assert out.endswith("\n")
+
+
+def test_report_includes_scorer_column():
+    """Header + per-row scorer label + verdict caveat must all be present."""
+    rows = [
+        {"domain": "kicad", "n": 25, "base_score": 0.30, "lora_score": 0.55,
+         "verdict": "a appris", "routed_to": "-", "scorer": "functional"},
+        {"domain": "iot", "n": 25, "base_score": 0.55, "lora_score": 0.62,
+         "verdict": "faible", "routed_to": "B (data) -> C (training)",
+         "scorer": "judge"},
+    ]
+    out = render_report(rows)
+    # column header
+    assert "| Scorer |" in out
+    # per-row labels distinguishable
+    assert "| kicad | 25 | 0.300 | 0.550 | functional | a appris |" in out
+    assert "| iot | 25 | 0.550 | 0.620 | judge | faible |" in out
+    # explicit non-comparability caveat
+    assert "ne sont pas" in out and "comparables" in out
+    assert "par domaine" in out
+
+
+def test_report_defaults_scorer_to_judge_when_missing():
+    """Back-compat: a row without 'scorer' key still renders, labelled judge."""
+    rows = [{"domain": "iot", "n": 3, "base_score": 0.7, "lora_score": 0.7,
+             "verdict": "basse confiance", "routed_to": "re-miner du held-out"}]
+    out = render_report(rows)
+    assert "| judge |" in out
