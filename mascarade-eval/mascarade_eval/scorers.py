@@ -23,11 +23,24 @@ DOMAIN_SCORER = {
 
 
 def functional_score(domain: str, generated: str, expected: str) -> dict | None:
-    """Functional composite for `domain`, or None if no structural scorer."""
+    """Functional composite for `domain`, or None if no structural scorer.
+
+    Returns None when (a) no scorer is registered for the domain, OR
+    (b) the registered scorer ran but `parse_ok` is False — meaning the
+    generated answer was not structured DSL/SPICE/netlist and the
+    structural score is a meaningless text-similarity baseline. Returning
+    None forces the caller to fall through to the LLM-judge, which
+    handles free-form text answers correctly. Empirically validated on
+    2026-05-18 live smoke (kicad SE questions: base==LoRA==0.280 from
+    score_dsl on plain-text answers, indistinguishable).
+    """
     scorer = DOMAIN_SCORER.get(domain)
     if scorer is None:
         return None
-    return scorer(generated, expected)
+    result = scorer(generated, expected)
+    if isinstance(result, dict) and result.get("parse_ok") is False:
+        return None
+    return result
 
 
 def perplexity_score(reference: str, logprob_fn) -> float | None:
