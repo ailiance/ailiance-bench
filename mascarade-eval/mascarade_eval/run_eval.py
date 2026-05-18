@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from statistics import mean
-from . import DOMAINS, RESULTS_DIR, HELDOUT_DIR
+from . import DOMAINS, RESULTS_DIR, HELDOUT_DIR, BASE_MODEL_ALIAS
 from .runner import run_config
 from .scorers import functional_score
 from .judge import judge_one
@@ -17,14 +17,14 @@ _ROUTE = {
 }
 
 
-def _score_one(domain: str, item: dict) -> float:
+def _score_one(domain: str, item: dict) -> float | None:
     """Composite [0,1] for one answered held-out item: functional if
     available, else the LLM-judge (0-10 normalised to 0-1)."""
     fn = functional_score(domain, item["answer"], item.get("reference", ""))
     if fn is not None:
         return float(fn["composite"])
     score = judge_one(domain, item["prompt"], item["answer"])
-    return (score / 10.0) if score is not None else 0.0
+    return (score / 10.0) if score is not None else None
 
 
 def eval_domain(domain: str) -> dict:
@@ -32,10 +32,12 @@ def eval_domain(domain: str) -> dict:
     heldout = [json.loads(l) for l in
                (HELDOUT_DIR / f"{domain}.clean.jsonl").read_text().splitlines() if l]
     n = len(heldout)
-    base = run_config(heldout, "base", "Qwen3-4B-Instruct-2507")
+    base = run_config(heldout, "base", BASE_MODEL_ALIAS)
     lora = run_config(heldout, "lora", f"ailiance-{domain}")
-    base_s = mean(_score_one(domain, it) for it in base) if base else 0.0
-    lora_s = mean(_score_one(domain, it) for it in lora) if lora else 0.0
+    base_scored = [s for s in (_score_one(domain, it) for it in base) if s is not None]
+    lora_scored = [s for s in (_score_one(domain, it) for it in lora) if s is not None]
+    base_s = mean(base_scored) if base_scored else 0.0
+    lora_s = mean(lora_scored) if lora_scored else 0.0
     v = verdict(base_s, lora_s, n)
     return {"domain": domain, "n": n, "base_score": base_s,
             "lora_score": lora_s, "verdict": v, "routed_to": _ROUTE[v]}

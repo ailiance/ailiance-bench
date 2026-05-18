@@ -34,8 +34,8 @@ def test_run_eval_smoke_produces_report(tmp_path, monkeypatch):
     monkeypatch.setattr("mascarade_eval.runner.chat_completion",
                         lambda url, model, prompt, **kw: "an answer")
 
-    # -- mock judge_one so no HTTP call is needed --
-    monkeypatch.setattr("mascarade_eval.judge.judge_one",
+    # -- mock judge_one at the binding run_eval actually calls --
+    monkeypatch.setattr("mascarade_eval.run_eval.judge_one",
                         lambda *a, **k: 7)  # both base+lora → 0.7
 
     # -- drive main() via sys.argv --
@@ -54,10 +54,32 @@ def test_run_eval_smoke_produces_report(tmp_path, monkeypatch):
         f"Expected 'basse confiance' verdict (n=3 < MIN_HELDOUT=20), got:\n{report}"
     )
 
-    # -- JSON results file must exist too --
+    # -- JSON results file must exist and contain correct scores --
     json_path = results / "mascarade-eval.json"
     assert json_path.exists(), "JSON results file not created"
     rows = json.loads(json_path.read_text())
     assert len(rows) == 1
     assert rows[0]["domain"] == "iot"
+    assert rows[0]["verdict"] == "basse confiance"
+    assert abs(rows[0]["base_score"] - 0.7) < 1e-9, (
+        f"Expected base_score=0.7, got {rows[0]['base_score']}"
+    )
+    assert abs(rows[0]["lora_score"] - 0.7) < 1e-9, (
+        f"Expected lora_score=0.7, got {rows[0]['lora_score']}"
+    )
+
+
+def test_run_eval_handles_missing_heldout(tmp_path, monkeypatch):
+    """Missing heldout/<domain>.clean.jsonl => fallback row, not abort."""
+    from mascarade_eval import run_eval as _run_eval
+    results = tmp_path / "results"
+    monkeypatch.setattr(_run_eval, "HELDOUT_DIR", tmp_path / "missing")
+    monkeypatch.setattr(_run_eval, "RESULTS_DIR", results)
+    monkeypatch.setattr(sys, "argv", ["run_eval", "--domains", "iot"])
+    rc = _run_eval.main()
+    assert rc == 0
+    rows = json.loads((results / "mascarade-eval.json").read_text())
+    assert len(rows) == 1
+    assert rows[0]["domain"] == "iot"
+    assert rows[0]["n"] == 0
     assert rows[0]["verdict"] == "basse confiance"

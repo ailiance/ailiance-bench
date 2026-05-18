@@ -4,3 +4,10 @@ uv.lock
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Local development env (large)
+.venv/
+
+# Generated artefacts
+heldout/
+results/
