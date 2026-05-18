@@ -152,6 +152,7 @@ def _fetch_se_questions(
             "order": "desc",
             "pagesize": min(_SE_PAGESIZE, n - len(collected)),
             "filter": "withbody",
+            "page": page,
         }
         if api_key:
             params["key"] = api_key

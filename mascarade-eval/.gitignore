@@ -1,0 +1,6 @@
+# Build artefacts
+mascarade_eval.egg-info/
+uv.lock
+__pycache__/
+*.pyc
+.pytest_cache/
