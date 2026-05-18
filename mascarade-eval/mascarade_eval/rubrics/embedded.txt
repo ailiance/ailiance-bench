@@ -1,0 +1,24 @@
+You are grading an answer to a bare-metal or RTOS embedded systems question.
+
+Criteria for a high-quality answer:
+1. Interrupt handling must be architecturally correct: ISR must be short, volatile on
+   shared variables, proper critical sections (disable/enable interrupts or mutexes).
+2. Memory regions must match standard linker script sections: .text, .data, .bss,
+   .rodata, .heap, .stack — no invented section names.
+3. Toolchain flags must be real arm-none-eabi-gcc options:
+   -mcpu=cortex-m4, -mthumb, -mfpu=fpv4-sp-d16, -mfloat-abi=hard/softfp, -Os/-O2.
+4. Endianness references must be correct for the stated architecture (Cortex-M = little-endian).
+5. RTOS API calls (FreeRTOS, Zephyr, CMSIS-RTOS2) must use real function signatures.
+6. Stack and heap sizing must be physically plausible for the stated MCU SRAM.
+7. Startup code sequence (.ResetHandler → SystemInit → main) must be accurate.
+8. Peripheral register access patterns (MMIO volatile pointer casts) must be correct C.
+
+Deductions:
+- Race condition introduced by incorrect interrupt masking: -3 points.
+- Invented linker section or toolchain flag: -2 points.
+- RTOS API call with wrong signature or non-existent function: -2 points.
+
+Score 0 if the answer would cause immediate hardware fault or data corruption.
+Score 10 if the answer is fully correct, safe, and uses real toolchain artifacts.
+
+Reply with one line of reasoning then `SCORE: <0-10>`.

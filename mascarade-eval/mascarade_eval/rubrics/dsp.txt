@@ -1,0 +1,27 @@
+You are grading an answer to a digital signal processing question.
+
+Criteria for a high-quality answer:
+1. Nyquist–Shannon theorem must be applied correctly: sampling rate must be at least
+   twice the highest signal frequency; aliasing must be explained accurately.
+2. FIR filter design must cite real methods: windowed sinc (Hamming, Hanning, Blackman,
+   Kaiser), Parks-McClellan/Remez, least-squares.
+3. IIR filter design must reference real prototypes: Butterworth, Chebyshev I/II,
+   Elliptic (Cauer), Bessel; bilinear transform or impulse invariance for discretization.
+4. FFT window functions and their trade-offs (mainlobe width vs. sidelobe level)
+   must be correct (Hann reduces spectral leakage, rectangular has highest sidelobe).
+5. dB conventions must not be mixed: 20·log10 for amplitude/voltage/SPL,
+   10·log10 for power.
+6. Filter stability: IIR poles must be inside the unit circle for stability.
+7. Fixed-point arithmetic concerns (overflow, scaling, guard bits) must be accurate
+   if the implementation target is a DSP or MCU without FPU.
+8. Frequency bin resolution formula: Δf = Fs / N must be stated correctly.
+
+Deductions:
+- Inverted Nyquist criterion or aliasing explanation: -3 points.
+- Wrong dB formula for the quantity in question: -2 points.
+- Unstable IIR filter presented as stable: -4 points.
+
+Score 0 if fundamental DSP principles are violated throughout.
+Score 10 if all signal processing claims are rigorous and mathematically consistent.
+
+Reply with one line of reasoning then `SCORE: <0-10>`.

@@ -1,0 +1,22 @@
+You are grading an answer to a SPICE simulation question.
+
+Criteria for a high-quality answer:
+1. Element cards must use correct SPICE syntax: R, L, C, V, I, Q, M, D, X (subcircuit call).
+2. Node numbering must be consistent; node 0 is always ground.
+3. Analysis directives must be real: .dc, .tran, .ac, .op, .tf, .noise, .sens, .four.
+4. .subckt/.ends and .model definitions must be syntactically correct.
+5. .end must appear as the final netlist line; .endc closes a .control block.
+6. No fictional SPICE directives (e.g., made-up .sweep variants that don't exist in ngspice).
+7. Component values must use standard SPICE suffixes: p, n, u, m, k, meg, g, t.
+8. Behavioral sources (E, G, B for ngspice) must use correct syntax.
+9. Simulation parameters (step, stop, start) must be in a sensible physical range.
+
+Deductions:
+- Invented directive or non-existent model parameter: -2 points each.
+- Syntax error that would prevent the netlist from parsing: -3 points.
+- Floating node with no DC path to ground causing convergence failure (unremarked): -2 points.
+
+Score 0 if the netlist is entirely non-functional or entirely fabricated.
+Score 10 if the netlist is syntactically valid, physically correct, and complete.
+
+Reply with one line of reasoning then `SCORE: <0-10>`.

@@ -1,0 +1,27 @@
+You are grading an answer to an IoT protocol, connectivity, or security question.
+
+Criteria for a high-quality answer:
+1. MQTT: QoS levels (0 at-most-once, 1 at-least-once, 2 exactly-once) must be correct;
+   topic hierarchy syntax must use forward slashes; retain and LWT semantics must be accurate.
+2. CoAP: must correctly describe RESTful model over UDP, confirmable/non-confirmable
+   messages, observe option, and DTLS for security.
+3. BLE GATT: must use correct terms (service, characteristic, descriptor, handle,
+   UUID); ATT protocol roles (server/client) must not be swapped.
+4. LoRaWAN: spreading factor, bandwidth, coding rate trade-offs must be accurate;
+   OTAA vs ABP join must be described correctly; duty cycle limits must be mentioned.
+5. Zigbee: mesh topology (coordinator/router/end-device), IEEE 802.15.4 PHY,
+   cluster library must be described accurately.
+6. Security: TLS 1.2/1.3 for TCP-based protocols, DTLS for UDP, OAuth 2.0 / JWT
+   for API auth — no invented security mechanisms.
+7. Message payload formats (JSON, CBOR, Protobuf) must be described correctly.
+8. Real chipset families may be cited (ESP32, nRF52, SX1276/SX1262, CC2652).
+
+Deductions:
+- Swapped QoS levels or LoRaWAN join procedure: -2 points.
+- Invented IoT protocol or fictional security standard: -3 points.
+- BLE role reversal (client/server) in GATT: -2 points.
+
+Score 0 if the answer fundamentally misrepresents protocol operation.
+Score 10 if all protocol details and security recommendations are accurate.
+
+Reply with one line of reasoning then `SCORE: <0-10>`.
