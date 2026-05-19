@@ -27,6 +27,10 @@ LLM_DOCS: dict[str, dict[str, tuple[str, ...]]] = {
             "run_id", "base_model", "export_id", "hyperparams",
             "checkpoints", "duration", "status", "lora_id", "notes",
         ),
+        "Datasets": (
+            "name", "family", "domain", "hf_dataset_id", "license",
+            "n_items", "notes",
+        ),
     },
     "bench": {
         "Bench_Results": (

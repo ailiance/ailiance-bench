@@ -7,7 +7,8 @@ def test_llm_docs_has_the_four_documents():
 
 def test_each_doc_declares_its_tables():
     assert set(LLM_DOCS["domain"]) == {"Sourcing", "Dataset_Items"}
-    assert set(LLM_DOCS["training"]) == {"Exports", "Training_Runs"}
+    assert set(LLM_DOCS["training"]) == {"Exports", "Training_Runs",
+                                         "Datasets"}
     assert set(LLM_DOCS["bench"]) == {"Bench_Results", "Eval_Items"}
     assert set(LLM_DOCS["workflow"]) == {"Pipeline_Status", "Audit_Log"}
 
@@ -22,13 +23,15 @@ def test_dataset_items_carries_review_columns():
 def test_provision_doc_creates_missing_tables(fake_client):
     client = fake_client(tables=[])
     report = provision_doc(client, LLM_DOCS["training"])
-    assert report == {"Exports": "created", "Training_Runs": "created"}
-    assert client.created[0][0] in {"Exports", "Training_Runs"}
-    assert len(client.created) == 2
+    assert report == {"Exports": "created", "Training_Runs": "created",
+                      "Datasets": "created"}
+    assert client.created[0][0] in {"Exports", "Training_Runs", "Datasets"}
+    assert len(client.created) == 3
 
 
 def test_provision_doc_is_idempotent(fake_client):
     client = fake_client(tables=["Exports"])
     report = provision_doc(client, LLM_DOCS["training"])
-    assert report == {"Exports": "exists", "Training_Runs": "created"}
-    assert [t for t, _ in client.created] == ["Training_Runs"]
+    assert report == {"Exports": "exists", "Training_Runs": "created",
+                      "Datasets": "created"}
+    assert set(t for t, _ in client.created) == {"Training_Runs", "Datasets"}
