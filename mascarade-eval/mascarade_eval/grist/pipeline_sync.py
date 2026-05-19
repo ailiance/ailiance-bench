@@ -75,7 +75,8 @@ def sync_pipeline(domain_client, training_client, bench_client,
     """
     domain_rows = domain_client.fetch_records("Dataset_Items")
     training_rows = training_client.fetch_records("Training_Runs")
-    bench_rows = bench_client.fetch_records("Bench_Results")
+    bench_rows = (bench_client.fetch_records("Mascarade_Eval")
+                  + bench_client.fetch_records("Bench_31_domains"))
 
     sourced = {r["domain"] for r in domain_rows if r.get("domain")}
     trained = {r["domain"] for r in training_rows if r.get("domain")}

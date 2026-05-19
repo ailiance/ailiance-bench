@@ -69,7 +69,7 @@ def test_sync_pipeline_upserts_per_domain_status(fake_client):
         {"domain": "kicad"}, {"domain": "spice"}]})
     training_c = fake_client(records={"Training_Runs": [
         {"domain": "kicad"}]})
-    bench_c = fake_client(records={"Bench_Results": [
+    bench_c = fake_client(records={"Mascarade_Eval": [
         {"domain": "kicad"}]})
     workflow_c = fake_client(tables=[])
 
@@ -110,7 +110,7 @@ def test_resolve_sync_config_exits_on_missing(monkeypatch):
 def test_sync_pipeline_dry_run_writes_nothing(fake_client):
     domain_c = fake_client(records={"Dataset_Items": [{"domain": "kicad"}]})
     training_c = fake_client(records={"Training_Runs": []})
-    bench_c = fake_client(records={"Bench_Results": []})
+    bench_c = fake_client(records={"Mascarade_Eval": []})
     workflow_c = fake_client(tables=[])
     report = sync_pipeline(domain_c, training_c, bench_c, workflow_c,
                            served=set(), dry_run=True)

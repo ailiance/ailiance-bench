@@ -10,7 +10,6 @@ def test_constants_present():
     assert grist.DOC_TRAINING_ENV == "GRIST_DOC_LLM_TRAINING"
     assert grist.DOC_BENCH_ENV == "GRIST_DOC_LLM_BENCH"
     assert grist.TRAINING_TABLE == "Dataset_Items"
-    assert grist.EVAL_TABLE == "Eval_Items"
     assert grist.REGISTRY_TABLE == "Datasets_Registry"
     assert grist.EXPORTS_TABLE == "Exports"
 
