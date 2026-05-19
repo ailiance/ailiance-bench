@@ -1,5 +1,6 @@
 # tests/test_grist_export.py
 import json
+import pytest
 from mascarade_eval.grist import TRAINING_TABLE, EXPORTS_TABLE
 from mascarade_eval.grist.export import (
     canonical_jsonl, content_hash, export_domain,
@@ -67,3 +68,22 @@ def test_export_domain_dry_run_writes_nothing(fake_client, tmp_path):
     assert report["n_items"] == 1
     assert list(tmp_path.iterdir()) == []
     assert client.added == {}
+
+
+def test_export_domain_removes_file_when_grist_logging_fails(
+        fake_client, tmp_path):
+    client = fake_client(
+        tables=[TRAINING_TABLE],
+        records={TRAINING_TABLE: [
+            {"_id": 1, "item_key": "kicad-1", "domain": "kicad",
+             "user_msg": "Q", "assistant_msg": "A", "system": "",
+             "extra_turns": "", "exclure": False}]},
+    )
+
+    def boom(table, rows):
+        raise RuntimeError("grist down")
+
+    client.add_records = boom
+    with pytest.raises(RuntimeError, match="grist down"):
+        export_domain(client, "kicad", out_dir=tmp_path)
+    assert list(tmp_path.iterdir()) == []  # no orphaned snapshot file

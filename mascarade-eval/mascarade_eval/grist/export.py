@@ -57,8 +57,13 @@ def export_domain(client, domain: str, out_dir: Path,
         return report
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / filename).write_text(payload + ("\n" if payload else ""),
-                                    encoding="utf-8")
-    client.ensure_table(EXPORTS_TABLE, EXPORTS_COLUMNS)
-    client.add_records(EXPORTS_TABLE, [report])
+    out_path = out_dir / filename
+    out_path.write_text(payload + ("\n" if payload else ""),
+                        encoding="utf-8")
+    try:
+        client.ensure_table(EXPORTS_TABLE, EXPORTS_COLUMNS)
+        client.add_records(EXPORTS_TABLE, [report])
+    except Exception:
+        out_path.unlink(missing_ok=True)
+        raise
     return report
