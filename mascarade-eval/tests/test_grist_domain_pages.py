@@ -35,3 +35,17 @@ def test_reconcile_lists_are_sorted():
     out = reconcile_domains(rows, ("spice", "kicad"))
     assert out["expected"] == ["kicad", "spice"]
     assert out["present"] == ["kicad", "spice"]
+
+
+def test_page_plan_describes_the_domain_page():
+    from mascarade_eval.grist.domain_pages import page_plan
+    plan = page_plan("kicad")
+    assert plan["page_name"] == "Domain: kicad"
+    assert plan["widgets"] == ["Sourcing", "Dataset_Items"]
+    assert plan["filter"] == {"column": "domain", "value": "kicad"}
+
+
+def test_page_plan_distinct_per_domain():
+    from mascarade_eval.grist.domain_pages import page_plan
+    assert page_plan("spice")["page_name"] != page_plan("kicad")["page_name"]
+    assert page_plan("spice")["filter"]["value"] == "spice"

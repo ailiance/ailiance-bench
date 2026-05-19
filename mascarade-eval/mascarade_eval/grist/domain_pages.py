@@ -27,3 +27,12 @@ def reconcile_domains(dataset_items_rows: list[dict],
         "orphans": sorted(seen - known),
         "missing": sorted(known - seen),
     }
+
+
+def page_plan(domain: str) -> dict:
+    """Describe the Grist page wanted for one domain."""
+    return {
+        "page_name": f"Domain: {domain}",
+        "widgets": ["Sourcing", "Dataset_Items"],
+        "filter": {"column": "domain", "value": domain},
+    }
