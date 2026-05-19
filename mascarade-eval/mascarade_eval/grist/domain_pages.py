@@ -10,6 +10,8 @@ import json
 import urllib.error
 import urllib.request
 
+from mascarade_eval.grist import GRIST_BASE
+
 
 def reconcile_domains(dataset_items_rows: list[dict],
                       known_domains: tuple[str, ...]) -> dict:
@@ -41,7 +43,7 @@ def page_plan(domain: str) -> dict:
 def _grist_applier(doc_id: str, key: str):
     """Build an applier that POSTs user-actions to a Grist doc."""
     def applier(actions: list) -> None:
-        url = (f"https://grist.saillant.cc/api/docs/{doc_id}/apply")
+        url = f"{GRIST_BASE}/docs/{doc_id}/apply"
         data = json.dumps(actions).encode()
         req = urllib.request.Request(
             url, data=data, method="POST",
