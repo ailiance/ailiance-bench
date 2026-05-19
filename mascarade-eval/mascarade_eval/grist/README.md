@@ -29,5 +29,8 @@ writing to Grist or disk.
 
 ## Human review
 
-Edit rows directly in the Grist UI. To drop an item from future exports,
-tick its `exclure` checkbox — `export` filters those rows out.
+Edit rows directly in the Grist UI. Each row carries a `review_status`
+(`pending` / `validated` / `rejected` / `needs_fix`); `export` ships only
+`validated` rows. Pass `--include-pending` to `export` to also include
+rows still awaiting review. See `docs/grist-native-views-recipe.md` and
+`docs/grist-widget-setup.md` for the review surfaces.

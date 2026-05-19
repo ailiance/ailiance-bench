@@ -14,7 +14,10 @@ def test_migrate_then_export_round_trips(fake_client, tmp_path):
     ]
     client = fake_client(tables=[])
     migrate_domain(client, "kicad", records=source)
-    report = export_domain(client, "kicad", out_dir=tmp_path)
+    # Migrated rows start as review_status=pending; include them so the
+    # round-trip exercises message semantics independent of review state.
+    report = export_domain(client, "kicad", out_dir=tmp_path,
+                           include_pending=True)
 
     assert report["n_items"] == 2
     out_file = tmp_path / report["output_file"]

@@ -32,6 +32,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_exp.add_argument("--doc")
     p_exp.add_argument("--domain", required=True)
     p_exp.add_argument("--dry-run", action="store_true")
+    p_exp.add_argument("--include-pending", action="store_true",
+                       help="also export rows still pending review")
 
     p_mig = sub.add_parser("migrate", help="backfill a domain from HF")
     p_mig.add_argument("--doc")
@@ -119,7 +121,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ingest {args.domain}: {report}")
     elif args.command == "export":
         report = export_domain(client, args.domain, EXPORTS_DIR,
-                               dry_run=args.dry_run)
+                               dry_run=args.dry_run,
+                               include_pending=args.include_pending)
         print(f"export {args.domain}: {report}")
     elif args.command == "migrate":
         report = migrate_domain(client, args.domain, dry_run=args.dry_run)

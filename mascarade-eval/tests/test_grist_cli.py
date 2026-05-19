@@ -63,3 +63,9 @@ def test_schema_command_runs_over_review_targets(monkeypatch, fake_client):
     rc = cli.main(["schema"])
     assert rc == 0
     assert made.added_columns["Heldout_Items"]
+
+
+def test_parser_export_accepts_include_pending():
+    ns = build_parser().parse_args(
+        ["export", "--doc", "D", "--domain", "kicad", "--include-pending"])
+    assert ns.include_pending is True

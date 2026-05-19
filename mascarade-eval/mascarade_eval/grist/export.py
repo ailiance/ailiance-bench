@@ -31,14 +31,28 @@ def _timestamp() -> str:
     return datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")
 
 
+def _is_exportable(row: dict, include_pending: bool) -> bool:
+    """A row ships only when validated (or pending, if explicitly allowed).
+
+    `rejected` and `needs_fix` rows are always excluded. A row with no
+    review_status is treated as `pending`.
+    """
+    status = row.get("review_status") or "pending"
+    if status == "validated":
+        return True
+    return include_pending and status == "pending"
+
+
 def export_domain(client, domain: str, out_dir: Path,
-                  dry_run: bool = False) -> dict:
-    """Export one domain's non-excluded training rows to a hashed snapshot.
+                  dry_run: bool = False,
+                  include_pending: bool = False) -> dict:
+    """Export one domain's human-validated training rows to a hashed snapshot.
 
     Returns a report dict matching the Exports row written to Grist.
     """
     rows = [r for r in client.fetch_records(TRAINING_TABLE)
-            if r.get("domain") == domain and not r.get("exclure")]
+            if r.get("domain") == domain
+            and _is_exportable(r, include_pending)]
     payload = canonical_jsonl(
         [(r.get("item_key", ""), rebuild_messages(r)) for r in rows])
     digest = content_hash(payload)
