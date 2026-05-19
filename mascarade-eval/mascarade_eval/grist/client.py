@@ -11,6 +11,7 @@ import urllib.request
 from . import GRIST_BASE, KEY_FILE, REVIEW_STATUSES, REVIEWER_CHOICES
 
 _INT_COLS = {"n_items", "n_rows"}
+_MAX_POST_BYTES = 500_000  # keep POST bodies well under Grist's limit
 _CHOICE_COLS = {
     "review_status": REVIEW_STATUSES,
     "reviewer": REVIEWER_CHOICES,
@@ -112,11 +113,29 @@ class GristClient:
         return [{"_id": r["id"], **r["fields"]} for r in resp.get("records", [])]
 
     def add_records(self, table: str, rows: list[dict]) -> None:
+        """Insert records, chunked by row count and payload size.
+
+        A chunk is flushed at 100 rows or when adding the next row
+        would exceed _MAX_POST_BYTES, whichever comes first. This keeps
+        wide rows (large text cells) under Grist's request size limit.
+        """
         if not rows:
             return
-        for start in range(0, len(rows), 100):
-            chunk = rows[start:start + 100]
-            self._api("POST", f"/docs/{self.doc_id}/tables/{table}/records",
+        path = f"/docs/{self.doc_id}/tables/{table}/records"
+        chunk: list[dict] = []
+        chunk_bytes = 0
+        for row in rows:
+            row_bytes = len(json.dumps(row))
+            if chunk and (len(chunk) >= 100
+                          or chunk_bytes + row_bytes > _MAX_POST_BYTES):
+                self._api("POST", path,
+                          {"records": [{"fields": r} for r in chunk]})
+                chunk = []
+                chunk_bytes = 0
+            chunk.append(row)
+            chunk_bytes += row_bytes
+        if chunk:
+            self._api("POST", path,
                       {"records": [{"fields": r} for r in chunk]})
 
     def upsert_records(self, table: str, rows: list[dict],

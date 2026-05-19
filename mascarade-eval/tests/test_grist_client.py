@@ -118,3 +118,26 @@ def test_upsert_records_noop_on_empty():
     c = GristClient("doc1", "key1", transport=_recording_transport(log))
     c.upsert_records("T", [], "name")
     assert log == []
+
+
+def test_add_records_splits_oversized_payload_into_multiple_posts():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    # 8 rows each ~100 KB -> ~800 KB total, must split (>500 KB budget)
+    big = "x" * 100_000
+    rows = [{"a": big} for _ in range(8)]
+    c.add_records("T", rows)
+    posts = [e for e in log if e[0] == "POST"]
+    assert len(posts) >= 2  # one 800 KB POST would 413; must be chunked
+    # every row is delivered exactly once across the POSTs
+    delivered = [rec for _, _, body in posts
+                 for rec in body["records"]]
+    assert len(delivered) == 8
+
+
+def test_add_records_small_rows_still_one_post():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    c.add_records("T", [{"a": "1"}, {"a": "2"}, {"a": "3"}])
+    posts = [e for e in log if e[0] == "POST"]
+    assert len(posts) == 1  # tiny rows fit in a single chunk
