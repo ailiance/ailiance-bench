@@ -9,7 +9,9 @@ def test_each_doc_declares_its_tables():
     assert set(LLM_DOCS["domain"]) == {"Sourcing", "Dataset_Items"}
     assert set(LLM_DOCS["training"]) == {"Exports", "Training_Runs",
                                          "Datasets"}
-    assert set(LLM_DOCS["bench"]) == {"Bench_Results", "Eval_Items"}
+    assert set(LLM_DOCS["bench"]) == {"Heldout_Items", "Mascarade_Eval",
+                                      "Mascarade_Eval_Items",
+                                      "Bench_31_domains"}
     assert set(LLM_DOCS["workflow"]) == {"Pipeline_Status", "Audit_Log"}
 
 

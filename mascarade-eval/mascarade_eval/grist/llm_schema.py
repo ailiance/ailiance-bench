@@ -33,13 +33,30 @@ LLM_DOCS: dict[str, dict[str, tuple[str, ...]]] = {
         ),
     },
     "bench": {
-        "Bench_Results": (
-            "result_id", "domain", "model", "score", "n_items",
-            "created_at", "notes",
+        "Heldout_Items": (
+            "item_key", "domain", "prompt", "reference", "source",
+            "dataset", "review_status", "reviewer", "reviewed_at",
+            "review_note",
         ),
-        "Eval_Items": (
-            "item_key", "domain", "prompt", "reference", "response",
-            "score", "judge_reasoning", "source", "notes",
+        "Mascarade_Eval": (
+            "run_domain", "run_id", "domain", "n", "base_score",
+            "lora_score", "delta", "verdict", "routed_to", "scorer",
+            "status", "updated_at",
+        ),
+        "Mascarade_Eval_Items": (
+            "run_item", "run_id", "domain", "item_idx", "question",
+            "reference", "base_answer", "base_score", "base_scorer",
+            "base_judge_raw", "lora_answer", "lora_score", "lora_scorer",
+            "lora_judge_raw", "delta", "updated_at", "review_status",
+            "reviewer", "reviewed_at", "review_note",
+        ),
+        "Bench_31_domains": (
+            "model", "domain", "ppl", "stderr_ppl", "status", "samples",
+            "date", "source", "task_score", "task_metric", "judge_score",
+            "judge_rationale", "judge_independence", "host", "runtime_s",
+            "tokens_per_s", "run_id", "validator_score",
+            "validator_image_digest", "review_status", "reviewer",
+            "reviewed_at", "review_note",
         ),
     },
     "workflow": {
