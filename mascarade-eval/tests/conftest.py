@@ -12,6 +12,7 @@ class FakeClient:
         self._columns = {t: list(cs) for t, cs in (columns or {}).items()}
         self.created = []
         self.added = {}
+        self.upserted = {}
         self.added_columns = {}
 
     def list_tables(self):
@@ -39,6 +40,17 @@ class FakeClient:
     def add_records(self, table, rows):
         self.added.setdefault(table, []).extend(rows)
         self._records.setdefault(table, []).extend(rows)
+
+    def upsert_records(self, table, rows, key_field):
+        bucket = self._records.setdefault(table, [])
+        for row in rows:
+            for i, existing in enumerate(bucket):
+                if existing.get(key_field) == row[key_field]:
+                    bucket[i] = row
+                    break
+            else:
+                bucket.append(row)
+            self.upserted.setdefault(table, []).append(row)
 
 
 @pytest.fixture

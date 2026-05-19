@@ -100,3 +100,21 @@ def test_add_columns_noop_on_empty():
 def test_load_grist_key_prefers_env(monkeypatch):
     monkeypatch.setenv("GRIST_API_KEY", "env-key")
     assert load_grist_key() == "env-key"
+
+
+def test_upsert_records_puts_with_require_wrapper():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    c.upsert_records("T", [{"name": "n1", "v": "x"}], "name")
+    method, url, body = log[-1]
+    assert method == "PUT"
+    assert "/docs/doc1/tables/T/records?onmany=first" in url
+    assert body == {"records": [
+        {"require": {"name": "n1"}, "fields": {"name": "n1", "v": "x"}}]}
+
+
+def test_upsert_records_noop_on_empty():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    c.upsert_records("T", [], "name")
+    assert log == []

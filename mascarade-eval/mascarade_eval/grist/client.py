@@ -118,3 +118,16 @@ class GristClient:
             chunk = rows[start:start + 100]
             self._api("POST", f"/docs/{self.doc_id}/tables/{table}/records",
                       {"records": [{"fields": r} for r in chunk]})
+
+    def upsert_records(self, table: str, rows: list[dict],
+                       key_field: str) -> None:
+        """Insert or update rows, matched on key_field, in chunks of 100."""
+        if not rows:
+            return
+        for start in range(0, len(rows), 100):
+            chunk = rows[start:start + 100]
+            self._api(
+                "PUT",
+                f"/docs/{self.doc_id}/tables/{table}/records?onmany=first",
+                {"records": [{"require": {key_field: r[key_field]},
+                              "fields": r} for r in chunk]})

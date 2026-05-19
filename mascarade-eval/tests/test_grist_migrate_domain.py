@@ -34,7 +34,18 @@ def test_migrate_domain_writes_registry_row(fake_client):
     records = [{"messages": [{"role": "user", "content": "Q"},
                              {"role": "assistant", "content": "A"}]}]
     migrate_domain(client, "kicad", records=records)
-    reg = client.added[REGISTRY_TABLE]
+    reg = client.upserted[REGISTRY_TABLE]
     assert reg[0]["name"] == "mascarade-kicad-train"
     assert reg[0]["family"] == "mascarade-training"
     assert reg[0]["hf_dataset_id"] == "Ailiance-fr/mascarade-kicad-dataset"
+
+
+def test_migrate_domain_registry_row_is_upserted_not_duplicated(fake_client):
+    client = fake_client(tables=[])
+    records = [{"messages": [{"role": "user", "content": "Q"},
+                             {"role": "assistant", "content": "A"}]}]
+    migrate_domain(client, "kicad", records=records)
+    migrate_domain(client, "kicad", records=records)
+    from mascarade_eval.grist import REGISTRY_TABLE
+    reg_rows = [r for r in client.fetch_records(REGISTRY_TABLE)]
+    assert len([r for r in reg_rows if r["name"] == "mascarade-kicad-train"]) == 1

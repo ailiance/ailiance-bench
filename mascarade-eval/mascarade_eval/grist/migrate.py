@@ -114,7 +114,7 @@ def migrate_domain(client, domain: str, records: list[dict] | None = None,
                          dry_run=dry_run)
     if not dry_run:
         client.ensure_table(REGISTRY_TABLE, REGISTRY_COLUMNS)
-        client.add_records(REGISTRY_TABLE, [{
+        client.upsert_records(REGISTRY_TABLE, [{
             "name": f"mascarade-{domain}-train",
             "family": "mascarade-training",
             "domain": domain,
@@ -123,5 +123,5 @@ def migrate_domain(client, domain: str, records: list[dict] | None = None,
             "n_items": len(rows),
             "notes": f"backfilled {report['inserted']} new, "
                      f"{report['skipped']} already present",
-        }])
+        }], "name")
     return report
