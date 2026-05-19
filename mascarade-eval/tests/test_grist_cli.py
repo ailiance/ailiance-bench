@@ -47,3 +47,19 @@ def test_ingest_jsonl_rows_exits_on_missing_file(tmp_path):
     from mascarade_eval.grist.cli import _ingest_jsonl_rows
     with pytest.raises(SystemExit):
         _ingest_jsonl_rows("kicad", str(tmp_path / "does-not-exist.jsonl"))
+
+
+def test_parser_accepts_schema_command():
+    ns = build_parser().parse_args(["schema"])
+    assert ns.command == "schema"
+
+
+def test_schema_command_runs_over_review_targets(monkeypatch, fake_client):
+    from mascarade_eval.grist import cli
+    made = fake_client(tables=["Heldout_Items"],
+                       columns={"Heldout_Items": ["item_key"]})
+    monkeypatch.setattr(cli.GristClient, "from_env",
+                        classmethod(lambda c, doc: made))
+    rc = cli.main(["schema"])
+    assert rc == 0
+    assert made.added_columns["Heldout_Items"]

@@ -43,6 +43,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_pub.add_argument("--hf-dataset", required=True)
     p_pub.add_argument("--filename", required=True)
 
+    sub.add_parser("schema", help="add review columns to existing tables")
+
     return ap
 
 
@@ -97,6 +99,15 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "publish":
         publish_snapshot(args.snapshot, args.hf_dataset, args.filename)
         print(f"published {args.snapshot} -> {args.hf_dataset}")
+        return 0
+
+    if args.command == "schema":
+        from . import REVIEW_TARGETS
+        from .schema import migrate_doc
+        for doc_id, tables in REVIEW_TARGETS.items():
+            doc_client = GristClient.from_env(doc_id)
+            report = migrate_doc(doc_client, tables)
+            print(f"schema {doc_id}: {report}")
         return 0
 
     client = GristClient.from_env(resolve_doc(args.doc))
