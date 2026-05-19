@@ -85,8 +85,8 @@ def _ingest_jsonl_rows(domain: str, jsonl_path: str) -> list[dict]:
             "assistant_msg": flat["assistant_msg"],
             "extra_turns": flat["extra_turns"],
             "source": record.get("source", ""),
-            "exclure": False,
             "notes": "",
+            "review_status": "pending",
         })
     return rows
 

@@ -96,8 +96,8 @@ def _to_training_row(domain: str, record: dict) -> dict:
         "assistant_msg": flat["assistant_msg"],
         "extra_turns": flat["extra_turns"],
         "source": f"{HF_ORG}/mascarade-{domain}-dataset",
-        "exclure": False,
         "notes": "",
+        "review_status": "pending",
     }
 
 

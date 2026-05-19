@@ -17,7 +17,7 @@ def test_migrate_domain_ingests_flattened_rows(fake_client):
     assert {r["user_msg"] for r in added} == {"Q1", "Q2"}
     assert all(r["domain"] == "kicad" for r in added)
     assert all(r["item_key"].startswith("kicad-") for r in added)
-    assert all(r["exclure"] is False for r in added)
+    assert all(r["review_status"] == "pending" for r in added)
 
 
 def test_migrate_domain_is_idempotent(fake_client):
