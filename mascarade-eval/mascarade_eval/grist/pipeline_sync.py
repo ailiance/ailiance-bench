@@ -6,6 +6,7 @@ gateway (injectable transport). sync_pipeline orchestrates the upsert.
 """
 from __future__ import annotations
 
+from collections.abc import Callable
 import datetime
 import json
 import urllib.request
@@ -49,7 +50,9 @@ def _http_get_json(url: str) -> dict:
     return json.loads(raw) if raw else {}
 
 
-def fetch_served_aliases(gateway_url: str, transport=_http_get_json) -> set[str]:
+def fetch_served_aliases(gateway_url: str,
+                         transport: Callable[[str], dict] = _http_get_json
+                         ) -> set[str]:
     """Return the set of model IDs exposed by the gateway /v1/models.
 
     `transport` is injected for testing; production uses urllib.
