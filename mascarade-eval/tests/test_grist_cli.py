@@ -69,3 +69,15 @@ def test_parser_export_accepts_include_pending():
     ns = build_parser().parse_args(
         ["export", "--doc", "D", "--domain", "kicad", "--include-pending"])
     assert ns.include_pending is True
+
+
+def test_parser_sync_accepts_dry_run():
+    ns = build_parser().parse_args(["sync", "--dry-run"])
+    assert ns.command == "sync"
+    assert ns.dry_run is True
+
+
+def test_parser_sync_without_dry_run():
+    ns = build_parser().parse_args(["sync"])
+    assert ns.command == "sync"
+    assert ns.dry_run is False

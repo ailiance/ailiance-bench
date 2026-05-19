@@ -47,6 +47,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("schema", help="add review columns to existing tables")
 
+    p_sync = sub.add_parser("sync", help="sync workflow Pipeline_Status")
+    p_sync.add_argument("--dry-run", action="store_true")
+
     return ap
 
 
@@ -110,6 +113,31 @@ def main(argv: list[str] | None = None) -> int:
             doc_client = GristClient.from_env(doc_id)
             report = migrate_doc(doc_client, tables)
             print(f"schema {doc_id}: {report}")
+        return 0
+
+    if args.command == "sync":
+        from .pipeline_sync import fetch_served_aliases, sync_pipeline
+        env = {"domain": "GRIST_DOC_LLM_DOMAIN",
+               "training": "GRIST_DOC_LLM_TRAINING",
+               "bench": "GRIST_DOC_LLM_BENCH",
+               "workflow": "GRIST_DOC_LLM_WORKFLOW"}
+        ids = {}
+        for key, name in env.items():
+            doc_id = load_doc_id(name)
+            if not doc_id:
+                sys.exit(f"missing {name} (env or grist.env)")
+            ids[key] = doc_id
+        gateway = load_doc_id("GRIST_GATEWAY_URL")
+        if not gateway:
+            sys.exit("missing GRIST_GATEWAY_URL (env or grist.env)")
+        served = fetch_served_aliases(gateway)
+        report = sync_pipeline(
+            GristClient.from_env(ids["domain"]),
+            GristClient.from_env(ids["training"]),
+            GristClient.from_env(ids["bench"]),
+            GristClient.from_env(ids["workflow"]),
+            served=served, dry_run=args.dry_run)
+        print(f"sync: {len(report)} domains")
         return 0
 
     client = GristClient.from_env(resolve_doc(args.doc))
