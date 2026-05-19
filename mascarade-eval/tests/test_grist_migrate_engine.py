@@ -59,3 +59,15 @@ def test_migration_map_targets_known_docs():
         assert entry["src_doc"] in valid
         assert entry["tgt_doc"] in valid
         assert isinstance(entry["rename"], dict)
+
+
+def test_migrate_table_verification_fails_on_non_empty_target(fake_client):
+    src = fake_client(records={"Src": [
+        {"_id": 1, "item_key": "k1", "domain": "kicad"}]})
+    tgt = fake_client(records={"Dst": [
+        {"_id": 9, "item_key": "pre", "domain": "spice"}]})
+    report = migrate_table(
+        src, tgt, src_table="Src", tgt_table="Dst",
+        tgt_columns=("item_key", "domain"), rename={})
+    assert report["copied"] == 1
+    assert report["verified"] is False  # target already had a row

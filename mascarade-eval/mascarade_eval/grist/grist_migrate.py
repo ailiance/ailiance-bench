@@ -36,6 +36,10 @@ def migrate_table(src_client, tgt_client, src_table: str, tgt_table: str,
     Returns {copied, verified, dropped_columns}. `dropped_columns` lists
     source columns absent from the target schema (after rename) — a
     dry-run surfaces these so the operator can add renames.
+
+    Verification asserts equal row counts and that every source row's
+    mapped hash is present in the target — so it also fails if the
+    target table was not empty before the copy.
     """
     src_rows = src_client.fetch_records(src_table)
     mapped = [map_row(r, rename, tgt_columns) for r in src_rows]
@@ -59,7 +63,8 @@ def migrate_table(src_client, tgt_client, src_table: str, tgt_table: str,
     want = sorted(row_hash(m) for m in mapped)
     got = sorted(row_hash(map_row(r, {}, tgt_columns))
                  for r in tgt_client.fetch_records(tgt_table))
-    report["verified"] = all(h in got for h in want)
+    report["verified"] = (len(want) == len(got)
+                          and all(h in got for h in want))
     return report
 
 
