@@ -11,6 +11,7 @@ import urllib.request
 from . import GRIST_BASE, KEY_FILE, REVIEW_STATUSES, REVIEWER_CHOICES
 
 _INT_COLS = {"n_items", "n_rows"}
+_BOOL_COLS = {"sourced", "trained", "evaluated", "served"}
 _MAX_POST_BYTES = 500_000  # keep POST bodies well under Grist's limit
 _CHOICE_COLS = {
     "review_status": REVIEW_STATUSES,
@@ -25,6 +26,8 @@ def _col_fields(name: str) -> dict:
         return {"label": name, "type": "Choice", "widgetOptions": opts}
     if name in _INT_COLS:
         return {"label": name, "type": "Int"}
+    if name in _BOOL_COLS:
+        return {"label": name, "type": "Bool"}
     return {"label": name, "type": "Text"}
 
 
