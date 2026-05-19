@@ -20,7 +20,7 @@ if str(_PKG_PARENT) not in sys.path:
 
 from mascarade_eval import DOMAINS  # noqa: E402
 from mascarade_eval.grist.client import (  # noqa: E402
-    GristClient, load_doc_id, load_grist_key,
+    GristClient, load_doc_id,
 )
 from mascarade_eval.grist.domain_pages import (  # noqa: E402
     create_domain_page, reconcile_domains,
@@ -51,7 +51,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"[info] known domains with no rows yet: "
               f"{report['missing']}")
 
-    applier = _grist_applier(doc_id, load_grist_key())
+    applier = _grist_applier(doc_id, client.key)
     created, manual = [], []
     for domain in report["expected"]:
         result = create_domain_page(domain, applier=applier)
