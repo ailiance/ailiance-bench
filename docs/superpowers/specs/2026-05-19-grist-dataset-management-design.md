@@ -1,7 +1,11 @@
 # Grist comme source de vérité pour les datasets ailiance / mascarade
 
 **Date :** 2026-05-19
-**Statut :** design validé, prêt pour planification d'implémentation
+**Statut :** design validé et implémenté. Le workflow de revue humaine a
+depuis évolué — voir `2026-05-19-grist-review-layer-design.md`. Le flag
+booléen `exclure` décrit plus bas a été remplacé par un champ
+`review_status` (`pending` / `validated` / `rejected` / `needs_fix`) ;
+l'export ne livre que les lignes `validated`.
 
 ## Problème
 
