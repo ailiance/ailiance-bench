@@ -24,7 +24,7 @@ LLM_DOCS: dict[str, dict[str, tuple[str, ...]]] = {
             "content_hash", "output_file", "hf_dataset_id",
         ),
         "Training_Runs": (
-            "run_id", "base_model", "export_id", "hyperparams",
+            "run_id", "domain", "base_model", "export_id", "hyperparams",
             "checkpoints", "duration", "status", "lora_id", "notes",
         ),
         "Datasets": (

@@ -29,6 +29,11 @@ def test_provision_doc_creates_missing_tables(fake_client):
     assert len(client.created) == 3
 
 
+def test_training_runs_has_domain_column():
+    # sync_pipeline derives the `trained` flag from this column.
+    assert "domain" in LLM_DOCS["training"]["Training_Runs"]
+
+
 def test_provision_doc_is_idempotent(fake_client):
     client = fake_client(tables=["Exports"])
     report = provision_doc(client, LLM_DOCS["training"])
