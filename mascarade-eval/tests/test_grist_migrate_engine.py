@@ -61,7 +61,9 @@ def test_migration_map_targets_known_docs():
         assert isinstance(entry["rename"], dict)
 
 
-def test_migrate_table_verification_fails_on_non_empty_target(fake_client):
+def test_migrate_table_verifies_fan_in_into_non_empty_target(fake_client):
+    # A fan-in target already holds a prior batch's rows; the new
+    # batch must still verify True — only its own delta is checked.
     src = fake_client(records={"Src": [
         {"_id": 1, "item_key": "k1", "domain": "kicad"}]})
     tgt = fake_client(records={"Dst": [
@@ -70,4 +72,4 @@ def test_migrate_table_verification_fails_on_non_empty_target(fake_client):
         src, tgt, src_table="Src", tgt_table="Dst",
         tgt_columns=("item_key", "domain"), rename={})
     assert report["copied"] == 1
-    assert report["verified"] is False  # target already had a row
+    assert report["verified"] is True

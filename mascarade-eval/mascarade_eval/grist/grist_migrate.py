@@ -37,9 +37,9 @@ def migrate_table(src_client, tgt_client, src_table: str, tgt_table: str,
     source columns absent from the target schema (after rename) — a
     dry-run surfaces these so the operator can add renames.
 
-    Verification asserts equal row counts and that every source row's
-    mapped hash is present in the target — so it also fails if the
-    target table was not empty before the copy.
+    Verification confirms this batch landed in full: the target row
+    count grew by exactly len(mapped), and every source row's mapped
+    hash is present. Fan-in (several sources into one target) is fine.
     """
     src_rows = src_client.fetch_records(src_table)
     mapped = [map_row(r, rename, tgt_columns) for r in src_rows]
@@ -58,13 +58,14 @@ def migrate_table(src_client, tgt_client, src_table: str, tgt_table: str,
         return report
 
     tgt_client.ensure_table(tgt_table, tgt_columns)
+    pre_count = len(tgt_client.fetch_records(tgt_table))
     tgt_client.add_records(tgt_table, mapped)
+    post = tgt_client.fetch_records(tgt_table)
 
     want = sorted(row_hash(m) for m in mapped)
-    got = sorted(row_hash(map_row(r, {}, tgt_columns))
-                 for r in tgt_client.fetch_records(tgt_table))
-    report["verified"] = (len(want) == len(got)
-                          and all(h in got for h in want))
+    got = sorted(row_hash(map_row(r, {}, tgt_columns)) for r in post)
+    added = len(post) - pre_count
+    report["verified"] = added == len(want) and all(h in got for h in want)
     return report
 
 

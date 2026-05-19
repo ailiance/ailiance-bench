@@ -39,6 +39,7 @@ ENV_DOCS = {
     "bench": "GRIST_DOC_LLM_BENCH",
 }
 
+# The workflow doc (Pipeline_Status, Audit_Log) is populated at runtime, not migrated.
 # Which doc key supplies the target column tuples.
 _TGT_SCHEMA = {
     "domain": LLM_DOCS["domain"],

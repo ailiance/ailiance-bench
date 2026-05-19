@@ -21,7 +21,7 @@ KEY_FILE = Path.home() / ".config" / "electron-rare" / "grist.env"
 
 TRAINING_TABLE = "Dataset_Items"
 EVAL_TABLE = "Eval_Items"
-REGISTRY_TABLE = "Datasets_Registry"
+REGISTRY_TABLE = "Datasets_Registry"  # legacy source table name
 EXPORTS_TABLE = "Exports"
 
 # Human-review columns appended to every validation-target table.
