@@ -47,23 +47,40 @@
 "use strict";
 const REVIEWER = "clems";   // adjust to the reviewer's Grist choice value
 
+let mapping = null; // column mapping from onRecords (display columns)
 let rows = [];      // [{id, status, primary, secondary, context}]
 let queue = [];     // ids still pending
 let cursor = 0;
 
 const $ = (id) => document.getElementById(id);
 
-function rebuild(records) {
-  rows = records.map((rec) => {
-    const m = grist.mapColumnNames(rec) || {};
-    let ctx = m.context;
-    if (Array.isArray(ctx)) ctx = ctx.filter(Boolean).join(" · ");
+// Grist restricts onRecords/fetchSelectedTable to mapped columns, so the
+// review_* columns are invisible there. fetchTable via docApi (full
+// access) returns every column — that is the only channel that sees
+// review_status. onRecords is kept only to supply the column mapping
+// and to fire on every data change.
+async function refresh() {
+  if (!mapping) return;
+  const tableId = await grist.getSelectedTableId();
+  const data = await grist.docApi.fetchTable(tableId);
+  const ids = data.id || [];
+  const ctxCols = Array.isArray(mapping.context)
+    ? mapping.context
+    : (mapping.context ? [mapping.context] : []);
+  const cell = (name, i) => (name && data[name]) ? data[name][i] : null;
+  rows = ids.map((id, i) => {
+    const ctx = ctxCols
+      .map((c) => (data[c] ? data[c][i] : null))
+      .filter((v) => v != null && v !== "")
+      .join(" · ");
+    const p = cell(mapping.primary, i);
+    const s = cell(mapping.secondary, i);
     return {
-      id: rec.id,
-      status: rec.review_status || "pending",
-      primary: m.primary == null ? "" : String(m.primary),
-      secondary: m.secondary == null ? "" : String(m.secondary),
-      context: ctx == null ? "" : String(ctx),
+      id,
+      status: (data.review_status && data.review_status[i]) || "pending",
+      primary: p == null ? "" : String(p),
+      secondary: s == null ? "" : String(s),
+      context: ctx,
     };
   });
   queue = rows.filter((r) => r.status === "pending").map((r) => r.id);
@@ -135,9 +152,7 @@ grist.ready({
       optional: true, allowMultiple: true },
   ],
 });
-// includeColumns:"all" — the queue logic reads review_status, which is
-// not a mapped column, so the default "shown" set would omit it.
-grist.onRecords(rebuild, { includeColumns: "all" });
+grist.onRecords((records, m) => { mapping = m; void refresh(); });
 </script>
 </body>
 </html>
