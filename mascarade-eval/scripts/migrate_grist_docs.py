@@ -33,7 +33,6 @@ SRC_FIXED = {
 }
 # Doc keys resolved from env / grist.env.
 ENV_DOCS = {
-    "training_old": "GRIST_DOC_TRAINING",
     "domain": "GRIST_DOC_LLM_DOMAIN",
     "training": "GRIST_DOC_LLM_TRAINING",
     "bench": "GRIST_DOC_LLM_BENCH",

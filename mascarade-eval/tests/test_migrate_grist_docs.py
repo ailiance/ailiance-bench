@@ -16,7 +16,6 @@ def test_resolve_doc_ids_merges_fixed_and_env(monkeypatch):
     monkeypatch.setattr(m, "load_doc_id", lambda name: f"id-{name}")
     ids = m.resolve_doc_ids()
     assert ids["heldout_old"] == "eGbbrpzN3TeLq3sUd2YFA2"
-    assert ids["training_old"] == "id-GRIST_DOC_TRAINING"
     assert ids["domain"] == "id-GRIST_DOC_LLM_DOMAIN"
     assert ids["bench"] == "id-GRIST_DOC_LLM_BENCH"
 

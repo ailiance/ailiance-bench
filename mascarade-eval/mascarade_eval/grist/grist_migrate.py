@@ -69,24 +69,23 @@ def migrate_table(src_client, tgt_client, src_table: str, tgt_table: str,
     return report
 
 
-# Declarative migration table. `rename` starts empty; a dry-run prints
-# `dropped_columns` per entry so the operator adds renames where a drop
-# is unintended, before the real run.
+# Declarative migration table — 4 entries with real source docs.
+# `rename` starts empty; a dry-run prints `dropped_columns` per entry
+# so the operator adds renames where a drop is unintended, before the
+# real run.
+#
+# Sources:
+#   heldout_old  — ailiance-llm-heldout-legacy (fixed doc ID)
+#   mascarade_old — mascarade-data (fixed doc ID)
+# Targets:
+#   bench        — ailiance-llm-bench (env GRIST_DOC_LLM_BENCH)
 MIGRATION_MAP: list[dict] = [
-    {"src_doc": "training_old", "src_table": "Mascarade_Training",
-     "tgt_doc": "domain", "tgt_table": "Dataset_Items", "rename": {}},
     {"src_doc": "heldout_old", "src_table": "Heldout_Items",
      "tgt_doc": "bench", "tgt_table": "Eval_Items", "rename": {}},
-    {"src_doc": "training_old", "src_table": "Exports",
-     "tgt_doc": "training", "tgt_table": "Exports", "rename": {}},
-    {"src_doc": "training_old", "src_table": "Datasets_Registry",
-     "tgt_doc": "training", "tgt_table": "Datasets", "rename": {}},
     {"src_doc": "mascarade_old", "src_table": "Mascarade_Eval",
      "tgt_doc": "bench", "tgt_table": "Bench_Results", "rename": {}},
     {"src_doc": "mascarade_old", "src_table": "Bench_31_domains",
      "tgt_doc": "bench", "tgt_table": "Bench_Results", "rename": {}},
     {"src_doc": "mascarade_old", "src_table": "Mascarade_Eval_Items",
-     "tgt_doc": "bench", "tgt_table": "Eval_Items", "rename": {}},
-    {"src_doc": "mascarade_old", "src_table": "Bench_mascarade_heldout",
      "tgt_doc": "bench", "tgt_table": "Eval_Items", "rename": {}},
 ]

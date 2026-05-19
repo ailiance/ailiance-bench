@@ -53,8 +53,7 @@ def test_migrate_table_dry_run_writes_nothing(fake_client):
 
 
 def test_migration_map_targets_known_docs():
-    valid = {"heldout_old", "mascarade_old", "training_old",
-             "domain", "training", "bench"}
+    valid = {"heldout_old", "mascarade_old", "domain", "training", "bench"}
     for entry in MIGRATION_MAP:
         assert entry["src_doc"] in valid
         assert entry["tgt_doc"] in valid
