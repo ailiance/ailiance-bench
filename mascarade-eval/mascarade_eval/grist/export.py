@@ -1,0 +1,83 @@
+# mascarade_eval/grist/export.py
+"""Deterministic Grist -> .jsonl snapshot export, journaled in Exports."""
+from __future__ import annotations
+
+import datetime
+import hashlib
+import json
+from pathlib import Path
+
+from . import EXPORTS_COLUMNS, EXPORTS_TABLE, TRAINING_TABLE
+from .migrate import rebuild_messages
+
+
+def canonical_jsonl(keyed_rows: list[tuple[str, dict]]) -> str:
+    """Serialize (sort_key, object) pairs to JSONL ordered by sort_key.
+
+    Same input set -> same bytes, regardless of input order. The sort key
+    itself is not written; only the object is.
+    """
+    ordered = sorted(keyed_rows, key=lambda kv: kv[0])
+    return "\n".join(json.dumps(obj, ensure_ascii=False, sort_keys=True)
+                     for _, obj in ordered)
+
+
+def content_hash(text: str) -> str:
+    """SHA256 hex digest of the canonical snapshot text."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _timestamp() -> str:
+    return datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")
+
+
+def _is_exportable(row: dict, include_pending: bool) -> bool:
+    """A row ships only when validated (or pending, if explicitly allowed).
+
+    `rejected` and `needs_fix` rows are always excluded. A row with no
+    review_status is treated as `pending`.
+    """
+    status = row.get("review_status") or "pending"
+    if status == "validated":
+        return True
+    return include_pending and status == "pending"
+
+
+def export_domain(client, domain: str, out_dir: Path,
+                  dry_run: bool = False,
+                  include_pending: bool = False) -> dict:
+    """Export one domain's human-validated training rows to a hashed snapshot.
+
+    Returns a report dict matching the Exports row written to Grist.
+    """
+    rows = [r for r in client.fetch_records(TRAINING_TABLE)
+            if r.get("domain") == domain
+            and _is_exportable(r, include_pending)]
+    payload = canonical_jsonl(
+        [(r.get("item_key", ""), rebuild_messages(r)) for r in rows])
+    digest = content_hash(payload)
+    stamp = _timestamp()
+    filename = f"{domain}.{stamp}.jsonl"
+    report = {
+        "export_id": f"{domain}-{stamp}",
+        "domain": domain,
+        "created_at": stamp,
+        "n_items": len(rows),
+        "content_hash": digest,
+        "output_file": filename,
+        "hf_dataset_id": "",
+    }
+    if dry_run:
+        return report
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / filename
+    out_path.write_text(payload + ("\n" if payload else ""),
+                        encoding="utf-8")
+    try:
+        client.ensure_table(EXPORTS_TABLE, EXPORTS_COLUMNS)
+        client.add_records(EXPORTS_TABLE, [report])
+    except Exception:
+        out_path.unlink(missing_ok=True)
+        raise
+    return report
