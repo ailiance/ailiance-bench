@@ -15,7 +15,8 @@ LLM_DOCS: dict[str, dict[str, tuple[str, ...]]] = {
         "Dataset_Items": (
             "item_key", "domain", "system", "user_msg", "assistant_msg",
             "extra_turns", "source", "review_status", "reviewer",
-            "reviewed_at", "review_note", "notes",
+            "reviewed_at", "review_note", "notes", "license",
+            "provenance",
         ),
     },
     "training": {

@@ -36,7 +36,7 @@ REVIEW_TARGETS = {
 
 TRAINING_COLUMNS = (
     "item_key", "domain", "system", "user_msg", "assistant_msg",
-    "extra_turns", "source", "notes",
+    "extra_turns", "source", "notes", "license", "provenance",
 ) + REVIEW_COLUMNS
 REGISTRY_COLUMNS = (
     "name", "family", "domain", "hf_dataset_id", "license",

@@ -84,6 +84,7 @@ def _ingest_jsonl_rows(domain: str, jsonl_path: str) -> list[dict]:
             print(f"[warn] skipped malformed line: {exc}", file=sys.stderr)
             continue
         flat = flatten_messages(record)
+        prov = record.get("_provenance") or {}
         rows.append({
             "item_key": item_key(domain, flat["user_msg"]),
             "domain": domain,
@@ -91,9 +92,11 @@ def _ingest_jsonl_rows(domain: str, jsonl_path: str) -> list[dict]:
             "user_msg": flat["user_msg"],
             "assistant_msg": flat["assistant_msg"],
             "extra_turns": flat["extra_turns"],
-            "source": record.get("source", ""),
+            "source": prov.get("source", ""),
             "notes": "",
             "review_status": "pending",
+            "license": prov.get("license", ""),
+            "provenance": json.dumps(prov, ensure_ascii=False) if prov else "",
         })
     return rows
 

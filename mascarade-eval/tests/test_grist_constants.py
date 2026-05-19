@@ -32,7 +32,7 @@ def test_review_targets_cover_both_docs():
 def test_training_columns_end_with_review_columns():
     assert grist.TRAINING_COLUMNS == (
         "item_key", "domain", "system", "user_msg", "assistant_msg",
-        "extra_turns", "source", "notes",
+        "extra_turns", "source", "notes", "license", "provenance",
         "review_status", "reviewer", "reviewed_at", "review_note",
     )
     assert "exclure" not in grist.TRAINING_COLUMNS

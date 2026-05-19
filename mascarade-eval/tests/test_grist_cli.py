@@ -81,3 +81,32 @@ def test_parser_sync_without_dry_run():
     ns = build_parser().parse_args(["sync"])
     assert ns.command == "sync"
     assert ns.dry_run is False
+
+
+def test_ingest_jsonl_rows_captures_provenance(tmp_path):
+    import json
+    from mascarade_eval.grist.cli import _ingest_jsonl_rows
+    f = tmp_path / "d.jsonl"
+    rec = {"messages": [{"role": "user", "content": "Q"},
+                        {"role": "assistant", "content": "A"}],
+           "_provenance": {"source": "Foo/bar", "license": "Apache-2.0",
+                           "file_path": "x.py"}}
+    f.write_text(json.dumps(rec) + "\n")
+    rows = _ingest_jsonl_rows("kicad", str(f))
+    assert len(rows) == 1
+    assert rows[0]["source"] == "Foo/bar"
+    assert rows[0]["license"] == "Apache-2.0"
+    assert json.loads(rows[0]["provenance"])["file_path"] == "x.py"
+
+
+def test_ingest_jsonl_rows_handles_missing_provenance(tmp_path):
+    import json
+    from mascarade_eval.grist.cli import _ingest_jsonl_rows
+    f = tmp_path / "d.jsonl"
+    rec = {"messages": [{"role": "user", "content": "Q"},
+                        {"role": "assistant", "content": "A"}]}
+    f.write_text(json.dumps(rec) + "\n")
+    rows = _ingest_jsonl_rows("kicad", str(f))
+    assert rows[0]["license"] == ""
+    assert rows[0]["provenance"] == ""
+    assert rows[0]["source"] == ""
