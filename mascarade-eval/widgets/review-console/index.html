@@ -135,7 +135,9 @@ grist.ready({
       optional: true, allowMultiple: true },
   ],
 });
-grist.onRecords(rebuild);
+// includeColumns:"all" — the queue logic reads review_status, which is
+// not a mapped column, so the default "shown" set would omit it.
+grist.onRecords(rebuild, { includeColumns: "all" });
 </script>
 </body>
 </html>
