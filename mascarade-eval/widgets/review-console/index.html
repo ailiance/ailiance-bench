@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Review Console</title>
+<script src="https://grist.saillant.cc/grist-plugin-api.js"></script>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; margin: 0; padding: 16px;
+         color: #1a1a1a; }
+  #progress { color: #666; font-size: 13px; margin-bottom: 8px; }
+  .field-label { font-weight: 600; font-size: 12px; text-transform: uppercase;
+                 color: #888; margin-top: 12px; }
+  .field-value { white-space: pre-wrap; word-break: break-word;
+                 background: #f6f6f6; border-radius: 6px; padding: 8px; }
+  #context { color: #555; font-size: 13px; margin-bottom: 4px; }
+  #note { width: 100%; box-sizing: border-box; margin-top: 12px; padding: 6px; }
+  #buttons { display: flex; gap: 8px; margin-top: 12px; }
+  button { flex: 1; padding: 10px; border: 0; border-radius: 6px;
+           font-size: 14px; cursor: pointer; }
+  .validate { background: #C6E5B3; }
+  .reject   { background: #F2B5B5; }
+  .needsfix { background: #F5D9A6; }
+  .skip     { background: #E8E8E8; }
+  #done { font-size: 16px; color: #2a7; padding: 24px 0; }
+  #empty { color: #888; padding: 24px 0; }
+</style>
+</head>
+<body>
+  <div id="progress"></div>
+  <div id="card" hidden>
+    <div id="context"></div>
+    <div class="field-label">Item</div>
+    <div class="field-value" id="primary"></div>
+    <div class="field-label" id="secondary-label">Référence</div>
+    <div class="field-value" id="secondary"></div>
+    <input id="note" placeholder="note de revue (optionnelle)">
+    <div id="buttons">
+      <button class="validate" id="b-validate">✓ Valider (V)</button>
+      <button class="reject"   id="b-reject">✗ Rejeter (R)</button>
+      <button class="needsfix" id="b-needsfix">~ À corriger (F)</button>
+      <button class="skip"     id="b-skip">→ Passer (S)</button>
+    </div>
+  </div>
+  <div id="done" hidden>Tous les items en attente sont revus ✓</div>
+  <div id="empty" hidden>Aucune ligne dans cette table.</div>
+<script>
+"use strict";
+const REVIEWER = "clems";   // adjust to the reviewer's Grist choice value
+
+let rows = [];      // [{id, status, primary, secondary, context}]
+let queue = [];     // ids still pending
+let cursor = 0;
+
+const $ = (id) => document.getElementById(id);
+
+function rebuild(records) {
+  rows = records.map((rec) => {
+    const m = grist.mapColumnNames(rec) || {};
+    let ctx = m.context;
+    if (Array.isArray(ctx)) ctx = ctx.filter(Boolean).join(" · ");
+    return {
+      id: rec.id,
+      status: rec.review_status || "pending",
+      primary: m.primary == null ? "" : String(m.primary),
+      secondary: m.secondary == null ? "" : String(m.secondary),
+      context: ctx == null ? "" : String(ctx),
+    };
+  });
+  queue = rows.filter((r) => r.status === "pending").map((r) => r.id);
+  if (cursor >= queue.length) cursor = 0;
+  render();
+}
+
+function render() {
+  const total = rows.length;
+  const reviewed = rows.filter((r) => r.status !== "pending").length;
+  $("progress").textContent = total === 0 ? ""
+    : `revus ${reviewed} / ${total} — en attente ${queue.length}`;
+  $("empty").hidden = total !== 0;
+  const item = queue.length
+    ? rows.find((r) => r.id === queue[cursor]) : null;
+  $("card").hidden = !item;
+  $("done").hidden = !(total > 0 && !item);
+  if (!item) return;
+  $("context").textContent = item.context;
+  $("primary").textContent = item.primary;
+  $("secondary").textContent = item.secondary;
+  $("secondary-label").hidden = !item.secondary;
+  $("secondary").hidden = !item.secondary;
+}
+
+async function decide(status) {
+  if (!queue.length) return;
+  const id = queue[cursor];
+  await grist.selectedTable.update({
+    id,
+    fields: {
+      review_status: status,
+      reviewer: REVIEWER,
+      reviewed_at: new Date().toISOString(),
+      review_note: $("note").value,
+    },
+  });
+  $("note").value = "";
+  // grist.onRecords refires after the update and rebuilds the queue.
+}
+
+function skip() {
+  if (!queue.length) return;
+  cursor = (cursor + 1) % queue.length;
+  render();
+}
+
+$("b-validate").onclick = () => decide("validated");
+$("b-reject").onclick = () => decide("rejected");
+$("b-needsfix").onclick = () => decide("needs_fix");
+$("b-skip").onclick = skip;
+
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT") return;
+  const k = e.key.toLowerCase();
+  if (k === "v") decide("validated");
+  else if (k === "r") decide("rejected");
+  else if (k === "f") decide("needs_fix");
+  else if (k === "s" || e.key === "ArrowRight") skip();
+});
+
+grist.ready({
+  requiredAccess: "full",
+  columns: [
+    { name: "primary", title: "Texte principal (prompt / user_msg)" },
+    { name: "secondary", title: "Référence (reference / assistant_msg)",
+      optional: true },
+    { name: "context", title: "Contexte (domain, source)",
+      optional: true, allowMultiple: true },
+  ],
+});
+grist.onRecords(rebuild);
+</script>
+</body>
+</html>
