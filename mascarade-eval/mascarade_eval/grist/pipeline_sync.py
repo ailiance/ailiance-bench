@@ -40,3 +40,20 @@ def domain_status(domain: str, sourced: bool, trained: bool,
         "updated_at": _utc_now(),
         "notes": "",
     }
+
+
+def _http_get_json(url: str) -> dict:
+    req = urllib.request.Request(url, method="GET")
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        raw = resp.read().decode("utf-8", "replace")
+    return json.loads(raw) if raw else {}
+
+
+def fetch_served_aliases(gateway_url: str, transport=_http_get_json) -> set[str]:
+    """Return the set of model IDs exposed by the gateway /v1/models.
+
+    `transport` is injected for testing; production uses urllib.
+    """
+    url = f"{gateway_url.rstrip('/')}/v1/models"
+    payload = transport(url)
+    return {m["id"] for m in payload.get("data", []) if m.get("id")}

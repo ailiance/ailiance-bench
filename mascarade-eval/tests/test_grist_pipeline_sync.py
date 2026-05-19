@@ -1,5 +1,5 @@
 from mascarade_eval.grist.pipeline_sync import (
-    collect_domains, domain_status,
+    collect_domains, domain_status, fetch_served_aliases,
 )
 
 
@@ -35,3 +35,29 @@ def test_domain_status_mixed_flags():
     assert row["trained"] is False
     assert set(row) == {"domain", "sourced", "trained", "evaluated",
                         "served", "updated_at", "notes"}
+
+
+def test_fetch_served_aliases_extracts_model_ids():
+    def fake_transport(url):
+        assert url == "https://gw.example/v1/models"
+        return {"data": [{"id": "ailiance-kicad"},
+                         {"id": "ailiance-spice"}]}
+    aliases = fetch_served_aliases("https://gw.example",
+                                   transport=fake_transport)
+    assert aliases == {"ailiance-kicad", "ailiance-spice"}
+
+
+def test_fetch_served_aliases_handles_empty_data():
+    aliases = fetch_served_aliases("https://gw.example",
+                                   transport=lambda url: {"data": []})
+    assert aliases == set()
+
+
+def test_fetch_served_aliases_strips_trailing_slash():
+    seen = {}
+
+    def fake_transport(url):
+        seen["url"] = url
+        return {"data": []}
+    fetch_served_aliases("https://gw.example/", transport=fake_transport)
+    assert seen["url"] == "https://gw.example/v1/models"
