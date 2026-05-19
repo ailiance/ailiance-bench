@@ -10,6 +10,7 @@ from collections.abc import Callable
 import datetime
 import json
 import urllib.request
+from mascarade_eval.grist.llm_schema import LLM_DOCS
 
 
 def collect_domains(domain_rows: list[dict], training_rows: list[dict],
@@ -60,3 +61,37 @@ def fetch_served_aliases(gateway_url: str,
     url = f"{gateway_url.rstrip('/')}/v1/models"
     payload = transport(url)
     return {m["id"] for m in payload.get("data", []) if m.get("id")}
+
+
+def sync_pipeline(domain_client, training_client, bench_client,
+                  workflow_client, served: set[str],
+                  dry_run: bool = False) -> dict:
+    """Compute each domain's status and upsert Pipeline_Status.
+
+    `served` is the set of model IDs from the gateway. Returns
+    {domain: status_row}.
+    """
+    domain_rows = domain_client.fetch_records("Dataset_Items")
+    training_rows = training_client.fetch_records("Training_Runs")
+    bench_rows = bench_client.fetch_records("Bench_Results")
+
+    sourced = {r["domain"] for r in domain_rows if r.get("domain")}
+    trained = {r["domain"] for r in training_rows if r.get("domain")}
+    evaluated = {r["domain"] for r in bench_rows if r.get("domain")}
+    domains = collect_domains(domain_rows, training_rows, bench_rows)
+
+    report: dict[str, dict] = {}
+    for domain in sorted(domains):
+        report[domain] = domain_status(
+            domain,
+            sourced=domain in sourced,
+            trained=domain in trained,
+            evaluated=domain in evaluated,
+            served=f"ailiance-{domain}" in served,
+        )
+    if not dry_run:
+        columns = LLM_DOCS["workflow"]["Pipeline_Status"]
+        workflow_client.ensure_table("Pipeline_Status", columns)
+        workflow_client.upsert_records(
+            "Pipeline_Status", list(report.values()), "domain")
+    return report

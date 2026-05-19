@@ -1,5 +1,5 @@
 from mascarade_eval.grist.pipeline_sync import (
-    collect_domains, domain_status, fetch_served_aliases,
+    collect_domains, domain_status, fetch_served_aliases, sync_pipeline,
 )
 
 
@@ -61,3 +61,38 @@ def test_fetch_served_aliases_strips_trailing_slash():
         return {"data": []}
     fetch_served_aliases("https://gw.example/", transport=fake_transport)
     assert seen["url"] == "https://gw.example/v1/models"
+
+
+def test_sync_pipeline_upserts_per_domain_status(fake_client):
+    domain_c = fake_client(records={"Dataset_Items": [
+        {"domain": "kicad"}, {"domain": "spice"}]})
+    training_c = fake_client(records={"Training_Runs": [
+        {"domain": "kicad"}]})
+    bench_c = fake_client(records={"Bench_Results": [
+        {"domain": "kicad"}]})
+    workflow_c = fake_client(tables=[])
+
+    report = sync_pipeline(domain_c, training_c, bench_c, workflow_c,
+                           served={"ailiance-kicad"})
+
+    assert set(report) == {"kicad", "spice"}
+    assert report["kicad"]["sourced"] is True
+    assert report["kicad"]["trained"] is True
+    assert report["kicad"]["evaluated"] is True
+    assert report["kicad"]["served"] is True
+    assert report["spice"]["sourced"] is True
+    assert report["spice"]["trained"] is False
+    assert report["spice"]["served"] is False
+    upserted = workflow_c.upserted["Pipeline_Status"]
+    assert {r["domain"] for r in upserted} == {"kicad", "spice"}
+
+
+def test_sync_pipeline_dry_run_writes_nothing(fake_client):
+    domain_c = fake_client(records={"Dataset_Items": [{"domain": "kicad"}]})
+    training_c = fake_client(records={"Training_Runs": []})
+    bench_c = fake_client(records={"Bench_Results": []})
+    workflow_c = fake_client(tables=[])
+    report = sync_pipeline(domain_c, training_c, bench_c, workflow_c,
+                           served=set(), dry_run=True)
+    assert set(report) == {"kicad"}
+    assert workflow_c.upserted == {}
