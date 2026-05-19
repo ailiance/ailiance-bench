@@ -36,3 +36,33 @@ def page_plan(domain: str) -> dict:
         "widgets": ["Sourcing", "Dataset_Items"],
         "filter": {"column": "domain", "value": domain},
     }
+
+
+def _grist_applier(doc_id: str, key: str):
+    """Build an applier that POSTs user-actions to a Grist doc."""
+    def applier(actions: list) -> None:
+        url = (f"https://grist.saillant.cc/api/docs/{doc_id}/apply")
+        data = json.dumps(actions).encode()
+        req = urllib.request.Request(
+            url, data=data, method="POST",
+            headers={"Authorization": f"Bearer {key}",
+                     "Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            resp.read()
+    return applier
+
+
+def create_domain_page(domain: str, applier) -> dict:
+    """Best-effort: create the domain's Grist page via a user action.
+
+    `applier` applies a list of Grist user-actions and raises on
+    failure. Returns {"domain", "status"} where status is "created"
+    or "api_unsupported".
+    """
+    plan = page_plan(domain)
+    actions = [["AddView", plan["page_name"], "raw"]]
+    try:
+        applier(actions)
+        return {"domain": domain, "status": "created"}
+    except Exception:
+        return {"domain": domain, "status": "api_unsupported"}

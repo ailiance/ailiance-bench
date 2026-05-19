@@ -49,3 +49,25 @@ def test_page_plan_distinct_per_domain():
     from mascarade_eval.grist.domain_pages import page_plan
     assert page_plan("spice")["page_name"] != page_plan("kicad")["page_name"]
     assert page_plan("spice")["filter"]["value"] == "spice"
+
+
+def test_create_domain_page_reports_created_on_success():
+    from mascarade_eval.grist.domain_pages import create_domain_page
+    calls = []
+
+    def applier(actions):
+        calls.append(actions)
+
+    out = create_domain_page("kicad", applier=applier)
+    assert out == {"domain": "kicad", "status": "created"}
+    assert len(calls) == 1
+
+
+def test_create_domain_page_reports_unsupported_on_failure():
+    from mascarade_eval.grist.domain_pages import create_domain_page
+
+    def applier(actions):
+        raise RuntimeError("Grist /apply rejected the action")
+
+    out = create_domain_page("spice", applier=applier)
+    assert out == {"domain": "spice", "status": "api_unsupported"}
