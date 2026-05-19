@@ -1,7 +1,12 @@
 # Architecture Grist `ailiance-llm-*` — 4 documents
 
 **Date :** 2026-05-19
-**Statut :** design validé, prêt pour planification d'implémentation
+**Statut :** design validé et implémenté. Le schéma du doc `bench`
+décrit plus bas (tables consolidées `Bench_Results` + `Eval_Items`) a
+été **remplacé** : la migration réelle a montré que les 4 sources sont
+des formes distinctes incompatibles avec une consolidation. Le doc
+`bench` contient désormais une table par source — voir
+`2026-05-19-bench-doc-redesign-design.md`.
 
 ## Problème
 
