@@ -77,7 +77,7 @@ def sync_pipeline(domain_client, training_client, bench_client,
     `served` is the set of model IDs from the gateway. Returns
     {domain: status_row}.
     """
-    domain_rows = domain_client.fetch_records("Dataset_Items")
+    domain_rows = domain_client.fetch_records("Sourcing")
     training_rows = training_client.fetch_records("Training_Runs")
     bench_rows = (bench_client.fetch_records("Mascarade_Eval")
                   + bench_client.fetch_records("Bench_31_domains"))

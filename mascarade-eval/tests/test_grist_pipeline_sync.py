@@ -65,7 +65,7 @@ def test_fetch_served_aliases_strips_trailing_slash():
 
 
 def test_sync_pipeline_upserts_per_domain_status(fake_client):
-    domain_c = fake_client(records={"Dataset_Items": [
+    domain_c = fake_client(records={"Sourcing": [
         {"domain": "kicad"}, {"domain": "spice"}]})
     training_c = fake_client(records={"Training_Runs": [
         {"domain": "kicad"}]})
@@ -108,7 +108,7 @@ def test_resolve_sync_config_exits_on_missing(monkeypatch):
 
 
 def test_sync_pipeline_dry_run_writes_nothing(fake_client):
-    domain_c = fake_client(records={"Dataset_Items": [{"domain": "kicad"}]})
+    domain_c = fake_client(records={"Sourcing": [{"domain": "kicad"}]})
     training_c = fake_client(records={"Training_Runs": []})
     bench_c = fake_client(records={"Mascarade_Eval": []})
     workflow_c = fake_client(tables=[])

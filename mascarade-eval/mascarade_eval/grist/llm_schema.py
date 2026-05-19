@@ -9,8 +9,9 @@ from __future__ import annotations
 LLM_DOCS: dict[str, dict[str, tuple[str, ...]]] = {
     "domain": {
         "Sourcing": (
-            "domain", "se_tags", "reddit_sources", "mining_quota",
-            "mining_state", "notes",
+            "domain", "n_records", "n_licenses", "n_sources",
+            "licenses", "sources", "local_path", "extra_files",
+            "notes",
         ),
         "Dataset_Items": (
             "item_key", "domain", "system", "user_msg", "assistant_msg",

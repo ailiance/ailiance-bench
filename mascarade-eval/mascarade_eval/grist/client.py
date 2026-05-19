@@ -10,7 +10,7 @@ import urllib.request
 
 from . import GRIST_BASE, KEY_FILE, REVIEW_STATUSES, REVIEWER_CHOICES
 
-_INT_COLS = {"n_items", "n_rows"}
+_INT_COLS = {"n_items", "n_rows", "n_records", "n_licenses", "n_sources"}
 _BOOL_COLS = {"sourced", "trained", "evaluated", "served"}
 _MAX_POST_BYTES = 500_000  # keep POST bodies well under Grist's limit
 _CHOICE_COLS = {
