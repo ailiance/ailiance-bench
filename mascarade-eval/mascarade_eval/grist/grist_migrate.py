@@ -75,17 +75,20 @@ def migrate_table(src_client, tgt_client, src_table: str, tgt_table: str,
 # real run.
 #
 # Sources:
-#   heldout_old  — ailiance-llm-heldout-legacy (fixed doc ID)
+#   heldout_old   — ailiance-llm-heldout-legacy (fixed doc ID)
 #   mascarade_old — mascarade-data (fixed doc ID)
-# Targets:
-#   bench        — ailiance-llm-bench (env GRIST_DOC_LLM_BENCH)
+# Target (verbatim copy, same table name):
+#   bench         — ailiance-llm-bench (env GRIST_DOC_LLM_BENCH)
+#   Tables: Heldout_Items, Mascarade_Eval, Mascarade_Eval_Items,
+#           Bench_31_domains
 MIGRATION_MAP: list[dict] = [
     {"src_doc": "heldout_old", "src_table": "Heldout_Items",
-     "tgt_doc": "bench", "tgt_table": "Eval_Items", "rename": {}},
+     "tgt_doc": "bench", "tgt_table": "Heldout_Items", "rename": {}},
     {"src_doc": "mascarade_old", "src_table": "Mascarade_Eval",
-     "tgt_doc": "bench", "tgt_table": "Bench_Results", "rename": {}},
-    {"src_doc": "mascarade_old", "src_table": "Bench_31_domains",
-     "tgt_doc": "bench", "tgt_table": "Bench_Results", "rename": {}},
+     "tgt_doc": "bench", "tgt_table": "Mascarade_Eval", "rename": {}},
     {"src_doc": "mascarade_old", "src_table": "Mascarade_Eval_Items",
-     "tgt_doc": "bench", "tgt_table": "Eval_Items", "rename": {}},
+     "tgt_doc": "bench", "tgt_table": "Mascarade_Eval_Items",
+     "rename": {}},
+    {"src_doc": "mascarade_old", "src_table": "Bench_31_domains",
+     "tgt_doc": "bench", "tgt_table": "Bench_31_domains", "rename": {}},
 ]
