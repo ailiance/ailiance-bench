@@ -8,10 +8,14 @@ def _recording_transport(log):
         log.append((method, url, body))
         if method == "GET" and url.endswith("/tables"):
             return {"tables": [{"id": "Existing"}]}
+        if method == "GET" and url.endswith("/columns"):
+            return {"columns": [{"id": "item_key"}, {"id": "domain"}]}
         if method == "GET" and "/records" in url:
             return {"records": [
-                {"id": 1, "fields": {"item_key": "k1", "exclure": False}},
-                {"id": 2, "fields": {"item_key": "k2", "exclure": True}},
+                {"id": 1, "fields": {"item_key": "k1",
+                                     "review_status": "pending"}},
+                {"id": 2, "fields": {"item_key": "k2",
+                                     "review_status": "validated"}},
             ]}
         return {}
     return transport
@@ -29,8 +33,8 @@ def test_fetch_records_flattens_id_into_fields():
     c = GristClient("doc1", "key1", transport=_recording_transport([]))
     rows = c.fetch_records("Mascarade_Training")
     assert rows == [
-        {"_id": 1, "item_key": "k1", "exclure": False},
-        {"_id": 2, "item_key": "k2", "exclure": True},
+        {"_id": 1, "item_key": "k1", "review_status": "pending"},
+        {"_id": 2, "item_key": "k2", "review_status": "validated"},
     ]
 
 
@@ -52,14 +56,45 @@ def test_add_records_noop_on_empty():
     assert log == []
 
 
-def test_create_table_types_exclure_as_bool():
+def test_create_table_assigns_column_types():
     log = []
     c = GristClient("doc1", "key1", transport=_recording_transport(log))
-    c.create_table("T", ("item_key", "exclure", "n_items"))
+    c.create_table("T", ("item_key", "n_items", "review_status"))
     method, url, body = log[-1]
     assert method == "POST"
-    cols = {col["id"]: col["fields"]["type"] for col in body["tables"][0]["columns"]}
-    assert cols == {"item_key": "Text", "exclure": "Bool", "n_items": "Int"}
+    cols = {col["id"]: col["fields"]["type"]
+            for col in body["tables"][0]["columns"]}
+    assert cols == {"item_key": "Text", "n_items": "Int",
+                    "review_status": "Choice"}
+
+
+def test_list_columns_returns_ids():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    assert c.list_columns("Heldout_Items") == {"item_key", "domain"}
+    method, url, _ = log[-1]
+    assert method == "GET"
+    assert url.endswith("/docs/doc1/tables/Heldout_Items/columns")
+
+
+def test_add_columns_posts_choice_with_widget_options():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    c.add_columns("Heldout_Items", ("review_status", "review_note"))
+    method, url, body = log[-1]
+    assert method == "POST"
+    assert url.endswith("/docs/doc1/tables/Heldout_Items/columns")
+    by_id = {col["id"]: col["fields"] for col in body["columns"]}
+    assert by_id["review_status"]["type"] == "Choice"
+    assert "pending" in by_id["review_status"]["widgetOptions"]
+    assert by_id["review_note"]["type"] == "Text"
+
+
+def test_add_columns_noop_on_empty():
+    log = []
+    c = GristClient("doc1", "key1", transport=_recording_transport(log))
+    c.add_columns("T", ())
+    assert log == []
 
 
 def test_load_grist_key_prefers_env(monkeypatch):

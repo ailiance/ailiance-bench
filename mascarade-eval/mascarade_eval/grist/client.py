@@ -8,18 +8,23 @@ import sys
 import urllib.error
 import urllib.request
 
-from . import GRIST_BASE, KEY_FILE
+from . import GRIST_BASE, KEY_FILE, REVIEW_STATUSES, REVIEWER_CHOICES
 
-_BOOL_COLS = {"exclure"}
 _INT_COLS = {"n_items", "n_rows"}
+_CHOICE_COLS = {
+    "review_status": REVIEW_STATUSES,
+    "reviewer": REVIEWER_CHOICES,
+}
 
 
-def _col_type(name: str) -> str:
-    if name in _BOOL_COLS:
-        return "Bool"
+def _col_fields(name: str) -> dict:
+    """Grist column `fields` payload for a column id (label/type/options)."""
+    if name in _CHOICE_COLS:
+        opts = json.dumps({"choices": list(_CHOICE_COLS[name])})
+        return {"label": name, "type": "Choice", "widgetOptions": opts}
     if name in _INT_COLS:
-        return "Int"
-    return "Text"
+        return {"label": name, "type": "Int"}
+    return {"label": name, "type": "Text"}
 
 
 def load_grist_key() -> str:
@@ -63,7 +68,7 @@ def _http_transport(method: str, url: str, key: str, body: dict | None) -> dict:
 
 
 class GristClient:
-    """Records-level access to one Grist document."""
+    """Records- and column-level access to one Grist document."""
 
     def __init__(self, doc_id: str, key: str, transport=_http_transport):
         self.doc_id = doc_id
@@ -82,14 +87,25 @@ class GristClient:
         return {t["id"] for t in resp.get("tables", [])}
 
     def create_table(self, table: str, columns: tuple[str, ...]) -> None:
-        cols = [{"id": c, "fields": {"label": c, "type": _col_type(c)}}
-                for c in columns]
+        cols = [{"id": c, "fields": _col_fields(c)} for c in columns]
         self._api("POST", f"/docs/{self.doc_id}/tables",
                   {"tables": [{"id": table, "columns": cols}]})
 
     def ensure_table(self, table: str, columns: tuple[str, ...]) -> None:
         if table not in self.list_tables():
             self.create_table(table, columns)
+
+    def list_columns(self, table: str) -> set[str]:
+        resp = self._api(
+            "GET", f"/docs/{self.doc_id}/tables/{table}/columns")
+        return {c["id"] for c in resp.get("columns", [])}
+
+    def add_columns(self, table: str, columns: tuple[str, ...]) -> None:
+        if not columns:
+            return
+        cols = [{"id": c, "fields": _col_fields(c)} for c in columns]
+        self._api("POST", f"/docs/{self.doc_id}/tables/{table}/columns",
+                  {"columns": cols})
 
     def fetch_records(self, table: str) -> list[dict]:
         resp = self._api("GET", f"/docs/{self.doc_id}/tables/{table}/records")
