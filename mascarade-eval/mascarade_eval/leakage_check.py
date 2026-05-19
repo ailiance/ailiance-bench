@@ -3,28 +3,64 @@
 Two passes: exact (normalized sha256) and near-duplicate (token-set
 overlap). Dependency-free — stdlib only.
 
-The near-duplicate pass uses the overlap coefficient on normalized
-word sets: ``|A ∩ B| / min(|A|, |B|)``. This is deliberately chosen
-over plain Jaccard because held-out prompts and training prompts
-often differ in length and stopword padding; a short prompt that is
-essentially a subset of a longer training prompt is still a leak,
-and plain Jaccard would dilute that signal via the union term.
+The near-duplicate pass uses the overlap coefficient
+``|A ∩ B| / min(|A|, |B|)`` over **content-word bigrams** (k=2,
+stopwords removed). Bigrams of content words fire only on shared
+phrasing. An earlier version shingled unigram word sets with
+stopwords kept: that saturated catastrophically when a long held-out
+prompt was scored against a corpus of many short training prompts --
+the long prompt covered 60%+ of some short prompt's word set through
+stopwords and generic domain vocabulary alone, with no real overlap.
+k=2 (not k=3) keeps the metric robust to a single-word paraphrase
+between shared anchors -- trigrams break on every adjacent synonym
+swap. The overlap coefficient (over plain Jaccard) is kept so a
+short prompt that is a subset of a longer training prompt is a leak.
 """
 from __future__ import annotations
 import hashlib
 import re
 
 _WS = re.compile(r"\s+")
+# Strip punctuation, but keep a period/comma between digits so numeric
+# values survive intact ("3.3V" stays one token, not "3 3v").
+_PUNCT = re.compile(r"(?<!\d)[^\w\s]|[^\w\s](?!\d)")
 
 
 def normalize(text: str) -> str:
-    """Lowercase, collapse whitespace, strip — for hashing/shingling."""
-    return _WS.sub(" ", text.lower()).strip()
+    """Lowercase, drop punctuation, collapse whitespace — for hashing.
+
+    Punctuation is stripped so case/punctuation-only variants of the
+    same prompt (e.g. a trailing "?") collapse to one form and are
+    caught by the exact-duplicate pass.
+    """
+    return _WS.sub(" ", _PUNCT.sub(" ", text.lower())).strip()
 
 
-def _shingles(text: str, k: int = 1) -> set[str]:
-    """k-word shingles of normalized text (k=1 -> token set)."""
-    words = normalize(text).split()
+# Common English stopwords -- excluded from shingles so the overlap
+# metric fires on shared *content*, not on grammatical padding.
+_STOPWORDS = frozenset((
+    "a an the and or but if then else of in on at to from by for with "
+    "without as is are was were be been being do does did have has had "
+    "this that these those it its i you he she we they them my your his "
+    "her our their me him us not no yes can could would should will "
+    "shall may might must how what why when where which who whom whose "
+    "so too very just about over under into out up down off only also "
+    "than there here all any some more most other such own same "
+    "want need"
+).split())
+# Note: set/get/use/make are NOT stopwords -- in embedded/EDA prompts
+# ("set the clock divider", "use a pull-up") they carry domain signal.
+
+
+def _shingles(text: str, k: int = 2) -> set[str]:
+    """k-word content shingles of normalized text (stopwords removed).
+
+    k=2 (content-word bigrams): unigram word sets that kept stopwords
+    false-flagged long prompts against short training prompts; k=3
+    trigrams were too brittle (one synonym swap breaks every adjacent
+    trigram). Bigrams hold both failure modes in check.
+    """
+    words = [w for w in normalize(text).split() if w not in _STOPWORDS]
     if len(words) < k:
         return {" ".join(words)} if words else set()
     return {" ".join(words[i:i + k]) for i in range(len(words) - k + 1)}
