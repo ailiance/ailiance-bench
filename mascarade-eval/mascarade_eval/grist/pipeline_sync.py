@@ -47,7 +47,11 @@ def domain_status(domain: str, sourced: bool, trained: bool,
 
 
 def _http_get_json(url: str) -> dict:
-    req = urllib.request.Request(url, method="GET")
+    # An explicit User-Agent is required: the gateway sits behind
+    # Cloudflare, which 403s the default "Python-urllib" agent.
+    req = urllib.request.Request(
+        url, method="GET",
+        headers={"User-Agent": "mascarade-eval-pipeline-sync"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         raw = resp.read().decode("utf-8", "replace")
     return json.loads(raw) if raw else {}
