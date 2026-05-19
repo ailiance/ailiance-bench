@@ -40,12 +40,15 @@ Un widget Grist custom est une page HTML hébergée en HTTPS hors de
 Grist, que Grist charge en iframe et alimente via `grist-plugin-api.js`.
 D'où trois couches distinctes.
 
-### Couche 1 — Hébergement du widget (code)
+### Couche 1 — Hébergement du widget (intégré à la couche 3)
 
-`mascarade-eval/widgets/review-console/` est déployé comme asset
-statique vers une URL HTTPS publique stable (`zacus.saillant.cc/review-
-console/`, déjà référencée par la recette), via l'infra nginx +
-cloudflared existante. Autonome, ne dépend de rien.
+Le widget `mascarade-eval/widgets/review-console/` est embarqué comme
+**asset statique de `cockpit-admin`**, servi par le même nginx à
+`admin.ailiance.fr/review-console/`. Pas d'hôte séparé, pas de
+modification du tunnel cloudflared, pas de sous-domaine tiers : la copie
+du widget est une étape du sous-projet `ailiance-demo` (couche 3). Le
+domaine reste cohérent avec la marque ailiance et hérite du SSO
+Keycloak du parent.
 
 ### Couche 2 — Configuration du doc Grist (runbook, pas de code)
 
@@ -72,18 +75,19 @@ renseigner ensuite.
 
 ## Découpage en sous-projets
 
-Chacun reçoit son propre plan d'implémentation.
+1. **`ailiance-demo` (couches 1 + 3)** — repo `ailiance-demo`. Embarque
+   le widget review-console comme asset statique servi à
+   `/review-console/`, ET ajoute la route « Revue datasets » dans
+   `cockpit-admin` (composant iframe + entrée de navigation).
+   Scaffoldable avant la couche 2 grâce à la constante de config pour
+   l'URL Grist.
+2. **Runbook Grist (couche 2)** — documentation seule, dérivée des
+   recettes existantes ; exécutée dans l'UI Grist par l'opérateur.
 
-1. **Hébergement widget (couche 1)** — petit, autonome, exécutable
-   immédiatement. Déploiement statique + vérification HTTPS.
-2. **Route cockpit-admin (couche 3)** — moyen, repo `ailiance-demo` ;
-   nouvelle route, composant iframe, entrée de navigation. Scaffoldable
-   avant la couche 2 grâce à la constante de config.
-3. **Runbook Grist (couche 2)** — documentation seule, dérivée des
-   recettes existantes.
-
-Ordre conseillé : 1, puis 3 (scaffold), puis 2 (runbook + l'opérateur
-publie), puis renseigner l'URL réelle dans la couche 3.
+Ordre conseillé : sous-projet 1 (widget + route, avec URL Grist en
+placeholder de config), puis sous-projet 2 (runbook + l'opérateur publie
+les pages Grist), puis renseigner l'URL réelle dans la constante de
+config.
 
 ## Critères de succès
 
