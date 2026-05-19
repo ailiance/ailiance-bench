@@ -6,27 +6,26 @@ widget.
 
 ## 1. Host the static file
 
-Serve the file behind the existing electron-server cloudflared tunnel.
+The widget is served from the `zacus-static` nginx bind-mount on
+electron-server (no new traefik route or cloudflared hostname needed —
+Grist only needs any HTTPS URL).
 
 ```bash
 # from the repo, on the dev machine
+ssh electron-server 'mkdir -p \
+    /home/electron/saillant-sites/zacus-static/review-console'
 scp widgets/review-console/index.html \
-    electron-server:/srv/grist-widgets/review-console/index.html
+    electron-server:/home/electron/saillant-sites/zacus-static/review-console/index.html
 ```
 
-On electron-server, expose `/srv/grist-widgets/` via the existing
-static file server / Caddy / nginx and add a cloudflared route so the
-file is reachable at:
+Live URL (verified `HTTP 200`):
 
 ```
-https://grist-widgets.saillant.cc/review-console/index.html
+https://zacus.saillant.cc/review-console/index.html
 ```
 
-Verify: `curl -sI https://grist-widgets.saillant.cc/review-console/index.html`
-should return `HTTP/2 200`.
-
-> Hosting touches shared infra (cloudflared, electron-server) — confirm
-> with the operator before applying the route.
+To redeploy after editing the widget, re-run the `scp` above — nginx
+serves the mounted directory live, no container restart.
 
 ## 2. Add a review page in Grist
 
@@ -34,7 +33,7 @@ In doc *ailiance-llm-workflow*:
 
 1. **Add Page** → `Heldout review`.
 2. Add a **Custom** widget. Select **Custom URL** and paste
-   `https://grist-widgets.saillant.cc/review-console/index.html`.
+   `https://zacus.saillant.cc/review-console/index.html`.
 3. Bind the widget to the `Heldout_Items` table.
 4. When prompted, grant the widget **Full document access** (it must
    write the review columns).
