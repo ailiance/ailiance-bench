@@ -47,7 +47,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def resolve_doc(doc_arg: str | None) -> str:
-    """Return the doc ID from --doc or the GRIST_DOC_TRAINING env/file value."""
+    """Return the doc ID from --doc or the GRIST_DOC_TRAINING env/file value.
+
+    Exits the program (sys.exit) if neither source provides a doc ID.
+    """
     if doc_arg:
         return doc_arg
     doc = load_doc_id("GRIST_DOC_TRAINING")
@@ -57,8 +60,14 @@ def resolve_doc(doc_arg: str | None) -> str:
 
 
 def _ingest_jsonl_rows(domain: str, jsonl_path: str) -> list[dict]:
+    try:
+        text = Path(jsonl_path).read_text(encoding="utf-8")
+    except FileNotFoundError:
+        sys.exit(f"file not found: {jsonl_path}")
+    except UnicodeDecodeError as exc:
+        sys.exit(f"cannot decode {jsonl_path}: {exc}")
     rows: list[dict] = []
-    for line in Path(jsonl_path).read_text(encoding="utf-8").splitlines():
+    for line in text.splitlines():
         line = line.strip()
         if not line:
             continue

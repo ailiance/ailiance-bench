@@ -41,3 +41,9 @@ def test_resolve_doc_errors_when_unset(monkeypatch):
                         lambda name: None)
     with pytest.raises(SystemExit):
         resolve_doc(None)
+
+
+def test_ingest_jsonl_rows_exits_on_missing_file(tmp_path):
+    from mascarade_eval.grist.cli import _ingest_jsonl_rows
+    with pytest.raises(SystemExit):
+        _ingest_jsonl_rows("kicad", str(tmp_path / "does-not-exist.jsonl"))
