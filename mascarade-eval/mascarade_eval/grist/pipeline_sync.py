@@ -9,7 +9,9 @@ from __future__ import annotations
 from collections.abc import Callable
 import datetime
 import json
+import sys
 import urllib.request
+from mascarade_eval.grist.client import load_doc_id
 from mascarade_eval.grist.llm_schema import LLM_DOCS
 
 
@@ -95,3 +97,30 @@ def sync_pipeline(domain_client, training_client, bench_client,
         workflow_client.upsert_records(
             "Pipeline_Status", list(report.values()), "domain")
     return report
+
+
+_DOC_ENV = {
+    "domain": "GRIST_DOC_LLM_DOMAIN",
+    "training": "GRIST_DOC_LLM_TRAINING",
+    "bench": "GRIST_DOC_LLM_BENCH",
+    "workflow": "GRIST_DOC_LLM_WORKFLOW",
+}
+_GATEWAY_ENV = "GRIST_GATEWAY_URL"
+
+
+def resolve_sync_config() -> dict:
+    """Resolve the 4 doc IDs + gateway URL from env / grist.env.
+
+    Returns {"doc_ids": {key: id}, "gateway_url": url}. Exits if any
+    value is missing.
+    """
+    doc_ids: dict[str, str] = {}
+    for key, env_name in _DOC_ENV.items():
+        doc_id = load_doc_id(env_name)
+        if not doc_id:
+            sys.exit(f"missing {env_name} (env or grist.env)")
+        doc_ids[key] = doc_id
+    gateway_url = load_doc_id(_GATEWAY_ENV)
+    if not gateway_url:
+        sys.exit(f"missing {_GATEWAY_ENV} (env or grist.env)")
+    return {"doc_ids": doc_ids, "gateway_url": gateway_url}
