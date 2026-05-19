@@ -5,8 +5,9 @@ Why this exists
 ---------------
 ``mascarade_eval.mine_upstream`` needs ~380-420 SE API requests to mine a
 full held-out slice for the 9 Stack-Exchange-backed domains (n=40 each).
-The anonymous SE quota is ~300 requests per IP per day and resets at UTC
-midnight, so a full mine cannot finish in one day without an API key.
+The anonymous SE quota is ~300 requests per IP and recovers on a rolling
+~24h window (not a clean midnight reset), so a full mine cannot finish in
+one day without an API key.
 
 This wrapper mines as many *whole domains* as a daily budget allows,
 persists progress to ``heldout/.mining_state.json``, and is meant to run
@@ -187,10 +188,16 @@ def run_once(args: argparse.Namespace) -> int:
         _print_next_steps(state)
         return 0
 
-    if not args.force and state["runs"] \
-            and state["runs"][-1]["date"].startswith(today):
-        print(f"Already ran today ({today} UTC) -- SE quota has not reset. "
-              f"Use --force to override.")
+    # Only a run that actually mined a domain blocks same-UTC-day reruns.
+    # A run that mined nothing (quota too low) leaves the day open so a
+    # later attempt -- once the rolling SE window recovers -- can proceed.
+    last_productive = next(
+        (r for r in reversed(state["runs"]) if r["domains_mined"]), None
+    )
+    if not args.force and last_productive \
+            and last_productive["date"].startswith(today):
+        print(f"A productive run already happened today ({today} UTC); "
+              f"the SE quota has not recovered yet. Use --force to override.")
         print(f"Progress: {len(done)}/{len(SE_DOMAINS)} done. "
               f"Remaining: {', '.join(remaining)}")
         return 0
@@ -257,7 +264,7 @@ def run_once(args: argparse.Namespace) -> int:
         print(f"Progress: {len(done)}/{len(SE_DOMAINS)} done. "
               f"Remaining: {', '.join(still)} "
               f"(~{math.ceil(len(still) / per_day)} more day(s)).")
-        print("Re-run tomorrow (after 00:00 UTC) to continue.")
+        print("Re-run once the rolling SE quota window recovers (~24h).")
     else:
         print(f"Progress: {len(SE_DOMAINS)}/{len(SE_DOMAINS)} -- "
               f"SE mining COMPLETE.")
