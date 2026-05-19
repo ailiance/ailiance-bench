@@ -9,14 +9,18 @@ from pathlib import Path
 
 GRIST_BASE = "https://grist.saillant.cc/api"
 
-# Known existing docs. The training doc ID is provided at runtime via
-# --doc or the GRIST_DOC_TRAINING env/file value.
-DOC_HELDOUT = "eGbbrpzN3TeLq3sUd2YFA2"      # ailiance-llm-workflow
-DOC_MASCARADE = "dhyrySCayizD1PNqCNhCPN"    # mascarade-data
+# New topology: doc IDs are resolved at runtime from grist.env.
+DOC_DOMAIN_ENV = "GRIST_DOC_LLM_DOMAIN"
+DOC_TRAINING_ENV = "GRIST_DOC_LLM_TRAINING"
+DOC_BENCH_ENV = "GRIST_DOC_LLM_BENCH"
+# Legacy doc IDs, kept read-only for the post-migration window.
+DOC_HELDOUT_LEGACY = "eGbbrpzN3TeLq3sUd2YFA2"
+DOC_MASCARADE_LEGACY = "dhyrySCayizD1PNqCNhCPN"
 
 KEY_FILE = Path.home() / ".config" / "electron-rare" / "grist.env"
 
-TRAINING_TABLE = "Mascarade_Training"
+TRAINING_TABLE = "Dataset_Items"
+EVAL_TABLE = "Eval_Items"
 REGISTRY_TABLE = "Datasets_Registry"
 EXPORTS_TABLE = "Exports"
 
@@ -25,10 +29,10 @@ REVIEW_COLUMNS = ("review_status", "reviewer", "reviewed_at", "review_note")
 REVIEW_STATUSES = ("pending", "validated", "rejected", "needs_fix")
 REVIEWER_CHOICES = ("clems",)
 
-# Existing tables that receive the review columns, keyed by doc ID.
+# Existing tables that receive the review columns, keyed by legacy doc ID.
 REVIEW_TARGETS = {
-    DOC_HELDOUT: ("Heldout_Items", "Datasets"),
-    DOC_MASCARADE: ("Mascarade_Eval_Items", "Bench_31_domains"),
+    DOC_HELDOUT_LEGACY: ("Heldout_Items", "Datasets"),
+    DOC_MASCARADE_LEGACY: ("Mascarade_Eval_Items", "Bench_31_domains"),
 }
 
 TRAINING_COLUMNS = (
